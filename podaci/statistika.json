@@ -299,8 +299,8 @@
   },
   "techa": {
     "kreiran": "2026-10-21T15:59:43.902Z",
-    "zadnje": "2026-10-21T16:04:59.820Z",
-    "xp": 42,
+    "zadnje": "2026-10-21T16:05:02.289Z",
+    "xp": 50,
     "koraci": {
       "ti": false,
       "lab": false,
@@ -320,14 +320,18 @@
       "Kanta vode 10 L",
       "Kada vode",
       "Olimpijski bazen",
-      "Kišni oblak"
+      "Kišni oblak",
+      "List papira A4",
+      "Kocka šećera",
+      "Žličica šećera",
+      "Snjegović"
     ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 1
+    "dnevnik": 2
   },
   "tonkavlahovic": {
     "kreiran": "2026-10-21T16:01:36.510Z",
