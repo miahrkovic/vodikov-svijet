@@ -23,7 +23,9 @@
   "istrazeno": [
     "Vrećica šećera 1 kg",
     "Lizalica",
-    "Kutija za pizzu"
+    "Kutija za pizzu",
+    "Puni spremnik vodikovog kamiona",
+    "Vodik u cepelinu Hindenburg (1937.)"
   ],
   "lab": {
     "rijeseno": false,
@@ -39,12 +41,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 26,
+  "xp": 30,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598363744,
+  "_spremljeno": 1792598372191,
   "_ukupno": 3.9
 }
