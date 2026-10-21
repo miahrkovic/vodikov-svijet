@@ -26,7 +26,7 @@
   },
   "miahrkovic": {
     "kreiran": "2026-10-21T15:49:41.879Z",
-    "zadnje": "2026-10-21T22:21:44.819Z",
+    "zadnje": "2026-10-21T22:23:09.555Z",
     "xp": 1005,
     "koraci": {
       "ti": true,
@@ -140,12 +140,12 @@
       "Puni spremnik vodikovog kamiona",
       "Vodik u cepelinu Hindenburg (1937.)"
     ],
-    "tim": null,
+    "tim": "H27UN9",
     "narudzbe": {
       "broj": 1,
       "iznos": 25.3
     },
-    "dnevnik": 24
+    "dnevnik": 25
   },
   "vodik6767": {
     "kreiran": "2026-10-21T15:57:15.230Z",
