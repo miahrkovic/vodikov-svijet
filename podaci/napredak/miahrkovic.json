@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "⚡",
+      "t": "Liga, runda 43: 156 bodova (9/10)",
+      "d": "2026-10-21T17:58:34.443Z"
+    },
+    {
       "i": "🤝",
       "t": "Pridružio se timu „Vodikovci“",
       "d": "2026-10-21T17:57:52.965Z"
@@ -300,7 +305,7 @@
       "Zagreb"
     ]
   },
-  "xp": 909,
+  "xp": 940,
   "akad": {
     "element": {
       "z": 3
@@ -348,6 +353,6 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792605472965,
+  "_spremljeno": 1792605514443,
   "_ukupno": 3.9
 }
