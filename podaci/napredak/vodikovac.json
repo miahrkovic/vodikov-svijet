@@ -3,6 +3,26 @@
   "dnevnik": [
     {
       "i": "🔬",
+      "t": "Istraženo 40 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:05:02.567Z"
+    },
+    {
+      "i": "💧",
+      "t": "Nova razina: Molekula!",
+      "d": "2026-10-21T16:05:02.567Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 30 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:04:59.250Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 20 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:04:55.448Z"
+    },
+    {
+      "i": "🔬",
       "t": "Istraženo 10 stvari u potrazi za vodikom",
       "d": "2026-10-21T16:04:49.178Z"
     },
@@ -37,7 +57,39 @@
     "List papira A4",
     "Kocka šećera",
     "Bilježnica",
-    "Knjiga"
+    "Knjiga",
+    "Olovka",
+    "Drvena stolica",
+    "Cjepanica drva",
+    "Pamučna majica",
+    "Traperice",
+    "Rola WC papira",
+    "Kartonska kutija",
+    "Prazna plastična boca",
+    "Plastična vrećica",
+    "Svijeća",
+    "Pun spremnik benzina",
+    "Litra benzina",
+    "Plinska boca za kuhanje",
+    "Sredstvo za dezinfekciju",
+    "Boca ulja 1 L",
+    "Automobilska guma",
+    "Gumica za brisanje",
+    "Balon",
+    "Najlonske čarape",
+    "Pramen kose",
+    "Vunena kapa",
+    "Komad sapuna",
+    "Žlica soli",
+    "Staklena čaša",
+    "Kamen",
+    "Zlatni prsten",
+    "Limenka",
+    "Vodikov spremnik auta",
+    "Čaša vode",
+    "Tuširanje (5 minuta)",
+    "Bazen u dvorištu",
+    "Jadransko more"
   ],
   "lab": {
     "rijeseno": false,
@@ -53,12 +105,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 44,
+  "xp": 108,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598690981,
+  "_spremljeno": 1792598704199,
   "_ukupno": 3.9
 }
