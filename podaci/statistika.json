@@ -199,8 +199,8 @@
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
-    "zadnje": "2026-10-21T16:00:20.034Z",
-    "xp": 20,
+    "zadnje": "2026-10-21T16:02:06.697Z",
+    "xp": 30,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -213,7 +213,9 @@
     },
     "grad": null,
     "akad": {},
-    "tocna": [],
+    "tocna": [
+      "element:0"
+    ],
     "istrazeno": [],
     "tim": null,
     "narudzbe": {
