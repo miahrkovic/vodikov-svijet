@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🛣️",
+      "t": "Novi najbolji plan punionica: 100 % (Split, Zadar, Zagreb)",
+      "d": "2026-10-21T17:42:41.863Z"
+    },
+    {
+      "i": "✨",
+      "t": "Plan s 90 % (+50 XP)",
+      "d": "2026-10-21T17:42:41.863Z"
+    },
+    {
       "i": "🔋",
       "t": "Nova razina: Gorivna ćelija!",
       "d": "2026-10-21T17:42:00.614Z"
@@ -198,15 +208,19 @@
     "grad": "Split"
   },
   "ruta": {
-    "najbolja": 0,
-    "plan": []
+    "najbolja": 100,
+    "plan": [
+      "Split",
+      "Zadar",
+      "Zagreb"
+    ]
   },
-  "xp": 559,
+  "xp": 609,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604520614,
+  "_spremljeno": 1792604561863,
   "_ukupno": 3.9
 }
