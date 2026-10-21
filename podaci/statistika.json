@@ -26,8 +26,8 @@
   },
   "miahrkovic": {
     "kreiran": "2026-10-21T15:49:41.879Z",
-    "zadnje": "2026-10-21T17:48:48.413Z",
-    "xp": 779,
+    "zadnje": "2026-10-21T17:48:52.687Z",
+    "xp": 794,
     "koraci": {
       "ti": true,
       "lab": true,
@@ -42,7 +42,7 @@
     "akad": {
       "element": 3,
       "tijelo": 3,
-      "proizvodnja": 1
+      "proizvodnja": 3
     },
     "tocna": [
       "element:0",
@@ -155,7 +155,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 28
+    "dnevnik": 30
   },
   "vodik6767": {
     "kreiran": "2026-10-21T15:57:15.230Z",
