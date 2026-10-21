@@ -1,19 +1,11 @@
 {
-  "kosarica": [
-    {
-      "id": "majica",
-      "o": {
-        "Veličina": "S",
-        "Boja": [
-          "Crna",
-          "#0b0f1f"
-        ]
-      },
-      "kol": 1,
-      "c": 19.9
-    }
-  ],
+  "kosarica": [],
   "dnevnik": [
+    {
+      "i": "🛒",
+      "t": "Narudžba H2-389577: 25,30 €",
+      "d": "2026-10-21T17:59:45.837Z"
+    },
     {
       "i": "⚡",
       "t": "Liga, runda 43: 156 bodova (9/10)",
@@ -366,6 +358,6 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792605566328,
-  "_ukupno": 23.799999999999997
+  "_spremljeno": 1792605585837,
+  "_ukupno": 5.4
 }
