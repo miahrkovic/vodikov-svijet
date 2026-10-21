@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "⚗️",
+      "t": "Nova razina: Elektrolizer!",
+      "d": "2026-10-21T16:16:11.316Z"
+    },
+    {
       "i": "🔬",
       "t": "Istraženo 90 stvari u potrazi za vodikom",
       "d": "2026-10-21T16:13:47.800Z"
@@ -176,12 +181,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 248,
+  "xp": 251,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792599363915,
+  "_spremljeno": 1792599371316,
   "_ukupno": 3.9
 }
