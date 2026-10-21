@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "👋",
+      "t": "Napustio tim",
+      "d": "2026-10-21T17:47:21.156Z"
+    },
+    {
       "i": "🏆",
       "t": "Napravljen tim „Vodikovci“ (kod H27UN9)",
       "d": "2026-10-21T17:46:47.973Z"
@@ -264,9 +269,9 @@
     "tijelo:2",
     "tijelo:3"
   ],
-  "tim": "H27UN9",
-  "timIme": "Vodikovci",
+  "tim": null,
+  "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604807973,
+  "_spremljeno": 1792604841157,
   "_ukupno": 3.9
 }
