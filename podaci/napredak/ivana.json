@@ -1,0 +1,36 @@
+{
+  "kosarica": [],
+  "dnevnik": [
+    {
+      "i": "✨",
+      "t": "Napravljen račun @ivana. Dobrodošao!",
+      "d": "2026-10-21T16:18:42.824Z"
+    }
+  ],
+  "ti": {
+    "kg": null
+  },
+  "istrazeno": [],
+  "lab": {
+    "rijeseno": false,
+    "najbolje": null,
+    "puta": 0
+  },
+  "grad": {
+    "pobjeda": false,
+    "godina": null,
+    "grad": null
+  },
+  "ruta": {
+    "najbolja": 0,
+    "plan": []
+  },
+  "xp": 0,
+  "akad": {},
+  "tocna": [],
+  "tim": null,
+  "timIme": null,
+  "vidioUvod": false,
+  "_spremljeno": 1792599522826,
+  "_ukupno": 3.9
+}
