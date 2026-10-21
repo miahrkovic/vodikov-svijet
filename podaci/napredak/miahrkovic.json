@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "✨",
+      "t": "Tri zvjezdice: Element broj 1 (+15 XP)",
+      "d": "2026-10-21T17:43:52.427Z"
+    },
+    {
+      "i": "🎓",
+      "t": "Lekcija „Element broj 1“: 4/4 (★★★)",
+      "d": "2026-10-21T17:43:52.426Z"
+    },
+    {
       "i": "🛣️",
       "t": "Novi najbolji plan punionica: 100 % (Split, Zadar, Zagreb)",
       "d": "2026-10-21T17:42:41.863Z"
@@ -215,15 +225,21 @@
       "Zagreb"
     ]
   },
-  "xp": 629,
-  "akad": {},
+  "xp": 664,
+  "akad": {
+    "element": {
+      "z": 3
+    }
+  },
   "tocna": [
     "element:0",
-    "element:1"
+    "element:1",
+    "element:2",
+    "element:3"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604625141,
+  "_spremljeno": 1792604632427,
   "_ukupno": 3.9
 }
