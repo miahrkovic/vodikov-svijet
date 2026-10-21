@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "✨",
+      "t": "Tri zvjezdice: Element broj 1 (+15 XP)",
+      "d": "2026-10-21T16:19:18.031Z"
+    },
+    {
+      "i": "🎓",
+      "t": "Lekcija „Element broj 1“: 4/4 (★★★)",
+      "d": "2026-10-21T16:19:18.031Z"
+    },
+    {
       "i": "🎓",
       "t": "Lekcija „Element broj 1“: 3/4 (★★☆)",
       "d": "2026-10-21T16:19:09.241Z"
@@ -263,13 +273,13 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 751,
+  "xp": 776,
   "akad": {
     "hrvatska": {
       "z": 3
     },
     "element": {
-      "z": 2
+      "z": 3
     }
   },
   "tocna": [
@@ -279,11 +289,12 @@
     "hrvatska:3",
     "element:0",
     "element:1",
-    "element:2"
+    "element:2",
+    "element:3"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792599549241,
+  "_spremljeno": 1792599558031,
   "_ukupno": 3.9
 }
