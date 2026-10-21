@@ -181,7 +181,9 @@
     "Kosa / vuna",
     "Propan",
     "Jestivo ulje",
-    "Sapun"
+    "Sapun",
+    "Glicerol",
+    "Kofein"
   ],
   "lab": {
     "rijeseno": false,
@@ -197,12 +199,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 232,
+  "xp": 236,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598539333,
+  "_spremljeno": 1792598544068,
   "_ukupno": 3.9
 }
