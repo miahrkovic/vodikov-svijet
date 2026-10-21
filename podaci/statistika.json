@@ -51,8 +51,8 @@
   },
   "vodik6767": {
     "kreiran": "2026-10-21T15:57:15.230Z",
-    "zadnje": "2026-10-21T15:57:42.672Z",
-    "xp": 20,
+    "zadnje": "2026-10-21T15:58:08.161Z",
+    "xp": 28,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -66,7 +66,12 @@
     "grad": null,
     "akad": {},
     "tocna": [],
-    "istrazeno": [],
+    "istrazeno": [
+      "Svijeća",
+      "Svjećica za tortu",
+      "Vosak za skije",
+      "Nokti (svi)"
+    ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
