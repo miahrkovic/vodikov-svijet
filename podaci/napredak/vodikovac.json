@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🔬",
+      "t": "Istraženo 10 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:04:49.178Z"
+    },
+    {
       "i": "✨",
       "t": "Otkrio si vodik u sebi (+20 XP)",
       "d": "2026-10-21T15:59:03.690Z"
@@ -20,7 +25,20 @@
   "ti": {
     "kg": 52
   },
-  "istrazeno": [],
+  "istrazeno": [
+    "Kocka leda",
+    "Boca vode 0,5 L",
+    "Kanta vode 10 L",
+    "Kada vode",
+    "Olimpijski bazen",
+    "Kišni oblak",
+    "Snjegović",
+    "Žličica šećera",
+    "List papira A4",
+    "Kocka šećera",
+    "Bilježnica",
+    "Knjiga"
+  ],
   "lab": {
     "rijeseno": false,
     "najbolje": null,
@@ -35,12 +53,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 20,
+  "xp": 44,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598343690,
+  "_spremljeno": 1792598690981,
   "_ukupno": 3.9
 }
