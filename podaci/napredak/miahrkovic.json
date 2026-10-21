@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "✨",
+      "t": "Tri zvjezdice: Kako nastaje vodik (+15 XP)",
+      "d": "2026-10-21T17:48:48.042Z"
+    },
+    {
+      "i": "🎓",
+      "t": "Lekcija „Kako nastaje vodik“: 4/4 (★★★)",
+      "d": "2026-10-21T17:48:48.042Z"
+    },
+    {
       "i": "🎓",
       "t": "Lekcija „Kako nastaje vodik“: 2/4 (★☆☆)",
       "d": "2026-10-21T17:48:32.242Z"
@@ -255,7 +265,7 @@
       "Zagreb"
     ]
   },
-  "xp": 779,
+  "xp": 794,
   "akad": {
     "element": {
       "z": 3
@@ -264,7 +274,7 @@
       "z": 3
     },
     "proizvodnja": {
-      "z": 1
+      "z": 3
     }
   },
   "tocna": [
@@ -284,6 +294,6 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604923705,
+  "_spremljeno": 1792604928042,
   "_ukupno": 3.9
 }
