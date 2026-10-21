@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🤝",
+      "t": "Pridružio se timu „Vodikovci“",
+      "d": "2026-10-21T17:48:18.511Z"
+    },
+    {
       "i": "🏙️",
       "t": "Split je postao zeleni grad na vodik 2030.",
       "d": "2026-10-21T17:05:44.678Z"
@@ -396,9 +401,9 @@
     "celija:2",
     "celija:3"
   ],
-  "tim": null,
-  "timIme": null,
+  "tim": "H27UN9",
+  "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792604868511,
+  "_spremljeno": 1792604898511,
   "_ukupno": 3.9
 }
