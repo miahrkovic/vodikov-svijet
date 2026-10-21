@@ -176,7 +176,10 @@
     "Voda",
     "Papir / drvo / pamuk",
     "Plastika PET",
-    "Šećer – saharoza"
+    "Šećer – saharoza",
+    "Parafin",
+    "Kosa / vuna",
+    "Propan"
   ],
   "lab": {
     "rijeseno": false,
@@ -192,12 +195,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 222,
+  "xp": 228,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598523900,
+  "_spremljeno": 1792598530500,
   "_ukupno": 3.9
 }
