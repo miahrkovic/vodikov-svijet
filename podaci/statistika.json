@@ -299,8 +299,8 @@
   },
   "techa": {
     "kreiran": "2026-10-21T15:59:43.902Z",
-    "zadnje": "2026-10-21T16:05:02.289Z",
-    "xp": 50,
+    "zadnje": "2026-10-21T16:05:07.096Z",
+    "xp": 64,
     "koraci": {
       "ti": false,
       "lab": false,
@@ -324,7 +324,14 @@
       "List papira A4",
       "Kocka šećera",
       "Žličica šećera",
-      "Snjegović"
+      "Snjegović",
+      "Knjiga",
+      "Olovka",
+      "Drvena stolica",
+      "Bilježnica",
+      "Pramen kose",
+      "Gumica za brisanje",
+      "Najlonske čarape"
     ],
     "tim": null,
     "narudzbe": {
