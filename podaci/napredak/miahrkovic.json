@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🎓",
+      "t": "Lekcija „Kako nastaje vodik“: 2/4 (★☆☆)",
+      "d": "2026-10-21T17:48:32.242Z"
+    },
+    {
       "i": "👋",
       "t": "Napustio tim",
       "d": "2026-10-21T17:47:21.156Z"
@@ -250,13 +255,16 @@
       "Zagreb"
     ]
   },
-  "xp": 749,
+  "xp": 759,
   "akad": {
     "element": {
       "z": 3
     },
     "tijelo": {
       "z": 3
+    },
+    "proizvodnja": {
+      "z": 1
     }
   },
   "tocna": [
@@ -268,11 +276,12 @@
     "tijelo:1",
     "tijelo:2",
     "tijelo:3",
-    "proizvodnja:2"
+    "proizvodnja:2",
+    "proizvodnja:3"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604906440,
+  "_spremljeno": 1792604912242,
   "_ukupno": 3.9
 }
