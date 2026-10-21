@@ -3,6 +3,26 @@
   "dnevnik": [
     {
       "i": "🔬",
+      "t": "Istraženo 40 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:05:22.570Z"
+    },
+    {
+      "i": "💧",
+      "t": "Nova razina: Molekula!",
+      "d": "2026-10-21T16:05:19.504Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 30 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:05:17.186Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 20 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:05:11.902Z"
+    },
+    {
+      "i": "🔬",
       "t": "Istraženo 10 stvari u potrazi za vodikom",
       "d": "2026-10-21T16:04:55.786Z"
     },
@@ -32,7 +52,35 @@
     "Bilježnica",
     "Pramen kose",
     "Gumica za brisanje",
-    "Najlonske čarape"
+    "Najlonske čarape",
+    "Puni spremnik vodikovog kamiona",
+    "Vodik u cepelinu Hindenburg (1937.)",
+    "Pijesak s plaže",
+    "Prozor",
+    "Bicikl (okvir)",
+    "Ključevi",
+    "Tableta aspirina",
+    "Plastično kućište mobitela",
+    "Šalica kave (kofein)",
+    "Krema za ruke (glicerol)",
+    "Tenisice (đon)",
+    "Kotač bicikla",
+    "Nokti (svi)",
+    "Kosa na glavi",
+    "Vosak za skije",
+    "Maslinovo ulje (žlica)",
+    "Boca propana 10 kg",
+    "Svjećica za tortu",
+    "Litra dizela",
+    "Upaljač",
+    "Rezervoar dizela kamiona",
+    "Folija za hranu",
+    "PVC cijev 1 m",
+    "Kabanica",
+    "Kanta od PVC-a",
+    "Kutija od stiropora",
+    "Kutija za ručak",
+    "Lego kocka"
   ],
   "lab": {
     "rijeseno": false,
@@ -48,12 +96,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 64,
+  "xp": 120,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598701767,
+  "_spremljeno": 1792598725885,
   "_ukupno": 3.9
 }
