@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🎓",
+      "t": "Lekcija „Vodik i budućnost“: 3/4 (★★☆)",
+      "d": "2026-10-21T17:57:28.804Z"
+    },
+    {
       "i": "⭐",
       "t": "Nova razina: Zvijezda!",
       "d": "2026-10-21T17:57:19.986Z"
@@ -301,6 +306,9 @@
     },
     "celija": {
       "z": 2
+    },
+    "hrvatska": {
+      "z": 2
     }
   },
   "tocna": [
@@ -330,6 +338,6 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792605439986,
+  "_spremljeno": 1792605448804,
   "_ukupno": 3.9
 }
