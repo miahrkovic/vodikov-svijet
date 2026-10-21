@@ -2,6 +2,56 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🔬",
+      "t": "Istraženo 90 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:47.800Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 80 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:44.032Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 70 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:39.698Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 60 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:36.098Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 50 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:31.864Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 40 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:27.314Z"
+    },
+    {
+      "i": "💧",
+      "t": "Nova razina: Molekula!",
+      "d": "2026-10-21T16:13:27.314Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 30 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:23.529Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 20 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:18.980Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 10 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:13:14.144Z"
+    },
+    {
       "i": "✨",
       "t": "Otkrio si vodik u sebi (+20 XP)",
       "d": "2026-10-21T16:12:26.243Z"
@@ -20,7 +70,98 @@
   "ti": {
     "kg": 80
   },
-  "istrazeno": [],
+  "istrazeno": [
+    "Kocka leda",
+    "Boca vode 0,5 L",
+    "Kanta vode 10 L",
+    "Kada vode",
+    "Olimpijski bazen",
+    "Kišni oblak",
+    "Snjegović",
+    "Žličica šećera",
+    "Kocka šećera",
+    "List papira A4",
+    "Bilježnica",
+    "Knjiga",
+    "Olovka",
+    "Drvena stolica",
+    "Cjepanica drva",
+    "Pamučna majica",
+    "Traperice",
+    "Rola WC papira",
+    "Kartonska kutija",
+    "Prazna plastična boca",
+    "Plastična vrećica",
+    "Svijeća",
+    "Pun spremnik benzina",
+    "Litra benzina",
+    "Plinska boca za kuhanje",
+    "Sredstvo za dezinfekciju",
+    "Boca ulja 1 L",
+    "Automobilska guma",
+    "Gumica za brisanje",
+    "Balon",
+    "Najlonske čarape",
+    "Pramen kose",
+    "Vunena kapa",
+    "Komad sapuna",
+    "Žlica soli",
+    "Staklena čaša",
+    "Kamen",
+    "Zlatni prsten",
+    "Limenka",
+    "Vodikov spremnik auta",
+    "Čaša vode",
+    "Tuširanje (5 minuta)",
+    "Bazen u dvorištu",
+    "Jadransko more",
+    "Kap kiše",
+    "Pahulja snijega",
+    "Ledeni brijeg",
+    "Akvarij",
+    "Lubenica (voda u njoj)",
+    "Vrećica šećera 1 kg",
+    "Lizalica",
+    "Novine",
+    "Kutija za pizzu",
+    "Drveni stol",
+    "Ormar",
+    "Stablo hrasta",
+    "Ručnik",
+    "Plahta",
+    "Papirnata maramica",
+    "Školska torba (platnena)",
+    "Plastična čaša",
+    "Čep boce",
+    "Kutija za ručak",
+    "Lego kocka",
+    "Kutija od stiropora",
+    "Kanta od PVC-a",
+    "PVC cijev 1 m",
+    "Kabanica",
+    "Folija za hranu",
+    "Rezervoar dizela kamiona",
+    "Litra dizela",
+    "Upaljač",
+    "Boca propana 10 kg",
+    "Svjećica za tortu",
+    "Vosak za skije",
+    "Maslinovo ulje (žlica)",
+    "Kosa na glavi",
+    "Nokti (svi)",
+    "Tenisice (đon)",
+    "Kotač bicikla",
+    "Krema za ruke (glicerol)",
+    "Šalica kave (kofein)",
+    "Tableta aspirina",
+    "Plastično kućište mobitela",
+    "Bicikl (okvir)",
+    "Ključevi",
+    "Prozor",
+    "Pijesak s plaže",
+    "Puni spremnik vodikovog kamiona",
+    "Vodik u cepelinu Hindenburg (1937.)"
+  ],
   "lab": {
     "rijeseno": false,
     "najbolje": null,
@@ -35,12 +176,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 20,
+  "xp": 200,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792599146243,
+  "_spremljeno": 1792599227800,
   "_ukupno": 3.9
 }
