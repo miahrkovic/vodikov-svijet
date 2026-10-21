@@ -25,7 +25,8 @@
     "Lizalica",
     "Kutija za pizzu",
     "Puni spremnik vodikovog kamiona",
-    "Vodik u cepelinu Hindenburg (1937.)"
+    "Vodik u cepelinu Hindenburg (1937.)",
+    "Dizel"
   ],
   "lab": {
     "rijeseno": false,
@@ -41,12 +42,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 30,
+  "xp": 32,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598372191,
+  "_spremljeno": 1792598374967,
   "_ukupno": 3.9
 }
