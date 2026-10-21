@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🎓",
+      "t": "Lekcija „Gorivna ćelija i promet“: 3/4 (★★☆)",
+      "d": "2026-10-21T17:56:33.367Z"
+    },
+    {
       "i": "✨",
       "t": "Tri zvjezdice: Skladištenje i sigurnost (+15 XP)",
       "d": "2026-10-21T17:49:29.900Z"
@@ -275,7 +280,7 @@
       "Zagreb"
     ]
   },
-  "xp": 869,
+  "xp": 879,
   "akad": {
     "element": {
       "z": 3
@@ -288,6 +293,9 @@
     },
     "skladiste": {
       "z": 3
+    },
+    "celija": {
+      "z": 2
     }
   },
   "tocna": [
@@ -308,11 +316,12 @@
     "skladiste:2",
     "skladiste:3",
     "celija:1",
-    "celija:2"
+    "celija:2",
+    "celija:3"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792605028343,
+  "_spremljeno": 1792605393368,
   "_ukupno": 3.9
 }
