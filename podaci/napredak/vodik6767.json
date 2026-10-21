@@ -20,7 +20,12 @@
   "ti": {
     "kg": 70
   },
-  "istrazeno": [],
+  "istrazeno": [
+    "Svijeća",
+    "Svjećica za tortu",
+    "Vosak za skije",
+    "Nokti (svi)"
+  ],
   "lab": {
     "rijeseno": false,
     "najbolje": null,
@@ -35,12 +40,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 20,
+  "xp": 28,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598258410,
+  "_spremljeno": 1792598283637,
   "_ukupno": 3.9
 }
