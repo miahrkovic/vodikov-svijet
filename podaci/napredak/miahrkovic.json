@@ -275,7 +275,7 @@
       "Zagreb"
     ]
   },
-  "xp": 849,
+  "xp": 859,
   "akad": {
     "element": {
       "z": 3
@@ -306,11 +306,12 @@
     "skladiste:0",
     "skladiste:1",
     "skladiste:2",
-    "skladiste:3"
+    "skladiste:3",
+    "celija:1"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604969900,
+  "_spremljeno": 1792605025194,
   "_ukupno": 3.9
 }
