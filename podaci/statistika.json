@@ -331,8 +331,8 @@
   },
   "techa": {
     "kreiran": "2026-10-21T15:59:43.902Z",
-    "zadnje": "2026-10-21T16:05:07.096Z",
-    "xp": 64,
+    "zadnje": "2026-10-21T16:05:34.557Z",
+    "xp": 120,
     "koraci": {
       "ti": false,
       "lab": false,
@@ -363,14 +363,42 @@
       "Bilježnica",
       "Pramen kose",
       "Gumica za brisanje",
-      "Najlonske čarape"
+      "Najlonske čarape",
+      "Puni spremnik vodikovog kamiona",
+      "Vodik u cepelinu Hindenburg (1937.)",
+      "Pijesak s plaže",
+      "Prozor",
+      "Bicikl (okvir)",
+      "Ključevi",
+      "Tableta aspirina",
+      "Plastično kućište mobitela",
+      "Šalica kave (kofein)",
+      "Krema za ruke (glicerol)",
+      "Tenisice (đon)",
+      "Kotač bicikla",
+      "Nokti (svi)",
+      "Kosa na glavi",
+      "Vosak za skije",
+      "Maslinovo ulje (žlica)",
+      "Boca propana 10 kg",
+      "Svjećica za tortu",
+      "Litra dizela",
+      "Upaljač",
+      "Rezervoar dizela kamiona",
+      "Folija za hranu",
+      "PVC cijev 1 m",
+      "Kabanica",
+      "Kanta od PVC-a",
+      "Kutija od stiropora",
+      "Kutija za ručak",
+      "Lego kocka"
     ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 2
+    "dnevnik": 6
   },
   "tonkavlahovic": {
     "kreiran": "2026-10-21T16:01:36.510Z",
