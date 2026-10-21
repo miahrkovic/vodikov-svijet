@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:02:34.724Z",
-    "xp": 238,
+    "zadnje": "2026-10-21T16:02:39.511Z",
+    "xp": 240,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -205,14 +205,15 @@
       "Sapun",
       "Glicerol",
       "Kofein",
-      "Aspirin"
+      "Aspirin",
+      "Stiropor"
     ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 14
+    "dnevnik": 15
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
