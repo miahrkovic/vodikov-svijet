@@ -3,6 +3,11 @@
   "dnevnik": [
     {
       "i": "🔬",
+      "t": "Istraženo 110 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:02:34.256Z"
+    },
+    {
+      "i": "🔬",
       "t": "Istraženo 100 stvari u potrazi za vodikom",
       "d": "2026-10-21T16:02:02.454Z"
     },
@@ -184,7 +189,8 @@
     "Sapun",
     "Glicerol",
     "Kofein",
-    "Aspirin"
+    "Aspirin",
+    "Stiropor"
   ],
   "lab": {
     "rijeseno": false,
@@ -200,12 +206,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 238,
+  "xp": 240,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598548413,
+  "_spremljeno": 1792598554256,
   "_ukupno": 3.9
 }
