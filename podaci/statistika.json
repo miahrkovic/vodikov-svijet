@@ -731,8 +731,8 @@
   },
   "medk": {
     "kreiran": "2026-10-21T18:48:46.704Z",
-    "zadnje": "2026-10-21T18:49:14.456Z",
-    "xp": 0,
+    "zadnje": "2026-10-21T18:50:16.522Z",
+    "xp": 2,
     "koraci": {
       "ti": false,
       "lab": false,
@@ -746,7 +746,9 @@
     "grad": null,
     "akad": {},
     "tocna": [],
-    "istrazeno": [],
+    "istrazeno": [
+      "Kanta vode 10 L"
+    ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
