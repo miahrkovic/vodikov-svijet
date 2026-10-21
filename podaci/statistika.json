@@ -702,10 +702,10 @@
   },
   "proba": {
     "kreiran": "2026-10-21T18:11:22.738Z",
-    "zadnje": "2026-10-21T18:12:28.469Z",
-    "xp": 0,
+    "zadnje": "2026-10-21T18:12:53.286Z",
+    "xp": 20,
     "koraci": {
-      "ti": false,
+      "ti": true,
       "lab": false,
       "grad": false,
       "ruta": 0
@@ -723,6 +723,6 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 1
+    "dnevnik": 3
   }
 }
