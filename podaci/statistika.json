@@ -661,6 +661,27 @@
   },
   "ivana": {
     "kreiran": "2026-10-21T16:18:42.069Z",
-    "zadnje": "2026-10-21T16:18:42.069Z"
+    "zadnje": "2026-10-21T16:18:47.764Z",
+    "xp": 0,
+    "koraci": {
+      "ti": false,
+      "lab": false,
+      "grad": false,
+      "ruta": 0
+    },
+    "lab": {
+      "najbolje": null,
+      "puta": 0
+    },
+    "grad": null,
+    "akad": {},
+    "tocna": [],
+    "istrazeno": [],
+    "tim": null,
+    "narudzbe": {
+      "broj": 0,
+      "iznos": 0
+    },
+    "dnevnik": 1
   }
 }
