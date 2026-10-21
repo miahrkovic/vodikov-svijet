@@ -179,7 +179,9 @@
     "Šećer – saharoza",
     "Parafin",
     "Kosa / vuna",
-    "Propan"
+    "Propan",
+    "Jestivo ulje",
+    "Sapun"
   ],
   "lab": {
     "rijeseno": false,
@@ -195,12 +197,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 228,
+  "xp": 232,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598530500,
+  "_spremljeno": 1792598539333,
   "_ukupno": 3.9
 }
