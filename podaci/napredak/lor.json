@@ -258,7 +258,7 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 741,
+  "xp": 731,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -269,12 +269,11 @@
     "hrvatska:1",
     "hrvatska:2",
     "hrvatska:3",
-    "element:0",
-    "element:1"
+    "element:0"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792599540292,
+  "_spremljeno": 1792599537747,
   "_ukupno": 3.9
 }
