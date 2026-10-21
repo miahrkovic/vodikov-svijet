@@ -3,6 +3,16 @@
   "dnevnik": [
     {
       "i": "✨",
+      "t": "Tri zvjezdice: Gorivna ćelija i promet (+15 XP)",
+      "d": "2026-10-21T16:32:14.996Z"
+    },
+    {
+      "i": "🎓",
+      "t": "Lekcija „Gorivna ćelija i promet“: 4/4 (★★★)",
+      "d": "2026-10-21T16:32:14.996Z"
+    },
+    {
+      "i": "✨",
       "t": "Tri zvjezdice: Skladištenje i sigurnost (+15 XP)",
       "d": "2026-10-21T16:31:40.993Z"
     },
@@ -308,7 +318,7 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 941,
+  "xp": 996,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -323,6 +333,9 @@
       "z": 3
     },
     "skladiste": {
+      "z": 3
+    },
+    "celija": {
       "z": 3
     }
   },
@@ -346,11 +359,15 @@
     "skladiste:0",
     "skladiste:1",
     "skladiste:2",
-    "skladiste:3"
+    "skladiste:3",
+    "celija:0",
+    "celija:1",
+    "celija:2",
+    "celija:3"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792600300993,
+  "_spremljeno": 1792600334996,
   "_ukupno": 3.9
 }
