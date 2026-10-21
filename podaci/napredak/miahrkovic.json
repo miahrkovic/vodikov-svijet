@@ -3,6 +3,16 @@
   "dnevnik": [
     {
       "i": "✨",
+      "t": "Tri zvjezdice: Skladištenje i sigurnost (+15 XP)",
+      "d": "2026-10-21T17:49:29.900Z"
+    },
+    {
+      "i": "🎓",
+      "t": "Lekcija „Skladištenje i sigurnost“: 4/4 (★★★)",
+      "d": "2026-10-21T17:49:29.900Z"
+    },
+    {
+      "i": "✨",
       "t": "Tri zvjezdice: Kako nastaje vodik (+15 XP)",
       "d": "2026-10-21T17:48:48.042Z"
     },
@@ -265,7 +275,7 @@
       "Zagreb"
     ]
   },
-  "xp": 824,
+  "xp": 849,
   "akad": {
     "element": {
       "z": 3
@@ -274,6 +284,9 @@
       "z": 3
     },
     "proizvodnja": {
+      "z": 3
+    },
+    "skladiste": {
       "z": 3
     }
   },
@@ -292,11 +305,12 @@
     "proizvodnja:1",
     "skladiste:0",
     "skladiste:1",
-    "skladiste:2"
+    "skladiste:2",
+    "skladiste:3"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604959413,
+  "_spremljeno": 1792604969900,
   "_ukupno": 3.9
 }
