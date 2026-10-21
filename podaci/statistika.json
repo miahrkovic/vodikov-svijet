@@ -26,8 +26,8 @@
   },
   "miahrkovic": {
     "kreiran": "2026-10-21T15:49:41.879Z",
-    "zadnje": "2026-10-21T17:57:13.513Z",
-    "xp": 889,
+    "zadnje": "2026-10-21T17:57:19.589Z",
+    "xp": 899,
     "koraci": {
       "ti": true,
       "lab": true,
@@ -66,7 +66,8 @@
       "celija:1",
       "celija:2",
       "celija:3",
-      "hrvatska:0"
+      "hrvatska:0",
+      "hrvatska:1"
     ],
     "istrazeno": [
       "Kocka leda",
