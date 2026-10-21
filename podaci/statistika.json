@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:02:19.278Z",
-    "xp": 228,
+    "zadnje": "2026-10-21T16:02:28.452Z",
+    "xp": 236,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -200,7 +200,11 @@
       "Šećer – saharoza",
       "Parafin",
       "Kosa / vuna",
-      "Propan"
+      "Propan",
+      "Jestivo ulje",
+      "Sapun",
+      "Glicerol",
+      "Kofein"
     ],
     "tim": null,
     "narudzbe": {
