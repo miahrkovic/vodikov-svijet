@@ -26,8 +26,8 @@
   },
   "miahrkovic": {
     "kreiran": "2026-10-21T15:49:41.879Z",
-    "zadnje": "2026-10-21T17:48:52.687Z",
-    "xp": 794,
+    "zadnje": "2026-10-21T17:49:18.690Z",
+    "xp": 814,
     "koraci": {
       "ti": true,
       "lab": true,
@@ -56,7 +56,9 @@
       "proizvodnja:2",
       "proizvodnja:3",
       "proizvodnja:0",
-      "proizvodnja:1"
+      "proizvodnja:1",
+      "skladiste:0",
+      "skladiste:1"
     ],
     "istrazeno": [
       "Kocka leda",
