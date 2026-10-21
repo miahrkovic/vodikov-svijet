@@ -26,8 +26,8 @@
   },
   "miahrkovic": {
     "kreiran": "2026-10-21T15:49:41.879Z",
-    "zadnje": "2026-10-21T17:48:31.132Z",
-    "xp": 749,
+    "zadnje": "2026-10-21T17:48:36.849Z",
+    "xp": 759,
     "koraci": {
       "ti": true,
       "lab": true,
@@ -41,7 +41,8 @@
     "grad": "Split",
     "akad": {
       "element": 3,
-      "tijelo": 3
+      "tijelo": 3,
+      "proizvodnja": 1
     },
     "tocna": [
       "element:0",
@@ -52,7 +53,8 @@
       "tijelo:1",
       "tijelo:2",
       "tijelo:3",
-      "proizvodnja:2"
+      "proizvodnja:2",
+      "proizvodnja:3"
     ],
     "istrazeno": [
       "Kocka leda",
@@ -151,7 +153,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 27
+    "dnevnik": 28
   },
   "vodik6767": {
     "kreiran": "2026-10-21T15:57:15.230Z",
