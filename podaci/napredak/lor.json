@@ -193,7 +193,8 @@
     "Stiropor",
     "Kuhinjska sol",
     "Čisti vodik",
-    "Amonijak"
+    "Amonijak",
+    "Guma"
   ],
   "lab": {
     "rijeseno": false,
@@ -209,12 +210,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 246,
+  "xp": 248,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598572798,
+  "_spremljeno": 1792598581242,
   "_ukupno": 3.9
 }
