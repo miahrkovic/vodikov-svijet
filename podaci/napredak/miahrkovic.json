@@ -215,12 +215,15 @@
       "Zagreb"
     ]
   },
-  "xp": 609,
+  "xp": 629,
   "akad": {},
-  "tocna": [],
+  "tocna": [
+    "element:0",
+    "element:1"
+  ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604561863,
+  "_spremljeno": 1792604625141,
   "_ukupno": 3.9
 }
