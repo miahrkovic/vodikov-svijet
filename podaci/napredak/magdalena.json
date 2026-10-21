@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🎓",
+      "t": "Lekcija „Vodik u tebi“: 3/4 (★★☆)",
+      "d": "2026-10-21T16:04:16.761Z"
+    },
+    {
+      "i": "💧",
+      "t": "Nova razina: Molekula!",
+      "d": "2026-10-21T16:04:16.096Z"
+    },
+    {
       "i": "✨",
       "t": "Tri zvjezdice: Element broj 1 (+15 XP)",
       "d": "2026-10-21T16:02:46.882Z"
@@ -50,10 +60,13 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 95,
+  "xp": 105,
   "akad": {
     "element": {
       "z": 3
+    },
+    "tijelo": {
+      "z": 2
     }
   },
   "tocna": [
@@ -62,11 +75,12 @@
     "element:1",
     "element:3",
     "tijelo:1",
-    "tijelo:2"
+    "tijelo:2",
+    "tijelo:3"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598650840,
+  "_spremljeno": 1792598656761,
   "_ukupno": 3.9
 }
