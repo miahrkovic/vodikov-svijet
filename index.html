@@ -418,6 +418,7 @@ nav .vise{display:none}
           <div><b>🧍 Ti</b>Piješ i jedeš, pa vodik postaje dio tebe.</div></div></div>
         <canvas id="cv" width="1080" height="1350"></canvas>
         <button class="btn" onclick="spremiKarticu()">⬇ Spremi vodikovu iskaznicu</button>
+        <button class="ghost" style="width:100%;margin-top:8px" onclick="spremiPricu()">📱 Spremi za Instagram priču (9:16)</button>
       </div>
     </div>
   </div>
@@ -1025,6 +1026,11 @@ const EN = {
 };
 
 // rečenice s brojevima i imenima
+Object.assign(EN, {
+  "📱 Spremi za Instagram priču (9:16)":"📱 Save for Instagram story (9:16)",
+  "⬇ Tablica (CSV)":"⬇ Table (CSV)",
+  "⬇ Tablica tima je preuzeta. Otvara se u Excelu.":"⬇ Team table downloaded. It opens in Excel.",
+});
 const UZORCI = [
   [/^Bok, (.+)! Kreni s vodikom u sebi 🧍$/, (m, a) => `Hi, ${a}! Start with the hydrogen in you 🧍`],
   [/^Bok, (.+)!$/, (m, a) => `Hi, ${a}!`],
@@ -1969,10 +1975,11 @@ async function pregledTima(){
   try{
     const d = await zahtjev("/liga/pregled?kod="+encodeURIComponent(S.tim));
     const c = d.clanovi.slice().sort((a,b)=>b.xp-a.xp);
+    window.PREGLED = { ime:d.ime, runda:d.runda, redovi: c.map(x=>[x.korisnik, RAZ_IME(x.xp), x.xp, ["ti","lab","grad"].filter(k=>x.koraci[k]).length + ((x.koraci.ruta||0)>=90?1:0), x.zvjezdice, x.bodoviRunda||0, x.bodoviUkupno||0, x.zadnje?new Date(x.zadnje).toLocaleDateString("hr-HR"):""]) };
     const kor = x => ["ti","lab","grad"].filter(k=>x.koraci[k]).length + ((x.koraci.ruta||0)>=90?1:0);
     const n = c.length, prosXP = n?Math.round(c.reduce((a,x)=>a+x.xp,0)/n):0, igrali = c.filter(x=>x.bodoviRunda>0).length;
     const dana = t => { if(!t) return "–"; const d=Math.floor((Date.now()-new Date(t))/864e5); return d<=0?"danas":d===1?"jučer":`prije ${d} d`; };
-    el.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b class="pf" style="font-size:20px">👩‍🏫 Pregled tima ${esc(d.ime)}</b><button class="ghost" style="width:auto;margin:0;padding:6px 12px" onclick="$('pregled').style.display='none'">Zatvori</button></div>
+    el.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b class="pf" style="font-size:20px">👩‍🏫 Pregled tima ${esc(d.ime)}</b><span style="display:flex;gap:6px"><button class="ghost" style="width:auto;margin:0;padding:6px 12px" onclick="preuzmiCSV()">⬇ Tablica (CSV)</button><button class="ghost" style="width:auto;margin:0;padding:6px 12px" onclick="$('pregled').style.display='none'">Zatvori</button></span></div>
       <p class="small muted">${esc(d.skola||"")} · vidiš ga samo ti kao osnivač tima · bez osobnih podataka</p>
       <div class="ad-kpi" style="margin-top:10px">
         <div class="card"><b>${n}</b><small>članova</small></div>
@@ -1984,6 +1991,17 @@ async function pregledTima(){
       </tbody></table></div>
       <p class="small muted" style="margin-top:8px">Koraci: vodik u tebi · laboratorij · H2 Grad · H2 Ruta. Učenici koji još nisu igrali imaju crtice.</p>`;
   }catch(e){ el.innerHTML = `<p style="color:var(--bad)">Pregled nije dostupan: ${esc(e.message)}</p>`; }
+}
+
+// tablica tima za Excel: zarez kao razdjelnik decimala je hrvatski, pa koristimo točku-zarez
+function preuzmiCSV(){
+  const P = window.PREGLED; if(!P) return;
+  const polje = v => { const t = String(v ?? ""); return /[";\n]/.test(t) ? `"${t.replace(/"/g,'""')}"` : t; };
+  const zag = ["Učenik","Razina","XP","Koraci (od 4)","Akademija zvjezdice (od 18)",`Liga runda ${P.runda}`,"Liga 8 tjedana","Zadnje aktivan"];
+  const csv = "\ufeff" + [zag, ...P.redovi].map(r => r.map(polje).join(";")).join("\r\n");
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8"}));
+  a.download = `tim-${String(P.ime).replace(/[^\p{L}\p{N}]+/gu,"-")}.csv`; document.body.appendChild(a); a.click(); a.remove();
+  toast("⬇ Tablica tima je preuzeta. Otvara se u Excelu.");
 }
 
 </script>
@@ -2867,22 +2885,21 @@ async function podijeli(){
   try{ await navigator.clipboard.writeText(url); toast("🔗 Poveznica kopirana!"); }catch(e){ toast(url); }
 }
 
-// ----- izvori (brojke koje treba provjeriti prije natjecanja) -----
+// ----- izvori (brojke u aplikaciji i odakle su; provjereno 21. 10. 2026.) -----
 const IZVORI = [
-  ["Udio vodika u masi tijela ≈ 10 %, u broju atoma ≈ 62 %","Udžbenik biologije/kemije, enciklopedijski izvori o kemijskom sastavu tijela"],
-  ["Molarna masa H = 1,008 g/mol; Avogadrova konstanta 6,022 × 10²³","Periodni sustav elemenata, IUPAC"],
-  ["Energija vodika ≈ 33,3 kWh/kg (donja ogrjevna vrijednost)","Tehnički podaci o gorivima, priručnici za energetiku"],
-  ["Vodikov auto ≈ 1 kg H₂ na 100 km","Tehnički podaci proizvođača vodikovih automobila"],
-  ["Ukapljivanje ≈ −253 °C; spremnici 350–700 bara","Udžbenik kemije, priručnici o vodikovoj tehnologiji"],
-  ["Zapaljivost u zraku ≈ 4–75 %","Sigurnosni listovi za vodik"],
-  ["Većina današnjeg vodika je iz prirodnog plina","Izvješća međunarodnih energetskih agencija o vodiku"],
-  ["Sastav namirnica (voda, ugljikohidrati, masti, proteini)","Tablice sastava namirnica"],
-  ["Udaljenosti i broj stanovnika gradova","Karte i popis stanovništva (DZS)"],
+  ["Udio vodika u tijelu: oko 62 % atoma i oko 10 % mase","Wikipedia, Composition of the human body (tablica: vodik 62 % atoma, 9,5 % mase)","https://en.wikipedia.org/wiki/Composition_of_the_human_body"],
+  ["Vodikov auto troši oko 1 kg vodika na 100 km; spremnik 700 bara, punjenje oko 3 minute","H2.LIVE, Toyota Mirai: 5,6 kg vodika, 0,76 kg/100 km (aplikacija zaokružuje na 1 kg)","https://h2.live/en/fuelcell-cars/toyota-mirai/"],
+  ["Zapaljivost u zraku 4–75 %; ukapljivanje na oko −253 °C; vodik nije otrovan","NOAA, Hydrogen: Chemical Hazards (vrelište −252,8 °C, 4–75 % volumnog udjela)","https://response.restoration.noaa.gov/sites/default/files/Hydrogen.pdf"],
+  ["Energija vodika oko 33,3 kWh/kg (donja ogrjevna vrijednost, 120 MJ/kg)","The Physics Factbook, Energy density of hydrogen","https://hypertextbook.com/facts/2005/MichelleFung.shtml"],
+  ["Većina današnjeg vodika je iz fosilnih goriva; manje od 1 % je niskougljični","IEA, Global Hydrogen Review 2025 (oko 100 milijuna tona godišnje)","https://www.iea.org/reports/global-hydrogen-review-2025/production-highlights-2"],
+  ["Molarna masa H = 1,008 g/mol; Avogadrova konstanta 6,022 × 10²³ mol⁻¹","IUPAC, periodni sustav elemenata","https://iupac.org/what-we-do/periodic-table-of-elements/"],
+  ["Sastav namirnica (voda, ugljikohidrati, masti, proteini)","Tablice sastava namirnica; vrijednosti u aplikaciji su zaokružene",""],
+  ["Udaljenosti i broj stanovnika gradova","Cestovne udaljenosti zaokružene; stanovnici prema Popisu stanovništva 2021. (DZS)","https://podaci.dzs.hr/2021/hr/39849"],
 ];
 function crtajIzvore(){
   if(!$("izvori")) return;
-  $("izvori").innerHTML = `<b>📚 Izvori i brojke za provjeru</b><p class="small muted" style="margin:4px 0 8px">Sve brojke u aplikaciji su zaokružene za učenje. Prije natjecanja provjerite ih u navedenim vrstama izvora i upišite točne izvore.</p>` +
-    IZVORI.map(([a,b])=>`<div class="dn"><span>🔎</span><span>${a}<br><small style="text-align:left;display:block">${b}</small></span><small></small></div>`).join("");
+  $("izvori").innerHTML = `<b>📚 Izvori i brojke za provjeru</b><p class="small muted" style="margin:4px 0 8px">Brojke u aplikaciji su zaokružene za učenje. Ovdje su izvori iz kojih su uzete: dodirni poveznicu da otvoriš izvor.</p>` +
+    IZVORI.map(([a,b,u])=>`<div class="dn"><span>🔎</span><span>${a}<br><small style="text-align:left;display:block">${u?`<a href="${u}" target="_blank" rel="noopener">${b} ↗</a>`:b}</small></span><small></small></div>`).join("");
 }
 
 // ----- uvod za nove korisnike -----
@@ -3098,6 +3115,143 @@ function crtajUpute(){
 }
 function uputeOtvori(id){ uputeTrazi = ""; const t = $("uputeTrazi"); if(t) t.value = ""; crtajUpute(); const d = $("up-" + id); if(d){ d.open = true; d.scrollIntoView({behavior:"smooth", block:"start"}); } }
 function otvoriUpute(id){ tab("upute"); crtajUpute(); if(id) setTimeout(() => uputeOtvori(id), 50); }
+
+</script>
+<script>
+// Vodikov svijet · dodatno: dnevno pitanje i niz dana, iskaznica za Instagram priču, digitalna diploma, čitanje naglas
+
+// ---------- pomoćno ----------
+const danasKljuc = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const jucerKljuc = () => { const d = new Date(); d.setDate(d.getDate() - 1); return danasKljuc(d); };
+const enJezik = () => typeof JEZIK !== "undefined" && JEZIK === "en";
+const t2 = (hr, en) => enJezik() ? en : hr;
+function preuzmiCanvas(c, ime) { const a = document.createElement("a"); a.download = ime; a.href = c.toDataURL("image/png"); document.body.appendChild(a); a.click(); a.remove(); }
+
+// ---------- dnevno pitanje i niz dana 🔥 ----------
+function dnevnoPitanje() {
+  const k = danasKljuc(); let h = 0; for (const ch of k) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return SVA_PITANJA[h % SVA_PITANJA.length].p;   // [pitanje, odgovori, točan, objašnjenje]
+}
+function crtajDnevno() {
+  if (!ja()) return;
+  let el = $("dnevnoPitanje");
+  if (!el) { el = document.createElement("div"); el.id = "dnevnoPitanje"; el.className = "card"; el.style.marginBottom = "12px"; const xp = $("xpbox"); xp.parentNode.insertBefore(el, xp); }
+  const dan = danasKljuc(), d = S.dnevno && S.dnevno.dan === dan ? S.dnevno : null;
+  const niz = S.niz && (S.niz.zadnji === dan || S.niz.zadnji === jucerKljuc()) ? S.niz.broj : 0;
+  const [q, o, tocan, obj] = dnevnoPitanje();
+  const vrh = `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><b>☀️ ${t2("Pitanje dana", "Question of the day")}</b><span class="small" style="font-weight:700;color:var(--warn,#ffb86b)">🔥 ${niz} ${t2(niz === 1 ? "dan zaredom" : "dana zaredom", niz === 1 ? "day in a row" : "days in a row")}</span></div>`;
+  if (d) {
+    el.innerHTML = `${vrh}<p class="small muted" style="margin-top:6px">${d.tocno ? t2("✅ Točno! Vrati se sutra za novo pitanje i nastavi niz.", "✅ Correct! Come back tomorrow for a new question and keep your streak.") : t2("Danas nije uspjelo, ali niz ide dalje. Vrati se sutra!", "Not today, but your streak continues. Come back tomorrow!")}</p>`;
+    return;
+  }
+  el.innerHTML = `${vrh}<p style="margin:8px 0 8px;font-weight:600">${esc(q)}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">${o.map((x, i) => `<button class="ghost" style="margin:0;text-align:left" onclick="odgovoriDnevno(${i})">${esc(x)}</button>`).join("")}</div>
+    <p class="small muted" style="margin-top:6px">${t2("Jedno pitanje dnevno: točan odgovor donosi +5 XP.", "One question a day: a correct answer earns +5 XP.")}</p>`;
+}
+function odgovoriDnevno(i) {
+  const dan = danasKljuc(); if (S.dnevno && S.dnevno.dan === dan) return;
+  const [, o, tocan, obj] = dnevnoPitanje(), ok = i === tocan;
+  const broj = S.niz && S.niz.zadnji === jucerKljuc() ? S.niz.broj + 1 : (S.niz && S.niz.zadnji === dan ? S.niz.broj : 1);
+  S.dnevno = { dan, tocno: ok }; S.niz = { broj, zadnji: dan, najdulji: Math.max(broj, (S.niz && S.niz.najdulji) || 0) };
+  zapisi("☀️", `Pitanje dana: ${ok ? "točno" : "netočno"} · niz ${broj}`);
+  spremi(); if (ok) dodajXP(5, null);
+  toast(ok ? t2(`✅ Točno! ${obj}`, `✅ Correct!`) : t2(`❌ Točno je: ${o[tocan]}. ${obj}`, `❌ The answer was: ${o[tocan]}`));
+  if ([3, 7, 14, 30].includes(broj)) toast(`🔥 ${broj} ${t2("dana zaredom!", "days in a row!")}`);
+  crtajDnevno();
+}
+if (typeof crtajPocetnu === "function") { const _crtajPocetnu = crtajPocetnu; crtajPocetnu = function () { _crtajPocetnu(); crtajDnevno(); crtajDiplomuGumb(); }; }
+
+// ---------- QR kod stranice kao slika (za priču i diplomu) ----------
+function qrSlika(tekst, vel) {
+  return new Promise(res => {
+    try {
+      if (typeof QRCode === "undefined") return res(null);
+      const d = document.createElement("div"); d.style.cssText = "position:fixed;left:-9999px;top:0";
+      document.body.appendChild(d); new QRCode(d, { text: tekst, width: vel, height: vel, colorDark: "#05060f", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+      setTimeout(() => { const c = d.querySelector("canvas"); res(c || null); d.remove(); }, 60);
+    } catch (e) { res(null); }
+  });
+}
+const adresaStranice = () => (typeof JAVNA_ADRESA !== "undefined" && JAVNA_ADRESA) || location.href.split("#")[0];
+function nebo(x, W, H) {
+  const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, "#151c52"); g.addColorStop(.6, "#080a1e"); g.addColorStop(1, "#05060f"); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  for (let i = 0; i < 160; i++) { x.fillStyle = `rgba(255,255,255,${((i * 37) % 60) / 100})`; x.beginPath(); x.arc((i * 97) % W, (i * 233) % H, ((i * 7) % 22) / 9, 0, 7); x.fill(); }
+}
+function atomCrtaj(x, cx, cy, r) {
+  x.strokeStyle = "#22d3ee88"; x.lineWidth = r / 40; x.beginPath(); x.arc(cx, cy, r, 0, 7); x.stroke();
+  x.save(); x.translate(cx, cy); x.rotate(-.45); x.strokeStyle = "#b06bff88"; x.beginPath(); x.ellipse(0, 0, r * .82, r * .3, 0, 0, 7); x.stroke(); x.restore();
+  x.fillStyle = "#ffc857"; x.shadowColor = "#ffc857"; x.shadowBlur = r / 3; x.beginPath(); x.arc(cx, cy, r * .22, 0, 7); x.fill();
+  x.fillStyle = "#22d3ee"; x.shadowColor = "#22d3ee"; x.beginPath(); x.arc(cx + r * .7, cy - r * .7, r * .09, 0, 7); x.fill(); x.shadowBlur = 0;
+}
+
+// ---------- iskaznica za Instagram priču (1080 × 1920) ----------
+async function spremiPricu() {
+  const W = 1080, H = 1920, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
+  const kg = parseFloat(($("kg") || {}).value) || (S.ti && S.ti.kg) || 60, h = kg * 0.1;
+  nebo(x, W, H); atomCrtaj(x, W / 2, 470, 230); x.textAlign = "center";
+  x.fillStyle = "#22d3ee"; x.font = "700 40px system-ui, Arial, sans-serif"; x.fillText(t2("VODIKOVA ISKAZNICA", "HYDROGEN ID CARD"), W / 2, 850);
+  x.fillStyle = "#eef0ff"; x.font = "800 96px system-ui, Arial, sans-serif"; x.fillText("@" + (BAZA.trenutni || "ja"), W / 2, 980);
+  x.fillStyle = "#9aa3cf"; x.font = "400 46px system-ui, Arial, sans-serif"; x.fillText(t2("u meni ima", "I contain"), W / 2, 1080);
+  x.fillStyle = "#ffc857"; x.font = "800 128px system-ui, Arial, sans-serif"; x.fillText(sci(atomi(h * 1000)), W / 2, 1230);
+  x.fillStyle = "#eef0ff"; x.font = "600 52px system-ui, Arial, sans-serif"; x.fillText(t2("atoma vodika", "hydrogen atoms"), W / 2, 1310);
+  x.fillStyle = "#3ee08f"; x.font = "600 44px system-ui, Arial, sans-serif"; x.fillText(t2("62 % mene je vodik. A koliko tebe?", "62 % of me is hydrogen. How about you?"), W / 2, 1420);
+  const qr = await qrSlika(adresaStranice(), 300);
+  if (qr) { x.fillStyle = "#fff"; x.beginPath(); x.roundRect ? x.roundRect(W / 2 - 180, 1490, 360, 360, 28) : x.rect(W / 2 - 180, 1490, 360, 360); x.fill(); x.drawImage(qr, W / 2 - 150, 1520, 300, 300); }
+  else { x.fillStyle = "#22d3ee"; x.font = "600 36px system-ui, Arial, sans-serif"; x.fillText(adresaStranice().replace(/^https?:\/\//, ""), W / 2, 1700); }
+  x.fillStyle = "#9aa3cf"; x.font = "700 34px system-ui, Arial, sans-serif"; x.fillText(t2("VODIKOV SVIJET · skeniraj i otkrij svoj vodik", "HYDROGEN WORLD · scan and discover yours"), W / 2, 1890);
+  preuzmiCanvas(c, "vodikova-prica.png"); zapisi("📱", t2("Spremljena iskaznica za priču", "Story card saved"));
+}
+
+// ---------- digitalna diploma (A4 položeno, 2480 × 1754) ----------
+function crtajDiplomuGumb() {
+  const el = $("mojeNagrade"); if (!el) return;
+  if ($("diplomaGumb")) { $("diplomaGumb").textContent = t2("📜 Preuzmi digitalnu diplomu", "📜 Download digital diploma"); return; }
+  const b = document.createElement("button"); b.id = "diplomaGumb"; b.className = "ghost"; b.style.cssText = "margin:10px 0 0;width:100%";
+  b.textContent = t2("📜 Preuzmi digitalnu diplomu", "📜 Download digital diploma"); b.onclick = spremiDiplomu; el.parentNode.appendChild(b);
+}
+async function spremiDiplomu() {
+  const W = 2480, H = 1754, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
+  x.fillStyle = "#fbfaf6"; x.fillRect(0, 0, W, H);
+  x.strokeStyle = "#1e2761"; x.lineWidth = 14; x.strokeRect(70, 70, W - 140, H - 140); x.strokeStyle = "#ffc857"; x.lineWidth = 5; x.strokeRect(110, 110, W - 220, H - 220);
+  atomCrtaj(x, W / 2, 330, 130); x.textAlign = "center";
+  const r = typeof razina === "function" ? razina(S.xp || 0) : { n: "", ic: "" };
+  const koraci = [S.ti && S.ti.kg, S.lab && S.lab.rijeseno, S.grad && S.grad.pobjeda, S.ruta && S.ruta.najbolja >= 90].filter(Boolean).length;
+  const zv = Object.values(S.akad || {}).reduce((a, v) => a + (v.z || 0), 0), sve = koraci === 4;
+  x.fillStyle = "#1e2761"; x.font = "800 120px Georgia, 'Times New Roman', serif"; x.fillText(t2("DIPLOMA", "DIPLOMA"), W / 2, 600);
+  x.fillStyle = "#555"; x.font = "400 48px Georgia, serif"; x.fillText(sve ? t2("Vodikov stručnjak · za sva četiri glavna koraka", "Hydrogen Expert · for all four main steps") : t2("sudionika Vodikovog svijeta", "Hydrogen World participant"), W / 2, 690);
+  x.fillStyle = "#111"; x.font = "700 130px Georgia, serif"; x.fillText("@" + (BAZA.trenutni || ""), W / 2, 880);
+  x.strokeStyle = "#ccc"; x.lineWidth = 3; x.beginPath(); x.moveTo(W / 2 - 700, 920); x.lineTo(W / 2 + 700, 920); x.stroke();
+  x.fillStyle = "#333"; x.font = "400 50px Georgia, serif";
+  x.fillText(t2(`Razina ${r.ic} ${r.n} · ${S.xp || 0} XP · ${koraci}/4 glavna koraka · ${zv}/18 zvjezdica u Akademiji`, `Level ${r.ic} ${r.n} · ${S.xp || 0} XP · ${koraci}/4 main steps · ${zv}/18 Academy stars`), W / 2, 1030);
+  const ost = [S.lab && S.lab.rijeseno ? t2("pobjegao iz laboratorija", "escaped the lab") : "", S.grad && S.grad.pobjeda ? t2(`zeleni gradonačelnik grada ${S.grad.grad || ""}`, `green mayor of ${S.grad.grad || ""}`) : "", S.timIme ? t2(`član tima „${S.timIme}“ u Ligi škola`, `member of team "${S.timIme}" in the Schools League`) : ""].filter(Boolean).join(" · ");
+  if (ost) { x.fillStyle = "#1677c9"; x.font = "italic 44px Georgia, serif"; x.fillText(ost, W / 2, 1110); }
+  x.fillStyle = "#333"; x.font = "400 42px Georgia, serif"; x.fillText(`${t2("Datum", "Date")}: ${new Date().toLocaleDateString(enJezik() ? "en-GB" : "hr-HR")}`, W / 2 - 560, 1420);
+  x.fillText("Vodikov svijet", W / 2 + 560, 1420);
+  x.strokeStyle = "#999"; x.lineWidth = 2; [W / 2 - 560, W / 2 + 560].forEach(cx => { x.beginPath(); x.moveTo(cx - 300, 1360); x.lineTo(cx + 300, 1360); x.stroke(); });
+  x.fillStyle = "#777"; x.font = "400 34px Georgia, serif";
+  x.fillText(t2("Mia Hrković, Melanie Grgić i Tonka Vlahović · Srednja škola Dugo Selo · Milenijsko natjecanje iz kreativne industrije", "Mia Hrković, Melanie Grgić and Tonka Vlahović · Srednja škola Dugo Selo · Millennium Creative Industries Competition"), W / 2, 1560);
+  const qr = await qrSlika(adresaStranice(), 200); if (qr) x.drawImage(qr, W - 380, H - 380, 200, 200);
+  preuzmiCanvas(c, "vodikova-diploma.png"); zapisi("📜", t2("Preuzeta digitalna diploma", "Digital diploma downloaded"));
+}
+
+// ---------- čitanje naglas u Akademiji 🔊 ----------
+function citajNaglas(tekst) {
+  try {
+    if (!("speechSynthesis" in window)) return toast(t2("Ovaj preglednik ne može čitati naglas.", "This browser can't read aloud."));
+    speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(tekst); u.lang = enJezik() ? "en-GB" : "hr-HR"; u.rate = .95;
+    const g = speechSynthesis.getVoices().find(v => v.lang && v.lang.toLowerCase().startsWith(enJezik() ? "en" : "hr")); if (g) u.voice = g;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function dodajCitanje() {
+  const el = $("akSadrzaj"); if (!el || el.querySelector(".citaj")) return;
+  const k = el.querySelector(".kartica"), q = el.querySelector("h2");
+  if (!k && !q) return;
+  const b = document.createElement("button"); b.className = "ghost citaj"; b.style.cssText = "width:auto;margin:0 0 10px;padding:6px 12px;font-size:13px";
+  b.textContent = t2("🔊 Pročitaj naglas", "🔊 Read aloud"); b.setAttribute("aria-label", b.textContent);
+  b.onclick = () => { const t = k ? k.innerText : [q.innerText, ...[...el.querySelectorAll("button.odg")].map(x => x.innerText)].join(". "); citajNaglas(t.replace(/\s+/g, " ")); };
+  el.prepend(b);
+}
+if (typeof akCrtaj === "function") { const _akCrtaj = akCrtaj; akCrtaj = function () { try { speechSynthesis.cancel(); } catch (e) {} _akCrtaj(); dodajCitanje(); }; }
 
 </script>
 <script>pokreni();</script>
