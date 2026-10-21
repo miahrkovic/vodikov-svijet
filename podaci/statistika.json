@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:02:11.164Z",
-    "xp": 222,
+    "zadnje": "2026-10-21T16:02:19.278Z",
+    "xp": 228,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -197,7 +197,10 @@
       "Voda",
       "Papir / drvo / pamuk",
       "Plastika PET",
-      "Šećer – saharoza"
+      "Šećer – saharoza",
+      "Parafin",
+      "Kosa / vuna",
+      "Propan"
     ],
     "tim": null,
     "narudzbe": {
