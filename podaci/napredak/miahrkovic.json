@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🤝",
+      "t": "Pridružio se timu „Vodikovci“",
+      "d": "2026-10-21T22:23:04.956Z"
+    },
+    {
       "i": "📜",
       "t": "Preuzeta digitalna diploma",
       "d": "2026-10-21T22:21:37.900Z"
@@ -253,10 +258,10 @@
     }
   },
   "tocna": [],
-  "tim": null,
-  "timIme": null,
+  "tim": "H27UN9",
+  "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792621297900,
+  "_spremljeno": 1792621384956,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-10-22",
