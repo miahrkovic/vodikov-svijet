@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "💧",
+      "t": "Nova razina: Molekula!",
+      "d": "2026-10-21T18:20:23.444Z"
+    },
+    {
+      "i": "🧪",
+      "t": "Laboratorij riješen za 05:43 bez savjeta",
+      "d": "2026-10-21T18:20:23.444Z"
+    },
+    {
       "i": "✨",
       "t": "Otkrio si vodik u sebi (+20 XP)",
       "d": "2026-10-21T18:12:48.751Z"
@@ -26,9 +36,9 @@
     "Olovka"
   ],
   "lab": {
-    "rijeseno": false,
-    "najbolje": null,
-    "puta": 0
+    "rijeseno": true,
+    "najbolje": 343,
+    "puta": 1
   },
   "grad": {
     "pobjeda": false,
@@ -39,12 +49,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 86,
+  "xp": 156,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792606811240,
+  "_spremljeno": 1792606823444,
   "_ukupno": 3.9
 }
