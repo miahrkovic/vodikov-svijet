@@ -25,7 +25,14 @@
     "List papira A4",
     "Kocka šećera",
     "Žličica šećera",
-    "Snjegović"
+    "Snjegović",
+    "Knjiga",
+    "Olovka",
+    "Drvena stolica",
+    "Bilježnica",
+    "Pramen kose",
+    "Gumica za brisanje",
+    "Najlonske čarape"
   ],
   "lab": {
     "rijeseno": false,
@@ -41,12 +48,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 50,
+  "xp": 64,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598695786,
+  "_spremljeno": 1792598701767,
   "_ukupno": 3.9
 }
