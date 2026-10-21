@@ -280,7 +280,7 @@
       "Zagreb"
     ]
   },
-  "xp": 889,
+  "xp": 899,
   "akad": {
     "element": {
       "z": 3
@@ -318,11 +318,12 @@
     "celija:1",
     "celija:2",
     "celija:3",
-    "hrvatska:0"
+    "hrvatska:0",
+    "hrvatska:1"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792605428867,
+  "_spremljeno": 1792605435285,
   "_ukupno": 3.9
 }
