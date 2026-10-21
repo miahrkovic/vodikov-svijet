@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🏆",
+      "t": "Napravljen tim „Vodikovci“ (kod H27UN9)",
+      "d": "2026-10-21T17:46:47.973Z"
+    },
+    {
+      "i": "🏆",
+      "t": "Napravljen tim „Vodikovci“ (kod H2E2TT)",
+      "d": "2026-10-21T17:46:46.401Z"
+    },
+    {
       "i": "✨",
       "t": "Tri zvjezdice: Vodik u tebi (+15 XP)",
       "d": "2026-10-21T17:44:45.920Z"
@@ -235,7 +245,7 @@
       "Zagreb"
     ]
   },
-  "xp": 719,
+  "xp": 739,
   "akad": {
     "element": {
       "z": 3
@@ -254,9 +264,9 @@
     "tijelo:2",
     "tijelo:3"
   ],
-  "tim": null,
-  "timIme": null,
+  "tim": "H27UN9",
+  "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792604685920,
+  "_spremljeno": 1792604807973,
   "_ukupno": 3.9
 }
