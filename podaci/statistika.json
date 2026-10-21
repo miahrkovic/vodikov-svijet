@@ -731,8 +731,8 @@
   },
   "medk": {
     "kreiran": "2026-10-21T18:48:46.704Z",
-    "zadnje": "2026-10-21T18:50:16.522Z",
-    "xp": 2,
+    "zadnje": "2026-10-21T18:50:22.591Z",
+    "xp": 4,
     "koraci": {
       "ti": false,
       "lab": false,
@@ -747,7 +747,8 @@
     "akad": {},
     "tocna": [],
     "istrazeno": [
-      "Kanta vode 10 L"
+      "Kanta vode 10 L",
+      "Pun spremnik benzina"
     ],
     "tim": null,
     "narudzbe": {
