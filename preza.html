@@ -128,7 +128,7 @@ h2{font:900 84px/1 var(--disp);letter-spacing:-.01em;text-wrap:balance}
 
   <section class="slajd" data-ime="Stranica" data-govor="Tonka: Ovo je Vodikov svijet uživo. Učenik izračuna koliko vodika ima u sebi, pobjegne iz laboratorija, pretvori grad u zeleni i natječe se s razredom u Ligi škola. Sve radi na mobitelu, besplatno.">
     <div style="display:grid;grid-template-columns:1fr 360px;gap:50px;align-items:center">
-      <div class="laptop a" style="--d:.05"><span class="adresa">miahrkovic.github.io/vodikov-svijet</span><div class="zaslon" id="zaslon"><video id="demo" muted loop playsinline preload="auto"><source src="demo.mp4" type="video/mp4"><source src="demo.webm" type="video/webm"></video></div></div>
+      <div class="laptop a" style="--d:.05"><span class="adresa">miahrkovic.github.io/vodikov-svijet</span><div class="zaslon" id="zaslon"><video id="demo" muted autoplay loop playsinline preload="auto"><source src="demo.mp4" type="video/mp4"><source src="demo.webm" type="video/webm"></video></div></div>
       <div>
         <div class="cips">
           <div class="cip a" style="--d:.4"><i>🧍</i>Vodik u tebi</div>
@@ -224,7 +224,10 @@ addEventListener("keydown", e => {
   if(e.key==="f"||e.key==="F") cijeli();
 });
 function cijeli(){ try{ if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}); }catch(e){} }
-addEventListener("click", () => { cijeli(); $("start").classList.add("skri"); });
+function pokreniVideo(){ const v = $("demo"); if(i === 3 && v && v.paused) try{ v.muted = true; v.play().catch(()=>{}); }catch(e){} }
+addEventListener("click", () => { cijeli(); $("start").classList.add("skri"); pokreniVideo(); });
+document.addEventListener("visibilitychange", () => { if(!document.hidden) pokreniVideo(); });
+setInterval(pokreniVideo, 2000);
 setTimeout(() => $("start").classList.add("skri"), 12000);
 
 // ----- daljinski upravljač: najnovija naredba s mobitela -----
@@ -279,4 +282,3 @@ async function brojke(){
 idi(0); rezultati(); stanje(); brojke();
 </script>
 </body></html>
-
