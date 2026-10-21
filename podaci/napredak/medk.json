@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🛣️",
+      "t": "Novi najbolji plan punionica: 100 % (Zadar, Karlovac)",
+      "d": "2026-10-21T18:52:52.873Z"
+    },
+    {
+      "i": "✨",
+      "t": "Plan s 90 % (+50 XP)",
+      "d": "2026-10-21T18:52:52.872Z"
+    },
+    {
       "i": "✨",
       "t": "Napravljen račun @medk. Dobrodošao!",
       "d": "2026-10-21T18:48:48.100Z"
@@ -25,15 +35,18 @@
     "grad": null
   },
   "ruta": {
-    "najbolja": 0,
-    "plan": []
+    "najbolja": 100,
+    "plan": [
+      "Zadar",
+      "Karlovac"
+    ]
   },
-  "xp": 34,
+  "xp": 84,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792608734972,
+  "_spremljeno": 1792608772873,
   "_ukupno": 3.9
 }
