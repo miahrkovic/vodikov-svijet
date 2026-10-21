@@ -183,7 +183,8 @@
     "Jestivo ulje",
     "Sapun",
     "Glicerol",
-    "Kofein"
+    "Kofein",
+    "Aspirin"
   ],
   "lab": {
     "rijeseno": false,
@@ -199,12 +200,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 236,
+  "xp": 238,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598544068,
+  "_spremljeno": 1792598548413,
   "_ukupno": 3.9
 }
