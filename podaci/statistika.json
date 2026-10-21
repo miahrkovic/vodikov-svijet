@@ -261,8 +261,8 @@
   },
   "vodikovac": {
     "kreiran": "2026-10-21T15:58:46.789Z",
-    "zadnje": "2026-10-21T15:59:08.063Z",
-    "xp": 20,
+    "zadnje": "2026-10-21T16:04:56.148Z",
+    "xp": 44,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -276,13 +276,26 @@
     "grad": null,
     "akad": {},
     "tocna": [],
-    "istrazeno": [],
+    "istrazeno": [
+      "Kocka leda",
+      "Boca vode 0,5 L",
+      "Kanta vode 10 L",
+      "Kada vode",
+      "Olimpijski bazen",
+      "Kišni oblak",
+      "Snjegović",
+      "Žličica šećera",
+      "List papira A4",
+      "Kocka šećera",
+      "Bilježnica",
+      "Knjiga"
+    ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 3
+    "dnevnik": 4
   },
   "techa": {
     "kreiran": "2026-10-21T15:59:43.902Z",
