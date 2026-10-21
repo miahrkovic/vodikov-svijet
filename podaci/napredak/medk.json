@@ -10,7 +10,9 @@
   "ti": {
     "kg": null
   },
-  "istrazeno": [],
+  "istrazeno": [
+    "Kanta vode 10 L"
+  ],
   "lab": {
     "rijeseno": false,
     "najbolje": null,
@@ -25,12 +27,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 0,
+  "xp": 2,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792608549846,
+  "_spremljeno": 1792608611651,
   "_ukupno": 3.9
 }
