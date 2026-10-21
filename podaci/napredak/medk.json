@@ -11,7 +11,8 @@
     "kg": null
   },
   "istrazeno": [
-    "Kanta vode 10 L"
+    "Kanta vode 10 L",
+    "Pun spremnik benzina"
   ],
   "lab": {
     "rijeseno": false,
@@ -27,12 +28,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 2,
+  "xp": 4,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792608611651,
+  "_spremljeno": 1792608618032,
   "_ukupno": 3.9
 }
