@@ -329,11 +329,32 @@ nav .vise{display:none}
 .ad-pit b{font:700 16px "Space Grotesk";color:var(--gold)}
 .ad-pit small{display:block;color:var(--muted);font-size:12px}
 
+/* ===== prezentacija za projektor (Za škole) ===== */
+.pz{position:fixed;inset:0;z-index:300;background:radial-gradient(120% 90% at 50% 0%,#16205a,#05071a 65%);color:#eef0ff;display:none;flex-direction:column;
+  padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.pz.on{display:flex}
+.pz-vrh{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;color:#9aa3cf}
+.pz-vrh button,.pz-dno button{background:#ffffff14;border:1px solid #ffffff2a;color:#eef0ff;border-radius:10px;padding:8px 14px;font-size:16px;cursor:pointer;margin-left:6px}
+.pz-slajd{flex:1;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:auto;padding:10px 0}
+.pz-k{max-width:1000px;width:100%;text-align:center;animation:pzUl .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes pzUl{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.pz-e{font-size:clamp(48px,9vw,110px);line-height:1;margin-bottom:10px}
+.pz-k h2{font-size:clamp(28px,5vw,62px);line-height:1.1;margin:0 0 14px;text-wrap:balance}
+.pz-v{font-size:clamp(24px,4.4vw,56px);font-weight:800;background:linear-gradient(90deg,#ff4757,#ffc857,#22d3ee,#b06bff);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 18px;text-wrap:balance}
+.pz-p{font-size:clamp(20px,3.2vw,38px);font-weight:700;color:#ffc857;margin:6px 0 18px;text-wrap:balance}
+.pz-k ul{list-style:none;padding:0;margin:0 auto;display:grid;gap:12px;max-width:860px;text-align:left}
+.pz-k li{font-size:clamp(17px,2.4vw,28px);line-height:1.35;background:#ffffff0d;border:1px solid #ffffff1f;border-radius:14px;padding:12px 18px;animation:pzUl .5s both}
+.pz-dno{display:flex;justify-content:center;align-items:center;gap:14px;font-size:15px;color:#9aa3cf}
+.pz-traka{height:4px;background:#ffffff14;border-radius:2px;margin-top:8px;overflow:hidden}
+.pz-traka div{height:100%;width:0;background:linear-gradient(90deg,#ff4757,#ffc857,#22d3ee,#b06bff);transition:width .4s}
+@media (prefers-reduced-motion:reduce){.pz-k,.pz-k li{animation:none}}
+
 </style>
 </head>
 <body>
 <div class="wrap">
 <section id="prijava">
+  <div style="display:flex;justify-content:flex-end"><button type="button" class="ghost jezikGumb" style="width:auto;margin:0;padding:6px 12px;font-size:13px" onclick="zamijeniJezik()">🌐 EN</button></div>
   <div style="font-size:60px;text-align:center;margin:20px 0 4px">💧⚛️</div>
   <h1 style="text-align:center">Vodikov svijet</h1>
   <p class="muted" style="text-align:center;margin:6px 0 18px">Otkrij vodik u sebi, pobjegni iz laboratorija, izgradi zeleni grad i poveži Hrvatsku vodikom.</p>
@@ -351,9 +372,10 @@ nav .vise{display:none}
   <p class="small muted" style="text-align:center" id="rNacin"></p>
 </section>
 <section class="tab active" id="t-pocetna">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div><b id="pozdrav" class="pf" style="font-size:18px"></b><div class="small muted" id="korisnik"></div></div><button class="ghost" style="width:auto;margin:0;padding:8px 12px;font-size:13px" onclick="odjava()">Odjava</button></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div><b id="pozdrav" class="pf" style="font-size:18px"></b><div class="small muted" id="korisnik"></div></div><div style="display:flex;gap:6px"><button type="button" class="ghost jezikGumb" style="width:auto;margin:0;padding:8px 10px;font-size:13px" onclick="zamijeniJezik()">🌐 EN</button><button class="ghost" style="width:auto;margin:0;padding:8px 12px;font-size:13px" onclick="odjava()">Odjava</button></div></div>
   <h1>Vodikov svijet</h1><p class="muted small" style="margin-top:4px">Najlakši element svemira kroz tvoje tijelo, laboratorij, grad i cijelu Hrvatsku.</p>
   <p class="small muted" id="stanjeSpremanja" style="margin:-4px 0 4px"></p>
+  <button class="ghost" style="width:auto;margin:4px 0 10px;padding:6px 12px;font-size:13px" onclick="otvoriUpute()">📖 Kako koristiti Vodikov svijet?</button>
   <div class="xpbox" id="xpbox"></div>
   <div class="prog" id="prog"></div>
   <div class="path">
@@ -476,6 +498,7 @@ nav .vise{display:none}
 <!-- ===== TRGOVINA ===== -->
 <section class="tab" id="t-trgovina">
   <div class="kicker">Korak 5 · Trgovina</div>
+  <div class="upoz" role="note" style="margin-bottom:12px">🧪 <b>Ovo je izmišljena, probna trgovina.</b> Napravljena je za natjecanje kao primjer kako bi trgovina izgledala. Proizvodi i cijene su zamišljeni, ništa se ne naplaćuje, ne izrađuje i ne šalje.</div>
 
     <div class="shopbar">
       <div><b class="pf" style="font-size:20px" id="shopIme"></b><div class="small muted" id="shopPodnaslov"></div></div>
@@ -506,6 +529,7 @@ nav .vise{display:none}
     <div id="sh-blagajna" style="display:none">
       <button class="ghost" style="margin:0 0 10px" onclick="shop('kosarica')">← Natrag u košaricu</button>
       <h2>Dostava i plaćanje</h2>
+      <div class="upoz" role="note" style="margin-bottom:10px">⚠️ <b>Ne upisuj prave podatke.</b> Narudžba je samo za probu: možeš upisati izmišljeno ime, e-mail i adresu. Podaci se nigdje ne spremaju.</div>
       <div class="duo">
         <div class="card form">
           <label>Ime i prezime<input type="text" id="fIme"></label>
@@ -527,7 +551,7 @@ nav .vise{display:none}
     <div id="sh-potvrda" style="display:none">
       <div class="card" style="text-align:center">
         <div style="font-size:56px">🎉</div>
-        <h2>Hvala na narudžbi!</h2>
+        <h2>Probna narudžba je gotova!</h2>
         <p class="muted" id="potTxt"></p>
         <div class="pw" id="potBroj"></div>
         <div id="potStavke" style="text-align:left"></div>
@@ -560,6 +584,7 @@ nav .vise{display:none}
     <div class="card form"><b>➕ Napravi tim ili razred</b>
       <label style="margin-top:8px">Ime tima<input type="text" id="tIme" placeholder="npr. 2.b Protoni"></label>
       <label>Škola<input type="text" id="tSkola" placeholder="npr. Gimnazija Osijek"></label>
+      <p class="small muted" style="margin:6px 0">👩‍🏫 Nastavnici: tko napravi tim, dobiva nastavnički pregled napretka svih članova.</p>
       <button class="btn" onclick="napraviTim()">Napravi tim</button></div>
     <div class="card form"><b>🔑 Pridruži se timu</b><p class="small muted" style="margin:6px 0">Upiši kod koji ti je poslao kapetan ili nastavnik.</p>
       <label>Kod tima<input type="text" id="tKod" placeholder="npr. H2K4M9" autocapitalize="characters" style="text-transform:uppercase;letter-spacing:.15em"></label>
@@ -569,12 +594,14 @@ nav .vise{display:none}
     <div class="card"><b class="pf" style="font-size:20px" id="timIme"></b><div class="small muted" id="timSkola"></div>
       <div class="kodbox"><span class="small muted">Kod</span><b id="timKod"></b><button class="ghost" style="width:auto;margin:0;padding:6px 10px;font-size:12px" onclick="kopirajKod()">Kopiraj</button></div>
       <div class="small muted" style="margin-top:8px">Članovi</div><div id="timClanovi"></div>
+      <button class="btn" id="pregledGumb" style="display:none;margin-top:10px" onclick="pregledTima()">👩‍🏫 Nastavnički pregled tima</button>
       <button class="ghost small" onclick="napustiTim()">Napusti tim</button></div>
     <div class="card"><div class="kicker" id="rundaBr"></div><b class="pf" style="font-size:20px">⚡ Vodikov izazov</b>
       <p class="small muted">10 pitanja iz svih lekcija, 90 sekundi. Brži točan odgovor nosi više bodova.</p>
       <div class="prog"><div><b id="mojNajbolji">0</b><small>tvoj najbolji</small></div><div><b id="pokusaji">3</b><small>pokušaja</small></div><div><b id="timBodovi">0</b><small>bodova tima</small></div></div>
       <button class="btn" id="igrajRundu" onclick="izazovStart()">▶ Kreni u izazov</button></div></div>
     <div class="card" id="izazov" style="display:none"></div>
+    <div class="card" id="pregled" style="display:none"></div>
   </div>
   <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><b>📊 Ljestvica</b>
     <div class="seg" style="margin:0;width:auto"><button class="on" id="ljR" onclick="ljPrikaz='runda';crtajLigu()">Ova runda</button><button id="ljS" onclick="ljPrikaz='sezona';crtajLigu()">Sezona</button></div></div>
@@ -592,12 +619,20 @@ nav .vise{display:none}
 <section class="tab" id="t-skole">
   <div class="kicker">Za nastavnike</div>
   <h2>🏫 Vodikov svijet u školi</h2>
-  <p class="muted small" style="margin-bottom:12px">Gotovi planovi sati za kemiju, fiziku, geografiju i građanski odgoj. Svaki dio aplikacije je jedan školski sat od 45 minuta, uz radni listić za ispis.</p>
+  <p class="muted small" style="margin-bottom:12px">Gotovi planovi sati za kemiju, fiziku, geografiju i građanski odgoj. Svaki dio aplikacije je jedan školski sat od 45 minuta, uz radni listić za ispis (s rješenjima za nastavnika) i prezentaciju za projektor.</p>
   <div id="planovi"></div>
   <div class="card"><b>📦 Licenca za školu</b><p class="small muted" style="margin:6px 0 10px">Licenca daje pristup za cijeli razred, ljestvicu razreda, nastavnički pregled napretka i radne listiće.</p><button class="btn" onclick="tab('trgovina');setTimeout(()=>otvoriArtikl('licenca'),50)">Pogledaj licence</button></div>
 </section>
 
 <!-- ===== POSTAVKE I DIJELJENJE ===== -->
+<section class="tab" id="t-upute">
+  <div class="kicker">Upute</div>
+  <h2>📖 Upute za korištenje</h2>
+  <p class="muted" style="margin:6px 0 12px">Sve o tome što se gdje nalazi i kako se igra. Dodirni poglavlje da ga otvoriš ili potraži riječ.</p>
+  <input type="text" id="uputeTrazi" placeholder="🔍 traži u uputama, npr. lozinka, tim, XP" oninput="uputeTrazi=this.value;crtajUpute()" style="margin-bottom:10px">
+  <div id="uputeSadrzajNav" data-ne-prevodi style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
+  <div id="uputeSadrzaj" data-ne-prevodi></div>
+</section>
 <section class="tab" id="t-postavke">
   <div class="kicker">Postavke</div>
   <h2>⚙️ Postavke i dijeljenje</h2>
@@ -642,6 +677,7 @@ nav .vise{display:none}
   <button class="samoLaptop" onclick="tab('trgovina')" id="n-trgovina"><span>🛒</span>Trgovina</button>
   <button class="samoLaptop" onclick="tab('skole')" id="n-skole"><span>🏫</span>Za škole</button>
   <button class="samoLaptop" onclick="tab('postavke')" id="n-postavke"><span>⚙️</span>Postavke</button>
+  <button class="samoLaptop" onclick="otvoriUpute()" id="n-upute"><span>📖</span>Upute</button>
   <button class="samoLaptop samoAdmin" style="display:none" onclick="tab('admin')" id="n-admin"><span>🛡️</span>Voditelji</button>
   <button class="vise" onclick="$('sheet').classList.add('on')" id="n-vise"><span>☰</span>Više</button>
 </div></nav>
@@ -653,6 +689,7 @@ nav .vise{display:none}
     <button onclick="tab('trgovina')"><span>🛒</span>Trgovina</button>
     <button onclick="tab('skole')"><span>🏫</span>Za škole</button>
     <button onclick="tab('postavke')"><span>⚙️</span>Postavke</button>
+    <button onclick="otvoriUpute()"><span>📖</span>Upute</button>
     <button class="samoAdmin" style="display:none" onclick="tab('admin')"><span>🛡️</span>Voditelji</button>
   </div></div></div>
 <div class="uvod" id="uvod"><div class="k" id="uvodK"></div></div>
@@ -661,6 +698,518 @@ nav .vise{display:none}
 <!-- QR kod (radi kad je stranica objavljena na internetu) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 <!-- Redoslijed je važan: podaci → dijelovi aplikacije → APP → jezgra -->
+<script>
+// Vodikov svijet · jezik (HR / EN)
+// Aplikacija je napisana na hrvatskom. Kad je odabran engleski, svaki tekst na stranici (i onaj koji se pojavi kasnije)
+// prevodi se iz rječnika EN. Rečenice s brojevima prevode se pravilima u UZORCI. Odabir se pamti na uređaju.
+// Novi tekst? Dodaj ga u EN kao "hrvatski": "engleski".
+
+const EN = {
+// ---------- prijava ----------
+"Otkrij vodik u sebi, pobjegni iz laboratorija, izgradi zeleni grad i poveži Hrvatsku vodikom.":"Discover the hydrogen in you, escape the lab, build a green city and connect Croatia with hydrogen.",
+"Prijava":"Log in","Registracija":"Sign up","Korisničko ime":"Username","Lozinka":"Password","Ponovi lozinku":"Repeat password",
+"Pozivni kod voditelja":"Admin invite code","Prikaži lozinku":"Show password","Prijavi se →":"Log in →","Napravi račun →":"Create account →",
+"Ne koristi svoju pravu lozinku":"Don't use your real password",
+"(onu za e-mail, Instagram, e-Dnevnik ili mobitel). Smisli novu lozinku samo za ovu stranicu, jer stranicom i poslužiteljem na kojem se spremaju računi upravljaju autori projekta.":"(the one for your e-mail, Instagram, school diary or phone). Make up a new password just for this site, because the site and the server that stores accounts are run by the project's authors.",
+"Nemaš račun? Odaberi":"No account? Choose","gore.":"above.",
+"🔒 Ne tražimo ime, e-mail ni druge osobne podatke.":"🔒 We don't ask for your name, e-mail or any other personal data.",
+"Ne koristi svoje pravo ime":"Don't use your real name","kao korisničko ime. Zapamti lozinku: ne može se vratiti.":"as your username. Remember your password: it can't be recovered.",
+"📱 Napredak se sprema na ovom uređaju.":"📱 Progress is saved on this device.",
+"☁️ Napredak se sprema na poslužitelj i radi na svakom uređaju.":"☁️ Progress is saved on the server and works on every device.",
+"npr. vodik_007":"e.g. hydrogen_007","najmanje 6 znakova":"at least 6 characters","⏳ Pričekaj…":"⏳ Please wait…",
+"Korisničko ime: 3 do 20 znakova, mala slova bez kvačica, brojke, _ i točka.":"Username: 3 to 20 characters, lowercase letters, numbers, _ and dot.",
+"Lozinka mora imati barem 6 znakova.":"Password must have at least 6 characters.","Lozinke se ne podudaraju.":"Passwords don't match.",
+"Krivo korisničko ime ili lozinka.":"Wrong username or password.","To korisničko ime je već zauzeto. Smisli drugo.":"That username is already taken. Pick another one.",
+"Ovo korisničko ime je rezervirano za voditelje stranice. Upiši pozivni kod voditelja.":"This username is reserved for site admins. Enter the admin invite code.",
+"Pozivni kod voditelja nije točan.":"The admin invite code is not correct.","Prijava je istekla. Prijavi se ponovno.":"Your session expired. Please log in again.",
+// ---------- izbornik ----------
+"Početna":"Home","🧍 Ti":"🧍 You","Ti":"You","Lab":"Lab","Grad":"City","Ruta":"Route","Akademija":"Academy","Liga":"League","Trgovina":"Shop","Za škole":"For schools",
+"Postavke":"Settings","Voditelji":"Admins","Više":"More","Odjava":"Log out","Natrag":"Back","Dalje →":"Next →","Preskoči":"Skip","Kreni →":"Let's go →",
+// ---------- početna ----------
+"Vodikov svijet":"Hydrogen World","💧 Vodikov svijet":"💧 Hydrogen World",
+"Najlakši element svemira kroz tvoje tijelo, laboratorij, grad i cijelu Hrvatsku.":"The lightest element in the universe, through your body, a lab, a city and all of Croatia.",
+"glavna koraka":"main steps","zvjezdica":"stars","nagrada":"rewards",
+"1. Vodik u tebi":"1. Hydrogen in you","2. Laboratorij: escape room":"2. Lab: escape room","3. H2 Grad":"3. H2 City","4. H2 Ruta":"4. H2 Route",
+"5. Akademija: lekcije i kvizovi":"5. Academy: lessons and quizzes","6. Liga škola":"6. Schools League","7. Trgovina i nagrade":"7. Shop and rewards",
+"Upiši svoju masu":"Enter your mass","7 brava čeka":"7 locks waiting","Postani gradonačelnik":"Become the mayor","Najbolji plan: 0 %":"Best plan: 0 %",
+"Napravi tim ili se pridruži razredu":"Create a team or join your class","🏅 Moje nagrade":"🏅 My rewards","📒 Moj dnevnik":"📒 My journal",
+"⏳ Sprema se…":"⏳ Saving…","☁️ Spremljeno":"☁️ Saved","☁️ Spremljeno na poslužitelj":"☁️ Saved to the server","📱 Spremljeno na ovom uređaju":"📱 Saved on this device",
+"Atom":"Atom","Molekula":"Molecule","Elektrolizer":"Electrolyser","Gorivna ćelija":"Fuel cell","Zvijezda":"Star",
+"⚛️ Atom":"⚛️ Atom","💧 Molekula":"💧 Molecule","⚗️ Elektrolizer":"⚗️ Electrolyser","🔋 Gorivna ćelija":"🔋 Fuel cell","⭐ Zvijezda":"⭐ Star",
+// ---------- uvod ----------
+"Dobrodošao u Vodikov svijet!":"Welcome to Hydrogen World!",
+"Vodik je najlakši i najstariji element svemira, a ti si po broju atoma uglavnom vodik. Krenimo otkriti zašto.":"Hydrogen is the lightest and oldest element in the universe, and by number of atoms you are mostly hydrogen. Let's find out why.",
+"Četiri glavna koraka":"Four main steps","1. Vodik u tebi · 2. Laboratorij · 3. H2 Grad · 4. H2 Ruta. Svaki korak donosi XP i otključava nagrade.":"1. Hydrogen in you · 2. Lab · 3. H2 City · 4. H2 Route. Each step earns XP and unlocks rewards.",
+"Uči i natječi se":"Learn and compete","U Akademiji te čekaju kratke lekcije i kvizovi, a u Ligi škola tvoj razred se svaki tjedan natječe s drugima.":"Short lessons and quizzes wait in the Academy, and in the Schools League your class competes with others every week.",
+"Skupljaj XP":"Collect XP","Od Atoma do Zvijezde: što više istražuješ, to brže napreduješ. Sretno!":"From Atom to Star: the more you explore, the faster you level up. Good luck!",
+"🎬 Ponovno pogledaj uvod":"🎬 Watch the intro again",
+// ---------- korak 1: vodik u tebi ----------
+"Korak 1 · Vodik u tebi":"Step 1 · Hydrogen in you","🧍 Vodik u tebi i oko tebe":"🧍 Hydrogen in you and around you","Vodik u tebi":"Hydrogen in you",
+"Koliko kilograma imaš?":"How many kilograms do you weigh?","kg vodika":"kg of hydrogen","atoma vodika":"hydrogen atoms","km vodikovim autom":"km in a hydrogen car",
+"litara vode nastaje":"litres of water produced","dana struje za kuću":"days of electricity for a home","punjenja mobitela":"phone charges",
+"oko 10 % tvoje mase":"about 10 % of your mass","Udio u broju atoma: po broju atoma najviše si vodik!":"Share by number of atoms: by atom count you are mostly hydrogen!",
+"vodik 62 %":"hydrogen 62 %","kisik 24 %":"oxygen 24 %","ugljik 12 %":"carbon 12 %","⬇ Spremi vodikovu iskaznicu":"⬇ Save your hydrogen ID card",
+"VODIKOVA ISKAZNICA":"HYDROGEN ID CARD","Put tvog vodika":"Your hydrogen's journey","Tijelo":"Body","Oko tebe":"Around you","Na tanjuru":"On your plate",
+"💥 Veliki prasak · prije 13,8 milijardi god.":"💥 Big Bang · 13.8 billion years ago","Nastaju jezgre vodika: jedan proton.":"Hydrogen nuclei form: a single proton.",
+"⚛️ Prvi atomi":"⚛️ First atoms","Proton uhvati elektron i nastaje atom H.":"A proton captures an electron and an H atom forms.",
+"☀️ Sunce i Zemlja · prije 4,6 milijardi god.":"☀️ Sun and Earth · 4.6 billion years ago","Oblak vodika pali Sunce, a dio vodika završi u vodi.":"A hydrogen cloud ignites the Sun, and some hydrogen ends up in water.",
+"🌧️ Kiša i biljke":"🌧️ Rain and plants","Voda kruži, a biljke ugrađuju vodik u šećere.":"Water cycles, and plants build hydrogen into sugars.",
+"Piješ i jedeš, pa vodik postaje dio tebe.":"You drink and eat, so hydrogen becomes part of you.",
+"🔍 npr. svijeća, boca, benzin, oblak…":"🔍 e.g. candle, bottle, petrol, cloud…","Ili odaberi materijal i masu":"Or choose a material and a mass",
+"Odaberi nešto":"Choose something","Količina":"Amount","🔬 Istraženo stvari:":"🔬 Things explored:","Pokaži":"Show","Očisti":"Clear","Ukupno":"Total",
+"g vodika danas":"g of hydrogen today","Svi":"All",
+// stvari i materijali
+"Kocka leda":"Ice cube","Boca vode 0,5 L":"Bottle of water 0.5 L","Kanta vode 10 L":"Bucket of water 10 L","Kada vode":"Bathtub of water","Olimpijski bazen":"Olympic pool",
+"Kišni oblak":"Rain cloud","Snjegović":"Snowman","Žličica šećera":"Teaspoon of sugar","Kocka šećera":"Sugar cube","List papira A4":"Sheet of A4 paper","Bilježnica":"Notebook",
+"Knjiga":"Book","Olovka":"Pencil","Drvena stolica":"Wooden chair","Cjepanica drva":"Log of wood","Pamučna majica":"Cotton T-shirt","Traperice":"Jeans",
+"Rola WC papira":"Toilet paper roll","Kartonska kutija":"Cardboard box","Prazna plastična boca":"Empty plastic bottle","Plastična vrećica":"Plastic bag","Svijeća":"Candle",
+"Pun spremnik benzina":"Full petrol tank","Litra benzina":"Litre of petrol","Plinska boca za kuhanje":"Cooking gas bottle","Sredstvo za dezinfekciju":"Hand sanitiser",
+"Boca ulja 1 L":"Bottle of oil 1 L","Automobilska guma":"Car tyre","Gumica za brisanje":"Eraser","Balon":"Balloon","Najlonske čarape":"Nylon tights","Pramen kose":"Lock of hair",
+"Vunena kapa":"Wool hat","Komad sapuna":"Bar of soap","Žlica soli":"Spoon of salt","Staklena čaša":"Glass","Kamen":"Stone","Zlatni prsten":"Gold ring","Limenka":"Can",
+"Vodikov spremnik auta":"Hydrogen car tank","Čaša vode":"Glass of water","Tuširanje (5 minuta)":"Shower (5 minutes)","Bazen u dvorištu":"Garden pool","Jadransko more":"Adriatic Sea",
+"Kap kiše":"Raindrop","Pahulja snijega":"Snowflake","Ledeni brijeg":"Iceberg","Akvarij":"Aquarium","Lubenica (voda u njoj)":"Watermelon (its water)","Vrećica šećera 1 kg":"Bag of sugar 1 kg",
+"Lizalica":"Lollipop","Novine":"Newspaper","Kutija za pizzu":"Pizza box","Drveni stol":"Wooden table","Ormar":"Wardrobe","Stablo hrasta":"Oak tree","Ručnik":"Towel","Plahta":"Bed sheet",
+"Papirnata maramica":"Tissue","Školska torba (platnena)":"School bag (canvas)","Plastična čaša":"Plastic cup","Čep boce":"Bottle cap","Kutija za ručak":"Lunch box","Lego kocka":"Lego brick",
+"Kutija od stiropora":"Styrofoam box","Kanta od PVC-a":"PVC bucket","PVC cijev 1 m":"PVC pipe 1 m","Kabanica":"Raincoat","Folija za hranu":"Cling film","Rezervoar dizela kamiona":"Truck diesel tank",
+"Litra dizela":"Litre of diesel","Upaljač":"Lighter","Boca propana 10 kg":"Propane bottle 10 kg","Svjećica za tortu":"Birthday candle","Vosak za skije":"Ski wax","Maslinovo ulje (žlica)":"Olive oil (spoon)",
+"Kosa na glavi":"Hair on your head","Nokti (svi)":"Nails (all)","Tenisice (đon)":"Sneakers (sole)","Kotač bicikla":"Bicycle wheel","Krema za ruke (glicerol)":"Hand cream (glycerol)",
+"Šalica kave (kofein)":"Cup of coffee (caffeine)","Tableta aspirina":"Aspirin tablet","Plastično kućište mobitela":"Plastic phone case","Bicikl (okvir)":"Bicycle (frame)","Ključevi":"Keys",
+"Prozor":"Window","Pijesak s plaže":"Beach sand","Puni spremnik vodikovog kamiona":"Full hydrogen truck tank","Vodik u cepelinu Hindenburg (1937.)":"Hydrogen in the Hindenburg airship (1937)",
+"Voda (H₂O)":"Water (H₂O)","Šećer – saharoza":"Sugar – sucrose","Papir / drvo / pamuk (celuloza)":"Paper / wood / cotton (cellulose)","Jestivo ulje (masti)":"Cooking oil (fats)",
+"Benzin (oktan)":"Petrol (octane)","Dizel":"Diesel","Prirodni plin (metan)":"Natural gas (methane)","Propan (plinska boca, upaljač)":"Propane (gas bottle, lighter)",
+"Polietilen (vrećice)":"Polyethylene (bags)","Plastika PET (boce)":"PET plastic (bottles)","Plastika PP (čepovi, kutije)":"PP plastic (caps, boxes)","Plastika PVC (cijevi)":"PVC plastic (pipes)",
+"Stiropor (polistiren)":"Styrofoam (polystyrene)","Najlon":"Nylon","Guma (poliizopren)":"Rubber (polyisoprene)","Parafin (svijeće)":"Paraffin (candles)","Kosa / vuna (keratin)":"Hair / wool (keratin)",
+"Sapun (natrijev stearat)":"Soap (sodium stearate)","Alkohol (etanol)":"Alcohol (ethanol)","Glicerol":"Glycerol","Amonijak":"Ammonia","Aspirin":"Aspirin","Kofein":"Caffeine",
+"Kuhinjska sol":"Table salt","Staklo / kamen (SiO₂)":"Glass / stone (SiO₂)","Metal (željezo, aluminij, zlato)":"Metal (iron, aluminium, gold)","Čisti vodik":"Pure hydrogen",
+// hrana
+"Voće":"Fruit","Povrće":"Vegetables","Kruh i žitarice":"Bread and cereals","Meso i riba":"Meat and fish","Mliječno i jaja":"Dairy and eggs","Gotova jela":"Ready meals",
+"Slatko i grickalice":"Sweets and snacks","Pića":"Drinks",
+"Jabuka":"Apple","Banana":"Banana","Naranča":"Orange","Mandarina":"Mandarin","Kruška":"Pear","Grožđe":"Grapes","Jagode":"Strawberries","Trešnje":"Cherries","Šljive":"Plums",
+"Breskva":"Peach","Lubenica":"Watermelon","Ananas":"Pineapple","Mango":"Mango","Kivi":"Kiwi","Avokado":"Avocado","Mrkva":"Carrot","Rajčica":"Tomato","Krastavac":"Cucumber",
+"Paprika":"Pepper","Brokula":"Broccoli","Zelena salata":"Lettuce","Kukuruz":"Corn","Gljive":"Mushrooms","Kuhani krumpir":"Boiled potato","Grah (kuhani)":"Beans (cooked)",
+"Kriška kruha":"Slice of bread","Kifla":"Bread roll","Kroasan":"Croissant","Tjestenina":"Pasta","Riža (kuhana)":"Rice (cooked)","Zobene pahuljice":"Oat flakes","Kukuruzne pahuljice":"Cornflakes",
+"Palačinka":"Pancake","Pileća prsa":"Chicken breast","Junetina":"Beef","Svinjski odrezak":"Pork chop","Šunka":"Ham","Hrenovka":"Hot dog sausage","Losos":"Salmon","Tuna (konzerva)":"Tuna (tinned)",
+"Lignje":"Squid","Riblji štapići":"Fish fingers","Jaje":"Egg","Čaša mlijeka":"Glass of milk","Jogurt":"Yoghurt","Kriška sira":"Slice of cheese","Svježi sir":"Cottage cheese","Maslac":"Butter",
+"Komad pizze":"Slice of pizza","Hamburger":"Hamburger","Pomfrit":"Fries","Burek sa sirom":"Cheese burek","Sendvič":"Sandwich","Kebab":"Kebab","Taco":"Taco","Sushi (6 kom)":"Sushi (6 pcs)",
+"Lazanje":"Lasagne","Sarma (komad)":"Sarma (one roll)","Gulaš":"Goulash","Ćevapi (10 kom)":"Ćevapi (10 pcs)","Pohani sir":"Fried cheese","Tanjur juhe":"Bowl of soup",
+"Čokolada":"Chocolate","Keksi":"Biscuits","Krafna":"Doughnut","Komad torte":"Slice of cake","Kugla sladoleda":"Scoop of ice cream","Gumeni bomboni":"Gummy sweets","Čips":"Crisps",
+"Kokice":"Popcorn","Puding":"Pudding","Kikiriki":"Peanuts","Bademi":"Almonds","Med (žlica)":"Honey (spoon)","Lješnjak krem (žlica)":"Hazelnut spread (spoon)",
+"Sok od naranče":"Orange juice","Gazirani sok":"Fizzy drink","Ledeni čaj":"Iced tea","Kava":"Coffee","Kakao":"Cocoa","Energetsko piće":"Energy drink","Smoothie":"Smoothie",
+// ---------- korak 2: laboratorij ----------
+"Korak 2 · Laboratorij":"Step 2 · Lab","🧪 Molekula: escape room":"🧪 Molecule: escape room","Laboratorij: escape room":"Lab: escape room",
+"U vodikovom laboratoriju nestalo je struje i vrata su se zaključala. Proizvedite vodik i pokrenite gorivnu ćeliju. Sedam brava, a brojevi u zadacima su svaki put drukčiji. Svaki savjet dodaje 1 minutu.":"The hydrogen lab has lost power and the doors have locked. Produce hydrogen and start the fuel cell. Seven locks, and the numbers in the tasks are different every time. Each hint adds 1 minute.",
+"Uđi u laboratorij →":"Enter the lab →","Otključaj 🔓":"Unlock 🔓","💡 Savjet (+1 min)":"💡 Hint (+1 min)","Struja je vraćena!":"Power is back!","🔁 Igraj ponovno (novi zadaci)":"🔁 Play again (new tasks)",
+"Naučio si: izotope vodika, elektrolizu 2H₂O → 2H₂ + O₂, računanje volumena plina, boje vodika, sigurnost, ukapljivanje i rad gorivne ćelije.":"You learned: hydrogen isotopes, electrolysis 2H₂O → 2H₂ + O₂, calculating gas volume, colours of hydrogen, safety, liquefaction and how a fuel cell works.",
+"🔒 Laboratorij još nisi riješio. 7 brava čeka.":"🔒 You haven't solved the lab yet. 7 locks are waiting.",
+"Brava 1 · Vrata laboratorija":"Lock 1 · Lab door","Brava 2 · Elektrolizer":"Lock 2 · Electrolyser","Brava 3 · Spremnik":"Lock 3 · Tank","Brava 4 · Boje vodika":"Lock 4 · Colours of hydrogen",
+"Brava 5 · Alarm":"Lock 5 · Alarm","Brava 6 · Hladnjak":"Lock 6 · Cooler","Brava 7 · Gorivna ćelija":"Lock 7 · Fuel cell",
+"Izjednači: __ H₂O → __ H₂ + __ O₂":"Balance: __ H₂O → __ H₂ + __ O₂","Izračunaj broj atoma vodika u 1 g vodika.":"Calculate the number of hydrogen atoms in 1 g of hydrogen.",
+"Lijevo i desno mora biti po 4 atoma vodika i 2 atoma kisika.":"Both sides must have 4 hydrogen atoms and 2 oxygen atoms.",
+"M(H₂) = 2 g/mol, pa je n = m / M. Jedan mol plina pri normalnim uvjetima zauzima 22,4 L. Pomnoži broj molova s 22,4.":"M(H₂) = 2 g/mol, so n = m / M. One mole of gas at standard conditions takes up 22.4 L. Multiply the number of moles by 22.4.",
+"Poveži boju vodika s načinom proizvodnje: zeleni, sivi, plavi.":"Match each colour of hydrogen with how it is made: green, grey, blue.",
+"Zeleni vodik nastaje elektrolizom uz struju iz sunca i vjetra. Sivi se radi iz prirodnog plina, a CO₂ odlazi u zrak. Plavi se radi iz plina, ali se CO₂ hvata i sprema.":"Green hydrogen comes from electrolysis powered by sun and wind. Grey is made from natural gas, and the CO₂ goes into the air. Blue is made from gas, but the CO₂ is captured and stored.",
+"Opiši redom pet koraka rada gorivne ćelije.":"Describe the five steps of a fuel cell in order.",
+"Počinje vodikom na anodi, a završava vodom na katodi. Između: razdvajanje, struja elektrona, putovanje protona.":"It starts with hydrogen at the anode and ends with water at the cathode. In between: splitting, a flow of electrons, protons travelling.",
+"Vodik (H₂) ulazi na anodu.":"Hydrogen (H₂) enters at the anode.","Katalizator razdvaja vodik na protone (H⁺) i elektrone (e⁻).":"A catalyst splits hydrogen into protons (H⁺) and electrons (e⁻).",
+"Elektroni putuju kroz žicu i stvaraju struju.":"Electrons travel through the wire and make electricity.","Protoni prolaze kroz membranu do katode.":"Protons pass through the membrane to the cathode.",
+"Na katodi se protoni, elektroni i kisik spajaju u vodu.":"At the cathode, protons, electrons and oxygen combine into water.",
+"Zelena":"Green","Siva":"Grey","Plava":"Blue","Crvena":"Red","Crna":"Black","Bijela":"White","Tamnoplava":"Dark blue",
+"Protij":"Protium","Deuterij":"Deuterium","Tricij":"Tritium","Helij":"Helium","Kisik":"Oxygen","Ugljik":"Carbon","Vodik":"Hydrogen","Nijedan":"None",
+// ---------- korak 3: grad ----------
+"Korak 3 · H2 Grad":"Step 3 · H2 City","🏙️ Postani gradonačelnik":"🏙️ Become the mayor","H2 Grad":"H2 City","H2 GRAD":"H2 CITY",
+"U 10 godina pretvori grad u zeleni grad na vodik, a da ne ostaneš bez struje i novca. Cilj: CO₂ 10 kt ili manje i zatvorena termoelektrana na ugljen.":"In 10 years, turn your city into a green hydrogen city without running out of electricity or money. Goal: CO₂ of 10 kt or less and the coal power plant closed.",
+"Sljedeća godina →":"Next year →","Kreni ispočetka":"Start over","📒 Dnevnik gradonačelnika":"📒 Mayor's journal","☁️ CO₂ godišnje":"☁️ CO₂ per year","cilj: 10 kt ili manje":"goal: 10 kt or less",
+"⚡ Struja iz sunca i vjetra":"⚡ Power from sun and wind","💧 Vodik ove godine":"💧 Hydrogen this year","🫁 Kvaliteta zraka":"🫁 Air quality","mil. €":"million €",
+"🏭✖ Zatvori termoelektranu na ugljen":"🏭✖ Close the coal power plant","puno prometa":"heavy traffic","puno sunca ☀️":"lots of sun ☀️","jaka bura 🌬️":"strong bora wind 🌬️",
+"luka i industrija":"port and industry","ravnica, sunce":"plains, sun","zagađen zrak 🏭":"polluted air 🏭",
+"Solarna elektrana":"Solar power plant","Vjetroelektrana":"Wind farm","Spremnik vodika":"Hydrogen tank","Vodikovi autobusi":"Hydrogen buses","Čeličana na vodik":"Hydrogen steelworks",
+"Plinski reformer":"Gas reformer","+4 struje, bez CO₂":"+4 power, no CO₂","+6 struje, bez CO₂":"+6 power, no CO₂","5 struje → 1 t H₂":"5 power → 1 t H₂","čuva +2 t H₂":"stores +2 t H₂",
+"troše 1 t H₂, promet −4 kt":"use 1 t H₂, traffic −4 kt","troši 2 t H₂, industrija −8 kt":"uses 2 t H₂, industry −8 kt","jeftin sivi vodik, +5 kt CO₂":"cheap grey hydrogen, +5 kt CO₂",
+"Solarni paneli daju struju bez CO₂. Ta struja može pokretati elektrolizu i stvarati zeleni vodik.":"Solar panels make electricity without CO₂. That power can run electrolysis and make green hydrogen.",
+"Vjetroturbine daju više struje od solara i rade i noću.":"Wind turbines give more power than solar and also work at night.",
+"Struja razlaže vodu na vodik i kisik: 2H₂O → 2H₂ + O₂. Nastaje dvostruko više vodika nego kisika.":"Electricity splits water into hydrogen and oxygen: 2H₂O → 2H₂ + O₂. Twice as much hydrogen as oxygen is produced.",
+"Vodik je najlakši element, pa ga treba stlačiti do 700 bara ili ohladiti na −253 °C.":"Hydrogen is the lightest element, so it has to be compressed to 700 bar or cooled to −253 °C.",
+"Vodik i kisik iz zraka spajaju se u gorivnoj ćeliji. Nastaju struja, toplina i voda.":"Hydrogen and oxygen from the air combine in a fuel cell. This makes electricity, heat and water.",
+"Vodik može zamijeniti ugljen u proizvodnji čelika i ukloniti velik dio CO₂ iz industrije.":"Hydrogen can replace coal in steelmaking and remove a large share of CO₂ from industry.",
+"Većina vodika na svijetu danas se radi iz prirodnog plina. To je jeftino, ali nastaje CO₂: to je sivi vodik.":"Most hydrogen in the world today is made from natural gas. It's cheap, but it produces CO₂: that's grey hydrogen.",
+"Tvoj elektrolizer troši struju iz ugljena. Takav vodik nije zelen. Izgradi više sunca i vjetra!":"Your electrolyser runs on coal power. That hydrogen isn't green. Build more solar and wind!",
+"Autobusi stoje jer nema dovoljno vodika. Vozilu na vodik treba stalna proizvodnja.":"The buses are standing still because there isn't enough hydrogen. Hydrogen vehicles need steady production.",
+"Višak vodika se gubi jer ga nemaš gdje spremiti. Izgradi spremnik ili više potrošača.":"Extra hydrogen is lost because you have nowhere to store it. Build a tank or more users.",
+"Grad nema dovoljno struje. Višak zelene struje može se spremiti kao vodik i kasnije vratiti u struju.":"The city doesn't have enough power. Extra green power can be stored as hydrogen and turned back into electricity later.",
+"Kad nema vjetra, spremljeni vodik može pomoću gorivne ćelije vratiti struju u mrežu.":"When there's no wind, stored hydrogen can feed power back into the grid through a fuel cell.",
+"Kad grad raste, raste i potreba za energijom. Planiraj s rezervom!":"When a city grows, so does its need for energy. Plan with a margin!",
+"Proizvodnja iz sunca ovisi o vremenu. Zato je dobro imati i sunce i vjetar, i spremati višak kao vodik.":"Solar output depends on the weather. That's why it's good to have both sun and wind and store the surplus as hydrogen.",
+"Sivi vodik ovisi o cijeni plina. Zeleni vodik ovisi o suncu i vjetru, kojih ne nestaje.":"Grey hydrogen depends on the price of gas. Green hydrogen depends on sun and wind, which never run out.",
+"Europska unija financira projekte obnovljive energije i vodika.":"The European Union funds renewable energy and hydrogen projects.",
+"Struja iz ugljena stvara puno CO₂.":"Coal power produces a lot of CO₂.",
+"☀️ Sunčano ljeto: solarne elektrane daju 50 % više struje ove godine.":"☀️ Sunny summer: solar plants give 50 % more power this year.",
+"⛽ Cijena plina je skočila: svaki plinski reformer košta 5 mil. € ove godine.":"⛽ Gas prices jumped: each gas reformer costs 5 million € this year.",
+"🌫️ Zima bez vjetra: vjetroelektrane daju pola struje ove godine.":"🌫️ Windless winter: wind farms give half their power this year.",
+"🏘️ Grad raste: potrošnja struje ove godine veća je za 2 jedinice.":"🏘️ The city is growing: power use is 2 units higher this year.",
+"💶 EU fond za zelenu energiju: grad dobiva 30 mil. € za zelene projekte!":"💶 EU green energy fund: the city gets 30 million € for green projects!",
+// ---------- korak 4: ruta ----------
+"Korak 4 · H2 Ruta":"Step 4 · H2 Route","🛣️ Vodikova Hrvatska":"🛣️ Hydrogen Croatia","H2 Ruta":"H2 Route",
+"Imaš novca za 5 punionica. Dodirni grad da postaviš punionicu, tako da vodikova vozila mogu stići iz bilo kojeg grada u bilo koji drugi.":"You have money for 5 filling stations. Tap a city to place a station so hydrogen vehicles can get from any city to any other.",
+"Pokrivenost":"Coverage","pokrivenost":"coverage","punionice":"stations","zelene punionice":"green stations","🛣️ Važne rute":"🛣️ Key routes","📘 Ocjena plana":"📘 Plan review",
+"🚛 Kamion 250 km":"🚛 Truck 250 km","🚌 Autobus 350 km":"🚌 Bus 350 km","🚗 Auto 500 km":"🚗 Car 500 km","Očisti kartu":"Clear the map","💾 Spremi plan":"💾 Save plan","🤖 Pokaži jedan dobar plan":"🤖 Show a good plan",
+"putovanja između gradova (prema broju stanovnika). Nijedna punionica nije uz izvor zelene energije. Teški kamioni i autobusi su mjesto gdje vodik ima najviše smisla, jer bi baterije bile preteške. Tvoj najbolji spremljeni plan:":"of trips between cities (weighted by population). No station is next to a green energy source. Heavy trucks and buses are where hydrogen makes the most sense, because batteries would be too heavy. Your best saved plan:",
+// ---------- akademija ----------
+"Korak 5 · Akademija":"Step 5 · Academy","🎓 Vodikova akademija":"🎓 Hydrogen Academy",
+"Kratke lekcije s karticama i kvizom na kraju. Svaki točan odgovor donosi XP, a cijela lekcija do tri zvjezdice.":"Short lessons with cards and a quiz at the end. Every correct answer earns XP, and each lesson up to three stars.",
+"← Sve lekcije":"← All lessons","Element broj 1":"Element number 1","Vodik u tebi ":"Hydrogen in you ","Kako nastaje vodik":"How hydrogen is made","Skladištenje i sigurnost":"Storage and safety",
+"Gorivna ćelija i promet":"Fuel cells and transport","Vodik i budućnost":"Hydrogen and the future","Građa atoma i izotopi":"Atomic structure and isotopes","Voda, hrana i tijelo":"Water, food and the body",
+"Elektroliza i boje vodika":"Electrolysis and colours of hydrogen","Tlak, hladnoća i opasnosti":"Pressure, cold and hazards","Kako vodik pokreće vozila":"How hydrogen powers vehicles","Energija, klima i Hrvatska":"Energy, climate and Croatia",
+"1. Element broj 1":"1. Element number 1","2. Vodik u tebi":"2. Hydrogen in you","3. Kako nastaje vodik":"3. How hydrogen is made","4. Skladištenje i sigurnost":"4. Storage and safety","5. Gorivna ćelija i promet":"5. Fuel cells and transport","6. Vodik i budućnost":"6. Hydrogen and the future",
+"Najjednostavniji atom":"The simplest atom","Atom vodika ima samo jedan proton u jezgri i jedan elektron oko nje. Zato je vodik prvi element u periodnom sustavu i najlakši od svih.":"A hydrogen atom has just one proton in its nucleus and one electron around it. That's why hydrogen is the first element in the periodic table and the lightest of all.",
+"Tri izotopa":"Three isotopes","Protij (¹H) nema neutrona, deuterij (²H) ima jedan, a tricij (³H) dva. Tricij je radioaktivan.":"Protium (¹H) has no neutrons, deuterium (²H) has one, and tritium (³H) has two. Tritium is radioactive.",
+"Najčešći u svemiru":"Most common in the universe","Oko tri četvrtine mase obične tvari u svemiru čini vodik. Zvijezde, pa i naše Sunce, uglavnom su građene od vodika.":"About three quarters of the mass of ordinary matter in the universe is hydrogen. Stars, including our Sun, are made mostly of hydrogen.",
+"Stari kao svemir":"As old as the universe","Gotovo sav vodik nastao je nedugo nakon Velikog praska, prije oko 13,8 milijardi godina.":"Almost all hydrogen formed shortly after the Big Bang, about 13.8 billion years ago.",
+"Koliko protona ima atom vodika?":"How many protons does a hydrogen atom have?","Svaki atom vodika ima točno jedan proton. To ga čini vodikom.":"Every hydrogen atom has exactly one proton. That's what makes it hydrogen.",
+"Koji je izotop vodika radioaktivan?":"Which hydrogen isotope is radioactive?","Tricij (³H) ima dva neutrona i radioaktivan je.":"Tritium (³H) has two neutrons and is radioactive.",
+"Koji je element najzastupljeniji u svemiru?":"Which element is the most abundant in the universe?","Vodik čini oko tri četvrtine mase obične tvari u svemiru.":"Hydrogen makes up about three quarters of the mass of ordinary matter in the universe.",
+"Kada je nastala većina vodika u svemiru?":"When did most of the hydrogen in the universe form?","Ubrzo nakon Velikog praska":"Shortly after the Big Bang","Kad je nastala Zemlja":"When the Earth formed","Prije 1000 godina":"1000 years ago","U oceanima":"In the oceans",
+"Jezgre vodika nastale su u prvim minutama svemira.":"Hydrogen nuclei formed in the first minutes of the universe.",
+"Ti si uglavnom vodik":"You are mostly hydrogen","Vodik čini oko 10 % mase ljudskog tijela, ali oko 62 % svih atoma u tijelu. Po broju atoma najviše smo građeni od vodika.":"Hydrogen makes up about 10 % of the human body's mass, but about 62 % of all its atoms. By number of atoms, we are made mostly of hydrogen.",
+"Voda je pola priče":"Water is half the story","Molekula vode H₂O ima dva atoma vodika. Po masi je oko 11 % vode vodik.":"A water molecule H₂O has two hydrogen atoms. By mass, about 11 % of water is hydrogen.",
+"Posvuda u molekulama života":"Everywhere in the molecules of life","Vodik je u šećerima, mastima, proteinima i DNK. Vodikove veze drže zajedno dvije niti DNK.":"Hydrogen is in sugars, fats, proteins and DNA. Hydrogen bonds hold the two strands of DNA together.",
+"Molarna masa":"Molar mass","Atom vodika ima molarnu masu oko 1 g/mol, a molekula H₂ oko 2 g/mol. To je najmanja molarna masa od svih plinova.":"A hydrogen atom has a molar mass of about 1 g/mol, and an H₂ molecule about 2 g/mol. That's the smallest molar mass of all gases.",
+"Koliki je otprilike udio vodika u broju atoma ljudskog tijela?":"Roughly what share of the atoms in the human body is hydrogen?","Po broju atoma tijelo je oko 62 % vodik, iako je po masi samo oko 10 %.":"By number of atoms the body is about 62 % hydrogen, even though by mass it's only about 10 %.",
+"Koliki je udio vodika u masi vode?":"What share of water's mass is hydrogen?","2 × 1,008 g/mol podijeljeno s 18 g/mol daje oko 11 %.":"2 × 1.008 g/mol divided by 18 g/mol gives about 11 %.",
+"Što drži zajedno dvije niti DNK?":"What holds the two strands of DNA together?","Vodikove veze":"Hydrogen bonds","Ionske veze":"Ionic bonds","Metalne veze":"Metallic bonds","Magnetizam":"Magnetism",
+"Parovi baza u DNK povezani su vodikovim vezama.":"Base pairs in DNA are linked by hydrogen bonds.",
+"Kolika je molarna masa molekule H₂?":"What is the molar mass of an H₂ molecule?","Dva atoma po oko 1 g/mol daju oko 2 g/mol.":"Two atoms of about 1 g/mol each give about 2 g/mol.",
+"Elektroliza":"Electrolysis","Struja razlaže vodu na vodik i kisik: 2H₂O → 2H₂ + O₂. Nastaje dvostruko više vodika nego kisika. ":"Electricity splits water into hydrogen and oxygen: 2H₂O → 2H₂ + O₂. ",
+"Zeleni vodik":"Green hydrogen","Proizvodi se strujom iz obnovljivih izvora.":"Made with electricity from renewable sources.","Kad struja za elektrolizu dolazi iz sunca, vjetra ili vode, vodik nastaje gotovo bez CO₂.":"When the power for electrolysis comes from sun, wind or water, hydrogen is made with almost no CO₂.",
+"Sivi vodik":"Grey hydrogen","Danas se većina vodika na svijetu proizvodi iz prirodnog plina, a pri tome nastaje CO₂.":"Today most of the world's hydrogen is made from natural gas, which produces CO₂.",
+"Plavi vodik":"Blue hydrogen","Vodik iz plina, ali se nastali CO₂ hvata i sprema pod zemlju, pa manje zagađuje.":"Hydrogen from gas, but the CO₂ is captured and stored underground, so it pollutes less.",
+"Kako glasi izjednačena jednadžba elektrolize vode?":"What is the balanced equation for the electrolysis of water?",
+"Desno O₂ ima 2 atoma kisika, pa vode treba biti 2. Tada lijevo imaš 4 vodika, a to su 2 molekule H₂.":"On the right, O₂ has 2 oxygen atoms, so you need 2 waters. Then you have 4 hydrogens on the left, which is 2 H₂ molecules.",
+"Koja „boja“ vodika nastaje elektrolizom uz struju iz sunca i vjetra?":"Which \"colour\" of hydrogen comes from electrolysis powered by sun and wind?",
+"Elektroliza: 2H₂O → 2H₂ + O₂. Ako je struja zelena, i vodik je zelen.":"Electrolysis: 2H₂O → 2H₂ + O₂. If the electricity is green, so is the hydrogen.",
+"Od čega se danas proizvodi većina vodika na svijetu?":"What is most of the world's hydrogen made from today?","Od prirodnog plina":"From natural gas","Od morske vode":"From sea water","Od zraka":"From air","Od ugljena u Hrvatskoj":"From coal in Croatia",
+"Najveći dio vodika danas je sivi, iz prirodnog plina.":"Most hydrogen today is grey, made from natural gas.",
+"Po čemu se plavi vodik razlikuje od sivog?":"How is blue hydrogen different from grey?","CO₂ se hvata i sprema":"The CO₂ is captured and stored","Plave je boje":"It's blue in colour","Nastaje iz vode":"It's made from water","Ne treba energiju":"It needs no energy",
+"Kod plavog vodika CO₂ se hvata, a ne ispušta u zrak.":"With blue hydrogen the CO₂ is captured instead of released into the air.",
+"Stlačeni vodik":"Compressed hydrogen","U automobilima se vodik čuva u spremnicima pod tlakom od 350 do 700 bara.":"In cars, hydrogen is kept in tanks at a pressure of 350 to 700 bar.",
+"Tekući vodik":"Liquid hydrogen","Ohlađen na oko −253 °C vodik postaje tekućina i zauzima mnogo manje mjesta, ali hlađenje troši puno energije.":"Cooled to about −253 °C, hydrogen becomes a liquid and takes up much less space, but cooling uses a lot of energy.",
+"Sigurnost":"Safety","Vodik nije otrovan, ali je jako zapaljiv: gori kad u zraku ima otprilike 4 do 75 % vodika. Plamen mu se na dnevnom svjetlu jedva vidi.":"Hydrogen isn't poisonous, but it's highly flammable: it burns when the air contains roughly 4 to 75 % hydrogen. Its flame is barely visible in daylight.",
+"Lagan, ali zauzima puno mjesta":"Light, but takes up lots of space","Vodik je najlakši plin, pa kilogram vodika pri običnom tlaku zauzima ogroman volumen.":"Hydrogen is the lightest gas, so a kilogram of it at normal pressure takes up a huge volume.",
+"Pod kojim se tlakom vodik obično čuva u autu?":"At what pressure is hydrogen usually stored in a car?","350 do 700 bara":"350 to 700 bar","1 bar":"1 bar","10 bara":"10 bar","5000 bara":"5000 bar",
+"Spremnici vodikovih auta rade na 350 ili 700 bara.":"Hydrogen car tanks work at 350 or 700 bar.",
+"Na koju temperaturu treba ohladiti vodik da postane tekućina?":"To what temperature must hydrogen be cooled to become a liquid?","Na koju temperaturu se vodik ukapljuje?":"At what temperature does hydrogen liquefy?",
+"Oko 0 °C":"About 0 °C","Oko −20 °C":"About −20 °C","Oko −78 °C":"About −78 °C","Oko −253 °C":"About −253 °C","Vodik se ukapljuje blizu apsolutne nule, na oko −253 °C.":"Hydrogen liquefies close to absolute zero, at about −253 °C.",
+"Vodik je plin i na jako niskim temperaturama. Postaje tekućina tek blizu apsolutne nule, oko 20 kelvina.":"Hydrogen stays a gas even at very low temperatures. It only becomes a liquid near absolute zero, about 20 kelvin.",
+"Koja tvrdnja o vodiku NIJE točna?":"Which statement about hydrogen is NOT true?","Vodik je otrovan":"Hydrogen is poisonous","Vodik je zapaljiv":"Hydrogen is flammable","Lakši je od zraka":"It's lighter than air","Nema boju ni miris":"It has no colour or smell",
+"Vodik nije otrovan, ali je zapaljiv.":"Hydrogen isn't poisonous, but it is flammable.",
+"Vodik je zapaljiv i može eksplodirati sa zrakom, ali nije otrovan. U zatvorenom prostoru opasan je jer istiskuje kisik.":"Hydrogen is flammable and can explode with air, but it isn't poisonous. In a closed space it is dangerous because it pushes out oxygen.",
+"Zašto je vodikov plamen opasan?":"Why is a hydrogen flame dangerous?","Na danjem svjetlu jedva se vidi":"It's barely visible in daylight","Jako dimi":"It smokes a lot","Jako smrdi":"It smells strongly","Uvijek je hladan":"It's always cold",
+"Vodik gori gotovo nevidljivim plamenom, pa se koriste posebni senzori.":"Hydrogen burns with an almost invisible flame, so special sensors are used.",
+"Gorivna ćelija spaja vodik i kisik i daje struju. Iz ispuha izlazi samo vodena para.":"A fuel cell combines hydrogen and oxygen and produces electricity. Only water vapour comes out of the exhaust.",
+"Vodikov automobil":"Hydrogen car","Vodikov auto troši otprilike 1 kg vodika na 100 km, a spremnik se napuni za nekoliko minuta.":"A hydrogen car uses roughly 1 kg of hydrogen per 100 km, and the tank fills up in a few minutes.",
+"Gdje vodik ima najviše smisla":"Where hydrogen makes the most sense","Vodik je posebno koristan za teške kamione, autobuse, brodove i industriju, gdje bi baterije bile preteške.":"Hydrogen is especially useful for heavy trucks, buses, ships and industry, where batteries would be too heavy.",
+"Gubici energije":"Energy losses","Kad se struja pretvori u vodik pa natrag u struju, izgubi se više od pola energije. Zato je za male aute izravna struja iz baterije često učinkovitija.":"When electricity is turned into hydrogen and back into electricity, more than half the energy is lost. That's why for small cars, battery power is often more efficient.",
+"Što izlazi iz ispuha vozila na gorivnu ćeliju?":"What comes out of the exhaust of a fuel cell vehicle?","Što izlazi iz ispuha vodikovog autobusa?":"What comes out of a hydrogen bus's exhaust?","Vodena para":"Water vapour","Vodik i kisik daju vodu.":"Hydrogen and oxygen make water.",
+"Koliko otprilike vodika troši vodikov auto na 100 km?":"Roughly how much hydrogen does a hydrogen car use per 100 km?","Oko 1 kg":"About 1 kg","Oko 10 kg":"About 10 kg","Oko 100 g":"About 100 g","Oko 50 kg":"About 50 kg",
+"Današnji vodikovi auti troše oko 1 kg na 100 km.":"Today's hydrogen cars use about 1 kg per 100 km.",
+"Gdje vodik ima najviše smisla u prometu?":"Where does hydrogen make the most sense in transport?","Teški kamioni i brodovi":"Heavy trucks and ships","Bicikli":"Bicycles","Romobili":"Scooters","Igračke":"Toys",
+"Za teška vozila baterije bi bile preteške.":"For heavy vehicles, batteries would be too heavy.",
+"Što se događa s energijom na putu struja → vodik → struja?":"What happens to the energy on the way electricity → hydrogen → electricity?","Velik dio se izgubi":"A large part is lost","Ostane ista":"It stays the same","Udvostruči se":"It doubles","Pretvori se u svjetlo":"It turns into light",
+"U tom lancu izgubi se više od pola energije.":"More than half the energy is lost along that chain.",
+"Klima":"Climate","Zeleni vodik može zamijeniti ugljen, naftu i plin tamo gdje je struju teško koristiti izravno, pa smanjuje CO₂.":"Green hydrogen can replace coal, oil and gas where electricity is hard to use directly, so it reduces CO₂.",
+"Sunce i vjetar Hrvatske":"Croatia's sun and wind","Hrvatska ima puno sunca na jugu i jak vjetar na obali, pa ima dobre uvjete za proizvodnju zelene struje.":"Croatia has lots of sun in the south and strong wind on the coast, so it has good conditions for producing green electricity.",
+"Industrija i luke":"Industry and ports","Rafinerije, kemijska industrija i luke veliki su potencijalni korisnici vodika.":"Refineries, the chemical industry and ports are major potential users of hydrogen.",
+"Novi poslovi":"New jobs","Vodik otvara poslove za inženjere, kemičare, tehničare i dizajnere. Možda baš za tebe!":"Hydrogen opens up jobs for engineers, chemists, technicians and designers. Maybe for you!",
+"Zašto je zeleni vodik dobar za klimu?":"Why is green hydrogen good for the climate?","Nastaje gotovo bez CO₂":"It's made with almost no CO₂","Hladi Zemlju":"It cools the Earth","Upija ozon":"It absorbs ozone","Jeftiniji je od vode":"It's cheaper than water",
+"Zeleni vodik nastaje iz obnovljivih izvora energije.":"Green hydrogen comes from renewable energy sources.",
+"Koji prirodni uvjeti pomažu Hrvatskoj u proizvodnji zelene struje?":"Which natural conditions help Croatia produce green electricity?","Sunce i vjetar":"Sun and wind","Ledenjaci":"Glaciers","Vulkani":"Volcanoes","Pustinja":"Desert",
+"Jug ima puno sunca, a obala jak vjetar.":"The south has lots of sun and the coast strong wind.",
+"Tko bi mogao biti velik korisnik vodika?":"Who could be a major user of hydrogen?","Industrija i teški promet trebaju puno energije.":"Industry and heavy transport need a lot of energy.","Pekare":"Bakeries","Knjižnice":"Libraries","Kino":"Cinemas",
+"Što od navedenog NIJE izvor zelene struje za elektrolizu?":"Which of these is NOT a source of green electricity for electrolysis?","Ugljen":"Coal","Sunce":"Sun","Vjetar":"Wind","Voda (hidroelektrane)":"Water (hydropower)",
+"Koliko kilograma vodika ima u tijelu osobe od 50 kg?":"How many kilograms of hydrogen are in the body of a 50 kg person?","Oko 2 %":"About 2 %","Oko 11 %":"About 11 %","Oko 50 %":"About 50 %","Oko 67 %":"About 67 %",
+"Zašto je u tijelu 62 % atoma vodik, a samo 10 % mase?":"Why are 62 % of the body's atoms hydrogen but only 10 % of its mass?","Zašto su punionice uz sunce i vjetar bolji izbor?":"Why are stations next to sun and wind a better choice?",
+"Zašto vodik ima više smisla za kamione nego za romobile?":"Why does hydrogen make more sense for trucks than for scooters?","Zašto vodik iz elektrolizera nije zelen ako je struja iz ugljena?":"Why isn't hydrogen from an electrolyser green if the power comes from coal?",
+"Što se dogodi s viškom vodika kad nema spremnika?":"What happens to surplus hydrogen when there's no tank?","Koliko punionica treba kamionu za put Zagreb – Dubrovnik?":"How many stations does a truck need for the Zagreb – Dubrovnik trip?",
+"Koliki volumen zauzima 6 g vodika pri normalnim uvjetima?":"What volume do 6 g of hydrogen take up at standard conditions?",
+"Koja ti je pokrivenost bila najbolja i s kojim gradovima?":"What was your best coverage and with which cities?","Koju bi prvu zgradu izgradio u svom gradu i zašto?":"Which building would you build first in your city and why?",
+"Navedi dva događaja koja su promijenila tvoj plan.":"Name two events that changed your plan.","Navedi tri namirnice s puno vodika i objasni zašto.":"Name three foods with a lot of hydrogen and explain why.",
+// ---------- liga ----------
+"Korak 6 · Natjecanje":"Step 6 · Competition","🏆 Liga škola":"🏆 Schools League","Liga škola":"Schools League",
+"Razredi i timovi iz cijele Hrvatske natječu se svaki tjedan u Vodikovom izazovu: 10 pitanja u 90 sekundi. Zbrajaju se najbolji rezultati svih članova.":"Classes and teams from all over Croatia compete every week in the Hydrogen Challenge: 10 questions in 90 seconds. The best scores of all members are added up.",
+"Demo način:":"Demo mode:","rezultati ostaju na ovom uređaju, a protivnički timovi su izmišljeni. Za pravo natjecanje vidi upute (README).":"results stay on this device and the rival teams are made up. For the real competition, see the instructions (README).",
+"➕ Napravi tim ili razred":"➕ Create a team or class","Ime tima":"Team name","Škola":"School","npr. 2.b Protoni":"e.g. 2B Protons","npr. Gimnazija Osijek":"e.g. Osijek Grammar School","Napravi tim":"Create team",
+"👩‍🏫 Nastavnici: tko napravi tim, dobiva nastavnički pregled napretka svih članova.":"👩‍🏫 Teachers: whoever creates a team gets a teacher overview of every member's progress.",
+"🔑 Pridruži se timu":"🔑 Join a team","Upiši kod koji ti je poslao kapetan ili nastavnik.":"Enter the code your captain or teacher sent you.","Kod tima":"Team code","npr. H2K4M9":"e.g. H2K4M9","Pridruži se":"Join",
+"Kod":"Code","Kopiraj":"Copy","Članovi":"Members","Napusti tim":"Leave team","⚡ Vodikov izazov":"⚡ Hydrogen Challenge",
+"10 pitanja iz svih lekcija, 90 sekundi. Brži točan odgovor nosi više bodova.":"10 questions from all lessons, 90 seconds. Faster correct answers score more points.",
+"tvoj najbolji":"your best","pokušaja":"attempts","bodova tima":"team points","▶ Kreni u izazov":"▶ Start the challenge","📊 Ljestvica":"📊 Leaderboard","Ova runda":"This round","Sezona":"Season",
+"🎁 Nagrade lige":"🎁 League prizes","Najbolja škola sezone":"Best school of the season","Medalja za svakog člana pobjedničkog tima s utisnutim pečatom škole i znakom Vodikovog svijeta, uz zahvalnicu za školu.":"A medal for every member of the winning team, stamped with the school's seal and the Hydrogen World logo, plus a certificate of thanks for the school.",
+"2. i 3. mjesto":"2nd and 3rd place","Tiskane diplome s pečatom Vodikovog svijeta za svakog člana tima.":"Printed diplomas with the Hydrogen World seal for every team member.",
+"Pobjednik tjedna":"Winner of the week","Digitalna značka „Prvak tjedna“ i objava tima na društvenim mrežama Vodikovog svijeta.":"A \"Champion of the Week\" digital badge and a post about the team on Hydrogen World's social media.",
+"Najaktivnija škola":"Most active school","Besplatna godišnja licenca za escape room Molekula za sve razrede.":"A free one-year licence for the Molecule escape room for all classes.",
+"Svi sudionici":"All participants","Digitalna diploma sudionika Lige škola.":"A digital Schools League participation diploma.",
+"Nagrade dodjeljuju autorice projekta na kraju sezone. Medalje i diplome šalju se školi poštom ili se uručuju na svečanosti.":"Prizes are awarded by the project's authors at the end of the season. Medals and diplomas are posted to the school or presented at a ceremony.",
+"MOJ TIM":"MY TEAM","Elektrolizeri":"Electrolysers","Protoni":"Protons","Zeleni vodik ":"Green hydrogen ","2.a Elektroni":"2A Electrons","3.c Gorivne ćelije":"3C Fuel Cells",
+"Gimnazija Split":"Split Grammar School","Gimnazija Varaždin":"Varaždin Grammar School","Elektrotehnička škola Osijek":"Osijek School of Electrical Engineering","Tehnička škola Rijeka":"Rijeka Technical School","OŠ Dubrovnik":"Dubrovnik Primary School","OŠ Zadar":"Zadar Primary School","SŠ Pula":"Pula Secondary School",
+"👩‍🏫 Nastavnički pregled tima":"👩‍🏫 Teacher team overview","Zatvori":"Close","članova":"members","prosječni XP":"average XP","prošlo sva 4 koraka":"completed all 4 steps",
+"Učenik":"Student","Razina":"Level","Koraci":"Steps","Akademija ★":"Academy ★","Liga: ova runda":"League: this round","Liga: 8 tjedana":"League: 8 weeks","Zadnje aktivan":"Last active",
+"Koraci: vodik u tebi · laboratorij · H2 Grad · H2 Ruta. Učenici koji još nisu igrali imaju crtice.":"Steps: hydrogen in you · lab · H2 City · H2 Route. Students who haven't played yet show dashes.",
+"danas":"today","jučer":"yesterday","⏳ Učitavam pregled tima…":"⏳ Loading team overview…","Pregled tima vidi samo osnivač tima.":"Only the team's creator can see the team overview.",
+// ---------- trgovina ----------
+"Korak 5 · Trgovina":"Step 5 · Shop","Vodikova trgovina":"Hydrogen Shop","Za znatiželjne, škole i buduće gradonačelnike":"For the curious, for schools and for future mayors",
+"Ovo je izmišljena, probna trgovina.":"This is a made-up demo shop.","Napravljena je za natjecanje kao primjer kako bi trgovina izgledala. Proizvodi i cijene su zamišljeni, ništa se ne naplaćuje, ne izrađuje i ne šalje.":"It was built for the competition as an example of what the shop could look like. The products and prices are imaginary; nothing is charged, made or shipped.",
+"Nagrade: 0/7 otključano.":"Rewards: 0/7 unlocked.","Prođi laboratorij, grad i rutu da otključaš značke, medalju i diplomu.":"Complete the lab, the city and the route to unlock badges, a medal and a diploma.","Pogledaj":"View",
+"Odjeća":"Clothing","Papir":"Paper","Dom":"Home","Igre":"Games","Sve":"All","Najprodavanije":"Bestseller","Nagrada":"Reward","🔒 Nagrada":"🔒 Reward","🏅 Nagrade":"🏅 Rewards",
+"Majica „Ja sam 62 % vodik“":"\"I am 62 % hydrogen\" T-shirt","JA SAM 62 % VODIK":"I AM 62 % HYDROGEN","Tiskana vodikova iskaznica":"Printed hydrogen ID card","Poster „Vodik, element br. 1“":"\"Hydrogen, element no. 1\" poster",
+"Šalica H₂O":"H₂O mug","Boca za vodu „11 % vodik“":"\"11 % hydrogen\" water bottle","Hoodica „H₂ generacija“":"\"H₂ generation\" hoodie","H₂ GENERACIJA":"H₂ GENERATION","Naljepnice „H“ (10 kom)":"\"H\" stickers (10 pcs)",
+"Model molekula (komplet)":"Molecule model kit","Društvena igra „H2 Grad“":"\"H2 City\" board game","Školski set za elektrolizu":"School electrolysis kit","Licenca za razred: Molekula":"Class licence: Molecule","Paket za razred (30 učenika)":"Class pack (30 students)",
+"Značka „Akademik“":"\"Academic\" badge","Medalja „Zvijezda“":"\"Star\" medal","Timska majica Lige":"League team T-shirt","Značka „Laborant“":"\"Lab Tech\" badge","Medalja „Zeleni gradonačelnik“":"\"Green Mayor\" medal",
+"Značka „Planer ruta“":"\"Route Planner\" badge","Diploma „Vodikov stručnjak“":"\"Hydrogen Expert\" diploma","Vodikov stručnjak":"Hydrogen Expert","DIPLOMA":"DIPLOMA","VODIK":"HYDROGEN","MOLEKULA":"MOLECULE","PAKET ZA RAZRED":"CLASS PACK",
+"Za sve lekcije Akademije s tri zvjezdice.":"For all Academy lessons with three stars.","Za one koji su dosegli najvišu razinu: Zvijezda (900 XP).":"For those who reached the top level: Star (900 XP).","Majica s imenom tvog tima iz Lige škola.":"A T-shirt with your Schools League team name.",
+"Za one koji su pobjegli iz laboratorija.":"For those who escaped the lab.","Za gradonačelnike koji su grad pretvorili u zeleni grad na vodik.":"For mayors who turned their city into a green hydrogen city.","Za plan punionica koji pokriva barem 90 % putovanja.":"For a station plan that covers at least 90 % of trips.",
+"Tiskana diploma za sve četiri glavna koraka Vodikovog svijeta.":"A printed diploma for all four main steps of Hydrogen World.","Majica s porukom i tvojim brojem atoma vodika na leđima.":"A T-shirt with the slogan and your number of hydrogen atoms on the back.",
+"Tvoja vodikova iskaznica tiskana na tvrdom papiru, kao suvenir.":"Your hydrogen ID card printed on thick paper as a souvenir.","Poster s građom atoma, izotopima i putem vodika kroz svemir, A2.":"A2 poster with atomic structure, isotopes and hydrogen's journey through the universe.",
+"Šalica s formulom vode. Svaki gutljaj je 11 % vodika!":"A mug with the formula for water. Every sip is 11 % hydrogen!","Metalna boca od 500 ml. Podsjetnik da je svaki gutljaj vode 11 % vodika.":"A 500 ml metal bottle. A reminder that every sip of water is 11 % hydrogen.",
+"Topla hoodica s atomom vodika i natpisom H₂ generacija.":"A warm hoodie with a hydrogen atom and the words H₂ generation.","Naljepnice s atomom vodika i vodikovim autom.":"Stickers with a hydrogen atom and a hydrogen car.",
+"Komplet kuglica i štapića za slaganje H₂, O₂, H₂O i CH₄.":"A kit of balls and sticks for building H₂, O₂, H₂O and CH₄.","Stolna verzija igre za 2 do 4 gradonačelnika.":"A tabletop version of the game for 2 to 4 mayors.",
+"Siguran pokus razlaganja vode na vodik i kisik za satove kemije.":"A safe experiment splitting water into hydrogen and oxygen for chemistry lessons.","Escape room za cijeli razred na godinu dana, s pripremom za nastavnika.":"The escape room for a whole class for one year, with teacher preparation.",
+"Licenca za aplikaciju, 30 tiskanih iskaznica, poster i set za elektrolizu za cijeli razred.":"An app licence, 30 printed ID cards, a poster and an electrolysis kit for the whole class.",
+"3 ★ u svim lekcijama":"3 ★ in all lessons","Dosegni 900 XP":"Reach 900 XP","Uđi u tim u Ligi":"Join a League team","Riješi escape room":"Solve the escape room","Pobijedi u H2 Gradu":"Win H2 City","Plan s 90 % pokrivenosti":"A plan with 90 % coverage","Prođi sva 4 koraka":"Complete all 4 steps",
+"🔒 3 ★ u svim lekcijama":"🔒 3 ★ in all lessons","🔒 Dosegni 900 XP":"🔒 Reach 900 XP","🔒 Uđi u tim u Ligi":"🔒 Join a League team","🔒 Riješi escape room":"🔒 Solve the escape room","🔒 Pobijedi u H2 Gradu":"🔒 Win H2 City","🔒 Plan s 90 % pokrivenosti":"🔒 A plan with 90 % coverage","🔒 Prođi sva 4 koraka":"🔒 Complete all 4 steps","🔒 Liga":"🔒 League",
+"Dodaj u košaricu":"Add to cart","Natrag u trgovinu":"Back to shop","← Natrag u trgovinu":"← Back to shop","🛒 Košarica":"🛒 Cart","Košarica je prazna.":"Your cart is empty.","← Nastavi kupovinu":"← Continue shopping","Na blagajnu →":"Checkout →",
+"🚚 Besplatna dostava iznad 40 € · izrada 3–5 radnih dana":"🚚 Free delivery over 40 € · made in 3–5 working days","besplatno":"free","Veličina":"Size","Boja":"Colour",
+"← Natrag u košaricu":"← Back to cart","Dostava i plaćanje":"Delivery and payment","Ne upisuj prave podatke.":"Don't enter real details.","Narudžba je samo za probu: možeš upisati izmišljeno ime, e-mail i adresu. Podaci se nigdje ne spremaju.":"This order is only a demo: you can enter a made-up name, e-mail and address. Nothing is saved.",
+"Ime i prezime":"Full name","E-mail":"E-mail","Adresa":"Address","Pošt. broj":"Postcode","Dostava":"Delivery","Plaćanje":"Payment","U prototipu se ne unose podaci o kartici i ništa se ne naplaćuje.":"In the prototype no card details are entered and nothing is charged.",
+"🎁 Zapakiraj kao poklon (+2,50 €)":"🎁 Gift wrap (+2.50 €)","Potvrdi narudžbu":"Confirm order","Probna narudžba je gotova!":"Demo order complete!","Ovo je prototip za natjecanje: narudžba nije stvarno poslana ni naplaćena.":"This is a prototype for the competition: the order was not really sent or charged.",
+"📦 Paket na kućnu adresu":"📦 Home delivery","🏧 Paketomat":"🏧 Parcel locker","🏛️ Osobno preuzimanje u Osijeku":"🏛️ Pick-up in Osijek","💶 Plaćanje pouzećem":"💶 Cash on delivery","💳 Kartica (u punoj verziji preko sigurnog pružatelja plaćanja)":"💳 Card (in the full version via a secure payment provider)","🧾 Uplata na račun":"🧾 Bank transfer",
+"Ispuni ime, ispravan e-mail i adresu dostave.":"Fill in a name, a valid e-mail and a delivery address.","Proizvodi":"Products",
+// ---------- škole ----------
+"🏫 Vodikov svijet u školi":"🏫 Hydrogen World at school","Za nastavnike":"For teachers","Gotovi planovi sati za kemiju, fiziku, geografiju i građanski odgoj. Svaki dio aplikacije je jedan školski sat od 45 minuta, uz radni listić za ispis.":"Ready-made lesson plans for chemistry, physics, geography and civics. Each part of the app is one 45-minute lesson, with a printable worksheet.",
+"Kemija":"Chemistry","Fizika":"Physics","Geografija":"Geography","Biologija":"Biology","Matematika":"Maths","Građanski odgoj":"Civics","Ishodi učenja: učenik će":"Learning outcomes: the student will","Tijek sata":"Lesson outline","🖨️ Radni listić":"🖨️ Worksheet",
+"1. i 2. razred SŠ":"1st and 2nd grade secondary","1. razred SŠ / 8. razred OŠ":"1st grade secondary / 8th grade primary","7. razred OŠ do 4. razreda SŠ":"7th grade primary to 4th grade secondary","8. razred OŠ do 4. razreda SŠ":"8th grade primary to 4th grade secondary","svi razredi":"all grades",
+"1. i 2. razred SŠ · 45 min":"1st and 2nd grade secondary · 45 min","1. razred SŠ / 8. razred OŠ · 45 min":"1st grade secondary / 8th grade primary · 45 min","7. razred OŠ do 4. razreda SŠ · 45 min":"7th grade primary to 4th grade secondary · 45 min","8. razred OŠ do 4. razreda SŠ · 45 min":"8th grade primary to 4th grade secondary · 45 min","svi razredi · 45 min":"all grades · 45 min",
+"Kviz iz Akademije: lekcija 2":"Academy quiz: lesson 2","Analiza najtežih pitanja":"Review of the hardest questions","Escape room u timovima (natjecanje u vremenu)":"Escape room in teams (timed competition)","Igra u parovima: 10 godina mandata":"Game in pairs: a 10-year term",
+"Izlazna kartica: jedna stvar koju sam naučio":"Exit ticket: one thing I learned","Ljestvica i nagrada najbržem timu":"Leaderboard and a prize for the fastest team","Planiranje u grupama (kamion 250 km)":"Group planning (250 km truck)","Podjela u timove po 3 do 4 učenika":"Split into teams of 3 to 4 students",
+"Promjena vozila i nova pokrivenost":"Change the vehicle and compare coverage","Rad u aplikaciji: tijelo, stvari, hrana":"Work in the app: body, things, food","Rasprava: koja je brava bila najteža i zašto":"Discussion: which lock was hardest and why","Razred kao tim: Vodikov izazov":"The class as a team: Hydrogen Challenge",
+"Samostalno: dvije lekcije Akademije":"Individually: two Academy lessons","Usporedba s planom računala i rasprava":"Compare with the computer's plan and discuss","Usporedba strategija parova":"Compare the pairs' strategies","Uvod: domet vozila i punionice":"Intro: vehicle range and stations",
+"Uvod: koliko vodika ima u tebi? (pogađanje)":"Intro: how much hydrogen is in you? (guessing)","Uvod: odakle dolazi struja u našem gradu?":"Intro: where does our city's power come from?","Zajedničko računanje na ploči (n = m / M, N = n · Nₐ)":"Working it out together on the board (n = m / M, N = n · Nₐ)",
+"donositi odluke uz ograničen proračun":"make decisions on a limited budget","izjednačiti jednadžbu elektrolize vode":"balance the equation for the electrolysis of water","izračunati broj atoma pomoću molarne mase i Avogadrove konstante":"calculate the number of atoms using molar mass and Avogadro's constant",
+"izračunati volumen plina pri normalnim uvjetima":"calculate the volume of a gas at standard conditions","natjecati se kao razred u Ligi škola":"compete as a class in the Schools League","objasniti ulogu skladištenja energije":"explain the role of energy storage",
+"objasniti zašto je vodik najzastupljeniji atom u tijelu":"explain why hydrogen is the most common atom in the body","opisati rad gorivne ćelije i mjere sigurnosti":"describe how a fuel cell works and the safety measures","ponoviti gradivo kroz kratke lekcije":"revise material through short lessons",
+"povezati izvore energije s prostorom":"link energy sources to geography","povezati sastav hrane s udjelom vodika":"link food composition to hydrogen content","razlikovati zeleni i sivi vodik":"tell green and grey hydrogen apart","rješavati problem optimizacije uz ograničenja":"solve an optimisation problem with constraints",
+"čitati kartu i prometne pravce Hrvatske":"read a map of Croatia and its transport routes","📦 Licenca za školu":"📦 School licence","Licenca daje pristup za cijeli razred, ljestvicu razreda, nastavnički pregled napretka i radne listiće.":"The licence gives access for the whole class, a class leaderboard, a teacher progress overview and worksheets.",
+"licenca za razred":"per class licence","Pogledaj licence":"See licences","Majice, setovi za škole, nagrade":"T-shirts, school kits, rewards","Akademija i Liga":"Academy and League",
+// ---------- postavke ----------
+"⚙️ Postavke i dijeljenje":"⚙️ Settings and sharing","🌗 Svijetla tema":"🌗 Light theme","Bolje za ispis i jako sunce":"Better for printing and bright sunlight","🔠 Veća slova":"🔠 Larger text","Lakše čitanje":"Easier reading","🧘 Manje animacija":"🧘 Fewer animations","Za osjetljive na pokret":"For people sensitive to motion",
+"📲 Podijeli Vodikov svijet":"📲 Share Hydrogen World","Podijeli poveznicu":"Share link","Učitavam QR…":"Loading QR…","QR kod se pojavi kad je stranica objavljena na internetu.":"The QR code appears once the site is published online.",
+"💾 Spremi napredak u datoteku":"💾 Save progress to a file","Sigurnosna kopija ili prijenos na drugi uređaj":"A backup or a transfer to another device","📂 Učitaj napredak":"📂 Load progress","Iz prije spremljene datoteke":"From a previously saved file","Spremi":"Save","Učitaj":"Load",
+"🔑 Promijeni lozinku":"🔑 Change password","Treba stara lozinka. Ne koristi lozinku koju imaš negdje drugdje.":"You need your old password. Don't use a password you use anywhere else.","stara":"old","nova (6+ znakova)":"new (6+ characters)",
+"Nova lozinka mora imati 6 do 64 znaka.":"The new password must have 6 to 64 characters.","🔑 Lozinka je promijenjena.":"🔑 Password changed.","Stara lozinka nije točna.":"The old password is not correct.",
+"📚 Izvori i brojke za provjeru":"📚 Sources and figures to check","Sve brojke u aplikaciji su zaokružene za učenje. Prije natjecanja provjerite ih u navedenim vrstama izvora i upišite točne izvore.":"All figures in the app are rounded for learning. Check them against the listed kinds of sources.",
+"Udio vodika u masi tijela ≈ 10 %, u broju atoma ≈ 62 %":"Hydrogen share of body mass ≈ 10 %, of atoms ≈ 62 %","Udžbenik biologije/kemije, enciklopedijski izvori o kemijskom sastavu tijela":"Biology/chemistry textbook, encyclopedia sources on the chemical composition of the body",
+"Molarna masa H = 1,008 g/mol; Avogadrova konstanta 6,022 × 10²³":"Molar mass of H = 1.008 g/mol; Avogadro's constant 6.022 × 10²³","Periodni sustav elemenata, IUPAC":"Periodic table of elements, IUPAC",
+"Energija vodika ≈ 33,3 kWh/kg (donja ogrjevna vrijednost)":"Energy of hydrogen ≈ 33.3 kWh/kg (lower heating value)","Tehnički podaci o gorivima, priručnici za energetiku":"Technical fuel data, energy handbooks",
+"Vodikov auto ≈ 1 kg H₂ na 100 km":"Hydrogen car ≈ 1 kg H₂ per 100 km","Tehnički podaci proizvođača vodikovih automobila":"Technical data from hydrogen car makers","Ukapljivanje ≈ −253 °C; spremnici 350–700 bara":"Liquefaction ≈ −253 °C; tanks 350–700 bar",
+"Udžbenik kemije, priručnici o vodikovoj tehnologiji":"Chemistry textbook, hydrogen technology handbooks","Zapaljivost u zraku ≈ 4–75 %":"Flammability in air ≈ 4–75 %","Sigurnosni listovi za vodik":"Hydrogen safety data sheets",
+"Većina današnjeg vodika je iz prirodnog plina":"Most hydrogen today comes from natural gas","Izvješća međunarodnih energetskih agencija o vodiku":"International energy agency reports on hydrogen","Sastav namirnica (voda, ugljikohidrati, masti, proteini)":"Food composition (water, carbohydrates, fats, proteins)",
+"Tablice sastava namirnica":"Food composition tables","Udaljenosti i broj stanovnika gradova":"Distances and city populations","Karte i popis stanovništva (DZS)":"Maps and census (Croatian Bureau of Statistics)",
+"natjecanje iz kreativne industrije":"creative industries competition","Otvori u aplikaciji":"Open in app",
+// ---------- voditelji ----------
+"🛡️ Statistika stranice":"🛡️ Site statistics","Samo za voditelje":"Admins only","↻ Osvježi":"↻ Refresh","⬇ CSV":"⬇ CSV","Učitavam…":"Loading…","Korisnik":"User","Registriran":"Registered",
+"korisnika ukupno":"users in total","novih u 7 dana":"new in 7 days","aktivnih u 7 dana":"active in 7 days","Nove registracije":"New sign-ups","Zadnja aktivnost korisnika":"Users' last activity","zadnjih 14 dana":"last 14 days",
+"Koliko korisnika je prošlo korak":"How many users completed each step","Razine korisnika":"User levels","🎓 Akademija":"🎓 Academy","prosječne zvjezdice (od 3)":"average stars (out of 3)","🤔 Najteža pitanja":"🤔 Hardest questions","najmanji udio točnih":"lowest share correct",
+"🧪 Laboratorij":"🧪 Lab","riješilo":"solved","najbrže":"fastest","🏙️ Zeleni gradovi":"🏙️ Green cities","🔬 Najčešće istraživane stvari":"🔬 Most explored things","🔍 traži korisnika ili tim":"🔍 search for a user or team",
+"🔑 Zaboravljena lozinka":"🔑 Forgotten password","Upiši korisničko ime i dobit ćeš privremenu lozinku. Napredak, XP i tim ostaju. Pošalji je korisniku i reci mu da je odmah promijeni u Postavkama.":"Enter a username and you'll get a temporary password. Progress, XP and team stay. Send it to the user and tell them to change it right away in Settings.",
+"korisničko ime, npr. ana_2b":"username, e.g. ana_2b","Resetiraj lozinku":"Reset password","⏳ Radim…":"⏳ Working…","Upiši korisničko ime.":"Enter a username.","Lozinka kopirana":"Password copied",
+"Stara lozinka više ne vrijedi. Korisnik se prijavi ovom i promijeni je u Postavkama.":"The old password no longer works. The user logs in with this one and changes it in Settings.",
+"Samo za voditelje stranice.":"Site admins only.","Ova stranica je samo za voditelje.":"This page is for admins only.","Još nema registriranih korisnika.":"No registered users yet.",
+};
+
+// rečenice s brojevima i imenima
+const UZORCI = [
+  [/^Bok, (.+)! Kreni s vodikom u sebi 🧍$/, (m, a) => `Hi, ${a}! Start with the hydrogen in you 🧍`],
+  [/^Bok, (.+)!$/, (m, a) => `Hi, ${a}!`],
+  [/^@(.+) · član od (.+)$/, (m, a, b) => `@${a} · member since ${b}`],
+  [/^Napravljen račun @(.+)\. Dobrodošao!$/, (m, a) => `Account @${a} created. Welcome!`],
+  [/^(\d+) XP · još (\d+) XP do razine (.+)$/, (m, a, b, c) => `${a} XP · ${b} XP to level ${tr(c)}`],
+  [/^(\d+) XP · najviša razina!$/, (m, a) => `${a} XP · top level!`],
+  [/^Razina (\d) od (\d)$/, (m, a, b) => `Level ${a} of ${b}`],
+  [/^(\d+)\/(\d+) lekcija · (\d+) ★$/, (m, a, b, c) => `${a}/${b} lessons · ${c} ★`],
+  [/^(.+) · (\d+) kartice · (\d+) pitanja$/, (m, a, b, c) => `${tr(a)} · ${b} cards · ${c} questions`],
+  [/^Korak (\d) · (.+)$/, (m, a, b) => `Step ${a} · ${tr(b)}`],
+  [/^Nagrade: (\d+)\/(\d+) otključano\.$/, (m, a, b) => `Rewards: ${a}/${b} unlocked.`],
+  [/^Najbolji plan: (\d+) %$/, (m, a) => `Best plan: ${a} %`],
+  [/^Istraženo (\d+) stvari u potrazi za vodikom$/, (m, a) => `Explored ${a} things in search of hydrogen`],
+  [/^Riješeno ✅ · najbolje (.+)$/, (m, a) => `Solved ✅ · best ${a}`],
+  [/^Zeleni grad ✅ \((.+), (\d+)\.\)$/, (m, a, b) => `Green city ✅ (${a}, ${b})`],
+  [/^(.+) kg vodika · (\d+) istraženih stvari$/, (m, a, b) => `${a} kg of hydrogen · ${b} things explored`],
+  [/^U meni je (.+) kg vodika \((.+) atoma\)$/, (m, a, b) => `I contain ${a} kg of hydrogen (${b} atoms)`],
+  [/^(.+) atoma$/, (m, a) => `${a} atoms`],
+  [/^(.+) · demo$/, (m, a) => `${tr(a)} · demo`],
+  [/^(.+) → (.+): vozilo ostaje bez vodika između (.+) i (.+)\.$/, (m, a, b, c, d) => `${a} → ${b}: the vehicle runs out of hydrogen between ${c} and ${d}.`],
+  [/^Nova razina: (.+)!$/, (m, a) => `New level: ${tr(a)}!`],
+  [/^Laboratorij riješen \(\+(\d+) XP\)$/, (m, a) => `Lab solved (+${a} XP)`],
+  [/^Laboratorij riješen za (.+) bez savjeta$/, (m, a) => `Lab solved in ${a} with no hints`],
+  [/^Laboratorij riješen za (.+)$/, (m, a) => `Lab solved in ${a}`],
+  [/^Otkrio si vodik u sebi \(\+(\d+) XP\)$/, (m, a) => `You discovered the hydrogen in you (+${a} XP)`],
+  [/^Pregled tima (.+)$/, (m, a) => `Team overview: ${a}`],
+  [/^👩‍🏫 Pregled tima (.+)$/, (m, a) => `👩‍🏫 Team overview: ${a}`],
+  [/^igralo rundu (\d+)$/, (m, a) => `played round ${a}`],
+  [/^prije (\d+) d$/, (m, a) => `${a} d ago`],
+  [/^Runda (\d+) · otvorena još (\d+) dana$/, (m, a, b) => `Round ${a} · open for ${b} more days`],
+  [/^Runda (\d+) · otvorena još danas$/, (m, a) => `Round ${a} · open until today`],
+  [/^Runda (\d+) · iskoristio si sve pokušaje$/, (m, a) => `Round ${a} · you've used all your attempts`],
+  [/^Privremena lozinka za$/, () => `Temporary password for`],
+  [/^(\d+)\. mjesto$/, (m, a) => `place ${a}`],
+  [/^(.+) · (\d+)\. mjesto$/, (m, a, b) => `${a} · place ${b}`],
+  [/^Godina (\d+) od 10$/, (m, a) => `Year ${a} of 10`],
+  [/^Godina (\d+)$/, (m, a) => `Year ${a}`],
+];
+
+
+// ---------- dodatno: igre, poruke, kvizovi ----------
+Object.assign(EN, {
+"Čaj":"Tea","više":"more","manje":"less","otključano":"unlocked","Sve lekcije":"All lessons","Pokušaj ponovno":"Try again","Kreni na kviz ✍️":"Start the quiz ✍️","Sljedeće pitanje →":"Next question →",
+"Rezultat":"Result","Sljedeća lekcija →":"Next lesson →","Odlično! Ponovi lekciju za još zvjezdica.":"Great! Repeat the lesson for more stars.","Pročitaj kartice još jednom i pokušaj ponovno.":"Read the cards once more and try again.",
+"Savršeno! Ti si pravi stručnjak za vodik.":"Perfect! You're a real hydrogen expert.","🔁 Ponovi lekciju":"🔁 Repeat lesson","← Natrag":"← Back","✅ Točno!":"✅ Correct!","❌ Nije točno.":"❌ Not quite.",
+"Prebaci na hrvatski":"Switch to Croatian","Materijali":"Materials","🗑️ Obriši tim":"🗑️ Delete team","Za tim napravljen greškom. Upiši kod tima (npr. H2K4M9). Članovi ostaju bez tima i mogu se pridružiti drugome.":"For a team created by mistake. Enter the team code (e.g. H2K4M9). Members are left without a team and can join another one.","kod tima":"team code","Obriši tim":"Delete team","Da, obriši":"Yes, delete","⏳ Brišem…":"⏳ Deleting…","Upiši kod tima.":"Enter a team code.","🔑 Rješenja za nastavnika":"🔑 Answer key for teachers","📽️ Prezentacija":"📽️ Presentation",
+"Gotovi planovi sati za kemiju, fiziku, geografiju i građanski odgoj. Svaki dio aplikacije je jedan školski sat od 45 minuta, uz radni listić za ispis (s rješenjima za nastavnika) i prezentaciju za projektor.":"Ready-made lesson plans for chemistry, physics, geography and civics. Each part of the app is one 45-minute lesson, with a printable worksheet (with an answer key for teachers) and a presentation for the projector. Classroom materials are in Croatian.","Upute":"Guide","📖 Upute za korištenje":"📖 User guide","📖 Kako koristiti Vodikov svijet?":"📖 How to use Hydrogen World?",
+"Sve o tome što se gdje nalazi i kako se igra. Dodirni poglavlje da ga otvoriš ili potraži riječ.":"Everything about where things are and how to play. Tap a chapter to open it or search for a word.",
+"🔍 traži u uputama, npr. lozinka, tim, XP":"🔍 search the guide, e.g. password, team, XP","Switch to English":"Switch to English",
+"Na vratima su tri brojčanika:":"The door has three dials:","„Protoni u vodiku. Neutroni u deuteriju. Neutroni u triciju.“":"\"Protons in hydrogen. Neutrons in deuterium. Neutrons in tritium.\"",
+"¹H protoni":"¹H protons","²H neutroni":"²H neutrons","³H neutroni":"³H neutrons",
+"Vodik uvijek ima 1 proton. Deuterij je ²H, a tricij ³H. Maseni broj = protoni + neutroni.":"Hydrogen always has 1 proton. Deuterium is ²H and tritium ³H. Mass number = protons + neutrons.",
+"Elektrolizer se pali tek kad je jednadžba izjednačena. Broj atoma lijevo i desno mora biti jednak.":"The electrolyser only starts once the equation is balanced. The number of atoms on the left and right must be equal.",
+"Elektrolizer je proizveo":"The electrolyser has produced",". Spremnik se otvara ako upišeš koliko je to":". The tank opens if you enter how many","litara":"litres","plina pri normalnim uvjetima.":"of gas that is at standard conditions.",
+"volumen u litrama":"volume in litres","Na zaslonu su tri tvornice vodika. Svakoj dodijeli pravu „boju“ vodika koji proizvodi.":"The screen shows three hydrogen factories. Give each one the right \"colour\" of the hydrogen it makes.",
+"☀️🌬️ Elektroliza vode uz struju iz sunca i vjetra":"☀️🌬️ Electrolysis of water with power from sun and wind","🔥 Prirodni plin, a CO₂ odlazi u zrak":"🔥 Natural gas, with the CO₂ going into the air","🔥🧲 Prirodni plin uz hvatanje i spremanje CO₂":"🔥🧲 Natural gas with CO₂ capture and storage",
+"🟢 zeleni":"🟢 green","⚪ sivi":"⚪ grey","🔵 plavi":"🔵 blue",
+"Vodik je lakši od zraka i diže se prema stropu.":"Hydrogen is lighter than air and rises towards the ceiling.","Vodik nema ni boju ni miris.":"Hydrogen has neither colour nor smell.",
+"Plamen vodika na danjem svjetlu jedva se vidi.":"A hydrogen flame is barely visible in daylight.","Vodik je otrovan kad ga udišemo.":"Hydrogen is poisonous when we breathe it in.","Smjesa vodika i zraka može eksplodirati.":"A mixture of hydrogen and air can explode.",
+"Upalio se alarm! Samo":"The alarm has gone off! Only","jedna":"one","tvrdnja je netočna. Pronađi je da ugasiš alarm.":"statement is false. Find it to switch off the alarm.",
+"Da bi stao u mali spremnik broda, vodik se mora ukapljiti. Na koju temperaturu ga treba ohladiti?":"To fit in a ship's small tank, hydrogen has to be liquefied. What temperature must it be cooled to?",
+"Posljednji korak! Dodirni korake gorivne ćelije":"Last step! Tap the fuel cell steps","pravim redoslijedom":"in the right order","i vrati struju u laboratorij.":"and bring power back to the lab.",
+"✔ Točno! Brava se otvara…":"✔ Correct! The lock opens…","✖ Netočno. Pokušaj ponovno.":"✖ Wrong. Try again.","🏅 Značka „Laborant“ otključana u trgovini!":"🏅 \"Lab Tech\" badge unlocked in the shop!",
+"Zadaci su svaki put malo drukčiji. Možeš li brže?":"The tasks are a little different each time. Can you do it faster?",
+"🏭 Termoelektrana na ugljen je zatvorena.":"🏭 The coal power plant is closed.","🏅 Medalja „Zeleni gradonačelnik“ otključana u trgovini!":"🏅 \"Green Mayor\" medal unlocked in the shop!",
+"Zeleni grad!":"Green city!","Igraj ponovno":"Play again","Kraj mandata.":"End of term.",
+"Imaš samo 5 punionica. Makni jednu.":"You only have 5 stations. Remove one.","🤖 Ovo je jedan dobar plan. Probaj složiti svoj!":"🤖 Here's one good plan. Try to make your own!","🏅 Značka „Planer ruta“ otključana!":"🏅 \"Route Planner\" badge unlocked!",
+"Nijedna punionica nije uz izvor zelene energije.":"No station is next to a green energy source.",
+"Ne znam to. Odaberi materijal i masu ispod.":"I don't know that one. Choose a material and a mass below.","nema vodika":"no hydrogen","Ovdje nema ni jednog atoma vodika. Ne sadrži sve vodik!":"There isn't a single hydrogen atom here. Not everything contains hydrogen!",
+"Upiši ime tima (barem 3 znaka).":"Enter a team name (at least 3 characters).","Online:":"Online:","timovi i rezultati spremaju se u GitHub repozitorij i vide ih svi.":"teams and results are saved to the GitHub repository and everyone can see them.",
+"Još nema rezultata.":"No results yet.","✔ Točno!":"✔ Correct!","Ne postoji tim s tim kodom.":"There's no team with that code.","Napustiti tim?":"Leave the team?",
+"· vidiš ga samo ti kao osnivač tima · bez osobnih podataka":"· only you can see this as the team's creator · no personal data",
+"Ovdje se bilježi sve što napraviš.":"Everything you do is recorded here.","Ukloni":"Remove","Probna narudžba":"Demo order",
+"Poslužitelj ne odgovara.":"The server isn't responding.","Ovaj preglednik ne podržava sigurno spremanje lozinke. Otvori stranicu preko https:// adrese.":"This browser doesn't support secure password storage. Open the page via an https:// address.",
+"Lozinka smije imati najviše 64 znaka.":"The password can have at most 64 characters.","☁️ Učitan noviji napredak s poslužitelja.":"☁️ Newer progress loaded from the server.",
+"📴 Bez veze s poslužiteljem: radiš na kopiji s ovog uređaja.":"📴 No connection to the server: you're working on this device's copy.","📂 Napredak učitan!":"📂 Progress loaded!","Učitan napredak iz datoteke":"Progress loaded from a file",
+"Stranica je trenutno otvorena kao datoteka.":"The page is currently open as a file.","Datoteka nije ispravna.":"The file is not valid.","🔗 Poveznica kopirana!":"🔗 Link copied!",
+"🧪 Laboratorij riješen":"🧪 Lab solved","srednje vrijeme":"median time","Prvo učitaj statistiku.":"Load the statistics first.","Reset lozinke radi samo kad je stranica spojena s poslužiteljem.":"Password reset only works when the site is connected to the server.",
+"Privremena lozinka za":"Temporary password for","Preglednik je blokirao novi prozor. Dopusti skočne prozore.":"The browser blocked the new window. Allow pop-ups.",
+"Grad":"City","Laboratorij":"Lab","Akademija ":"Academy ","Riješeno ✅":"Solved ✅",
+});
+UZORCI.push(
+  [/^✅ Točno! (.+)$/, (m, a) => `✅ Correct! ${tr(a)}`], [/^❌ Nije točno\. (.+)$/, (m, a) => `❌ Not quite. ${tr(a)}`],
+  [/^Pitanje (\d+) od (\d+)$/, (m, a, b) => `Question ${a} of ${b}`], [/^(\d+) \/ (\d+) točno$/, (m, a, b) => `${a} / ${b} correct`],
+  [/^Lekcija „(.+)“: (.+)$/, (m, a, b) => `Lesson "${tr(a)}": ${b}`], [/^Tri zvjezdice: (.+) \(\+(\d+) XP\)$/, (m, a, b) => `Three stars: ${tr(a)} (+${b} XP)`],
+  [/^Tim napravljen! Pošalji kod (\w+) ostalima\.$/, (m, a) => `Team created! Send the code ${a} to the others.`], [/^Pridružio se timu „(.+)“$/, (m, a) => `Joined the team "${a}"`],
+  [/^Napravljen tim „(.+)“ \(kod (\w+)\)$/, (m, a, b) => `Created the team "${a}" (code ${b})`],
+  [/^Događaj (\d+)\.:$/, (m, a) => `Event ${a}:`], [/^🏛️ Postao si gradonačelnik grada$/, () => `🏛️ You became mayor of`],
+  [/^Grad još ispušta (.+) kt CO₂\. Prvo izgradi dovoljno sunca i vjetra, a tek onda elektrolizere i potrošače\.$/, (m, a) => `The city still emits ${a} kt of CO₂. First build enough sun and wind, and only then electrolysers and users.`],
+  [/^CO₂ je pao na (.+) kt, zrak je (.+) %\.$/, (m, a, b) => `CO₂ has fallen to ${a} kt, air quality is ${b} %.`],
+  [/^je postao zeleni grad na vodik(.*)$/, (m, a) => `became a green hydrogen city${a}`],
+  [/^Kao H₂, vodikov auto prešao bi oko (.+) km\.$/, (m, a) => `As H₂, a hydrogen car would travel about ${a} km.`], [/^Kao H₂, vodikov auto prešao bi oko (.+) metara\.$/, (m, a) => `As H₂, a hydrogen car would travel about ${a} metres.`],
+  [/^(.+) · (.+) · (.+) % mase je vodik$/, (m, a, b, c) => `${tr(a)} · ${b} · ${c} % of the mass is hydrogen`], [/^(.+) % mase je vodik$/, (m, a) => `${a} % of the mass is hydrogen`],
+  [/^(.+) atoma vodika$/, (m, a) => `${a} hydrogen atoms`],
+  [/^(.+) → (.+): vozilo stiže\.$/, (m, a, b) => `${a} → ${b}: the vehicle makes it.`],
+  [/^putovanja između gradova \(prema broju stanovnika\)\. (\d+) punionica je uz sunce ili vjetar, pa se tamo može proizvoditi zeleni vodik\. (.*)$/, (m, a, b) => `of trips between cities (weighted by population). ${a} stations are next to sun or wind, so green hydrogen can be made there. Heavy trucks and buses are where hydrogen makes the most sense, because batteries would be too heavy. Your best saved plan:`],
+  [/^Tvoj najbolji plan je (\d+) ?%\. Ovaj ima (\d+) ?%\.?$/, (m, a, b) => `Your best plan is ${a} %. This one has ${b} %.`],
+  [/^Novi najbolji plan punionica: (.+)$/, (m, a) => `New best station plan: ${a}`],
+  [/^· riješeno (\d+)×\.$/, (m, a) => `· solved ${a}×.`], [/^🏆 Tvoje najbolje vrijeme:$/, () => `🏆 Your best time:`],
+  [/^(\d+) bodova$/, (m, a) => `${a} points`], [/^(\d+) od (\d+) točno\. Rezultat je dodan timu\.$/, (m, a, b) => `${a} of ${b} correct. The score has been added to your team.`],
+  [/^✖ Točno je: (.+)$/, (m, a) => `✖ The answer was: ${tr(a)}`], [/^Runda (\d+)$/, (m, a) => `Round ${a}`],
+  [/^Nema veze s poslužiteljem: (.+)$/, (m, a) => `No connection to the server: ${tr(a)}`], [/^Pregled nije dostupan: (.+)$/, (m, a) => `Overview unavailable: ${tr(a)}`],
+  [/^✔ (.+) dodano u košaricu$/, (m, a) => `✔ ${tr(a)} added to cart`],
+  [/^(.+), ovako bi izgledala potvrda prave narudžbe\. Ovo je probna trgovina, pa se ništa ne naplaćuje, ne izrađuje i ne šalje\.$/, (m, a) => `${a}, this is what a real order confirmation would look like. This is a demo shop, so nothing is charged, made or shipped.`],
+  [/^Probna narudžba (.+): (.+)$/, (m, a, b) => `Demo order ${a}: ${b}`],
+  [/^👥 Korisnici \((\d+)\)$/, (m, a) => `👥 Users (${a})`], [/^(.+) · osvježeno (.+)$/, (m, a, b) => `${tr(a)} · refreshed ${b}`],
+  [/^📱 Podaci s ovog uređaja$/, () => `📱 Data from this device`], [/^☁️ Podaci s poslužitelja$/, () => `☁️ Data from the server`],
+  [/^timova · (\d+) škola$/, (m, a) => `teams · ${a} schools`], [/^Korisnik @(.+) ne postoji\.$/, (m, a) => `User @${a} doesn't exist.`],
+  [/^Vodik (.+) t \(zeleni (.+)\), CO₂ (.+) kt, prihod (.+) mil\. €\.$/, (m, a, b, c, d) => `Hydrogen ${a} t (green ${b}), CO₂ ${c} kt, income ${d} million €.`],
+  [/^(.+) ×(\d+)$/, (m, a, b) => { const r = trBez(a); return r === a ? undefined : `${r} ×${b}`; }],
+  [/^(.+) mil\. €$/, (m, a) => `${a} million €`], [/^Godina (\d+)\.$/, (m, a) => `Year ${a}`],
+  [/^(.+):$/, (m, a) => { const r = trBez(a); return r === a ? undefined : `${r}:`; }],
+  [/^zeleni (.+) · sivi (.+)$/, (m, a, b) => `green ${a} · grey ${b}`],
+  [/^Radni listić: (\d+) zadataka, (\d+) bodova\. Prezentacija: (\d+) slajdova za projektor\.$/, (m, a, b, c) => `Worksheet: ${a} tasks, ${b} points. Presentation: ${c} slides for the projector.`],
+  [/^Radni listić: (.+)$/, (m, a) => `Worksheet: ${tr(a)}`],
+);
+// rezerva: emoji ili znak na početku, ostatak je poznat ("📘 ...", "📰 ...", "🧍 Vodik u tebi")
+UZORCI.push([/^([^\p{L}\p{N}\s]+) (.+)$/u, (m, a, b) => EN[b] !== undefined ? `${a} ${EN[b]}` : undefined]);
+UZORCI.push([/^([^\p{L}\p{N}„"(]+?)\s?(\p{L}.*)$/u, (m, a, b) => { const r = trBez(b); return r === b ? undefined : `${a}${a.endsWith(" ") ? "" : " "}${r}`; }]);
+function trBez(t) { const k = t.trim(); if (EN[k] !== undefined) return EN[k]; for (const [re, f] of UZORCI.slice(0, -2)) { const m = k.match(re); if (m) { const r = f(...m); if (r !== undefined) return r; } } return t; }
+
+let JEZIK = "hr";
+try { JEZIK = localStorage.getItem("vs-jezik") === "en" ? "en" : "hr"; } catch (e) {}
+const IZVORNO = new WeakMap(), IZV_ATR = new WeakMap();
+function tr(t) {
+  if (JEZIK !== "en" || !t) return t;
+  const k = t.trim(); if (!k) return t;
+  let r = EN[k];
+  if (r === undefined) for (const [re, f] of UZORCI) { const m = k.match(re); if (m) { r = f(...m); if (r !== undefined) break; } }
+  if (r === undefined) return t;
+  return t.replace(k, r);
+}
+function prevediCvor(n) {
+  if (n.nodeType === 3) {
+    const p = n.parentElement; if (!p || p.closest("script,style,[data-ne-prevodi]")) return;
+    const izv = IZVORNO.has(n) ? IZVORNO.get(n) : n.nodeValue;
+    const novo = JEZIK === "en" ? tr(izv) : izv;
+    if (novo !== n.nodeValue) { IZVORNO.set(n, izv); n.nodeValue = novo; }
+    return;
+  }
+  if (n.nodeType !== 1 || n.closest("script,style,[data-ne-prevodi]")) return;
+  ["placeholder", "title", "aria-label"].forEach(a => {
+    if (!n.hasAttribute(a)) return;
+    let mapa = IZV_ATR.get(n); if (!mapa) { mapa = {}; IZV_ATR.set(n, mapa); }
+    if (!(a in mapa)) mapa[a] = n.getAttribute(a);
+    const novo = JEZIK === "en" ? tr(mapa[a]) : mapa[a];
+    if (n.getAttribute(a) !== novo) n.setAttribute(a, novo);
+  });
+  const w = document.createTreeWalker(n, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+  let c; while ((c = w.nextNode())) { if (c.nodeType === 3) prevediCvor(c); else ["placeholder", "title", "aria-label"].forEach(a => { if (c.hasAttribute(a)) prevediAtr(c, a); }); }
+}
+function prevediAtr(el, a) {
+  let mapa = IZV_ATR.get(el); if (!mapa) { mapa = {}; IZV_ATR.set(el, mapa); }
+  if (!(a in mapa)) mapa[a] = el.getAttribute(a);
+  const novo = JEZIK === "en" ? tr(mapa[a]) : mapa[a];
+  if (el.getAttribute(a) !== novo) el.setAttribute(a, novo);
+}
+let mijenjam = false;
+const promatrac = new MutationObserver(lista => {
+  if (mijenjam) return; mijenjam = true;
+  try {
+    for (const m of lista) {
+      if (m.type === "characterData") { IZVORNO.delete(m.target); prevediCvor(m.target); }
+      else if (m.type === "attributes") { const mapa = IZV_ATR.get(m.target); if (mapa) delete mapa[m.attributeName]; prevediAtr(m.target, m.attributeName); }
+      else m.addedNodes.forEach(prevediCvor);
+    }
+  } finally { promatrac.takeRecords(); mijenjam = false; }
+});
+function postaviJezik(j) {
+  JEZIK = j === "en" ? "en" : "hr";
+  try { localStorage.setItem("vs-jezik", JEZIK); } catch (e) {}
+  document.documentElement.lang = JEZIK;
+  document.title = JEZIK === "en" ? "Hydrogen World" : "Vodikov svijet";
+  mijenjam = true; try { prevediCvor(document.body); } finally { promatrac.takeRecords(); mijenjam = false; }
+  if (typeof crtajUpute === "function") crtajUpute();
+  document.querySelectorAll(".jezikGumb").forEach(b => { b.textContent = JEZIK === "en" ? "🌐 HR" : "🌐 EN"; b.setAttribute("aria-label", JEZIK === "en" ? "Prebaci na hrvatski" : "Switch to English"); });
+}
+function zamijeniJezik() { postaviJezik(JEZIK === "en" ? "hr" : "en"); }
+document.addEventListener("DOMContentLoaded", () => {
+  promatrac.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["placeholder", "title", "aria-label"] });
+  postaviJezik(JEZIK);
+});
+
+</script>
 <script>
 // Vodikov svijet · konfiguracija
 // Ovo je jedina datoteka koju treba urediti nakon objave.
@@ -1370,6 +1919,8 @@ async function crtajLigu(){
     const lista = [...(await Mreza.sviTimovi(od,RUNDA)).map(t=>({...t,bodovi:zb[t.kod]||0})), ...(online()?[]:demoProtivnici(od,RUNDA))].sort((a,b)=>b.bodovi-a.bodovi);
     $("ljestvica").innerHTML = lista.length ? lista.map((t,i)=>`<div class="lj ${t.kod===S.tim?'moj':''}"><span class="mj">${["🥇","🥈","🥉"][i]||i+1}</span><span><b>${esc(t.ime)}</b><small>${esc(t.skola||"")}${t.demo?" · demo":""}</small></span><b>${t.bodovi}</b></div>`).join("") : `<p class="small muted">Još nema rezultata.</p>`;
     if(tim){
+      const osnivac = tim.osnivac || ((tim.clanovi||[])[0]||{}).korisnik;
+      $("pregledGumb").style.display = online() && (osnivac===BAZA.trenutni || BAZA.admin) ? "block" : "none";
       $("timIme").textContent=tim.ime; $("timSkola").textContent=tim.skola||""; $("timKod").textContent=tim.kod;
       $("timClanovi").innerHTML=(tim.clanovi||[]).map(c=>`<div class="clan"><span class="a">${esc((c.ime||"?")[0].toUpperCase())}</span>${esc(c.ime)} <small>@${esc(c.korisnik)}${c.korisnik===BAZA.trenutni?" (ti)":""}</small></div>`).join("");
       const moji = rez.filter(r=>r.korisnik===BAZA.trenutni&&r.runda===RUNDA&&r.kod===S.tim);
@@ -1410,6 +1961,31 @@ async function izazovKraj(){
   crtajLigu();
 }
 
+// ---------- nastavnički pregled tima (vidi ga osnivač tima i voditelji) ----------
+const RAZ_IME = xp => [[900,"⭐ Zvijezda"],[500,"🔋 Gorivna ćelija"],[250,"⚗️ Elektrolizer"],[100,"💧 Molekula"],[0,"⚛️ Atom"]].find(([o])=>xp>=o)[1];
+async function pregledTima(){
+  const el=$("pregled"); el.style.display="block"; el.innerHTML=`<p class="muted">⏳ Učitavam pregled tima…</p>`;
+  el.scrollIntoView({behavior:"smooth", block:"start"});
+  try{
+    const d = await zahtjev("/liga/pregled?kod="+encodeURIComponent(S.tim));
+    const c = d.clanovi.slice().sort((a,b)=>b.xp-a.xp);
+    const kor = x => ["ti","lab","grad"].filter(k=>x.koraci[k]).length + ((x.koraci.ruta||0)>=90?1:0);
+    const n = c.length, prosXP = n?Math.round(c.reduce((a,x)=>a+x.xp,0)/n):0, igrali = c.filter(x=>x.bodoviRunda>0).length;
+    const dana = t => { if(!t) return "–"; const d=Math.floor((Date.now()-new Date(t))/864e5); return d<=0?"danas":d===1?"jučer":`prije ${d} d`; };
+    el.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b class="pf" style="font-size:20px">👩‍🏫 Pregled tima ${esc(d.ime)}</b><button class="ghost" style="width:auto;margin:0;padding:6px 12px" onclick="$('pregled').style.display='none'">Zatvori</button></div>
+      <p class="small muted">${esc(d.skola||"")} · vidiš ga samo ti kao osnivač tima · bez osobnih podataka</p>
+      <div class="ad-kpi" style="margin-top:10px">
+        <div class="card"><b>${n}</b><small>članova</small></div>
+        <div class="card"><b>${prosXP}</b><small>prosječni XP</small></div>
+        <div class="card"><b>${igrali}/${n}</b><small>igralo rundu ${d.runda}</small></div>
+        <div class="card"><b>${c.filter(x=>kor(x)===4).length}</b><small>prošlo sva 4 koraka</small></div></div>
+      <div class="ad-tab" style="margin-top:10px"><table><thead><tr><th>Učenik</th><th>Razina</th><th>XP</th><th>Koraci</th><th>Akademija ★</th><th>Liga: ova runda</th><th>Liga: 8 tjedana</th><th>Zadnje aktivan</th></tr></thead><tbody>
+      ${c.map(x=>`<tr><td>@${esc(x.korisnik)}${x.korisnik===d.osnivac?" 👩‍🏫":""}</td><td>${RAZ_IME(x.xp)}</td><td>${x.xp}</td><td>${["ti","lab","grad"].map(k=>x.koraci[k]?"✅":"▫️").join("")}${(x.koraci.ruta||0)>=90?"✅":"▫️"}</td><td>${x.zvjezdice}/18</td><td>${x.bodoviRunda||"–"}</td><td>${x.bodoviUkupno||"–"}</td><td>${dana(x.zadnje)}</td></tr>`).join("")}
+      </tbody></table></div>
+      <p class="small muted" style="margin-top:8px">Koraci: vodik u tebi · laboratorij · H2 Grad · H2 Ruta. Učenici koji još nisu igrali imaju crtice.</p>`;
+  }catch(e){ el.innerHTML = `<p style="color:var(--bad)">Pregled nije dostupan: ${esc(e.message)}</p>`; }
+}
+
 </script>
 <script>
 // Vodikov svijet · trgovina
@@ -1439,46 +2015,273 @@ const ARTIKLI = [
 </script>
 <script>
 // Vodikov svijet · Za škole
-// Planovi sati (45 min) i radni listići za ispis. Prilagoditi kurikulumu u dogovoru s nastavnikom.
+// Planovi sati (45 min), radni listići za ispis (s rješenjima za nastavnika) i prezentacije za projektor.
+// Prilagoditi kurikulumu u dogovoru s nastavnikom.
+//
+// Vrste zadataka u radnom listiću (z):
+//  izbor  {p:pitanje, o:[a,b,c,d], t:indeks točnog}
+//  tn     {s:[[tvrdnja, true/false], ...]}            točno / netočno
+//  dopuni {p:"tekst s ___", r:"rješenje"}
+//  racun  {p:pitanje, r:"rješenje s postupkom", red:broj praznih redaka}
+//  spoji  {l:[lijevo...], d:[desno...], r:"1-b, 2-a..."}  (desni stupac se ispisuje redom kako je zadan)
+//  kratko {p:pitanje, r:"očekivani odgovor", red:broj redaka}
+//  tablica{p:uputa, zag:[stupci], red:[[prvi stupac], ...], r:"rješenje"}
 
 const PLANOVI = [
   {ic:"🧍", n:"Vodik u tebi", tab:"ti", predmeti:["Kemija","Biologija"], razred:"1. razred SŠ / 8. razred OŠ",
    ishodi:["izračunati broj atoma pomoću molarne mase i Avogadrove konstante","objasniti zašto je vodik najzastupljeniji atom u tijelu","povezati sastav hrane s udjelom vodika"],
    tijek:[["Uvod: koliko vodika ima u tebi? (pogađanje)",5],["Rad u aplikaciji: tijelo, stvari, hrana",20],["Zajedničko računanje na ploči (n = m / M, N = n · Nₐ)",12],["Kviz iz Akademije: lekcija 2",8]],
-   listic:["Koliko kilograma vodika ima u tijelu osobe od 50 kg?","Izračunaj broj atoma vodika u 1 g vodika.","Zašto je u tijelu 62 % atoma vodik, a samo 10 % mase?","Navedi tri namirnice s puno vodika i objasni zašto."]},
+   listic:[
+    {d:"A. Zaokruži točan odgovor", z:[
+      {v:"izbor", b:1, p:"Koliko protona ima atom vodika?", o:["0","1","2","4"], t:1},
+      {v:"izbor", b:1, p:"Koliki je otprilike udio vodika u masi ljudskog tijela?", o:["1 %","10 %","62 %","90 %"], t:1},
+      {v:"izbor", b:1, p:"Koliki je otprilike udio vodika u broju atoma ljudskog tijela?", o:["10 %","25 %","62 %","95 %"], t:2},
+      {v:"izbor", b:1, p:"Koja tvar ima najveći maseni udio vodika?", o:["voda (H₂O)","šećer (C₁₂H₂₂O₁₁)","metan (CH₄)","kuhinjska sol (NaCl)"], t:2} ]},
+    {d:"B. Točno ili netočno? Zaokruži T ili N.", z:[
+      {v:"tn", b:2, s:[["Kuhinjska sol (NaCl) sadrži vodik.",false],["Molekula vode ima dva atoma vodika.",true],["Vodik je najlakši element.",true],["U tijelu ima više atoma kisika nego atoma vodika.",false]]} ]},
+    {d:"C. Dopuni", z:[
+      {v:"dopuni", b:3, p:"Molarna masa atoma vodika iznosi ______ g/mol, a molekule H₂ ______ g/mol. Avogadrova konstanta iznosi ______ mol⁻¹.", r:"1,008 g/mol; 2,016 g/mol; 6,022 × 10²³ mol⁻¹"} ]},
+    {d:"D. Izračunaj (napiši postupak)", z:[
+      {v:"racun", b:2, p:"Osoba ima masu 60 kg. Koliko kilograma vodika ima u tijelu ako je maseni udio vodika 10 %?", r:"m(H) = 0,10 · 60 kg = 6 kg", red:3},
+      {v:"racun", b:3, p:"Koliko je to molova atoma vodika i koliko atoma? (M(H) = 1,008 g/mol, Nₐ = 6,022 × 10²³ mol⁻¹)", r:"n = 6000 g / 1,008 g/mol ≈ 5952 mol; N = n · Nₐ ≈ 5952 · 6,022 × 10²³ ≈ 3,6 × 10²⁷ atoma", red:4},
+      {v:"racun", b:2, p:"Izračunaj maseni udio vodika u vodi. (M(H₂O) = 18,015 g/mol)", r:"w(H) = 2 · 1,008 / 18,015 = 0,112 = 11,2 %", red:3},
+      {v:"racun", b:2, p:"Koliko grama vodika ima u boci od 0,5 L vode? (gustoća vode 1 g/mL)", r:"m(vode) = 500 g; m(H) = 0,112 · 500 g ≈ 56 g", red:3} ]},
+    {d:"E. Spoji namirnicu s glavnim izvorom vodika u njoj", z:[
+      {v:"spoji", b:2, l:["lubenica","maslinovo ulje","kruh","pileća prsa"], d:["a) proteini","b) masti","c) voda","d) ugljikohidrati (škrob)"], r:"lubenica – c, maslinovo ulje – b, kruh – d, pileća prsa – a"} ]},
+    {d:"F. Razmisli i odgovori", z:[
+      {v:"kratko", b:2, p:"Zašto je u tijelu 62 % atoma vodik, a samo 10 % mase?", r:"Atom vodika je najlakši (oko 16 puta lakši od atoma kisika), pa mnogo atoma vodika ima malu ukupnu masu.", red:3},
+      {v:"kratko", b:2, p:"Navedi tri namirnice s puno vodika i objasni zašto.", r:"Npr. lubenica i krastavac (puno vode), ulje i maslac (masti s puno C–H veza), šećer (ugljikohidrati).", red:3} ]} ]},
+
   {ic:"🧪", n:"Laboratorij: escape room", tab:"lab", predmeti:["Kemija","Fizika"], razred:"1. i 2. razred SŠ",
    ishodi:["izjednačiti jednadžbu elektrolize vode","izračunati volumen plina pri normalnim uvjetima","opisati rad gorivne ćelije i mjere sigurnosti"],
    tijek:[["Podjela u timove po 3 do 4 učenika",3],["Escape room u timovima (natjecanje u vremenu)",25],["Rasprava: koja je brava bila najteža i zašto",10],["Ljestvica i nagrada najbržem timu",7]],
-   listic:["Izjednači: __ H₂O → __ H₂ + __ O₂","Koliki volumen zauzima 6 g vodika pri normalnim uvjetima?","Poveži boju vodika s načinom proizvodnje: zeleni, sivi, plavi.","Opiši redom pet koraka rada gorivne ćelije."]},
+   listic:[
+    {d:"A. Zaokruži točan odgovor", z:[
+      {v:"izbor", b:1, p:"Koji izotop vodika ima jedan neutron?", o:["protij","deuterij","tricij","helij"], t:1},
+      {v:"izbor", b:1, p:"Na kojoj elektrodi pri elektrolizi vode nastaje vodik?", o:["na anodi (+)","na katodi (−)","na obje jednako","ne nastaje plin"], t:1},
+      {v:"izbor", b:1, p:"U kojem je rasponu volumnog udjela u zraku vodik zapaljiv?", o:["1–2 %","4–75 %","80–100 %","samo kao čisti vodik"], t:1},
+      {v:"izbor", b:1, p:"Zašto je vodikov plamen posebno opasan?", o:["jako dimi","na danjem svjetlu jedva se vidi","jako smrdi","uvijek je hladan"], t:1} ]},
+    {d:"B. Točno ili netočno? Zaokruži T ili N.", z:[
+      {v:"tn", b:2, s:[["Vodik je otrovan kad ga udišemo.",false],["Pri elektrolizi vode nastaje dvostruko veći volumen vodika nego kisika.",true],["Vodik se ukapljuje na oko −253 °C.",true],["Gorivna ćelija od vodika i kisika daje struju, toplinu i vodu.",true]]} ]},
+    {d:"C. Izjednači jednadžbe", z:[
+      {v:"dopuni", b:1, p:"___ H₂O → ___ H₂ + ___ O₂", r:"2 H₂O → 2 H₂ + 1 O₂"},
+      {v:"dopuni", b:1, p:"___ H₂ + ___ O₂ → ___ H₂O", r:"2 H₂ + 1 O₂ → 2 H₂O"},
+      {v:"dopuni", b:1, p:"___ CH₄ + ___ H₂O → ___ CO + ___ H₂   (dobivanje sivog vodika iz prirodnog plina)", r:"1 CH₄ + 1 H₂O → 1 CO + 3 H₂"} ]},
+    {d:"D. Izračunaj (napiši postupak; Vm = 22,4 L/mol pri normalnim uvjetima)", z:[
+      {v:"racun", b:2, p:"Koliki volumen zauzima 6 g vodika (H₂) pri normalnim uvjetima?", r:"n = 6 g / 2 g/mol = 3 mol; V = 3 mol · 22,4 L/mol = 67,2 L", red:3},
+      {v:"racun", b:2, p:"Koliko grama vodika ima u 44,8 L H₂ pri normalnim uvjetima?", r:"n = 44,8 L / 22,4 L/mol = 2 mol; m = 2 mol · 2 g/mol = 4 g", red:3},
+      {v:"racun", b:3, p:"Elektrolizom se potpuno rastavi 36 g vode. Koliko grama vodika i koliko grama kisika nastane?", r:"n(H₂O) = 36 g / 18 g/mol = 2 mol; 2H₂O → 2H₂ + O₂: n(H₂) = 2 mol → 4 g, n(O₂) = 1 mol → 32 g (zbroj 36 g)", red:4},
+      {v:"racun", b:1, p:"Spremnik vodikovog auta drži 5,6 kg vodika, a auto troši oko 1 kg na 100 km. Koliki je domet?", r:"5,6 kg · 100 km/kg = 560 km", red:2} ]},
+    {d:"E. Spoji boju vodika s načinom proizvodnje", z:[
+      {v:"spoji", b:2, l:["zeleni vodik","sivi vodik","plavi vodik","ružičasti vodik"], d:["a) iz prirodnog plina, CO₂ se hvata i sprema","b) elektroliza uz struju iz nuklearne elektrane","c) elektroliza uz struju iz sunca i vjetra","d) iz prirodnog plina, CO₂ odlazi u zrak"], r:"zeleni – c, sivi – d, plavi – a, ružičasti – b"} ]},
+    {d:"F. Poredaj korake rada gorivne ćelije (upiši 1 do 5)", z:[
+      {v:"tablica", b:2, p:"", zag:["Korak","Redni broj"], red:[["Protoni prolaze kroz membranu do katode."],["Vodik (H₂) ulazi na anodu."],["Na katodi se protoni, elektroni i kisik spajaju u vodu."],["Katalizator razdvaja vodik na protone i elektrone."],["Elektroni putuju kroz žicu i stvaraju struju."]], r:"4, 1, 5, 2, 3"} ]},
+    {d:"G. Razmisli i odgovori", z:[
+      {v:"kratko", b:2, p:"Zašto se u prostorijama s vodikom postavljaju senzori, a ne oslanjamo se na miris ili vid?", r:"Vodik nema boju ni miris, a plamen mu se na danjem svjetlu jedva vidi; lakši je od zraka pa se skuplja pri stropu.", red:3} ]} ]},
+
   {ic:"🏙️", n:"H2 Grad", tab:"grad", predmeti:["Geografija","Fizika","Građanski odgoj"], razred:"7. razred OŠ do 4. razreda SŠ",
    ishodi:["razlikovati zeleni i sivi vodik","objasniti ulogu skladištenja energije","donositi odluke uz ograničen proračun"],
    tijek:[["Uvod: odakle dolazi struja u našem gradu?",5],["Igra u parovima: 10 godina mandata",25],["Usporedba strategija parova",10],["Izlazna kartica: jedna stvar koju sam naučio",5]],
-   listic:["Zašto vodik iz elektrolizera nije zelen ako je struja iz ugljena?","Što se dogodi s viškom vodika kad nema spremnika?","Koju bi prvu zgradu izgradio u svom gradu i zašto?","Navedi dva događaja koja su promijenila tvoj plan."]},
+   listic:[
+    {d:"A. Zaokruži točan odgovor", z:[
+      {v:"izbor", b:1, p:"Koji izvor NE daje zelenu struju?", o:["sunce","vjetar","ugljen","hidroelektrana"], t:2},
+      {v:"izbor", b:1, p:"Čemu služi spremnik vodika u gradu?", o:["hladi zgrade","čuva višak energije za kasnije","proizvodi ugljen","smanjuje promet"], t:1},
+      {v:"izbor", b:1, p:"Što je sivi vodik?", o:["vodik iz elektrolize uz sunce","vodik iz prirodnog plina bez hvatanja CO₂","vodik iz morske vode","vodik iz zraka"], t:1},
+      {v:"izbor", b:1, p:"Koji dio Hrvatske ima najviše sunca, a koji najjači vjetar?", o:["sjever i istok","jug i obala","Lika i Gorski kotar","Slavonija i Zagorje"], t:1} ]},
+    {d:"B. Točno ili netočno? Zaokruži T ili N.", z:[
+      {v:"tn", b:2, s:[["Vjetroelektrane mogu raditi i noću.",true],["Elektrolizer koji koristi struju iz ugljena daje zeleni vodik.",false],["Spremljeni vodik se gorivnom ćelijom može vratiti u struju.",true],["Termoelektranu na ugljen treba zatvoriti tek kad zelena struja pokriva potrošnju.",true]]} ]},
+    {d:"C. Popuni tablicu", z:[
+      {v:"tablica", b:3, p:"Za svaki izvor struje napiši po jednu prednost i jedan nedostatak.", zag:["Izvor","Prednost","Nedostatak"], red:[["Solarna elektrana"],["Vjetroelektrana"],["Termoelektrana na ugljen"]], r:"Solarna: bez CO₂ / radi samo danju i ovisi o vremenu. Vjetro: bez CO₂, radi i noću / ovisi o vjetru, buka i izgled krajolika. Ugljen: stalna struja / puno CO₂ i zagađen zrak."} ]},
+    {d:"D. Izračunaj", z:[
+      {v:"racun", b:3, p:"Grad ima 40 mil. €. Solarna elektrana košta 15 mil. € i daje 4 jedinice struje, a vjetroelektrana 25 mil. € i 6 jedinica. Što kupiti da dobiješ najviše struje? Usporedi barem dvije mogućnosti.", r:"2 solarne = 30 mil. €, 8 jedinica; 1 vjetro + 1 solarna = 40 mil. €, 10 jedinica (najbolje); 1 vjetro = 25 mil. €, 6 jedinica.", red:4},
+      {v:"racun", b:2, p:"Grad ispušta 32 kt CO₂ godišnje. Vodikovi autobusi smanjuju 4 kt, a čeličana na vodik 8 kt. Koliko ostaje nakon 2 autobusne linije i 1 čeličane? Koliko još treba smanjiti do cilja od 10 kt?", r:"32 − 2·4 − 8 = 16 kt; do cilja još 6 kt", red:3} ]},
+    {d:"E. Razmisli i odgovori", z:[
+      {v:"kratko", b:2, p:"Zašto vodik iz elektrolizera nije zelen ako je struja iz ugljena?", r:"Pri proizvodnji te struje nastaje puno CO₂, pa vodik nosi taj otisak; zelen je samo uz obnovljivu struju.", red:3},
+      {v:"kratko", b:1, p:"Što se dogodi s viškom vodika kad nema spremnika?", r:"Gubi se (ne može se iskoristiti kasnije).", red:2},
+      {v:"kratko", b:3, p:"Ti si gradonačelnik: napiši redom tri koraka svog plana za 10 godina i obrazloži ih.", r:"Npr. 1. sunce i vjetar, 2. elektrolizer i spremnik, 3. autobusi/čeličana i zatvaranje termoelektrane; ocjenjuje se logičan redoslijed.", red:4},
+      {v:"kratko", b:2, p:"Navedi dva događaja iz igre koja su promijenila tvoj plan i kako si reagirao.", r:"Npr. zima bez vjetra, skuplji plin, EU fond, rast grada.", red:3},
+      {v:"kratko", b:2, p:"Tko u stvarnom gradu treba sudjelovati u odluci o gradnji vjetroelektrane i zašto?", r:"Gradsko vijeće i gradonačelnik, stručnjaci, građani kroz javnu raspravu; jer odluka utječe na okoliš, novac i život ljudi.", red:3} ]} ]},
+
   {ic:"🛣️", n:"H2 Ruta", tab:"ruta", predmeti:["Geografija","Matematika"], razred:"8. razred OŠ do 4. razreda SŠ",
    ishodi:["čitati kartu i prometne pravce Hrvatske","rješavati problem optimizacije uz ograničenja","povezati izvore energije s prostorom"],
    tijek:[["Uvod: domet vozila i punionice",5],["Planiranje u grupama (kamion 250 km)",20],["Usporedba s planom računala i rasprava",12],["Promjena vozila i nova pokrivenost",8]],
-   listic:["Koliko punionica treba kamionu za put Zagreb – Dubrovnik?","Zašto su punionice uz sunce i vjetar bolji izbor?","Koja ti je pokrivenost bila najbolja i s kojim gradovima?","Zašto vodik ima više smisla za kamione nego za romobile?"]},
+   listic:[
+    {d:"A. Zaokruži točan odgovor", z:[
+      {v:"izbor", b:1, p:"Koja autocesta povezuje Zagreb i Split?", o:["A1","A3","A4","A6"], t:0},
+      {v:"izbor", b:1, p:"Kamion s dometom 250 km kreće pun i vozi 600 km. Koliko najmanje puta mora natočiti usput?", o:["0","1","2","3"], t:2},
+      {v:"izbor", b:1, p:"Gdje vodik u prometu ima najviše smisla?", o:["romobili","bicikli","teški kamioni i brodovi","dječje igračke"], t:2},
+      {v:"izbor", b:1, p:"Zašto je dobro graditi punionice uz sunce i vjetar?", o:["jer je ondje manje prometa","jer se vodik može zeleno proizvesti na mjestu","jer je ondje hladnije","nema razlike"], t:1} ]},
+    {d:"B. Točno ili netočno? Zaokruži T ili N.", z:[
+      {v:"tn", b:2, s:[["Zagreb ima najviše stanovnika u Hrvatskoj.",true],["Osijek leži na obali Jadranskog mora.",false],["Split je južnije od Zadra.",true],["Cestom od Zagreba do Dubrovnika ima manje od 300 km.",false]]} ]},
+    {d:"C. Karta", z:[
+      {v:"dopuni", b:2, p:"Poredaj gradove od sjevera prema jugu: Split, Zagreb, Dubrovnik, Zadar, Osijek.\n1. ________  2. ________  3. ________  4. ________  5. ________", r:"Zagreb (45,8° N), Osijek (45,6° N), Zadar (44,1° N), Split (43,5° N), Dubrovnik (42,6° N)"} ]},
+    {d:"D. Izračunaj", z:[
+      {v:"racun", b:3, p:"Ruta Zagreb → Split: Karlovac 56 km, Gospić 206 km, Zadar 316 km, Šibenik 401 km, Split 486 km (zbroj od Zagreba). Kamion ima domet 250 km i kreće pun. U kojim gradovima najmanje mora natočiti? Obrazloži.", r:"Mora natočiti prije 250. km, a jedini grad je Gospić (206). Iz Gospića stiže do 456. km, što nije dovoljno do Splita (486), pa treba još jedno punjenje: Zadar ili Šibenik. Najmanje 2 punjenja.", red:4},
+      {v:"racun", b:1, p:"Od 20 parova gradova kamion može proći između 14. Kolika je pokrivenost u postotcima?", r:"14 / 20 = 0,7 = 70 %", red:2},
+      {v:"racun", b:2, p:"Autobus ima domet 350 km. Može li bez punjenja od Zagreba do Splita (486 km)? Koliko km mu nedostaje?", r:"Ne može; nedostaje 486 − 350 = 136 km.", red:2} ]},
+    {d:"E. Razmisli i odgovori", z:[
+      {v:"kratko", b:2, p:"Zašto vodik ima više smisla za teške kamione nego za romobile?", r:"Za teška vozila baterije bi bile preteške i sporo bi se punile; vodik daje veliki domet i brzo punjenje.", red:3},
+      {v:"kratko", b:2, p:"Koja ti je pokrivenost u aplikaciji bila najbolja i s kojim gradovima?", r:"Vlastiti odgovor iz aplikacije (najbolji plan je spremljen u H2 Ruti).", red:2},
+      {v:"kratko", b:2, p:"Gdje bi u svojoj županiji postavio prvu vodikovu punionicu i zašto?", r:"Vlastiti odgovor; ocjenjuje se obrazloženje (promet, autocesta, izvor zelene energije, luka ili industrija).", red:3} ]} ]},
+
   {ic:"🎓", n:"Akademija i Liga", tab:"akademija", predmeti:["Kemija","Fizika"], razred:"svi razredi",
    ishodi:["ponoviti gradivo kroz kratke lekcije","natjecati se kao razred u Ligi škola"],
    tijek:[["Samostalno: dvije lekcije Akademije",20],["Razred kao tim: Vodikov izazov",15],["Analiza najtežih pitanja",10]],
-   listic:["Koji je izotop vodika radioaktivan?","Na koju temperaturu se vodik ukapljuje?","Što izlazi iz ispuha vodikovog autobusa?","Zašto je zeleni vodik dobar za klimu?"]},
+   listic:[
+    {d:"A. Zaokruži točan odgovor", z:[
+      {v:"izbor", b:1, p:"Koji je izotop vodika radioaktivan?", o:["protij","deuterij","tricij","nijedan"], t:2},
+      {v:"izbor", b:1, p:"Na kojoj se temperaturi vodik ukapljuje?", o:["oko 0 °C","oko −78 °C","oko −196 °C","oko −253 °C"], t:3},
+      {v:"izbor", b:1, p:"Što izlazi iz ispuha vodikovog autobusa?", o:["CO₂","vodena para","dim","metan"], t:1},
+      {v:"izbor", b:1, p:"Pod kojim se tlakom vodik obično čuva u autu?", o:["1 bar","10 bara","350 do 700 bara","5000 bara"], t:2},
+      {v:"izbor", b:1, p:"Od čega se danas proizvodi većina vodika na svijetu?", o:["od morske vode","od prirodnog plina","od zraka","od sunca"], t:1},
+      {v:"izbor", b:1, p:"Koliko otprilike vodika troši vodikov auto na 100 km?", o:["100 g","1 kg","10 kg","50 kg"], t:1} ]},
+    {d:"B. Točno ili netočno? Zaokruži T ili N.", z:[
+      {v:"tn", b:2, s:[["Vodik je najzastupljeniji element u svemiru.",true],["Vodikove veze drže zajedno dvije niti DNK.",true],["Zeleni vodik nastaje iz ugljena.",false],["Za male osobne aute izravna struja iz baterije često je učinkovitija od vodika.",true]]} ]},
+    {d:"C. Dopuni", z:[
+      {v:"dopuni", b:2, p:"Vodik je element broj ____ u periodnom sustavu, kemijski simbol mu je ____, a molekula ____. U svemiru čini oko ________ mase obične tvari.", r:"1; H; H₂; tri četvrtine (oko 75 %)"} ]},
+    {d:"D. Izračunaj", z:[
+      {v:"racun", b:1, p:"1 kg vodika sadrži oko 33,3 kWh energije. Koliko energije ima spremnik od 5 kg?", r:"5 · 33,3 kWh ≈ 166,5 kWh", red:2},
+      {v:"racun", b:2, p:"Na putu struja → vodik → struja izgubi se oko 60 % energije. Koliko kWh struje dobijemo natrag od 100 kWh?", r:"100 kWh · 0,40 = 40 kWh", red:2} ]},
+    {d:"E. Spoji pojam s objašnjenjem", z:[
+      {v:"spoji", b:2, l:["elektroliza","gorivna ćelija","izotop","katalizator"], d:["a) tvar koja ubrzava reakciju, a sama se ne troši","b) rastavljanje vode na vodik i kisik pomoću struje","c) atomi istog elementa s različitim brojem neutrona","d) uređaj koji iz vodika i kisika daje struju"], r:"elektroliza – b, gorivna ćelija – d, izotop – c, katalizator – a"} ]},
+    {d:"F. Razmisli i odgovori", z:[
+      {v:"kratko", b:2, p:"Zašto je zeleni vodik dobar za klimu? Navedi i jedno mjesto gdje vodik nema smisla.", r:"Nastaje gotovo bez CO₂ i može zamijeniti ugljen, naftu i plin u industriji i teškom prometu; nema smisla npr. za grijanje kuća ili male aute, gdje je izravna struja učinkovitija.", red:3},
+      {v:"kratko", b:2, p:"Smisli jedno pitanje za Vodikov izazov u Ligi, s četiri ponuđena odgovora, i označi točan.", r:"Vlastiti odgovor; pitanje mora biti točno i jasno.", red:4} ]} ]},
 ];
+
+// ---------- prezentacije za projektor (dodatni materijal za nastavnika) ----------
+// Slajd: {e:emoji, t:naslov, b:[natuknice], v:veliki broj ili formula, p:pitanje za razred}
+const PREZENTACIJE = [
+ [ {e:"🧍", t:"Vodik u tebi", v:"Koliko si ti zapravo vodik?", b:["Kemija · Biologija","Vodikov svijet · 45 min"]},
+   {e:"❓", t:"Pogodi", p:"Koliki dio svih atoma u tvom tijelu je vodik?", b:["A) 10 %","B) 25 %","C) 62 %"]},
+   {e:"🎯", t:"Odgovor: oko 62 %", v:"62 %", b:["Po broju atoma tijelo je oko 62 % vodik.","Po masi je samo oko 10 %.","Zašto? Atom vodika je najlakši: oko 16 puta lakši od atoma kisika."]},
+   {e:"⚛️", t:"Atom vodika", b:["1 proton u jezgri i 1 elektron oko nje","Najjednostavniji i najlakši element","M(H) = 1,008 g/mol · M(H₂) = 2,016 g/mol"]},
+   {e:"🧮", t:"Od mase do broja atoma", v:"n = m / M     N = n · Nₐ", b:["Nₐ = 6,022 × 10²³ mol⁻¹","Primjer: 60 kg → 6 kg vodika → 5952 mol","→ oko 3,6 × 10²⁷ atoma vodika"]},
+   {e:"💧", t:"Koliko vodika ima u vodi?", v:"w(H) = 2 · 1,008 / 18,015 = 11,2 %", b:["Boca od 0,5 L vode sadrži oko 56 g vodika.","Voda čini oko 60 % tvog tijela."]},
+   {e:"🍽️", t:"Vodik na tanjuru", b:["Voda u voću i povrću","Ugljikohidrati: kruh, tjestenina, šećer","Masti: ulje, maslac (oko 12 % vodika)","Proteini: meso, jaja · Kuhinjska sol vodika nema"]},
+   {e:"🗣️", t:"Za raspravu", p:"Što u tvojoj okolini uopće nema vodika?", b:["Sad otvori Vodikov svijet → 1. Vodik u tebi i provjeri!"]} ],
+ [ {e:"🧪", t:"Laboratorij: escape room", v:"Elektroliza · gorivna ćelija · sigurnost", b:["Kemija · Fizika","Timovi od 3 do 4 učenika"]},
+   {e:"⚛️", t:"Tri izotopa vodika", b:["Protij ¹H: 1 proton, 0 neutrona","Deuterij ²H: 1 proton, 1 neutron","Tricij ³H: 1 proton, 2 neutrona, radioaktivan","Maseni broj = protoni + neutroni"]},
+   {e:"⚗️", t:"Elektroliza vode", v:"2 H₂O → 2 H₂ + O₂", b:["Vodik nastaje na katodi (−), kisik na anodi (+).","Volumen vodika je dvostruko veći od volumena kisika."]},
+   {e:"🛢️", t:"Volumen plina", v:"V = n · 22,4 L/mol", b:["Pri normalnim uvjetima (0 °C, 101,3 kPa)","6 g H₂ = 3 mol = 67,2 L","Vodik je lagan, ali zauzima puno mjesta."]},
+   {e:"🎨", t:"Boje vodika", b:["🟢 Zeleni: elektroliza uz struju iz sunca i vjetra","⚪ Sivi: iz prirodnog plina, CO₂ odlazi u zrak","🔵 Plavi: iz plina, CO₂ se hvata i sprema","🩷 Ružičasti: elektroliza uz nuklearnu struju"]},
+   {e:"🚨", t:"Sigurnost i skladištenje", b:["Nije otrovan, ali je zapaljiv: 4–75 % u zraku","Plamen se na danjem svjetlu jedva vidi → senzori","Lakši je od zraka i diže se prema stropu","Ukapljuje se na −253 °C; u autu 350–700 bara"]},
+   {e:"🔋", t:"Gorivna ćelija u 5 koraka", b:["1. Vodik ulazi na anodu","2. Katalizator ga razdvaja na protone i elektrone","3. Elektroni kroz žicu stvaraju struju","4. Protoni prolaze kroz membranu","5. Na katodi s kisikom nastaje voda"]},
+   {e:"🏁", t:"Pravila igre", b:["7 brava, brojevi su svakom timu drukčiji","💡 Savjet dodaje 1 minutu","Pobjeđuje tim s najboljim vremenom"], p:"Spremni? Otvorite Lab u aplikaciji!"} ],
+ [ {e:"🏙️", t:"H2 Grad", v:"Ti si gradonačelnik", b:["Geografija · Fizika · Građanski odgoj","10 godina da grad prebaciš na vodik"]},
+   {e:"⚡", t:"Odakle dolazi struja?", b:["Ugljen i plin: stalna struja, ali puno CO₂","Voda, sunce i vjetar: obnovljivi izvori, bez CO₂","Sunce radi danju, vjetar kad puše"]},
+   {e:"🟢", t:"Zeleni ili sivi vodik?", b:["Zeleni: elektroliza uz obnovljivu struju","Sivi: iz prirodnog plina, CO₂ u zrak","Elektrolizer na struju iz ugljena NE daje zeleni vodik!"]},
+   {e:"🔄", t:"Zašto skladištiti energiju?", v:"višak struje → vodik → spremnik → struja", b:["Danju i za vjetra ima viška struje.","Vodik ga čuva za noć i za dane bez vjetra.","Gorivna ćelija ga vraća u struju."]},
+   {e:"🇭🇷", t:"Hrvatska i obnovljiva energija", b:["Jug ima puno sunca","Obala ima jak vjetar (bura)","Rijeke daju hidroelektrane","Luke i industrija mogu koristiti vodik"]},
+   {e:"🎮", t:"Pravila igre", b:["Proračun je ograničen: gradi pametno","Cilj: CO₂ 10 kt ili manje i zatvorena termoelektrana","Svake godine mogu se dogoditi događaji","Savjet: prvo sunce i vjetar, pa elektrolizer i potrošači"]},
+   {e:"🗳️", t:"Tko odlučuje u gradu?", b:["Gradsko vijeće i gradonačelnik","Stručnjaci i javna rasprava","Građani: svatko želi čistu struju, ali tko želi vjetroelektranu blizu kuće?"]},
+   {e:"🗣️", t:"Za raspravu", p:"Koju bi zgradu izgradio prvu u svom gradu i zašto?", b:["Igrajte u parovima i usporedite strategije."]} ],
+ [ {e:"🛣️", t:"H2 Ruta", v:"Vodikova Hrvatska", b:["Geografija · Matematika","5 punionica za cijelu državu"]},
+   {e:"🚛", t:"Gdje vodik ima smisla u prometu?", b:["Teški kamioni, autobusi, brodovi, vlakovi na prugama bez struje","Veliki domet i brzo punjenje","Za male aute i romobile baterije su bolje"]},
+   {e:"📏", t:"Domet vozila u igri", b:["🚛 Kamion: 250 km","🚌 Autobus: 350 km","🚗 Auto: 500 km"]},
+   {e:"🗺️", t:"Primjer: Zagreb → Split", v:"486 km", b:["Karlovac 56 · Gospić 206 · Zadar 316 · Šibenik 401 · Split 486 km","Kamion mora natočiti u Gospiću (prije 250. km)","i još jednom u Zadru ili Šibeniku → najmanje 2 punjenja"]},
+   {e:"📊", t:"Pokrivenost", v:"pokrivenost = moguća putovanja / sva putovanja", b:["Putovanja se broje prema broju stanovnika gradova.","Cilj: 90 % ili više."]},
+   {e:"☀️", t:"Zašto uz sunce i vjetar?", b:["Zeleni vodik nastaje na mjestu punionice","Manje prijevoza vodika kamionima","Zadar, Šibenik, Split i Dubrovnik imaju dobre uvjete"]},
+   {e:"🧠", t:"Problem optimizacije", b:["Imaš ograničenje: samo 5 punionica","Tražiš najbolji rezultat: najveću pokrivenost","Tako rade planeri prometa i inženjeri"]},
+   {e:"👥", t:"Zadatak za grupe", p:"Složite plan s najvećom pokrivenošću za kamion od 250 km!", b:["Zatim usporedite plan s planom računala (🤖)."]} ],
+ [ {e:"🎓", t:"Akademija i Liga", v:"Ponavljamo i natječemo se", b:["6 lekcija · Vodikov izazov","Razred je jedan tim"]},
+   {e:"📚", t:"Šest lekcija", b:["1. Element broj 1 · 2. Vodik u tebi","3. Kako nastaje vodik · 4. Skladištenje i sigurnost","5. Gorivna ćelija i promet · 6. Vodik i budućnost"]},
+   {e:"🔢", t:"Brojke koje treba zapamtiti", b:["1 proton · 62 % atoma tijela · 10 % mase tijela","−253 °C ukapljivanje · 350–700 bara u autu","1 kg H₂ ≈ 100 km · 33,3 kWh/kg · zapaljiv 4–75 %"]},
+   {e:"⚡", t:"Lanac energije", v:"100 kWh → ~70 kWh → ~40 kWh", b:["struja → vodik (elektroliza) → struja (gorivna ćelija)","Izgubi se više od pola energije.","Zato vodik koristimo ondje gdje struja ne može izravno."]},
+   {e:"🏆", t:"Liga škola", b:["Vodikov izazov: 10 pitanja u 90 sekundi","3 pokušaja tjedno, računa se najbolji","Bodovi svih članova razreda se zbrajaju"]},
+   {e:"👩‍🏫", t:"Kako se razred prijavljuje", b:["Nastavnik napravi tim i podijeli kod tima","Učenici: Liga → Pridruži se → upišu kod","Nastavnik vidi napredak u nastavničkom pregledu"]},
+   {e:"🗣️", t:"Za raspravu", p:"Gdje vodik ima smisla, a gdje je bolja izravna struja?", b:["Zatim: Vodikov izazov za cijeli razred!"]} ],
+];
+
 function crtajPlanove(){
   $("planovi").innerHTML = PLANOVI.map((p,i)=>`<details class="plan" ${i===0?"open":""}><summary><span style="font-size:26px">${p.ic}</span><span>${p.n}<br><span class="small muted" style="font-weight:400">${p.razred} · 45 min</span></span></summary>
     <div style="margin-top:8px">${p.predmeti.map(x=>`<span class="tag2">${x}</span>`).join("")}</div>
     <b class="small" style="display:block;margin-top:8px">Ishodi učenja: učenik će</b><ul>${p.ishodi.map(x=>`<li>${x}</li>`).join("")}</ul>
     <b class="small">Tijek sata</b><ul>${p.tijek.map(([t,m])=>`<li>${t} <b style="color:var(--ink)">(${m} min)</b></li>`).join("")}</ul>
-    <div style="display:flex;gap:8px;margin-top:8px"><button class="btn" style="flex:1" onclick="ispisListica(${i})">🖨️ Radni listić</button><button class="ghost" style="flex:1;margin:0" onclick="tab('${p.tab}')">Otvori u aplikaciji</button></div></details>`).join("");
+    <b class="small">Materijali</b>
+    <p class="small muted" style="margin:2px 0 8px">Radni listić: ${brojZadataka(p)} zadataka, ${ukupnoBodova(p)} bodova. Prezentacija: ${PREZENTACIJE[i].length} slajdova za projektor.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">
+      <button class="btn" style="margin:0" onclick="ispisListica(${i},false)">🖨️ Radni listić</button>
+      <button class="ghost" style="margin:0" onclick="ispisListica(${i},true)">🔑 Rješenja za nastavnika</button>
+      <button class="ghost" style="margin:0" onclick="otvoriPrezentaciju(${i})">📽️ Prezentacija</button>
+      <button class="ghost" style="margin:0" onclick="tab('${p.tab}')">Otvori u aplikaciji</button></div></details>`).join("");
 }
-function ispisListica(i){
+const brojZadataka = p => p.listic.reduce((a,d)=>a+d.z.length,0);
+const ukupnoBodova = p => p.listic.reduce((a,d)=>a+d.z.reduce((x,z)=>x+z.b,0),0);
+
+// ---------- radni listić za ispis ----------
+function ispisListica(i, rjesenja){
   const p = PLANOVI[i], w = window.open("", "_blank");
   if(!w) return toast("Preglednik je blokirao novi prozor. Dopusti skočne prozore.");
-  w.document.write(`<!doctype html><html lang="hr"><head><meta charset="utf-8"><title>Radni listić: ${p.n}</title><style>body{font-family:Arial,sans-serif;max-width:720px;margin:30px auto;color:#111;line-height:1.5}h1{font-size:22px;margin:0}.p{margin:22px 0}.c{border-bottom:1px solid #999;height:28px}.m{color:#555;font-size:13px}</style></head><body>
-    <h1>💧 Vodikov svijet · ${p.n}</h1><p class="m">Ime i prezime: ______________________ Razred: ______ Datum: __________</p>
-    ${p.listic.map((q,j)=>`<div class="p"><b>${j+1}. ${q}</b><div class="c"></div><div class="c"></div></div>`).join("")}
-    <p class="m">Odgovore provjeri u aplikaciji Vodikov svijet.</p><script>window.onload=()=>window.print()<\/script></body></html>`);
+  let br = 0; const slova = "abcd", R = rjesenja;
+  const crte = n => Array.from({length:n||2}, () => `<div class="c"></div>`).join("");
+  const zad = z => {
+    br++; const bod = `<span class="bod">${z.b} ${z.b===1?"bod":z.b<5?"boda":"bodova"}</span>`;
+    if(z.v==="izbor") return `<div class="z"><div class="q"><b>${br}.</b> ${esc(z.p)} ${bod}</div><div class="o">${z.o.map((o,k)=>`<span class="${R&&k===z.t?"tocno":""}">${slova[k]}) ${esc(o)}</span>`).join("")}</div></div>`;
+    if(z.v==="tn") return `<div class="z"><div class="q"><b>${br}.</b> Zaokruži T (točno) ili N (netočno). ${bod}</div><table class="tn">${z.s.map(([s,t])=>`<tr><td>${esc(s)}</td><td class="${R&&t?"tocno":""}">T</td><td class="${R&&!t?"tocno":""}">N</td></tr>`).join("")}</table></div>`;
+    if(z.v==="dopuni") return `<div class="z"><div class="q"><b>${br}.</b> ${esc(z.p).replace(/\n/g,"<br>")} ${bod}</div>${R?`<div class="r">✔ ${esc(z.r)}</div>`:""}</div>`;
+    if(z.v==="racun" || z.v==="kratko") return `<div class="z"><div class="q"><b>${br}.</b> ${esc(z.p)} ${bod}</div>${R?`<div class="r">✔ ${esc(z.r)}</div>`:crte(z.red)}</div>`;
+    if(z.v==="spoji") return `<div class="z"><div class="q"><b>${br}.</b> Upiši slovo točnog odgovora. ${bod}</div><table class="sp"><tr><td>${z.l.map((x,k)=>`<div>${k+1}. ${esc(x)} <span class="crta">___</span></div>`).join("")}</td><td>${z.d.map(x=>`<div>${esc(x)}</div>`).join("")}</td></tr></table>${R?`<div class="r">✔ ${esc(z.r)}</div>`:""}</div>`;
+    if(z.v==="tablica") return `<div class="z"><div class="q"><b>${br}.</b> ${esc(z.p||"")} ${bod}</div><table class="tb"><tr>${z.zag.map(x=>`<th>${esc(x)}</th>`).join("")}</tr>${z.red.map(r=>`<tr>${z.zag.map((_,k)=>`<td>${k<r.length?esc(r[k]):""}</td>`).join("")}</tr>`).join("")}</table>${R?`<div class="r">✔ ${esc(z.r)}</div>`:""}</div>`;
+    return "";
+  };
+  const tijelo = p.listic.map(d=>`<h2>${esc(d.d)}</h2>${d.z.map(zad).join("")}`).join("");
+  w.document.write(`<!doctype html><html lang="hr"><head><meta charset="utf-8"><title>${R?"Rješenja":"Radni listić"}: ${esc(p.n)}</title><style>
+    @page{size:A4;margin:14mm 15mm}
+    body{font-family:Arial,Helvetica,sans-serif;max-width:760px;margin:20px auto;color:#111;line-height:1.45;font-size:11pt}
+    header{border-bottom:3px solid #1677c9;padding-bottom:8px;margin-bottom:6px}
+    h1{font-size:19pt;margin:0} .pod{color:#555;font-size:10pt;margin-top:2px}
+    .gl{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:10.5pt;margin:10px 0 4px}
+    .gl span{white-space:nowrap}
+    .upute{background:#eef4ff;border:1px solid #c9d8f5;border-radius:6px;padding:6px 10px;font-size:10pt;margin:8px 0}
+    h2{font-size:12pt;color:#1677c9;margin:16px 0 4px;break-after:avoid}
+    .z{margin:8px 0 12px;break-inside:avoid} .q{margin-bottom:4px} .bod{float:right;color:#777;font-size:9pt;margin-left:8px}
+    .o{display:grid;grid-template-columns:1fr 1fr;gap:2px 20px;padding-left:18px}
+    .c{border-bottom:1px solid #999;height:26px}
+    table{border-collapse:collapse;width:100%} .tn td,.tb td,.tb th{border:1px solid #bbb;padding:5px 8px;vertical-align:top}
+    .tn td:nth-child(2),.tn td:nth-child(3){width:34px;text-align:center;font-weight:700}
+    .tb th{background:#eef4ff;text-align:left} .tb td{height:30px}
+    .sp td{vertical-align:top;width:50%;padding:2px 10px} .sp div{margin:4px 0} .crta{color:#999}
+    .tocno{background:#d9f5e3;outline:2px solid #2a9d5c;border-radius:4px;font-weight:700}
+    .r{background:#f1fbf4;border-left:4px solid #2a9d5c;padding:5px 10px;margin-top:4px;font-size:10.5pt}
+    .ocj{margin-top:18px;border-top:2px solid #1677c9;padding-top:8px;font-size:10pt;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .rj{display:inline-block;background:#2a9d5c;color:#fff;font-weight:700;padding:2px 10px;border-radius:4px;font-size:10pt}
+  </style></head><body>
+    <header>${R?`<span class="rj">RJEŠENJA ZA NASTAVNIKA</span>`:""}<h1>💧 Radni listić: ${esc(p.n)}</h1>
+    <div class="pod">Vodikov svijet · ${esc(p.predmeti.join(", "))} · ${esc(p.razred)}</div></header>
+    ${R?"":`<div class="gl"><span>Ime i prezime: ____________________________</span><span>Razred: ______</span><span>Datum: ____________</span></div>`}
+    <div class="upute">Radni listić ima ${br===0?brojZadataka(p):brojZadataka(p)} zadataka i ${ukupnoBodova(p)} bodova. Pri računskim zadatcima napiši postupak. Odgovore možeš provjeriti u aplikaciji Vodikov svijet.</div>
+    ${tijelo}
+    <div class="ocj"><span>Ukupno bodova: ______ / ${ukupnoBodova(p)}</span><span>Ocjena: ______</span><span>${R?"Bodovna granica (prijedlog): 50 % = 2, 63 % = 3, 76 % = 4, 89 % = 5":"Potpis nastavnika: __________________"}</span></div>
+    <script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`);
   w.document.close();
 }
+
+// ---------- prezentacija preko cijelog zaslona ----------
+let PZ = null;
+function otvoriPrezentaciju(i){
+  PZ = {i, k:0};
+  let el = $("prezentacija");
+  if(!el){ el = document.createElement("div"); el.id = "prezentacija"; el.className = "pz"; el.setAttribute("data-ne-prevodi",""); el.setAttribute("role","dialog"); el.setAttribute("aria-label","Prezentacija");
+    el.innerHTML = `<div class="pz-vrh"><span id="pzNaslov"></span><span><button onclick="pzCijeli()" aria-label="Cijeli zaslon">⛶</button><button onclick="zatvoriPrezentaciju()" aria-label="Zatvori">✕</button></span></div>
+      <div class="pz-slajd" id="pzSlajd" onclick="pzIdi(1)"></div>
+      <div class="pz-dno"><button onclick="pzIdi(-1)" aria-label="Prethodni slajd">←</button><span id="pzBroj"></span><button onclick="pzIdi(1)" aria-label="Sljedeći slajd">→</button></div><div class="pz-traka"><div id="pzTraka"></div></div>`;
+    document.body.appendChild(el);
+    document.addEventListener("keydown", e=>{ if(!PZ) return; if(["ArrowRight"," ","PageDown"].includes(e.key)){ e.preventDefault(); pzIdi(1); } if(["ArrowLeft","PageUp"].includes(e.key)){ e.preventDefault(); pzIdi(-1); } if(e.key==="Escape") zatvoriPrezentaciju(); if(e.key==="f"||e.key==="F") pzCijeli(); });
+    let tx=null; el.addEventListener("touchstart",e=>{ tx=e.touches[0].clientX; },{passive:true}); el.addEventListener("touchend",e=>{ if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>50) pzIdi(dx<0?1:-1); tx=null; });
+  }
+  el.classList.add("on"); document.body.style.overflow = "hidden"; pzCrtaj();
+}
+function pzCrtaj(){
+  const sl = PREZENTACIJE[PZ.i], s = sl[PZ.k];
+  $("pzNaslov").textContent = `${PLANOVI[PZ.i].ic} ${PLANOVI[PZ.i].n} · prezentacija`;
+  $("pzSlajd").innerHTML = `<div class="pz-k" key="${PZ.k}"><div class="pz-e">${s.e}</div><h2>${esc(s.t)}</h2>${s.v?`<div class="pz-v">${esc(s.v)}</div>`:""}${s.p?`<div class="pz-p">${esc(s.p)}</div>`:""}${s.b?`<ul>${s.b.map((x,j)=>`<li style="animation-delay:${.15+j*.12}s">${esc(x)}</li>`).join("")}</ul>`:""}</div>`;
+  $("pzBroj").textContent = `${PZ.k+1} / ${sl.length}`;
+  $("pzTraka").style.width = ((PZ.k+1)/sl.length*100)+"%";
+}
+function pzIdi(d){ const n = PREZENTACIJE[PZ.i].length; PZ.k = Math.max(0, Math.min(n-1, PZ.k+d)); pzCrtaj(); }
+function pzCijeli(){ try{ document.fullscreenElement ? document.exitFullscreen() : $("prezentacija").requestFullscreen().catch(()=>{}); }catch(e){} }
+function zatvoriPrezentaciju(){ PZ = null; const el=$("prezentacija"); if(el) el.classList.remove("on"); document.body.style.overflow = ""; try{ if(document.fullscreenElement) document.exitFullscreen(); }catch(e){} }
 
 </script>
 <script>
@@ -1624,10 +2427,10 @@ function naruci(){
   if(!f("fIme")||!f("fMail").includes("@")||(dostava!=="osobno"&&(!f("fAdr")||!f("fPb")||!f("fGrad")))) return $("fMsg").textContent = "Ispuni ime, ispravan e-mail i adresu dostave.";
   $("fMsg").textContent = "";
   const broj = APP.prefiks + "-" + Math.floor(100000+Math.random()*900000);
-  $("potTxt").textContent = `${f("fIme").split(" ")[0]}, tvoja narudžba je zaprimljena. Izrada traje 3 do 5 radnih dana.`;
+  $("potTxt").textContent = `${f("fIme").split(" ")[0]}, ovako bi izgledala potvrda prave narudžbe. Ovo je probna trgovina, pa se ništa ne naplaćuje, ne izrađuje i ne šalje.`;
   $("potBroj").textContent = `${broj} · ${eur(S._ukupno)}`;
   $("potStavke").innerHTML = S.kosarica.map(x=>`<div class="zb"><span>${x.kol}× ${ARTIKLI.find(a=>a.id===x.id).n}</span><span>${eur(x.c*x.kol)}</span></div>`).join("");
-  zapisi("🛒", `Narudžba ${broj}: ${eur(S._ukupno)}`);
+  zapisi("🛒", `Probna narudžba ${broj}: ${eur(S._ukupno)}`);
   S.kosarica=[]; spremi(); shop("potvrda");
 }
 // pokreni() je u js/racun.js
@@ -1902,6 +2705,16 @@ function crtajAdmin(){
   </div>
   <div class="card"><b>🏆 Liga · runda ${AD.runda}</b><span class="small muted"> · ${rez.length} odigranih izazova</span>
     ${ligaTop.length?`<div class="ad-tab"><table><thead><tr><th>#</th><th>Tim</th><th>Škola</th><th>Članova</th><th>Bodova</th></tr></thead><tbody>${ligaTop.map((t,i)=>`<tr><td>${i+1}</td><td>${esc(t.ime)} <small class="muted">${esc(t.kod)}</small></td><td>${esc(t.skola||"")}</td><td>${(t.clanovi||[]).length}</td><td><b>${t.b}</b></td></tr>`).join("")}</tbody></table></div>`:`<p class="small muted">Još nema timova.</p>`}</div>
+  <div class="card" id="adTim"><b>🗑️ Obriši tim</b>
+    <p class="small muted" style="margin:4px 0 10px">Za tim napravljen greškom. Upiši kod tima (npr. H2K4M9). Članovi ostaju bez tima i mogu se pridružiti drugome.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><input type="text" id="adTimKod" placeholder="kod tima" autocapitalize="characters" style="flex:1;min-width:140px;text-transform:uppercase;letter-spacing:.12em">
+      <button class="ghost" id="adTimGumb" style="width:auto;margin:0" onclick="adObrisiTim()">Obriši tim</button></div>
+    <div id="adTimRez" style="margin-top:8px"></div></div>
+  <div class="card" id="adReset"><b>🔑 Zaboravljena lozinka</b>
+    <p class="small muted" style="margin:4px 0 10px">Upiši korisničko ime i dobit ćeš privremenu lozinku. Napredak, XP i tim ostaju. Pošalji je korisniku i reci mu da je odmah promijeni u Postavkama.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><input type="text" id="adResetIme" placeholder="korisničko ime, npr. ana_2b" autocomplete="off" autocapitalize="none" style="flex:1;min-width:180px">
+      <button class="btn" style="width:auto;margin:0" onclick="adResetiraj()">Resetiraj lozinku</button></div>
+    <div id="adResetRez" style="margin-top:10px"></div></div>
   <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b>👥 Korisnici (${n})</b>
     <input type="text" id="adTrazi" placeholder="🔍 traži korisnika ili tim" value="${esc(adTrazi)}" oninput="adTrazi=this.value;crtajTablicu()" style="max-width:260px"></div>
     <div class="ad-tab" id="adTablica"></div></div>`;
@@ -1928,6 +2741,38 @@ function izvozCSV(){
   const csv = ["korisnik;xp;razina;vodik_u_tebi;laboratorij;zeleni_grad;ruta_posto;zvjezdice_akademija;tim;registriran;zadnje_aktivan"]
     .concat(r.map(x=>[x.u,x.xp,x.razina,x.k.ti?1:0,x.k.lab?1:0,x.k.grad?1:0,x.k.ruta||0,x.akadZ,x.tim,x.kreiran,x.zadnje].map(e).join(";"))).join("\n");
   const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["﻿"+csv],{type:"text/csv;charset=utf-8"})); a.download=`vodikov-svijet-korisnici-${danKljuc(Date.now())}.csv`; a.click();
+}
+
+// ---------- zaboravljena lozinka: privremena lozinka (napredak ostaje) ----------
+async function adResetiraj(){
+  const k = $("adResetIme").value.trim().toLowerCase().replace(/^@/,""), out = $("adResetRez");
+  if(!k) return out.innerHTML = `<p class="small" style="color:var(--bad)">Upiši korisničko ime.</p>`;
+  if(!uOblaku()) return out.innerHTML = `<p class="small" style="color:var(--bad)">Reset lozinke radi samo kad je stranica spojena s poslužiteljem.</p>`;
+  out.innerHTML = `<p class="small muted">⏳ Radim…</p>`;
+  try{
+    const d = await zahtjev("/admin/resetiraj", {metoda:"POST", tijelo:{korisnik:k}});
+    out.innerHTML = `<div class="upoz" style="font-size:15px">Privremena lozinka za <b>@${esc(d.korisnik)}</b>:<div style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap"><code id="adResetLoz" style="font-size:20px;font-weight:700;letter-spacing:.05em;user-select:all">${esc(d.lozinka)}</code><button class="ghost" style="width:auto;margin:0;padding:6px 12px" onclick="adKopirajLoz()">Kopiraj</button></div><div class="small muted" style="margin-top:6px">Stara lozinka više ne vrijedi. Korisnik se prijavi ovom i promijeni je u Postavkama.</div></div>`;
+    $("adResetIme").value = "";
+  }catch(e){ out.innerHTML = `<p class="small" style="color:var(--bad)">${esc(e.message)}</p>`; }
+}
+function adKopirajLoz(){ const t=$("adResetLoz").textContent; try{ navigator.clipboard.writeText(t).then(()=>toast("Lozinka kopirana"),()=>toast(t)); }catch(e){ toast(t); } }
+
+// ---------- brisanje tima: dva klika (prvi pita, drugi briše) ----------
+let adTimPotvrda = null;
+async function adObrisiTim(){
+  const kod = $("adTimKod").value.trim().toUpperCase(), out = $("adTimRez"), g = $("adTimGumb");
+  if(!kod) return out.innerHTML = `<p class="small" style="color:var(--bad)">Upiši kod tima.</p>`;
+  if(!uOblaku()) return out.innerHTML = `<p class="small" style="color:var(--bad)">Brisanje tima radi samo kad je stranica spojena s poslužiteljem.</p>`;
+  const t = (AD && AD.timovi && AD.timovi[kod]) || null;
+  if(adTimPotvrda !== kod){
+    adTimPotvrda = kod; g.textContent = "Da, obriši"; g.style.borderColor = "var(--bad)"; g.style.color = "var(--bad)";
+    out.innerHTML = `<p class="small">⚠️ Obrisati tim <b>${esc(kod)}</b>${t?` „${esc(t.ime)}“ (${t.clanovi.length} članova)`:""}? Klikni još jednom <b>Da, obriši</b>.</p>`;
+    return;
+  }
+  adTimPotvrda = null; g.textContent = "Obriši tim"; g.style.borderColor = ""; g.style.color = "";
+  out.innerHTML = `<p class="small muted">⏳ Brišem…</p>`;
+  try{ const d = await zahtjev("/admin/obrisi-tim", {metoda:"POST", tijelo:{kod}}); out.innerHTML = `<p class="small" style="color:var(--ok)">✅ Tim ${esc(d.kod)} „${esc(d.ime)}“ je obrisan.</p>`; $("adTimKod").value=""; try{ nijeCache(); }catch(e){} ucitajAdmin(true); }
+  catch(e){ out.innerHTML = `<p class="small" style="color:var(--bad)">${esc(e.message)}</p>`; }
 }
 
 </script>
@@ -2063,7 +2908,198 @@ if("serviceWorker" in navigator && location.protocol.startsWith("http")){
 }
 
 </script>
+<script>
+// Vodikov svijet · upute za korištenje (HR i EN)
+// Svako poglavlje: ikona, naslov i stavke. Stavka je ili rečenica, ili ["Naslov stavke", "objašnjenje"].
+// Upute se ne prevode rječnikom (data-ne-prevodi), nego se crtaju na odabranom jeziku.
+
+const UPUTE = [
+ { id:"start", ic:"🚀",
+   hr:{ n:"Prvi koraci", s:[
+     ["Registracija","Na prvoj stranici odaberi Registracija, smisli korisničko ime (3 do 20 znakova: mala slova bez kvačica, brojke, _ i točka) i lozinku od barem 6 znakova, pa klikni Napravi račun. Ne tražimo ime, e-mail ni druge osobne podatke."],
+     ["Lozinka","Ne koristi lozinku koju imaš negdje drugdje i nemoj za korisničko ime koristiti svoje pravo ime. Lozinku zapiši: ne može se vratiti, ali je voditelj stranice može zamijeniti privremenom."],
+     ["Prijava","Sljedeći put odaberi Prijava i upiši isto ime i lozinku. Prijava vrijedi 30 dana na tom uređaju."],
+     ["Spremanje","Napredak se sprema sam. Na početnoj stranici piše ☁️ Spremljeno na poslužitelj, pa se možeš prijaviti s bilo kojeg uređaja i nastaviti gdje si stao."],
+     ["Jezik","Gumb 🌐 EN gore desno prebacuje cijelu aplikaciju na engleski, a 🌐 HR natrag na hrvatski. Odabir se pamti."],
+     ["Aplikacija na mobitelu","Na iPhoneu: Safari → Podijeli → Dodaj na početni zaslon. Na Androidu: Chrome → ⋮ → Dodaj na početni zaslon. Vodikov svijet se tada otvara kao prava aplikacija."] ] },
+   en:{ n:"Getting started", s:[
+     ["Sign up","On the first screen choose Sign up, pick a username (3 to 20 characters: lowercase letters, numbers, _ and dot) and a password of at least 6 characters, then click Create account. We don't ask for your name, e-mail or any other personal data."],
+     ["Password","Don't use a password you use anywhere else, and don't use your real name as your username. Write your password down: it can't be recovered, but a site admin can replace it with a temporary one."],
+     ["Log in","Next time choose Log in and enter the same username and password. A login lasts 30 days on that device."],
+     ["Saving","Your progress saves itself. The home page shows ☁️ Saved to the server, so you can log in on any device and carry on where you left off."],
+     ["Language","The 🌐 EN button at the top right switches the whole app to English, and 🌐 HR switches back to Croatian. Your choice is remembered."],
+     ["App on your phone","On iPhone: Safari → Share → Add to Home Screen. On Android: Chrome → ⋮ → Add to Home screen. Hydrogen World then opens like a real app."] ] } },
+ { id:"izbornik", ic:"🧭",
+   hr:{ n:"Gdje je što", s:[
+     ["Na računalu","Izbornik je s lijeve strane: Početna, Ti, Lab, Grad, Ruta, Akademija, Liga, Trgovina, Za škole, Postavke i Upute. Voditelji vide i 🛡️ Voditelji."],
+     ["Na mobitelu","Dolje su Početna, Ti, Lab i Grad. Sve ostalo (Ruta, Akademija, Liga, Trgovina, Za škole, Postavke, Upute) je pod ☰ Više."],
+     ["Redoslijed","Najbolje je ići redom: 1. Vodik u tebi → 2. Laboratorij → 3. H2 Grad → 4. H2 Ruta, a usput lekcije u Akademiji i natjecanje u Ligi."] ] },
+   en:{ n:"Where to find things", s:[
+     ["On a computer","The menu is on the left: Home, You, Lab, City, Route, Academy, League, Shop, For schools, Settings and Guide. Admins also see 🛡️ Admins."],
+     ["On a phone","Home, You, Lab and City are at the bottom. Everything else (Route, Academy, League, Shop, For schools, Settings, Guide) is under ☰ More."],
+     ["Order","It works best in order: 1. Hydrogen in you → 2. Lab → 3. H2 City → 4. H2 Route, with Academy lessons and the League along the way."] ] } },
+ { id:"pocetna", ic:"🏠",
+   hr:{ n:"Početna stranica i XP", s:[
+     ["Razina","Gornja kartica pokazuje tvoju razinu i koliko XP-a fali do sljedeće: ⚛️ Atom (0), 💧 Molekula (100), ⚗️ Elektrolizer (250), 🔋 Gorivna ćelija (500) i ⭐ Zvijezda (900 XP)."],
+     ["Kako se skuplja XP","Otkrij vodik u sebi (+20), istražuj stvari (+2), riješi laboratorij (+60 prvi put), postani zeleni grad (+100 prvi put), poboljšaj plan punionica, odgovaraj točno u Akademiji (+10 po pitanju, +15 za tri zvjezdice) i igraj Vodikov izazov u Ligi."],
+     ["Tri brojača","Glavna koraka (od 4), zvjezdice u Akademiji (od 18) i otključane nagrade (od 7)."],
+     ["Kartice koraka","Svaka kartica vodi u svoj dio aplikacije i pokazuje dokle si stigao."],
+     ["Moje nagrade i Moj dnevnik","Nagrade su značke, medalje i diploma koje otključavaš igrom. Dnevnik bilježi sve što napraviš."] ] },
+   en:{ n:"Home page and XP", s:[
+     ["Level","The top card shows your level and how much XP you need for the next one: ⚛️ Atom (0), 💧 Molecule (100), ⚗️ Electrolyser (250), 🔋 Fuel cell (500) and ⭐ Star (900 XP)."],
+     ["How to earn XP","Discover the hydrogen in you (+20), explore things (+2), solve the lab (+60 the first time), make a green city (+100 the first time), improve your station plan, answer correctly in the Academy (+10 per question, +15 for three stars) and play the Hydrogen Challenge in the League."],
+     ["Three counters","Main steps (out of 4), Academy stars (out of 18) and unlocked rewards (out of 7)."],
+     ["Step cards","Each card takes you to its part of the app and shows how far you've got."],
+     ["My rewards and My journal","Rewards are badges, medals and a diploma you unlock by playing. The journal records everything you do."] ] } },
+ { id:"ti", ic:"🧍",
+   hr:{ n:"Korak 1 · Vodik u tebi", s:[
+     ["Tijelo","Upiši svoju masu u kilogramima. Aplikacija izračuna koliko kilograma i atoma vodika nosiš u sebi, koliko bi daleko vozio vodikov auto, koliko vode bi nastalo i koliko punjenja mobitela to je. Masa se ne šalje voditeljima."],
+     ["Vodikova iskaznica","Gumb ⬇ Spremi vodikovu iskaznicu sprema sliku s tvojim imenom i brojem atoma vodika, za dijeljenje."],
+     ["Oko tebe","Upiši bilo koju stvar (svijeća, benzin, oblak…) ili je odaberi s popisa od 90 stvari. Ako je nema, odaberi materijal i upiši masu."],
+     ["Na tanjuru","Dodiruj namirnice koje si danas pojeo i vidi koliko si grama vodika unio hranom."] ] },
+   en:{ n:"Step 1 · Hydrogen in you", s:[
+     ["Body","Enter your mass in kilograms. The app works out how many kilograms and atoms of hydrogen you carry, how far a hydrogen car could go, how much water would form and how many phone charges that is. Your mass is not shared with admins."],
+     ["Hydrogen ID card","The ⬇ Save your hydrogen ID card button saves a picture with your name and number of hydrogen atoms, ready to share."],
+     ["Around you","Type any object (candle, petrol, cloud…) or pick it from a list of 90 things. If it's not there, choose a material and enter a mass."],
+     ["On your plate","Tap the foods you ate today and see how many grams of hydrogen you took in."] ] } },
+ { id:"lab", ic:"🧪",
+   hr:{ n:"Korak 2 · Laboratorij (escape room)", s:[
+     ["Cilj","U laboratoriju je nestalo struje. Otvori 7 brava redom: izotopi, elektroliza, volumen plina, boje vodika, alarm, hlađenje i gorivna ćelija."],
+     ["Kako","Riješi zadatak na ekranu i klikni Otključaj 🔓. Brojevi su svaki put drukčiji, pa se rješenja ne mogu prepisati."],
+     ["Savjet i vrijeme","💡 Savjet otkriva pomoć, ali dodaje 1 minutu. Rezultat je tvoje najbolje vrijeme, a 🔁 Igraj ponovno daje nove zadatke."],
+     ["Igra u razredu","Najzabavnije je u timovima od 3 do 4 učenika: tko prvi otvori svih 7 brava, pobjeđuje."] ] },
+   en:{ n:"Step 2 · Lab (escape room)", s:[
+     ["Goal","The lab has lost power. Open 7 locks in order: isotopes, electrolysis, gas volume, colours of hydrogen, alarm, cooling and the fuel cell."],
+     ["How","Solve the task on screen and click Unlock 🔓. The numbers change every time, so answers can't be copied."],
+     ["Hints and time","💡 Hint shows help but adds 1 minute. Your score is your best time, and 🔁 Play again gives new tasks."],
+     ["In class","It's most fun in teams of 3 to 4: whoever opens all 7 locks first wins."] ] } },
+ { id:"grad", ic:"🏙️",
+   hr:{ n:"Korak 3 · H2 Grad", s:[
+     ["Cilj","Ti si gradonačelnik i imaš 10 godina. Smanji CO₂ na 10 kt ili manje i zatvori termoelektranu na ugljen, a da grad ne ostane bez struje i novca."],
+     ["Početak","Odaberi grad. Svaki ima drukčije uvjete: Split i Dubrovnik puno sunca, Šibenik i Zadar vjetar, Sisak industriju."],
+     ["Gradnja","Dodiruj zgrade desno: sunce i vjetar daju struju, elektrolizer od struje radi vodik, spremnik ga čuva, a autobusi i čeličana ga troše i smanjuju CO₂. Plinski reformer je jeftin, ali radi sivi vodik."],
+     ["Sljedeća godina","Kad potrošiš novac, klikni Sljedeća godina →. Dobit ćeš prihod, a ponekad i događaj: sunčano ljeto, zima bez vjetra, skuplji plin ili EU fond."],
+     ["Savjet","Prvo izgradi dovoljno sunca i vjetra, pa tek onda elektrolizere i potrošače. Termoelektranu zatvori kad zelena struja pokriva potrošnju."] ] },
+   en:{ n:"Step 3 · H2 City", s:[
+     ["Goal","You're the mayor and you have 10 years. Cut CO₂ to 10 kt or less and close the coal power plant without the city running out of power or money."],
+     ["Start","Pick a city. Each has different conditions: Split and Dubrovnik lots of sun, Šibenik and Zadar wind, Sisak industry."],
+     ["Building","Tap the buildings on the right: sun and wind give power, an electrolyser turns power into hydrogen, a tank stores it, and buses and the steelworks use it and cut CO₂. A gas reformer is cheap but makes grey hydrogen."],
+     ["Next year","When you've spent your money, click Next year →. You get income, and sometimes an event: a sunny summer, a windless winter, pricier gas or an EU fund."],
+     ["Tip","Build enough sun and wind first, and only then electrolysers and users. Close the coal plant once green power covers demand."] ] } },
+ { id:"ruta", ic:"🛣️",
+   hr:{ n:"Korak 4 · H2 Ruta", s:[
+     ["Cilj","Na karti Hrvatske postavi 5 vodikovih punionica tako da vozila mogu stići iz bilo kojeg grada u bilo koji drugi."],
+     ["Kako","Odaberi vozilo (kamion 250 km, autobus 350 km ili auto 500 km), pa dodiruj gradove da postaviš ili makneš punionicu. Pokrivenost pokazuje koliki dio putovanja je moguć."],
+     ["Važne rute i ocjena","Ispod karte piše koje rute rade, a gdje vozilo ostaje bez vodika. Ocjena plana objašnjava zašto su punionice uz sunce i vjetar bolje."],
+     ["Spremanje","💾 Spremi plan pamti najbolji rezultat. Plan s barem 90 % pokrivenosti otključava značku Planer ruta. 🤖 Pokaži jedan dobar plan pokazuje primjer."] ] },
+   en:{ n:"Step 4 · H2 Route", s:[
+     ["Goal","Place 5 hydrogen stations on the map of Croatia so vehicles can get from any city to any other."],
+     ["How","Choose a vehicle (truck 250 km, bus 350 km or car 500 km), then tap cities to add or remove a station. Coverage shows what share of trips is possible."],
+     ["Key routes and review","Below the map you see which routes work and where a vehicle runs out of hydrogen. The plan review explains why stations next to sun and wind are better."],
+     ["Saving","💾 Save plan keeps your best score. A plan with at least 90 % coverage unlocks the Route Planner badge. 🤖 Show a good plan shows an example."] ] } },
+ { id:"akademija", ic:"🎓",
+   hr:{ n:"Akademija", s:[
+     ["Lekcije","6 lekcija: Element broj 1, Vodik u tebi, Kako nastaje vodik, Skladištenje i sigurnost, Gorivna ćelija i promet te Vodik i budućnost."],
+     ["Kako","Svaka lekcija ima 4 kratke kartice (Dalje →), a zatim kviz od 4 pitanja. Nakon svakog odgovora vidiš objašnjenje."],
+     ["Zvjezdice","Za svaku lekciju dobiješ do 3 zvjezdice. Lekciju možeš ponoviti koliko god želiš. Sve lekcije s 3 zvjezdice otključavaju značku Akademik."] ] },
+   en:{ n:"Academy", s:[
+     ["Lessons","6 lessons: Element number 1, Hydrogen in you, How hydrogen is made, Storage and safety, Fuel cells and transport, and Hydrogen and the future."],
+     ["How","Each lesson has 4 short cards (Next →) followed by a 4-question quiz. After every answer you see an explanation."],
+     ["Stars","Each lesson gives up to 3 stars. You can repeat a lesson as often as you like. All lessons with 3 stars unlock the Academic badge."] ] } },
+ { id:"liga", ic:"🏆",
+   hr:{ n:"Liga škola", s:[
+     ["Tim","Napravi tim (ime tima i škola) ili se pridruži postojećem upisivanjem koda tima, na primjer H2K4M9. Kod tima možeš kopirati i poslati ostalima."],
+     ["Vodikov izazov","10 pitanja iz svih lekcija u 90 sekundi. Brži točan odgovor nosi više bodova. Svaki tjedan je nova runda i imaš 3 pokušaja; računa se tvoj najbolji."],
+     ["Ljestvica","Bodovi svih članova tima se zbrajaju. Ova runda pokazuje tekući tjedan, a Sezona zadnjih 8 tjedana."],
+     ["Nagrade","Najbolja škola sezone dobiva medalje s pečatom škole, 2. i 3. mjesto diplome, pobjednik tjedna digitalnu značku, a svi sudionici digitalnu diplomu."],
+     ["Napusti tim","Tim možeš napustiti gumbom Napusti tim i pridružiti se drugom."] ] },
+   en:{ n:"Schools League", s:[
+     ["Team","Create a team (team name and school) or join one by entering its team code, for example H2K4M9. You can copy the code and send it to others."],
+     ["Hydrogen Challenge","10 questions from all lessons in 90 seconds. Faster correct answers score more. There's a new round every week with 3 attempts; your best one counts."],
+     ["Leaderboard","All members' points are added up. This round shows the current week, and Season the last 8 weeks."],
+     ["Prizes","The best school of the season gets medals with the school's seal, 2nd and 3rd place get diplomas, the winner of the week a digital badge, and everyone a digital diploma."],
+     ["Leave team","You can leave with the Leave team button and join another one."] ] } },
+ { id:"nastavnici", ic:"👩‍🏫",
+   hr:{ n:"Za nastavnike", s:[
+     ["Razred kao tim","Nastavnik napravi tim u Ligi (npr. „2.b Protoni“) i učenicima pošalje kod tima. Tko napravi tim, njegov je osnivač."],
+     ["Nastavnički pregled","Osnivač tima u Ligi vidi gumb 👩‍🏫 Nastavnički pregled tima: tablicu svih učenika s razinom, XP-om, koracima, zvjezdicama Akademije, bodovima Lige i zadnjom aktivnošću. Učenici taj pregled ne vide."],
+     ["Planovi sati","Pod Za škole su gotovi planovi sati od 45 minuta za kemiju, fiziku, geografiju i građanski odgoj, s ishodima učenja i tijekom sata."],
+     ["Radni listić i rješenja","🖨️ Radni listić ispisuje listić od 10 do 15 zadataka (zaokruživanje, točno/netočno, dopunjavanje, računanje, spajanje, tablice i pitanja za razmišljanje) s bodovima. 🔑 Rješenja za nastavnika ispisuje isti listić s označenim točnim odgovorima i postupcima."],
+     ["Prezentacija","📽️ Prezentacija otvara 7 do 8 slajdova za projektor. Listaš ih strelicama, razmakom ili klikom, F je cijeli zaslon, a Esc zatvara."],
+     ["Licence","Ondje su opisane i licence za školu i paket za razred. To je dio poslovnog modela projekta."] ] },
+   en:{ n:"For teachers", s:[
+     ["The class as a team","The teacher creates a team in the League (e.g. \"2B Protons\") and sends the team code to the students. Whoever creates the team is its founder."],
+     ["Teacher overview","The team founder sees a 👩‍🏫 Teacher team overview button in the League: a table of every student with level, XP, steps, Academy stars, League points and last activity. Students don't see it."],
+     ["Lesson plans","Under For schools there are ready-made 45-minute lesson plans for chemistry, physics, geography and civics, with learning outcomes and a lesson outline."],
+     ["Worksheet and answer key","🖨️ Worksheet prints 10 to 15 tasks (multiple choice, true/false, fill in, calculations, matching, tables and thinking questions) with points. 🔑 Answer key prints the same sheet with the correct answers and working marked. Classroom materials are in Croatian."],
+     ["Presentation","📽️ Presentation opens 7 to 8 slides for the projector. Move with the arrow keys, space or a click; F is full screen and Esc closes."],
+     ["Licences","School licences and the class pack are described there too. They're part of the project's business model."] ] } },
+ { id:"trgovina", ic:"🛒",
+   hr:{ n:"Trgovina", s:[
+     ["Probna trgovina","Trgovina je izmišljena: pokazuje kako bi trgovina izgledala, ali ništa se ne naplaćuje, ne izrađuje i ne šalje. Na blagajni ne upisuj prave podatke."],
+     ["Nagrade","Proizvodi s oznakom 🔒 Nagrada otključavaju se igrom: riješi laboratorij, pobijedi u H2 Gradu, napravi plan s 90 %, skupi 900 XP, uđi u tim ili prođi sva 4 koraka."],
+     ["Kupnja","Odaberi proizvod, veličinu ili boju, pa Dodaj u košaricu. U 🛒 Košarici klikni Na blagajnu → i Potvrdi narudžbu."] ] },
+   en:{ n:"Shop", s:[
+     ["Demo shop","The shop is made up: it shows what a shop could look like, but nothing is charged, made or shipped. Don't enter real details at checkout."],
+     ["Rewards","Items marked 🔒 Reward unlock through play: solve the lab, win H2 City, make a 90 % plan, collect 900 XP, join a team or complete all 4 steps."],
+     ["Buying","Choose an item, a size or colour, then Add to cart. In the 🛒 Cart click Checkout → and Confirm order."] ] } },
+ { id:"postavke", ic:"⚙️",
+   hr:{ n:"Postavke", s:[
+     ["Izgled","🌗 Svijetla tema, 🔠 Veća slova i 🧘 Manje animacija za lakše čitanje."],
+     ["Podijeli","QR kod i gumb Podijeli poveznicu za slanje stranice prijateljima ili razredu."],
+     ["Sigurnosna kopija","💾 Spremi napredak u datoteku i 📂 Učitaj napredak služe za kopiju ili prijenos bez interneta."],
+     ["Promjena lozinke","🔑 Promijeni lozinku: upiši staru, pa novu (barem 6 znakova). Novu odmah zapiši."],
+     ["Izvori i uvod","📚 Izvori pokazuju odakle su brojke u aplikaciji, a 🎬 Ponovno pogledaj uvod ponovno pokazuje uvodni vodič."] ] },
+   en:{ n:"Settings", s:[
+     ["Appearance","🌗 Light theme, 🔠 Larger text and 🧘 Fewer animations for easier reading."],
+     ["Share","A QR code and a Share link button for sending the site to friends or your class."],
+     ["Backup","💾 Save progress to a file and 📂 Load progress make a copy or move it without the internet."],
+     ["Change password","🔑 Change password: enter the old one, then a new one (at least 6 characters). Write the new one down straight away."],
+     ["Sources and intro","📚 Sources show where the app's figures come from, and 🎬 Watch the intro again replays the intro guide."] ] } },
+ { id:"voditelji", ic:"🛡️",
+   hr:{ n:"Za voditelje stranice", s:[
+     ["Statistika","Stranica 🛡️ Voditelji vidljiva je samo voditeljima: broj korisnika, nove registracije, aktivnost, koraci, razine, Akademija, najteža pitanja, laboratorij, gradovi, Liga i tablica svih korisnika. ⬇ CSV preuzima tablicu."],
+     ["Zaboravljena lozinka","Upiši korisničko ime u 🔑 Zaboravljena lozinka i klikni Resetiraj lozinku. Dobiješ privremenu lozinku koju pošalješ korisniku. Napredak, XP i tim ostaju, a korisnik je odmah promijeni u Postavkama."],
+     ["Obriši tim","Tim napravljen greškom obrišeš pod 🗑️ Obriši tim: upiši kod tima, klikni Obriši tim, pa još jednom Da, obriši. Članovi ostaju bez tima i mogu se pridružiti drugome."],
+     ["Novi voditelj","Novo korisničko ime dodaje se u postavku ADMINI u Cloudflareu; ta osoba se registrira s pozivnim kodom voditelja."] ] },
+   en:{ n:"For site admins", s:[
+     ["Statistics","The 🛡️ Admins page is only visible to admins: number of users, new sign-ups, activity, steps, levels, Academy, hardest questions, lab, cities, League and a table of all users. ⬇ CSV downloads the table."],
+     ["Forgotten password","Enter the username under 🔑 Forgotten password and click Reset password. You get a temporary password to send to the user. Progress, XP and team stay, and the user changes it straight away in Settings."],
+     ["Delete team","Delete a team created by mistake under 🗑️ Delete team: enter the team code, click Delete team, then Yes, delete. Members are left without a team and can join another."],
+     ["New admin","A new username is added to the ADMINI setting in Cloudflare; that person signs up with the admin invite code."] ] } },
+ { id:"pitanja", ic:"❓",
+   hr:{ n:"Česta pitanja", s:[
+     ["Zaboravio sam lozinku.","Javi se nastavniku ili voditelju stranice. On ti u nekoliko sekundi da privremenu lozinku, a napredak ostaje."],
+     ["Na drugom uređaju ne vidim svoj napredak.","Provjeri jesi li prijavljen istim korisničkim imenom. Na početnoj stranici mora pisati ☁️ Spremljeno na poslužitelj. Ako piše 📴, nema interneta: napredak se sprema na uređaju i šalje kad se veza vrati."],
+     ["Korisničko ime je zauzeto.","Netko ga već koristi. Dodaj broj ili razred, na primjer ana_2b."],
+     ["Stranica izgleda staro ili ne radi.","Osvježi je: na računalu Ctrl + Shift + R, na mobitelu zatvori i ponovno otvori karticu."],
+     ["Je li sigurno?","Ne spremamo ime, e-mail ni tjelesnu masu. Lozinke se ne spremaju, nego samo njihov šifrirani zapis."],
+     ["Tko je napravio aplikaciju?","Mia Hrković, Melanie Grgić i Tonka Vlahović, Srednja škola Dugo Selo, uz mentora Miroslava Begića i sumentora Miljenka Šikutena, za Milenijsko natjecanje iz kreativne industrije."] ] },
+   en:{ n:"FAQ", s:[
+     ["I forgot my password.","Ask your teacher or a site admin. They can give you a temporary password in seconds, and your progress stays."],
+     ["I can't see my progress on another device.","Check you're logged in with the same username. The home page should say ☁️ Saved to the server. If it says 📴, there's no internet: progress is kept on the device and sent when you're back online."],
+     ["The username is taken.","Someone already uses it. Add a number or your class, for example ana_2b."],
+     ["The page looks old or doesn't work.","Refresh it: on a computer press Ctrl + Shift + R, on a phone close and reopen the tab."],
+     ["Is it safe?","We don't store names, e-mails or body mass. Passwords aren't stored either, only an encrypted record of them."],
+     ["Who made the app?","Mia Hrković, Melanie Grgić and Tonka Vlahović, Srednja škola Dugo Selo, with mentor Miroslav Begić and co-mentor Miljenko Šikuten, for the Millennium Creative Industries Competition."] ] } },
+];
+
+let uputeTrazi = "";
+function crtajUpute(){
+  const el = $("uputeSadrzaj"); if(!el) return;
+  const en = (typeof JEZIK !== "undefined" && JEZIK === "en"), q = uputeTrazi.trim().toLowerCase();
+  const pog = UPUTE.map(u => ({ ...u, t: en ? u.en : u.hr }))
+    .map(u => ({ ...u, s: q ? u.t.s.filter(x => (u.t.n + " " + [].concat(x).join(" ")).toLowerCase().includes(q)) : u.t.s }))
+    .filter(u => u.s.length);
+  $("uputeSadrzajNav").innerHTML = UPUTE.map(u => `<button class="ghost" style="width:auto;margin:0;padding:6px 10px;font-size:13px" onclick="uputeOtvori('${u.id}')">${u.ic} ${esc((en ? u.en : u.hr).n)}</button>`).join("");
+  el.innerHTML = pog.length ? pog.map(u => `<details class="card plan" id="up-${u.id}" ${q ? "open" : ""}><summary><span style="font-size:24px">${u.ic}</span>${esc(u.t.n)}</summary>
+    <div style="margin-top:10px;display:grid;gap:10px">${u.s.map(x => Array.isArray(x) ? `<div><b>${esc(x[0])}</b><div class="muted" style="margin-top:2px">${esc(x[1])}</div></div>` : `<p class="muted">${esc(x)}</p>`).join("")}</div></details>`).join("")
+    : `<p class="muted">${en ? "Nothing found. Try another word." : "Ništa nije pronađeno. Probaj drugu riječ."}</p>`;
+}
+function uputeOtvori(id){ uputeTrazi = ""; const t = $("uputeTrazi"); if(t) t.value = ""; crtajUpute(); const d = $("up-" + id); if(d){ d.open = true; d.scrollIntoView({behavior:"smooth", block:"start"}); } }
+function otvoriUpute(id){ tab("upute"); crtajUpute(); if(id) setTimeout(() => uputeOtvori(id), 50); }
+
+</script>
 <script>pokreni();</script>
 </body>
 </html>
-
