@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🏙️",
+      "t": "Rijeka je postao zeleni grad na vodik 2031.",
+      "d": "2026-10-21T16:13:39.339Z"
+    },
+    {
       "i": "🔋",
       "t": "Nova razina: Gorivna ćelija!",
       "d": "2026-10-21T16:09:12.181Z"
@@ -231,19 +236,19 @@
   },
   "grad": {
     "pobjeda": true,
-    "godina": 2032,
-    "grad": "Zadar"
+    "godina": 2031,
+    "grad": "Rijeka"
   },
   "ruta": {
     "najbolja": 0,
     "plan": []
   },
-  "xp": 531,
+  "xp": 564,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792599207389,
+  "_spremljeno": 1792599219339,
   "_ukupno": 3.9
 }
