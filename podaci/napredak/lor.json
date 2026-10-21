@@ -161,7 +161,8 @@
     "Šalica kave (kofein)",
     "Krema za ruke (glicerol)",
     "Pijesak s plaže",
-    "Prozor"
+    "Prozor",
+    "Polietilen"
   ],
   "lab": {
     "rijeseno": false,
@@ -177,12 +178,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 202,
+  "xp": 204,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598430675,
+  "_spremljeno": 1792598511324,
   "_ukupno": 3.9
 }
