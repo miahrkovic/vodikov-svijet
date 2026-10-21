@@ -2,6 +2,36 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🔬",
+      "t": "Istraženo 50 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:08:28.172Z"
+    },
+    {
+      "i": "💧",
+      "t": "Nova razina: Molekula!",
+      "d": "2026-10-21T16:08:28.172Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 40 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:08:23.421Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 30 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:08:17.921Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 20 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:08:13.788Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 10 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:08:07.798Z"
+    },
+    {
       "i": "✨",
       "t": "Napravljen račun @tonkavlahovic. Dobrodošao!",
       "d": "2026-10-21T16:01:37.661Z"
@@ -15,7 +45,55 @@
     "Boca vode 0,5 L",
     "Kada vode",
     "Kanta vode 10 L",
-    "Kišni oblak"
+    "Kišni oblak",
+    "Snjegović",
+    "Žličica šećera",
+    "Kocka šećera",
+    "List papira A4",
+    "Bilježnica",
+    "Knjiga",
+    "Olovka",
+    "Drvena stolica",
+    "Cjepanica drva",
+    "Pamučna majica",
+    "Rola WC papira",
+    "Traperice",
+    "Prazna plastična boca",
+    "Kartonska kutija",
+    "Svijeća",
+    "Plastična vrećica",
+    "Litra benzina",
+    "Pun spremnik benzina",
+    "Sredstvo za dezinfekciju",
+    "Plinska boca za kuhanje",
+    "Boca ulja 1 L",
+    "Automobilska guma",
+    "Gumica za brisanje",
+    "Balon",
+    "Pramen kose",
+    "Najlonske čarape",
+    "Vunena kapa",
+    "Komad sapuna",
+    "Žlica soli",
+    "Staklena čaša",
+    "Kamen",
+    "Zlatni prsten",
+    "Limenka",
+    "Vodikov spremnik auta",
+    "Čaša vode",
+    "Tuširanje (5 minuta)",
+    "Jadransko more",
+    "Bazen u dvorištu",
+    "Pahulja snijega",
+    "Kap kiše",
+    "Ledeni brijeg",
+    "Akvarij",
+    "Lubenica (voda u njoj)",
+    "Vrećica šećera 1 kg",
+    "Novine",
+    "Lizalica",
+    "Kutija za pizzu",
+    "Drveni stol"
   ],
   "lab": {
     "rijeseno": false,
@@ -31,12 +109,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 10,
+  "xp": 106,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598882821,
+  "_spremljeno": 1792598909323,
   "_ukupno": 3.9
 }
