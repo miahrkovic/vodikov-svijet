@@ -250,7 +250,7 @@
       "Zagreb"
     ]
   },
-  "xp": 739,
+  "xp": 749,
   "akad": {
     "element": {
       "z": 3
@@ -267,11 +267,12 @@
     "tijelo:0",
     "tijelo:1",
     "tijelo:2",
-    "tijelo:3"
+    "tijelo:3",
+    "proizvodnja:2"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604841157,
+  "_spremljeno": 1792604906440,
   "_ukupno": 3.9
 }
