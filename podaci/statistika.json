@@ -172,8 +172,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:20:05.869Z",
-    "xp": 806,
+    "zadnje": "2026-10-21T16:30:55.016Z",
+    "xp": 841,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -187,7 +187,8 @@
     "grad": "Split",
     "akad": {
       "hrvatska": 3,
-      "element": 3
+      "element": 3,
+      "tijelo": 3
     },
     "tocna": [
       "hrvatska:0",
@@ -200,7 +201,9 @@
       "element:3",
       "tijelo:0",
       "tijelo:1",
-      "tijelo:2"
+      "tijelo:2",
+      "tijelo:3",
+      "proizvodnja:0"
     ],
     "istrazeno": [
       "Vrećica šećera 1 kg",
@@ -326,7 +329,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 27
+    "dnevnik": 29
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
