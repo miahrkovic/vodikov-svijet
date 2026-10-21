@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:01:58.216Z",
-    "xp": 204,
+    "zadnje": "2026-10-21T16:02:11.164Z",
+    "xp": 222,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -188,14 +188,23 @@
       "Krema za ruke (glicerol)",
       "Pijesak s plaže",
       "Prozor",
-      "Polietilen"
+      "Polietilen",
+      "Najlon",
+      "Staklo / kamen",
+      "Plastika PVC",
+      "Plastika PP",
+      "Metal",
+      "Voda",
+      "Papir / drvo / pamuk",
+      "Plastika PET",
+      "Šećer – saharoza"
     ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 13
+    "dnevnik": 14
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
