@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:03:06.362Z",
-    "xp": 248,
+    "zadnje": "2026-10-21T16:03:14.507Z",
+    "xp": 254,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -210,14 +210,17 @@
       "Kuhinjska sol",
       "Čisti vodik",
       "Amonijak",
-      "Guma"
+      "Guma",
+      "Alkohol",
+      "Prirodni plin",
+      "Benzin"
     ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 15
+    "dnevnik": 16
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
