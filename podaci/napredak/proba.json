@@ -20,7 +20,9 @@
   "ti": {
     "kg": 80
   },
-  "istrazeno": [],
+  "istrazeno": [
+    "Kocka leda"
+  ],
   "lab": {
     "rijeseno": false,
     "najbolje": null,
@@ -35,12 +37,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 20,
+  "xp": 22,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792606368751,
+  "_spremljeno": 1792606442827,
   "_ukupno": 3.9
 }
