@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🔋",
+      "t": "Nova razina: Gorivna ćelija!",
+      "d": "2026-10-21T17:42:00.614Z"
+    },
+    {
+      "i": "🏙️",
+      "t": "Split je postao zeleni grad na vodik 2032.",
+      "d": "2026-10-21T17:42:00.614Z"
+    },
+    {
       "i": "✨",
       "t": "Laboratorij riješen (+60 XP)",
       "d": "2026-10-21T17:37:47.312Z"
@@ -183,20 +193,20 @@
     "puta": 1
   },
   "grad": {
-    "pobjeda": false,
-    "godina": null,
-    "grad": null
+    "pobjeda": true,
+    "godina": 2032,
+    "grad": "Split"
   },
   "ruta": {
     "najbolja": 0,
     "plan": []
   },
-  "xp": 456,
+  "xp": 559,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604511511,
+  "_spremljeno": 1792604520614,
   "_ukupno": 3.9
 }
