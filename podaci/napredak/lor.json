@@ -190,7 +190,10 @@
     "Glicerol",
     "Kofein",
     "Aspirin",
-    "Stiropor"
+    "Stiropor",
+    "Kuhinjska sol",
+    "Čisti vodik",
+    "Amonijak"
   ],
   "lab": {
     "rijeseno": false,
@@ -206,12 +209,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 240,
+  "xp": 246,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598554256,
+  "_spremljeno": 1792598572798,
   "_ukupno": 3.9
 }
