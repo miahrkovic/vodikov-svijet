@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🤝",
+      "t": "Pridružio se timu „Vodikovci“",
+      "d": "2026-10-21T17:57:52.965Z"
+    },
+    {
+      "i": "🤝",
+      "t": "Pridružio se timu „Vodikovci“",
+      "d": "2026-10-21T17:57:50.745Z"
+    },
+    {
       "i": "🎓",
       "t": "Lekcija „Vodik i budućnost“: 3/4 (★★☆)",
       "d": "2026-10-21T17:57:28.804Z"
@@ -335,9 +345,9 @@
     "hrvatska:1",
     "hrvatska:2"
   ],
-  "tim": null,
-  "timIme": null,
+  "tim": "H27UN9",
+  "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792605448804,
+  "_spremljeno": 1792605472965,
   "_ukupno": 3.9
 }
