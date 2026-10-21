@@ -50,7 +50,7 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 85,
+  "xp": 95,
   "akad": {
     "element": {
       "z": 3
@@ -61,11 +61,12 @@
     "element:2",
     "element:1",
     "element:3",
-    "tijelo:1"
+    "tijelo:1",
+    "tijelo:2"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598642785,
+  "_spremljeno": 1792598650840,
   "_ukupno": 3.9
 }
