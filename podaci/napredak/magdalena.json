@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🎓",
+      "t": "Lekcija „Element broj 1“: 2/4 (★☆☆)",
+      "d": "2026-10-21T16:02:26.366Z"
+    },
+    {
       "i": "✨",
       "t": "Otkrio si vodik u sebi (+20 XP)",
       "d": "2026-10-21T16:00:04.346Z"
@@ -36,7 +41,11 @@
     "plan": []
   },
   "xp": 40,
-  "akad": {},
+  "akad": {
+    "element": {
+      "z": 1
+    }
+  },
   "tocna": [
     "element:0",
     "element:2"
@@ -44,6 +53,6 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598536380,
+  "_spremljeno": 1792598546366,
   "_ukupno": 3.9
 }
