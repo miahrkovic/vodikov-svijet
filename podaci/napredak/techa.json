@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🔬",
+      "t": "Istraženo 10 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:04:55.786Z"
+    },
+    {
       "i": "✨",
       "t": "Napravljen račun @techa. Dobrodošao!",
       "d": "2026-10-21T15:59:45.045Z"
@@ -16,7 +21,11 @@
     "Kanta vode 10 L",
     "Kada vode",
     "Olimpijski bazen",
-    "Kišni oblak"
+    "Kišni oblak",
+    "List papira A4",
+    "Kocka šećera",
+    "Žličica šećera",
+    "Snjegović"
   ],
   "lab": {
     "rijeseno": false,
@@ -32,12 +41,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 42,
+  "xp": 50,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598692453,
+  "_spremljeno": 1792598695786,
   "_ukupno": 3.9
 }
