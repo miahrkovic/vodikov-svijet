@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "✨",
+      "t": "Tri zvjezdice: Vodik i budućnost (+15 XP)",
+      "d": "2026-10-21T16:18:37.609Z"
+    },
+    {
+      "i": "🎓",
+      "t": "Lekcija „Vodik i budućnost“: 4/4 (★★★)",
+      "d": "2026-10-21T16:18:37.609Z"
+    },
+    {
       "i": "🏙️",
       "t": "Split je postao zeleni grad na vodik 2030.",
       "d": "2026-10-21T16:15:41.422Z"
@@ -248,16 +258,23 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 696,
-  "akad": {},
+  "xp": 741,
+  "akad": {
+    "hrvatska": {
+      "z": 3
+    }
+  },
   "tocna": [
     "hrvatska:0",
     "hrvatska:1",
-    "hrvatska:2"
+    "hrvatska:2",
+    "hrvatska:3",
+    "element:0",
+    "element:1"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792599511414,
+  "_spremljeno": 1792599540292,
   "_ukupno": 3.9
 }
