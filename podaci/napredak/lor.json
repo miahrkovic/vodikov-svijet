@@ -22,7 +22,8 @@
   },
   "istrazeno": [
     "Vrećica šećera 1 kg",
-    "Lizalica"
+    "Lizalica",
+    "Kutija za pizzu"
   ],
   "lab": {
     "rijeseno": false,
@@ -38,12 +39,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 24,
+  "xp": 26,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598359850,
+  "_spremljeno": 1792598363744,
   "_ukupno": 3.9
 }
