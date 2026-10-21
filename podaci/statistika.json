@@ -299,8 +299,8 @@
   },
   "techa": {
     "kreiran": "2026-10-21T15:59:43.902Z",
-    "zadnje": "2026-10-21T16:02:14.996Z",
-    "xp": 24,
+    "zadnje": "2026-10-21T16:04:59.820Z",
+    "xp": 42,
     "koraci": {
       "ti": false,
       "lab": false,
@@ -314,7 +314,14 @@
     "grad": null,
     "akad": {},
     "tocna": [],
-    "istrazeno": [],
+    "istrazeno": [
+      "Kocka leda",
+      "Boca vode 0,5 L",
+      "Kanta vode 10 L",
+      "Kada vode",
+      "Olimpijski bazen",
+      "Kišni oblak"
+    ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
