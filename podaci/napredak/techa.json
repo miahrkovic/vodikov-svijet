@@ -10,7 +10,14 @@
   "ti": {
     "kg": null
   },
-  "istrazeno": [],
+  "istrazeno": [
+    "Kocka leda",
+    "Boca vode 0,5 L",
+    "Kanta vode 10 L",
+    "Kada vode",
+    "Olimpijski bazen",
+    "Kišni oblak"
+  ],
   "lab": {
     "rijeseno": false,
     "najbolje": null,
@@ -25,12 +32,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 30,
+  "xp": 42,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598534224,
+  "_spremljeno": 1792598692453,
   "_ukupno": 3.9
 }
