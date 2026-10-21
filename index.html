@@ -1,0 +1,2068 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vodikov svijet</title>
+<meta name="description" content="Otkrij vodik u sebi, pobjegni iz laboratorija, izgradi zeleni grad i poveži Hrvatsku vodikom. Edukativna aplikacija za učenike i škole.">
+<meta name="theme-color" content="#070b1a">
+<meta property="og:title" content="Vodikov svijet">
+<meta property="og:description" content="Najlakši element svemira kroz tvoje tijelo, laboratorij, grad i cijelu Hrvatsku.">
+<meta property="og:image" content="ikone/ikona-512.png">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIzNSUiIHI9Ijc1JSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWQzYThmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDcwYjFhIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjE1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNWNjOGZmIiBzdHJva2Utd2lkdGg9IjE4IiBvcGFjaXR5PSIuOSIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iNTIiIGZpbGw9IiNmZmI4NmIiLz48Y2lyY2xlIGN4PSIzNjIiIGN5PSIxNTAiIHI9IjMwIiBmaWxsPSIjNWNjOGZmIi8+PHRleHQgeD0iMjU2IiB5PSIyNzYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSI1NiIgZmlsbD0iIzNhMWQwMCI+SDwvdGV4dD48L3N2Zz4K" type="image/svg+xml">
+<link rel="apple-touch-icon" href="ikone/ikona-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Vodikov svijet: stilovi. Boje se mijenjaju u :root na vrhu. */
+:root{--bg:#070b1a;--card:#111a36;--soft:#18244a;--line:#24325f;--ink:#eaf0ff;--muted:#93a0c8;--acc:#5cc8ff;--accTxt:#04122a;--gold:#ffb86b;--ok:#4cf0a0;--bad:#ff7a7a;--inp:#0b1330;--navBg:#0c1430f2;--mockBg:#18244a;--naslov:'Space Grotesk';--navN:6}
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.45;min-height:100vh}
+  .wrap{max-width:460px;margin:0 auto;padding:18px 16px 100px}
+  h1,h2,.pf{font-family:var(--naslov),Georgia,serif}
+  h1{font-size:30px;line-height:1.1}
+  h2{font-size:22px;margin-bottom:4px}
+  .muted{color:var(--muted)} .small{font-size:13px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
+  button{cursor:pointer;font:600 15px Inter;border:0;border-radius:12px;padding:13px 16px;color:inherit}
+  .btn{background:var(--acc);color:var(--accTxt);width:100%}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .ghost{background:transparent;border:1px solid var(--line);color:var(--acc);width:100%;margin-top:8px}
+  input[type=text],input[type=number],input[type=password],select{width:100%;font:500 16px Inter;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--inp);color:var(--ink)}
+  .tab{display:none}.tab.active{display:block;animation:in .3s}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}}
+  .kicker{font-size:12px;color:var(--acc);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+  nav{position:fixed;left:0;right:0;bottom:0;background:var(--navBg);border-top:1px solid var(--line);backdrop-filter:blur(8px);z-index:5}
+  nav .in{max-width:460px;margin:0 auto;display:grid;grid-template-columns:repeat(var(--navN),1fr)}
+  nav button{background:none;border-radius:0;padding:10px 0 14px;font:600 11px Inter;color:var(--muted)}
+  nav button span{display:block;font-size:22px;line-height:1.2}
+  nav button.on{color:var(--acc)}
+  .navlogo{display:none}
+  .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#111;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.3s;z-index:9;max-width:90%;text-align:center;pointer-events:none}
+  .toast.on{opacity:1;transform:translateX(-50%)}
+  /* prijava */
+  body.login nav{display:none} body.login .tab{display:none!important}
+  #prijava{display:block} body:not(.login) #prijava{display:none}
+  .form label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+  .form input{margin-top:4px}
+  .profil{display:flex;align-items:center;gap:10px;width:100%;background:var(--card);border:1px solid var(--line);color:var(--ink);text-align:left;margin-bottom:8px;font-weight:500}
+  .av{width:40px;height:40px;border-radius:50%;background:var(--acc);color:var(--accTxt);display:flex;align-items:center;justify-content:center;font:700 18px var(--naslov);flex:none}
+  .profil small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+  /* početna */
+  .prog{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+  .prog div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .prog b{display:block;font:700 22px var(--naslov)}
+  .prog small{font-size:11.5px;color:var(--muted)}
+  .path{display:grid;gap:8px}
+  .step{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer}
+  .step .ic{width:42px;height:42px;border-radius:12px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:22px;flex:none}
+  .step b{display:block}
+  .dn{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;font-size:13.5px;padding:7px 0;border-bottom:1px solid var(--line)}
+  .dn:last-child{border:0}
+  .dn small{color:var(--muted);font-size:11.5px;text-align:right}
+  .seg{display:flex;background:var(--soft);border-radius:12px;padding:4px;margin-bottom:12px}
+  .seg button{flex:1;background:none;padding:9px 4px;font:600 13px Inter;color:var(--muted);border-radius:9px}
+  .seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px #0002}
+  .sub{display:none}.sub.on{display:block}
+  /* trgovina */
+  .shopbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .cartbtn{position:relative;background:var(--card);border:1px solid var(--line);font-size:22px;padding:8px 14px}
+  .cartbtn span{position:absolute;top:-6px;right:-6px;background:var(--acc);color:var(--accTxt);font:700 11px Inter;border-radius:10px;padding:2px 6px}
+  .cats{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:6px;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cats button{flex:none;background:var(--card);border:1px solid var(--line);padding:7px 12px;font:500 13px Inter;border-radius:18px;color:var(--muted)}
+  .cats button.on{background:var(--acc);color:var(--accTxt);border-color:var(--acc)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .art{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;text-align:left;color:var(--ink);font:inherit;cursor:pointer;position:relative}
+  .art .th{background:var(--mockBg);border-radius:10px;margin-bottom:6px;width:100%;display:block}
+  .art b{display:block;font-size:14px}
+  .art .c{font:700 15px var(--naslov);color:var(--acc)}
+  .art .tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;font:700 10px Inter;border-radius:8px;padding:2px 7px}
+  .art.zak .th{filter:grayscale(1) opacity(.45)}
+  .nagrade{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:12px;font-size:14px}
+  .mock{background:var(--mockBg);border-radius:16px;padding:10px}
+  .mock svg{width:100%;display:block}
+  .opt{margin:10px 0} .opt .l{font-size:13px;color:var(--muted);margin-bottom:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chips button{background:var(--card);border:1px solid var(--line);padding:8px 12px;font:600 13px Inter;color:var(--ink);border-radius:10px}
+  .chips button.on{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset;color:var(--acc)}
+  .chips .sw{width:32px;height:32px;padding:0;border-radius:50%}
+  .qty{display:flex;justify-content:space-between;align-items:center;margin:12px 0}
+  .qty div{display:flex;align-items:center;gap:12px}
+  .qty button{width:38px;height:38px;padding:0;background:var(--card);border:1px solid var(--line);font-size:18px;color:var(--ink)}
+  .stavka{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;margin-bottom:8px}
+  .stavka svg{width:70px;flex:none;background:var(--mockBg);border-radius:10px}
+  .stavka .i{flex:1;font-size:14px}
+  .stavka .i small{display:block;color:var(--muted);font-size:12px}
+  .stavka .q{display:flex;align-items:center;gap:6px;margin-top:4px}
+  .stavka .q button{width:28px;height:28px;padding:0;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+  .zb{display:flex;justify-content:space-between;font-size:14px;padding:3px 0}
+  .zb.uk{font:700 18px var(--naslov);border-top:1px solid var(--line);margin-top:6px;padding-top:8px}
+  .radios label{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px;border:1px solid var(--line);border-radius:12px;margin-top:8px;font-size:14px;background:var(--card);cursor:pointer}
+  .radios label.on{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
+  .radios input{accent-color:var(--acc)}
+  .gift{display:flex;gap:8px;align-items:center;font-size:14px;margin:0 0 12px 4px}
+  .pw{font:600 18px ui-monospace,Menlo,monospace;word-break:break-all;background:var(--soft);border:1px dashed var(--line);border-radius:12px;padding:12px;text-align:center;margin:8px 0}
+  /* ====== LAPTOP ====== */
+  @media (min-width:900px){
+    body{padding-left:232px}
+    nav{top:0;bottom:0;right:auto;left:0;width:232px;border-top:0;border-right:1px solid var(--line)}
+    nav .in{display:flex;flex-direction:column;max-width:none;padding:22px 14px;gap:4px}
+    .navlogo{display:block;padding:4px 10px 18px;font:700 22px var(--naslov)}
+    .navlogo small{display:block;font:500 12px Inter;color:var(--muted)}
+    nav button{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;font-size:15px;text-align:left}
+    nav button span{font-size:20px}
+    nav button.on{background:var(--soft)}
+    .wrap{max-width:1080px;padding:32px 36px 60px}
+    h1{font-size:38px}
+    body.login{padding-left:0}
+    #prijava{max-width:480px;margin:40px auto}
+    #t-pocetna.active{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+    #t-pocetna>*{grid-column:1/-1}
+    #t-pocetna>.pola{grid-column:auto}
+    .path{grid-template-columns:repeat(3,1fr)}
+    .grid2{grid-template-columns:repeat(4,1fr)}
+    .duo{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;align-items:start}
+    #sh-proizvod.vid{display:grid!important;grid-template-columns:1fr 1fr;gap:0 24px}
+    #sh-proizvod>.ghost{grid-column:1/-1}
+    #sh-proizvod>.mock{grid-row:span 6}
+    .toast{bottom:30px;margin-left:116px}
+  }
+
+
+  body{background:radial-gradient(1000px 600px at 50% -10%,#1a2a6b66,transparent),var(--bg)}
+  .num{font:700 40px "Space Grotesk";color:var(--acc);line-height:1.1}
+  .num small{font-size:16px;color:var(--muted);font-weight:500}
+  .big{font-size:14px;color:var(--muted)}
+  .bar{display:flex;height:12px;border-radius:7px;overflow:hidden;margin:10px 0 6px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--muted)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+  .tl{position:relative;padding-left:26px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),var(--acc),var(--ok))}
+  .tl div{position:relative;margin-bottom:12px;font-size:14px;color:var(--muted)}
+  .tl div::before{content:"";position:absolute;left:-23px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--acc)}
+  .tl b{color:var(--ink);display:block}
+  .g4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .g4 .card{margin:0;text-align:center}
+  .g4 .num{font-size:26px}
+  .foods{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:420px;overflow-y:auto}
+  .food{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:left;color:var(--ink);font:500 13.5px Inter;position:relative}
+  .food .e{font-size:22px;display:block}
+  .food .g{color:var(--muted);font-size:11.5px}
+  .food .x{position:absolute;top:6px;right:8px;background:var(--acc);color:#04122a;border-radius:9px;padding:0 6px;font:700 11px Inter}
+  .cats2{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+  .cats2 button{flex:none;background:var(--soft);border:1px solid var(--line);padding:7px 12px;font:500 12.5px Inter;border-radius:18px;color:var(--muted)}
+  .cats2 button.on{background:var(--acc);color:#04122a}
+  canvas{width:100%;border-radius:16px;display:block;margin-bottom:10px}
+  /* laboratorij */
+  .locks{display:flex;gap:6px;font-size:20px}.locks span{opacity:.35}.locks span.on{opacity:1}
+  .timer{font:700 20px "Space Grotesk";color:var(--gold)}
+  .dials{display:flex;gap:12px;justify-content:center;margin:8px 0}
+  .dial{background:var(--soft);border:1px solid var(--line);border-radius:14px;width:84px;text-align:center;padding:6px 0}
+  .dial button{background:none;color:var(--muted);font-size:20px;padding:4px;width:100%}
+  .dial .v{font:700 40px "Space Grotesk";color:var(--acc)}
+  .dial small{display:block;font-size:11px;color:var(--muted)}
+  .eq{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;font:700 22px "Space Grotesk";margin:10px 0}
+  .coef{display:flex;flex-direction:column;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:0 4px}
+  .coef button{background:none;color:var(--muted);padding:0 8px;font-size:16px}
+  .coef b{color:var(--gold);font-size:24px;line-height:1}
+  .cnt{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;color:var(--muted);text-align:center}
+  .cnt div{background:var(--soft);border-radius:10px;padding:8px}.cnt .ok{color:var(--ok)}
+  .opt2{display:block;width:100%;text-align:left;background:var(--soft);border:1px solid var(--line);color:var(--ink);font-weight:500;margin-bottom:8px}
+  .opt2.sel{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+  .opt2 .n{display:inline-block;width:24px;height:24px;border-radius:50%;background:var(--line);text-align:center;font-size:13px;line-height:24px;margin-right:8px}
+  .opt2.sel .n{background:var(--gold);color:#1a0b10}
+  .hint{background:#ffb86b1f;border:1px dashed var(--gold);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:10px}
+  .shake{animation:sh .4s}@keyframes sh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+  /* grad */
+  .gmap{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;background:#0a1d15;border:1px solid var(--line);border-radius:16px;padding:8px;margin-bottom:12px;transition:filter .6s}
+  .tile{aspect-ratio:1;border-radius:8px;background:#123526;display:flex;align-items:center;justify-content:center;font-size:21px}
+  .tile.road{background:#1a2b25}.tile.off{opacity:.35;filter:grayscale(1)}
+  .builds{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .bld{background:var(--soft);border:1px solid var(--line);color:var(--ink);text-align:left;padding:10px;font-weight:500;font-size:13.5px}
+  .bld small{display:block;color:var(--muted);font-weight:400;font-size:11.5px;line-height:1.3;margin-top:2px}
+  .bld .c{color:var(--gold);font-size:12px}
+  .bld:disabled{opacity:.4}
+  .stats4{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .stats4>div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}
+  .stats4 .l{font-size:12px;color:var(--muted)} .stats4 b{font:700 20px "Space Grotesk"}
+  .hb{height:9px;border-radius:5px;background:var(--soft);overflow:hidden;margin-top:6px}.hb div{height:100%;transition:width .5s}
+  .lekcija{background:#4cf0a014;border:1px solid #4cf0a055;border-radius:14px;padding:12px;font-size:14px;margin-bottom:12px;display:none}
+  .glog div{padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .cities{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .cities button{background:var(--soft);border:1px solid var(--line);color:var(--ink);text-align:left;font-weight:500}
+  .cities button.on{border-color:var(--ok);box-shadow:0 0 0 1px var(--ok) inset}
+  .cities small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+  /* ruta */
+  .rmapbox{background:linear-gradient(200deg,#0c1a2c 40%,#0b2a4a);border:1px solid var(--line);border-radius:18px;padding:6px;margin-bottom:12px}
+  .rmapbox svg{width:100%;display:block}
+  .rcity{cursor:pointer} .rcity text{font:500 10px Inter;fill:var(--ink);pointer-events:none}
+  .routes button{display:flex;justify-content:space-between;width:100%;background:var(--soft);border:1px solid var(--line);color:var(--ink);margin-bottom:6px;font-weight:500;text-align:left;font-size:14px}
+  .routes button.on{border-color:var(--acc)}
+  .routes .ok{color:var(--ok)}.routes .no{color:var(--bad)}
+  @media (min-width:900px){
+    .foods{grid-template-columns:repeat(4,1fr)}
+    .g4{grid-template-columns:repeat(4,1fr)}
+    #labIgra,#labUvod,#labKraj{max-width:640px}
+    .builds{grid-template-columns:repeat(4,1fr)}
+  }
+
+
+/* ===================== NADOGRADNJA ===================== */
+/* svijetla tema */
+body.svijetla{--bg:#f4f7ff;--card:#ffffff;--soft:#e8eefc;--line:#d3ddf3;--ink:#0d1633;--muted:#5b6788;--acc:#1677c9;--accTxt:#ffffff;--inp:#ffffff;--navBg:#ffffffee;--mockBg:#e8eefc}
+body.svijetla{background:var(--bg)}
+body.svijetla .box,body.svijetla .gmap{filter:none}
+body.velika{font-size:118%}
+body.velika .small,body.velika small{font-size:14.5px}
+body.mirno *{animation:none!important;transition:none!important}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+/* xp */
+.xpbox{background:linear-gradient(135deg,#1d2f6b,#14204a);border:1px solid var(--line);border-radius:18px;padding:14px;margin:12px 0;color:#eaf0ff}
+body.svijetla .xpbox{background:linear-gradient(135deg,#dbe8ff,#eef3ff);color:var(--ink)}
+.xpbox .r{display:flex;align-items:center;gap:12px}
+.xpbox .ic{font-size:40px}
+.xpbar{height:10px;border-radius:6px;background:#00000033;overflow:hidden;margin-top:8px}
+.xpbar div{height:100%;background:linear-gradient(90deg,var(--acc),var(--ok));transition:width .6s}
+.xpfly{position:fixed;right:20px;top:20px;background:var(--ok);color:#04122a;font:700 14px "Space Grotesk";padding:6px 12px;border-radius:20px;z-index:20;animation:xpf 1.6s forwards;pointer-events:none}
+@keyframes xpf{0%{opacity:0;transform:translateY(10px)}15%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0;transform:translateY(-20px)}}
+/* "više" izbornik */
+.sheet{position:fixed;inset:0;background:#0008;z-index:30;display:none;align-items:flex-end}
+.sheet.on{display:flex}
+.sheet .in2{background:var(--card);width:100%;max-width:460px;margin:0 auto;border-radius:22px 22px 0 0;padding:16px 16px 26px;border:1px solid var(--line)}
+.sheet .g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.sheet .g button{background:var(--soft);border:1px solid var(--line);color:var(--ink);padding:14px 4px;font:600 13px Inter}
+.sheet .g button span{display:block;font-size:26px;margin-bottom:4px}
+nav .vise{display:none}
+@media (max-width:899px){ nav .samoLaptop{display:none} nav .vise{display:block} }
+@media (min-width:900px){ nav .vise{display:none} .sheet{display:none!important} nav .in{overflow-y:auto} nav button{padding:10px 14px} }
+/* akademija */
+.lekcije{display:grid;gap:10px}
+.lek{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:left;color:var(--ink);width:100%}
+.lek .ic{font-size:30px;width:48px;height:48px;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center;flex:none}
+.lek small{display:block;color:var(--muted);font-size:12px}
+.zv{margin-left:auto;font-size:15px;letter-spacing:2px;white-space:nowrap}
+.kartica{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;min-height:180px}
+.kartica .ic{font-size:44px}
+.tocke{display:flex;gap:6px;justify-content:center;margin:12px 0}
+.tocke span{width:8px;height:8px;border-radius:50%;background:var(--line)}.tocke span.on{background:var(--acc);width:20px;border-radius:5px}
+.odg{display:block;width:100%;text-align:left;background:var(--soft);border:1px solid var(--line);color:var(--ink);font-weight:500;margin-bottom:8px}
+.odg.da{background:#4cf0a026;border-color:var(--ok)} .odg.ne{background:#ff7a7a26;border-color:var(--bad)}
+.obj{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:6px}
+.timerbar{height:6px;border-radius:4px;background:var(--soft);overflow:hidden;margin:8px 0}
+.timerbar div{height:100%;background:var(--gold);transition:width .25s linear}
+/* liga */
+.mreza{background:#ffb86b1a;border:1px solid #ffb86b55;border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:12px}
+.kodbox{display:flex;align-items:center;gap:10px;background:var(--soft);border-radius:12px;padding:10px 12px;margin-top:12px}
+.kodbox b{font:700 22px ui-monospace,Menlo,monospace;letter-spacing:.15em;color:var(--acc);flex:1}
+.clan{display:flex;align-items:center;gap:8px;font-size:14px;padding:6px 0}
+.clan .a{width:28px;height:28px;border-radius:50%;background:var(--gold);color:#1a1200;display:flex;align-items:center;justify-content:center;font:700 13px Inter}
+.clan small{color:var(--muted)}
+.lj{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:8px;padding:9px 6px;border-bottom:1px solid var(--line);font-size:14px}
+.lj small{display:block;color:var(--muted);font-size:12px}
+.lj.moj{background:var(--soft);border-radius:10px;border:0}
+.lj .mj{font:700 16px "Space Grotesk";text-align:center}
+.ngrid{display:grid;gap:8px;margin-top:10px}
+.ngrid div{display:grid;grid-template-columns:36px 1fr;gap:0 8px;background:var(--soft);border-radius:12px;padding:10px}
+.ngrid span{font-size:24px;grid-row:span 2}
+.ngrid p{font-size:13px;color:var(--muted)}
+/* škole */
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
+.plan summary{cursor:pointer;font-weight:600;list-style:none;display:flex;gap:10px;align-items:center}
+.plan summary::-webkit-details-marker{display:none}
+.plan ul{padding-left:18px;margin:6px 0;font-size:14px;color:var(--muted)}
+.plan .tag2{display:inline-block;background:var(--soft);border-radius:8px;padding:2px 8px;font-size:12px;margin:2px 4px 2px 0;color:var(--ink)}
+/* postavke */
+.set{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);gap:12px}
+.set:last-child{border:0}
+.set small{display:block;color:var(--muted);font-size:12px}
+#qr{background:#fff;border-radius:16px;padding:14px;width:220px;height:220px;margin:10px auto;display:flex;align-items:center;justify-content:center}
+#qr img,#qr canvas{width:100%!important;height:auto!important}
+/* uvod */
+.uvod{position:fixed;inset:0;background:#000b;z-index:40;display:none;align-items:center;justify-content:center;padding:16px}
+.uvod.on{display:flex}
+.uvod .k{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;max-width:420px;width:100%;text-align:center}
+.uvod .k .ic{font-size:64px}
+.dogadjaj{background:#ffb86b1f;border:1px solid #ffb86b66;border-radius:14px;padding:12px;font-size:14px;margin-bottom:12px}
+@media print{ nav,.sheet,.toast,.uvod{display:none!important} body{padding:0!important;background:#fff;color:#000} }
+.sw2{width:50px;height:30px;border-radius:15px;background:#3a4a6a;position:relative;flex:none;padding:0;border:0}
+.sw2::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}
+.sw2.on{background:var(--acc)}.sw2.on::after{left:23px}
+@media (max-width:899px){ nav .in{grid-template-columns:repeat(5,1fr)} }
+.form label>input[type=password],.form label>input[type=text]{display:block;margin-top:6px}
+#prijava .seg button{font-size:15px;padding:11px 4px}
+.upoz{background:#ffb86b1f;border:1px solid #ffb86b88;border-radius:12px;padding:10px 12px;margin-bottom:10px;color:var(--ink);font-size:13.5px;line-height:1.45}
+/* ===== stranica voditelja ===== */
+.ad-kpi{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0}
+.ad-kpi .card{margin:0;padding:12px}
+.ad-kpi b{display:block;font:700 26px "Space Grotesk";line-height:1.1}
+.ad-kpi small{color:var(--muted);font-size:12px}
+.ad-i{font-size:18px}
+.ad-stupci{display:flex;align-items:flex-end;gap:2px;height:150px;margin-top:12px;border-bottom:1px solid var(--line);padding-bottom:0}
+.ad-st{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative;cursor:default}
+.ad-b{width:100%;max-width:22px;background:var(--acc);border-radius:4px 4px 0 0}
+.ad-st:hover .ad-b{filter:brightness(1.2)}
+.ad-v{font-size:10.5px;color:var(--muted);margin-bottom:2px}
+.ad-l{position:absolute;bottom:-18px;font-size:9.5px;color:var(--muted);white-space:nowrap}
+.ad-st:nth-child(odd) .ad-l{visibility:hidden}
+.ad-stupci{margin-bottom:22px}
+.ad-tr{display:grid;grid-template-columns:minmax(110px,40%) 1fr auto;gap:8px;align-items:center;font-size:13px;margin-top:9px}
+.ad-tl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ad-tt{height:10px;background:var(--soft);border-radius:5px;overflow:hidden}
+.ad-tt div{height:100%;background:var(--acc);border-radius:5px}
+.ad-tv{font-weight:600;min-width:34px;text-align:right}
+.ad-tv small{color:var(--muted);font-weight:400}
+.ad-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.ad-mini div{background:var(--soft);border-radius:12px;padding:8px;text-align:center}
+.ad-mini b{display:block;font:700 20px "Space Grotesk"}
+.ad-mini small{font-size:11px;color:var(--muted)}
+.ad-tab{overflow-x:auto;margin-top:10px}
+.ad-tab table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+.ad-tab th,.ad-tab td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.ad-tab th button{background:none;padding:0;font:600 12px Inter;color:var(--muted)}
+.ad-tab tr:hover td{background:var(--soft)}
+@media (min-width:900px){ .ad-kpi{grid-template-columns:repeat(6,1fr)} }
+.ad-pit{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:start;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.ad-pit:last-child{border:0}
+.ad-pit b{font:700 16px "Space Grotesk";color:var(--gold)}
+.ad-pit small{display:block;color:var(--muted);font-size:12px}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<section id="prijava">
+  <div style="font-size:60px;text-align:center;margin:20px 0 4px">💧⚛️</div>
+  <h1 style="text-align:center">Vodikov svijet</h1>
+  <p class="muted" style="text-align:center;margin:6px 0 18px">Otkrij vodik u sebi, pobjegni iz laboratorija, izgradi zeleni grad i poveži Hrvatsku vodikom.</p>
+  <div class="seg" role="tablist"><button id="kPrijava" class="on" role="tab" onclick="promijeniNacin('prijava')">Prijava</button><button id="kReg" role="tab" onclick="promijeniNacin('registracija')">Registracija</button></div>
+  <form class="card form" onsubmit="posaljiObrazac(event)" autocomplete="on">
+    <label>Korisničko ime<input type="text" id="rUser" name="username" placeholder="npr. vodik_007" autocapitalize="off" autocomplete="username" spellcheck="false" maxlength="20" required></label>
+    <label>Lozinka<input type="password" id="rLoz" name="password" placeholder="najmanje 6 znakova" autocomplete="current-password" maxlength="64" required></label>
+    <label id="rPonovi" style="display:none">Ponovi lozinku<input type="password" id="rLoz2" autocomplete="new-password" maxlength="64"></label>
+    <label id="rPozivniBox" style="display:none">Pozivni kod voditelja<input type="text" id="rPozivni" autocomplete="off" autocapitalize="characters" style="text-transform:uppercase;letter-spacing:.12em"></label>
+    <label style="display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" onchange="['rLoz','rLoz2'].forEach(i=>$(i).type=this.checked?'text':'password')" style="width:auto;margin:0"> Prikaži lozinku</label>
+    <p id="rMsg" role="alert" style="font-size:13.5px;min-height:20px;margin:4px 0 8px"></p>
+    <button class="btn" id="rOk" type="submit">Prijavi se →</button>
+    <p class="small muted" id="rNapomena" style="margin-top:10px"></p>
+  </form>
+  <p class="small muted" style="text-align:center" id="rNacin"></p>
+</section>
+<section class="tab active" id="t-pocetna">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div><b id="pozdrav" class="pf" style="font-size:18px"></b><div class="small muted" id="korisnik"></div></div><button class="ghost" style="width:auto;margin:0;padding:8px 12px;font-size:13px" onclick="odjava()">Odjava</button></div>
+  <h1>Vodikov svijet</h1><p class="muted small" style="margin-top:4px">Najlakši element svemira kroz tvoje tijelo, laboratorij, grad i cijelu Hrvatsku.</p>
+  <p class="small muted" id="stanjeSpremanja" style="margin:-4px 0 4px"></p>
+  <div class="xpbox" id="xpbox"></div>
+  <div class="prog" id="prog"></div>
+  <div class="path">
+    <div class="step" onclick="tab('ti')"><div class="ic">🧍</div><div><b>1. Vodik u tebi</b><span class="muted small" id="k-ti"></span></div></div>
+    <div class="step" onclick="tab('lab')"><div class="ic">🧪</div><div><b>2. Laboratorij: escape room</b><span class="muted small" id="k-lab"></span></div></div>
+    <div class="step" onclick="tab('grad')"><div class="ic">🏙️</div><div><b>3. H2 Grad</b><span class="muted small" id="k-grad"></span></div></div>
+    <div class="step" onclick="tab('ruta')"><div class="ic">🛣️</div><div><b>4. H2 Ruta</b><span class="muted small" id="k-ruta"></span></div></div>
+    <div class="step" onclick="tab('akademija')"><div class="ic">🎓</div><div><b>5. Akademija: lekcije i kvizovi</b><span class="muted small" id="k-akademija"></span></div></div>
+    <div class="step" onclick="tab('liga')"><div class="ic">🏆</div><div><b>6. Liga škola</b><span class="muted small" id="k-liga"></span></div></div>
+    <div class="step" onclick="tab('trgovina')"><div class="ic">🛒</div><div><b>7. Trgovina i nagrade</b><span class="muted small" id="k-trgovina"></span></div></div>
+  </div>
+  <div id="pocetnaExtra" style="margin-top:12px"></div>
+  <div class="card pola" style="margin-top:12px"><b>🏅 Moje nagrade</b><div id="mojeNagrade" style="margin-top:6px"></div></div>
+  <div class="card pola" style="margin-top:12px"><b>📒 Moj dnevnik</b><div id="dnevnik" style="margin-top:6px"></div></div>
+  <button class="ghost small" onclick="reset()">Kreni ispočetka</button>
+</section>
+
+<!-- ===== VODIK U TEBI ===== -->
+<section class="tab" id="t-ti">
+  <div class="kicker">Korak 1 · Vodik u tebi</div>
+  <h2>🧍 Vodik u tebi i oko tebe</h2>
+  <div class="seg"><button class="on" onclick="tiSub(0)">Tijelo</button><button onclick="tiSub(1)">Oko tebe</button><button onclick="tiSub(2)">Na tanjuru</button></div>
+  <div class="sub on" id="ti0">
+    <div class="duo">
+      <div>
+        <div class="card"><label class="small muted">Koliko kilograma imaš?</label><input type="number" id="kg" value="60" min="10" max="250" oninput="tijelo()" style="font:700 22px 'Space Grotesk';margin-top:6px"></div>
+        <div class="card"><div class="num" id="rKg"></div><div class="big">oko 10 % tvoje mase</div>
+          <div class="num" id="rAt" style="font-size:30px;margin-top:10px"></div><div class="big">atoma vodika</div>
+          <div class="bar"><div style="width:62%;background:var(--acc)"></div><div style="width:24%;background:#ff7a90"></div><div style="width:12%;background:#ffd66b"></div><div style="width:2%;background:#8a93b8"></div></div>
+          <div class="legend"><span><i style="background:var(--acc)"></i>vodik 62 %</span><span><i style="background:#ff7a90"></i>kisik 24 %</span><span><i style="background:#ffd66b"></i>ugljik 12 %</span></div>
+          <p class="small muted" style="margin-top:6px">Udio u broju atoma: po broju atoma najviše si vodik!</p></div>
+        <div class="g4" id="energija"></div>
+      </div>
+      <div>
+        <div class="card"><b>Put tvog vodika</b><div class="tl" style="margin-top:10px">
+          <div><b>💥 Veliki prasak · prije 13,8 milijardi god.</b>Nastaju jezgre vodika: jedan proton.</div>
+          <div><b>⚛️ Prvi atomi</b>Proton uhvati elektron i nastaje atom H.</div>
+          <div><b>☀️ Sunce i Zemlja · prije 4,6 milijardi god.</b>Oblak vodika pali Sunce, a dio vodika završi u vodi.</div>
+          <div><b>🌧️ Kiša i biljke</b>Voda kruži, a biljke ugrađuju vodik u šećere.</div>
+          <div><b>🧍 Ti</b>Piješ i jedeš, pa vodik postaje dio tebe.</div></div></div>
+        <canvas id="cv" width="1080" height="1350"></canvas>
+        <button class="btn" onclick="spremiKarticu()">⬇ Spremi vodikovu iskaznicu</button>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="ti1">
+    <div class="duo">
+      <div><input type="text" id="trazi" placeholder="🔍 npr. svijeća, boca, benzin, oblak…" oninput="stvari()" style="margin-bottom:10px">
+        <div class="foods" id="stvari" style="max-height:340px"></div>
+        <div class="card" style="margin-top:12px"><label class="small muted">Ili odaberi materijal i masu</label>
+          <select id="mat" onchange="vlastito()" style="margin:6px 0 8px"></select>
+          <input type="number" id="masa" value="100" oninput="vlastito()"></div></div>
+      <div class="card" id="stvarRez"><div class="big" id="sN">Odaberi nešto</div><div class="num" id="sG"></div><div class="big" id="sA"></div><p class="small muted" id="sF" style="margin-top:8px"></p><p class="small" id="sFun" style="margin-top:6px"></p>
+        <p class="small muted" style="margin-top:10px">🔬 Istraženo stvari: <b id="istrBr">0</b></p></div>
+    </div>
+  </div>
+  <div class="sub" id="ti2">
+    <div class="cats2" id="hk"></div>
+    <div class="foods" id="hrana"></div>
+    <div class="card" style="margin-top:12px"><div class="num" id="hG"></div><div class="big" id="hA"></div><button class="ghost" onclick="ocistiHranu()">Očisti</button></div>
+  </div>
+</section>
+
+<!-- ===== LABORATORIJ ===== -->
+<section class="tab" id="t-lab">
+  <div class="kicker">Korak 2 · Laboratorij</div>
+  <div id="labUvod"><h2>🧪 Molekula: escape room</h2>
+    <p class="muted" style="margin:6px 0 12px">U vodikovom laboratoriju nestalo je struje i vrata su se zaključala. Proizvedite vodik i pokrenite gorivnu ćeliju. Sedam brava, a brojevi u zadacima su svaki put drukčiji. Svaki savjet dodaje 1 minutu.</p>
+    <div class="card" id="labRekord"></div>
+    <button class="btn" onclick="labStart()">Uđi u laboratorij →</button></div>
+  <div id="labIgra" style="display:none">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><div class="locks" id="locks"></div><div class="timer" id="timer">00:00</div></div>
+    <div class="card" id="soba"></div>
+    <p id="labMsg" style="min-height:22px;font-size:14px;margin:6px 0"></p>
+    <button class="btn" onclick="labProvjeri()">Otključaj 🔓</button>
+    <button class="ghost" onclick="labSavjet()">💡 Savjet (+1 min)</button>
+    <div class="hint" id="hint" style="display:none"></div>
+  </div>
+  <div id="labKraj" style="display:none"><div class="card" style="text-align:center"><div style="font-size:56px">⚡🎉</div><h2>Struja je vraćena!</h2><div class="num" id="labVrijeme"></div><p class="muted small" style="margin-top:8px">Naučio si: izotope vodika, elektrolizu 2H₂O → 2H₂ + O₂, računanje volumena plina, boje vodika, sigurnost, ukapljivanje i rad gorivne ćelije.</p></div>
+    <button class="btn" onclick="labStart()">🔁 Igraj ponovno (novi zadaci)</button><button class="ghost" onclick="labUvod()">Natrag</button></div>
+</section>
+
+<!-- ===== H2 GRAD ===== -->
+<section class="tab" id="t-grad">
+  <div class="kicker">Korak 3 · H2 Grad</div>
+  <div id="gStart"><h2>🏙️ Postani gradonačelnik</h2>
+    <p class="muted" style="margin:6px 0 12px">U 10 godina pretvori grad u zeleni grad na vodik, a da ne ostaneš bez struje i novca. Cilj: CO₂ 10 kt ili manje i zatvorena termoelektrana na ugljen.</p>
+    <div class="cities" id="cities"></div><button class="btn" onclick="gradKreni()">Kreni →</button></div>
+  <div id="gIgra" style="display:none">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div><div class="small muted" id="gIme"></div><b class="pf" style="font-size:22px" id="gGod"></b></div><div class="card" style="margin:0;padding:8px 12px">💰 <b id="gNovac"></b> mil. €</div></div>
+    <div class="dogadjaj" id="gDog" style="display:none"></div>
+    <div class="lekcija" id="gLek"></div>
+    <div class="duo"><div>
+      <div class="stats4"><div><span class="l">⚡ Struja iz sunca i vjetra</span><br><b id="sOie"></b><div class="hb"><div id="bOie" style="background:var(--ok)"></div></div></div>
+        <div><span class="l">💧 Vodik ove godine</span><br><b id="sH2"></b><div class="small" id="sH2d"></div></div>
+        <div><span class="l">☁️ CO₂ godišnje</span><br><b id="sCo2"></b><div class="small muted">cilj: 10 kt ili manje</div></div>
+        <div><span class="l">🫁 Kvaliteta zraka</span><br><b id="sZrak"></b><div class="hb"><div id="bZrak"></div></div></div></div>
+      <div class="gmap" id="gmap"></div></div>
+      <div><div class="builds" id="builds"></div>
+      <button class="ghost" id="ugljenBtn" onclick="zatvoriUgljen()" style="margin:0 0 8px">🏭✖ Zatvori termoelektranu na ugljen</button>
+      <button class="btn" onclick="sljedecaGodina()">Sljedeća godina →</button>
+      <div class="card glog" style="margin-top:12px"><b>📒 Dnevnik gradonačelnika</b><div id="glog"></div></div></div></div>
+  </div>
+</section>
+
+<!-- ===== H2 RUTA ===== -->
+<section class="tab" id="t-ruta">
+  <div class="kicker">Korak 4 · H2 Ruta</div>
+  <h2>🛣️ Vodikova Hrvatska</h2>
+  <p class="muted small" style="margin-bottom:10px">Imaš novca za 5 punionica. Dodirni grad da postaviš punionicu, tako da vodikova vozila mogu stići iz bilo kojeg grada u bilo koji drugi.</p>
+  <div class="seg" id="vozila"></div>
+  <div class="duo"><div>
+    <div class="prog" style="margin-top:0"><div><b id="rBroj"></b><small>punionice</small></div><div><b id="rPok"></b><small>pokrivenost</small></div><div><b id="rZel"></b><small>zelene punionice</small></div></div>
+    <div class="rmapbox"><svg id="rmap" viewBox="0 0 400 350"></svg></div></div>
+    <div><div class="card"><b>🛣️ Važne rute</b><div class="routes" id="rute" style="margin-top:8px"></div><p class="small muted" id="rutaInfo"></p></div>
+    <div class="card"><b>📘 Ocjena plana</b><div id="ocjena" class="small muted" style="margin-top:6px"></div></div>
+    <button class="btn" onclick="spremiPlan()">💾 Spremi plan</button><button class="ghost" onclick="automatski()">🤖 Pokaži jedan dobar plan</button><button class="ghost" onclick="punionice.clear();crtajRutu()">Očisti kartu</button></div></div>
+</section>
+
+<!-- ===== TRGOVINA ===== -->
+<section class="tab" id="t-trgovina">
+  <div class="kicker">Korak 5 · Trgovina</div>
+
+    <div class="shopbar">
+      <div><b class="pf" style="font-size:20px" id="shopIme"></b><div class="small muted" id="shopPodnaslov"></div></div>
+      <button class="cartbtn" onclick="shop('kosarica')">🛒<span id="cartN">0</span></button>
+    </div>
+    <div id="sh-katalog">
+      <div class="nagrade" id="nagradeTraka"></div>
+      <div class="cats" id="kat"></div>
+      <div class="grid2" id="artikli"></div>
+      <p class="small muted" style="margin-top:10px">🚚 Besplatna dostava iznad 40 € · izrada 3–5 radnih dana</p>
+    </div>
+    <div id="sh-proizvod" style="display:none">
+      <button class="ghost" style="margin:0 0 10px" onclick="shop('katalog')">← Natrag u trgovinu</button>
+      <div class="mock"><svg id="pMock" viewBox="0 0 300 250"></svg></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 4px;gap:10px"><h2 id="pIme" style="margin:0"></h2><b class="pf" style="font-size:24px;white-space:nowrap" id="pCijena"></b></div>
+      <p class="muted small" id="pOpis"></p>
+      <div id="pOpcije"></div>
+      <div class="qty"><span>Količina</span><div><button onclick="kol(-1)">−</button><b id="pKol">1</b><button onclick="kol(1)">+</button></div></div>
+      <button class="btn" onclick="uKosaricu()">Dodaj u košaricu</button>
+    </div>
+    <div id="sh-kosarica" style="display:none">
+      <button class="ghost" style="margin:0 0 10px" onclick="shop('katalog')">← Nastavi kupovinu</button>
+      <h2>🛒 Košarica</h2>
+      <div id="stavke"></div>
+      <div class="card" id="zbroj"></div>
+      <button class="btn" id="naBlagajnu" onclick="shop('blagajna')">Na blagajnu →</button>
+    </div>
+    <div id="sh-blagajna" style="display:none">
+      <button class="ghost" style="margin:0 0 10px" onclick="shop('kosarica')">← Natrag u košaricu</button>
+      <h2>Dostava i plaćanje</h2>
+      <div class="duo">
+        <div class="card form">
+          <label>Ime i prezime<input type="text" id="fIme"></label>
+          <label>E-mail<input type="text" id="fMail" inputmode="email"></label>
+          <label>Adresa<input type="text" id="fAdr"></label>
+          <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px"><label>Pošt. broj<input type="text" id="fPb" inputmode="numeric"></label><label>Grad<input type="text" id="fGrad"></label></div>
+        </div>
+        <div>
+          <div class="card"><b>Dostava</b><div id="dostave" class="radios"></div></div>
+          <div class="card"><b>Plaćanje</b><div id="placanja" class="radios"></div>
+            <p class="small muted" style="margin-top:6px">U prototipu se ne unose podaci o kartici i ništa se ne naplaćuje.</p></div>
+        </div>
+      </div>
+      <label class="gift"><input type="checkbox" id="fPoklon" onchange="crtajShop()"> 🎁 Zapakiraj kao poklon (+2,50 €)</label>
+      <div class="card" id="zbroj2"></div>
+      <p id="fMsg" style="color:var(--bad);min-height:20px;font-size:14px;margin-bottom:6px"></p>
+      <button class="btn" onclick="naruci()">Potvrdi narudžbu</button>
+    </div>
+    <div id="sh-potvrda" style="display:none">
+      <div class="card" style="text-align:center">
+        <div style="font-size:56px">🎉</div>
+        <h2>Hvala na narudžbi!</h2>
+        <p class="muted" id="potTxt"></p>
+        <div class="pw" id="potBroj"></div>
+        <div id="potStavke" style="text-align:left"></div>
+        <p class="small muted" style="margin-top:10px">Ovo je prototip za natjecanje: narudžba nije stvarno poslana ni naplaćena.</p>
+      </div>
+      <button class="btn" onclick="shop('katalog')">Natrag u trgovinu</button>
+    </div>
+</section>
+
+<!-- ===== AKADEMIJA ===== -->
+<section class="tab" id="t-akademija">
+  <div class="kicker">Korak 5 · Akademija</div>
+  <div id="akPopis"><h2>🎓 Vodikova akademija</h2>
+    <p class="muted small" style="margin-bottom:12px">Kratke lekcije s karticama i kvizom na kraju. Svaki točan odgovor donosi XP, a cijela lekcija do tri zvjezdice.</p>
+    <div class="lekcije" id="lekcije"></div></div>
+  <div id="akLekcija" style="display:none">
+    <button class="ghost" style="margin:0 0 10px" onclick="akZatvori()">← Sve lekcije</button>
+    <h2 id="akNaslov"></h2>
+    <div id="akSadrzaj"></div>
+  </div>
+</section>
+
+<!-- ===== LIGA ŠKOLA ===== -->
+<section class="tab" id="t-liga">
+  <div class="kicker">Korak 6 · Natjecanje</div>
+  <h2>🏆 Liga škola</h2>
+  <p class="muted small" style="margin-bottom:10px">Razredi i timovi iz cijele Hrvatske natječu se svaki tjedan u Vodikovom izazovu: 10 pitanja u 90 sekundi. Zbrajaju se najbolji rezultati svih članova.</p>
+  <div class="mreza" id="mrezaStatus"></div>
+  <div id="ligaBezTima"><div class="duo">
+    <div class="card form"><b>➕ Napravi tim ili razred</b>
+      <label style="margin-top:8px">Ime tima<input type="text" id="tIme" placeholder="npr. 2.b Protoni"></label>
+      <label>Škola<input type="text" id="tSkola" placeholder="npr. Gimnazija Osijek"></label>
+      <button class="btn" onclick="napraviTim()">Napravi tim</button></div>
+    <div class="card form"><b>🔑 Pridruži se timu</b><p class="small muted" style="margin:6px 0">Upiši kod koji ti je poslao kapetan ili nastavnik.</p>
+      <label>Kod tima<input type="text" id="tKod" placeholder="npr. H2K4M9" autocapitalize="characters" style="text-transform:uppercase;letter-spacing:.15em"></label>
+      <button class="btn" onclick="pridruziSe()">Pridruži se</button></div></div>
+    <p id="tMsg" style="color:var(--bad);font-size:14px;min-height:20px"></p></div>
+  <div id="ligaTim" style="display:none"><div class="duo">
+    <div class="card"><b class="pf" style="font-size:20px" id="timIme"></b><div class="small muted" id="timSkola"></div>
+      <div class="kodbox"><span class="small muted">Kod</span><b id="timKod"></b><button class="ghost" style="width:auto;margin:0;padding:6px 10px;font-size:12px" onclick="kopirajKod()">Kopiraj</button></div>
+      <div class="small muted" style="margin-top:8px">Članovi</div><div id="timClanovi"></div>
+      <button class="ghost small" onclick="napustiTim()">Napusti tim</button></div>
+    <div class="card"><div class="kicker" id="rundaBr"></div><b class="pf" style="font-size:20px">⚡ Vodikov izazov</b>
+      <p class="small muted">10 pitanja iz svih lekcija, 90 sekundi. Brži točan odgovor nosi više bodova.</p>
+      <div class="prog"><div><b id="mojNajbolji">0</b><small>tvoj najbolji</small></div><div><b id="pokusaji">3</b><small>pokušaja</small></div><div><b id="timBodovi">0</b><small>bodova tima</small></div></div>
+      <button class="btn" id="igrajRundu" onclick="izazovStart()">▶ Kreni u izazov</button></div></div>
+    <div class="card" id="izazov" style="display:none"></div>
+  </div>
+  <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><b>📊 Ljestvica</b>
+    <div class="seg" style="margin:0;width:auto"><button class="on" id="ljR" onclick="ljPrikaz='runda';crtajLigu()">Ova runda</button><button id="ljS" onclick="ljPrikaz='sezona';crtajLigu()">Sezona</button></div></div>
+    <div id="ljestvica" style="margin-top:10px"></div></div>
+  <div class="card"><b>🎁 Nagrade lige</b><div class="ngrid">
+    <div><span>🏆</span><b>Sezonski prvak</b><p>Posjet vodikovom laboratoriju ili fakultetu za cijeli razred i mentora, pehar za školu i medalje s imenima.</p></div>
+    <div><span>🥈🥉</span><b>2. i 3. mjesto</b><p>Školski setovi za elektrolizu i majice „Ja sam 62 % vodik“ za cijeli tim.</p></div>
+    <div><span>⭐</span><b>Pobjednik tjedna</b><p>Digitalna značka „Prvak tjedna“ i 20 % popusta u trgovini.</p></div>
+    <div><span>🏫</span><b>Najaktivnija škola</b><p>Besplatna godišnja licenca za escape room Molekula za sve razrede.</p></div>
+    <div><span>📜</span><b>Svi sudionici</b><p>Digitalna diploma sudionika Lige škola.</p></div></div>
+    <p class="small muted" style="margin-top:8px">Prijedlog nagrada, ovisi o partnerima (npr. fakulteti, energetske tvrtke, gradovi).</p></div>
+</section>
+
+<!-- ===== ZA ŠKOLE ===== -->
+<section class="tab" id="t-skole">
+  <div class="kicker">Za nastavnike</div>
+  <h2>🏫 Vodikov svijet u školi</h2>
+  <p class="muted small" style="margin-bottom:12px">Gotovi planovi sati za kemiju, fiziku, geografiju i građanski odgoj. Svaki dio aplikacije je jedan školski sat od 45 minuta, uz radni listić za ispis.</p>
+  <div id="planovi"></div>
+  <div class="card"><b>📦 Licenca za školu</b><p class="small muted" style="margin:6px 0 10px">Licenca daje pristup za cijeli razred, ljestvicu razreda, nastavnički pregled napretka i radne listiće.</p><button class="btn" onclick="tab('trgovina');setTimeout(()=>otvoriArtikl('licenca'),50)">Pogledaj licence</button></div>
+</section>
+
+<!-- ===== POSTAVKE I DIJELJENJE ===== -->
+<section class="tab" id="t-postavke">
+  <div class="kicker">Postavke</div>
+  <h2>⚙️ Postavke i dijeljenje</h2>
+  <div class="duo">
+    <div class="card">
+      <div class="set"><span>🌗 Svijetla tema<small>Bolje za ispis i jako sunce</small></span><button class="sw2" id="pSvijetla" onclick="postavi('svijetla')"></button></div>
+      <div class="set"><span>🔠 Veća slova<small>Lakše čitanje</small></span><button class="sw2" id="pVelika" onclick="postavi('velika')"></button></div>
+      <div class="set"><span>🧘 Manje animacija<small>Za osjetljive na pokret</small></span><button class="sw2" id="pMirno" onclick="postavi('mirno')"></button></div>
+      <div class="set"><span>💾 Spremi napredak u datoteku<small>Sigurnosna kopija ili prijenos na drugi uređaj</small></span><button class="ghost" style="width:auto;margin:0;padding:8px 12px" onclick="izvoz()">Spremi</button></div>
+      <div class="set"><span>📂 Učitaj napredak<small>Iz prije spremljene datoteke</small></span><label class="ghost" style="width:auto;margin:0;padding:8px 12px;border-radius:12px;cursor:pointer;font-weight:600">Učitaj<input type="file" accept=".json" style="display:none" onchange="uvoz(this)"></label></div>
+      <div class="set" style="flex-wrap:wrap"><span>🔑 Promijeni lozinku<small>Treba stara lozinka. Ne koristi lozinku koju imaš negdje drugdje.</small></span>
+        <div style="display:flex;gap:6px;width:100%"><input type="password" id="lStara" placeholder="stara" autocomplete="current-password"><input type="password" id="lNova" placeholder="nova (6+ znakova)" autocomplete="new-password"><button class="ghost" style="width:auto;margin:0;padding:8px 12px" onclick="promijeniLozinku()">OK</button></div></div>
+      <div class="set"><span>🎬 Ponovno pogledaj uvod</span><button class="ghost" style="width:auto;margin:0;padding:8px 12px" onclick="uvodPokazi(0)">Pokaži</button></div>
+    </div>
+    <div class="card" style="text-align:center"><b>📲 Podijeli Vodikov svijet</b>
+      <div id="qr"></div><p class="small muted" id="qrTxt"></p>
+      <button class="btn" style="margin-top:8px" onclick="podijeli()">Podijeli poveznicu</button></div>
+  </div>
+  <div class="card" id="izvori"></div>
+</section>
+
+<!-- ===== VODITELJI (samo za voditelje stranice) ===== -->
+<section class="tab" id="t-admin">
+  <div class="kicker">Samo za voditelje</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:10px;flex-wrap:wrap">
+    <div><h2>🛡️ Statistika stranice</h2><p class="small muted" id="adStanje"></p></div>
+    <div style="display:flex;gap:8px"><button class="ghost" style="width:auto;margin:0;padding:9px 14px" onclick="ucitajAdmin(true)">↻ Osvježi</button><button class="btn" style="width:auto;padding:9px 14px" onclick="izvozCSV()">⬇ CSV</button></div>
+  </div>
+  <div id="adSadrzaj"><p class="muted" style="margin-top:20px">Učitavam…</p></div>
+</section>
+</div>
+
+<!-- ===== NAVIGACIJA ===== -->
+<nav><div class="in"><div class="navlogo">💧 Vodikov svijet<small>natjecanje iz kreativne industrije</small></div>
+  <button class="on" onclick="tab('pocetna')" id="n-pocetna"><span>🏠</span>Početna</button>
+  <button onclick="tab('ti')" id="n-ti"><span>🧍</span>Ti</button>
+  <button onclick="tab('lab')" id="n-lab"><span>🧪</span>Lab</button>
+  <button onclick="tab('grad')" id="n-grad"><span>🏙️</span>Grad</button>
+  <button class="samoLaptop" onclick="tab('ruta')" id="n-ruta"><span>🛣️</span>Ruta</button>
+  <button class="samoLaptop" onclick="tab('akademija')" id="n-akademija"><span>🎓</span>Akademija</button>
+  <button class="samoLaptop" onclick="tab('liga')" id="n-liga"><span>🏆</span>Liga</button>
+  <button class="samoLaptop" onclick="tab('trgovina')" id="n-trgovina"><span>🛒</span>Trgovina</button>
+  <button class="samoLaptop" onclick="tab('skole')" id="n-skole"><span>🏫</span>Za škole</button>
+  <button class="samoLaptop" onclick="tab('postavke')" id="n-postavke"><span>⚙️</span>Postavke</button>
+  <button class="samoLaptop samoAdmin" style="display:none" onclick="tab('admin')" id="n-admin"><span>🛡️</span>Voditelji</button>
+  <button class="vise" onclick="$('sheet').classList.add('on')" id="n-vise"><span>☰</span>Više</button>
+</div></nav>
+<div class="sheet" id="sheet" onclick="if(event.target===this)this.classList.remove('on')"><div class="in2">
+  <b>Više</b><div class="g">
+    <button onclick="tab('ruta')"><span>🛣️</span>H2 Ruta</button>
+    <button onclick="tab('akademija')"><span>🎓</span>Akademija</button>
+    <button onclick="tab('liga')"><span>🏆</span>Liga</button>
+    <button onclick="tab('trgovina')"><span>🛒</span>Trgovina</button>
+    <button onclick="tab('skole')"><span>🏫</span>Za škole</button>
+    <button onclick="tab('postavke')"><span>⚙️</span>Postavke</button>
+    <button class="samoAdmin" style="display:none" onclick="tab('admin')"><span>🛡️</span>Voditelji</button>
+  </div></div></div>
+<div class="uvod" id="uvod"><div class="k" id="uvodK"></div></div>
+<div class="toast" id="toast"></div>
+
+<!-- QR kod (radi kad je stranica objavljena na internetu) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<!-- Redoslijed je važan: podaci → dijelovi aplikacije → APP → jezgra -->
+<script>
+// Vodikov svijet · konfiguracija
+// Ovo je jedina datoteka koju treba urediti nakon objave.
+//
+// SPREMANJE U GITHUB REPOZITORIJ
+// Stranica na GitHub Pages ne može sama pisati u repozitorij (to bi zahtijevalo tajni ključ u kodu,
+// a njega bi svatko mogao pročitati). Zato pisanje radi mali besplatni posrednik (Cloudflare Worker)
+// iz mape posrednik/. On sprema računa, napredak i ligu kao JSON datoteke u ISTI repozitorij,
+// na granu "podaci". Upute korak po korak: README.md → „Spremanje u GitHub“.
+//
+// Ostavi prazno = sve se sprema samo na uređaju korisnika (dobro za probu i za prezentaciju bez interneta).
+const SPREMANJE = {
+  posrednik: "https://vodikov-svijet.miahrkovic.workers.dev",   // npr. "https://vodikov-svijet.marvin.workers.dev"
+};
+// Adresa objavljene stranice (za QR kod i dijeljenje). Ako je prazno, koristi se trenutna adresa.
+const JAVNA_ADRESA = "https://miahrkovic.github.io/vodikov-svijet/";   // npr. "https://marvin.github.io/vodikov-svijet/"
+
+// VODITELJI stranice vide dodatnu stranicu „Voditelji“ sa statistikom.
+// Kad je spojen posrednik, o tome odlučuje POSLUŽITELJ (postavka ADMINI u Cloudflareu), a ovaj popis vrijedi
+// samo za lokalni način (bez posrednika), npr. za prezentaciju.
+const VODITELJI = ["miahrkovic", "melaniegrgic", "tonkavlahovic", "miroslavbegic", "miljenkosikuten"];
+
+</script>
+<script>
+// Vodikov svijet · podaci
+// Konstante, namirnice, materijali i stvari. Brojke provjeriti i navesti izvore (vidi Postavke → Izvori).
+// ================= KONSTANTE (provjeriti i navesti izvore) =================
+const M_H = 1.008, NA = 6.022e23, KWH_PO_KG = 33.3, KM_PO_KG = 100, UCINAK = 0.5;
+const H_VODA = 2*M_H/18.015, H_UGLJ = 12*M_H/180.16, H_MAST = 0.12, H_PROT = 0.07;
+const HRANA = [
+  // Pića
+  {k:"Pića", n:"Čaša vode", e:"💧", g:250, s:[100,0,0,0]},
+  {k:"Pića", n:"Čaša mlijeka", e:"🥛", g:250, s:[88,4.8,3.5,3.3]},
+  {k:"Pića", n:"Sok od naranče", e:"🧃", g:250, s:[88,10.4,0.2,0.7]},
+  {k:"Pića", n:"Gazirani sok", e:"🥤", g:330, s:[89,10.6,0,0]},
+  {k:"Pića", n:"Ledeni čaj", e:"🧋", g:500, s:[92,7.5,0,0]},
+  {k:"Pića", n:"Čaj", e:"🍵", g:250, s:[99.7,0.3,0,0]},
+  {k:"Pića", n:"Kava", e:"☕", g:150, s:[99.4,0,0,0.1]},
+  {k:"Pića", n:"Kakao", e:"🍫", g:250, s:[80,10.7,4,3.5]},
+  {k:"Pića", n:"Energetsko piće", e:"⚡", g:250, s:[89,11,0,0]},
+  {k:"Pića", n:"Smoothie", e:"🍓", g:300, s:[84,13,0.5,1.5]},
+  // Voće
+  {k:"Voće", n:"Jabuka", e:"🍎", g:180, s:[86,14,0.2,0.3]},
+  {k:"Voće", n:"Banana", e:"🍌", g:120, s:[75,23,0.3,1.1]},
+  {k:"Voće", n:"Naranča", e:"🍊", g:150, s:[87,11.8,0.1,0.9]},
+  {k:"Voće", n:"Mandarina", e:"🍊", g:80, s:[85,13.3,0.3,0.8]},
+  {k:"Voće", n:"Kruška", e:"🍐", g:170, s:[84,15,0.1,0.4]},
+  {k:"Voće", n:"Grožđe", e:"🍇", g:100, s:[81,18,0.2,0.7]},
+  {k:"Voće", n:"Jagode", e:"🍓", g:150, s:[91,7.7,0.3,0.7]},
+  {k:"Voće", n:"Lubenica", e:"🍉", g:300, s:[91.5,7.6,0.2,0.6]},
+  {k:"Voće", n:"Breskva", e:"🍑", g:150, s:[89,9.5,0.3,0.9]},
+  {k:"Voće", n:"Šljive", e:"🫐", g:100, s:[87,11.4,0.3,0.7]},
+  {k:"Voće", n:"Trešnje", e:"🍒", g:100, s:[82,16,0.2,1.1]},
+  {k:"Voće", n:"Kivi", e:"🥝", g:75, s:[83,14.7,0.5,1.1]},
+  {k:"Voće", n:"Ananas", e:"🍍", g:150, s:[86,13,0.1,0.5]},
+  {k:"Voće", n:"Mango", e:"🥭", g:200, s:[83,15,0.4,0.8]},
+  {k:"Voće", n:"Avokado", e:"🥑", g:150, s:[73,8.5,14.7,2]},
+  // Povrće
+  {k:"Povrće", n:"Rajčica", e:"🍅", g:120, s:[94.5,3.9,0.2,0.9]},
+  {k:"Povrće", n:"Krastavac", e:"🥒", g:150, s:[95,3.6,0.1,0.7]},
+  {k:"Povrće", n:"Mrkva", e:"🥕", g:60, s:[88,9.6,0.2,0.9]},
+  {k:"Povrće", n:"Paprika", e:"🫑", g:120, s:[92,6,0.3,1]},
+  {k:"Povrće", n:"Zelena salata", e:"🥬", g:100, s:[95,2.9,0.2,1.4]},
+  {k:"Povrće", n:"Brokula", e:"🥦", g:150, s:[89,7,0.4,2.8]},
+  {k:"Povrće", n:"Kukuruz", e:"🌽", g:100, s:[73,21,1.5,3.4]},
+  {k:"Povrće", n:"Kuhani krumpir", e:"🥔", g:200, s:[77,20,0.1,1.9]},
+  {k:"Povrće", n:"Pomfrit", e:"🍟", g:150, s:[38,41,15,3.4]},
+  {k:"Povrće", n:"Grah (kuhani)", e:"🫘", g:200, s:[67,22.8,0.5,8.7]},
+  {k:"Povrće", n:"Gljive", e:"🍄", g:100, s:[92,3.3,0.3,3.1]},
+  {k:"Povrće", n:"Luk", e:"🧅", g:50, s:[89,9.3,0.1,1.1]},
+  // Kruh i žitarice
+  {k:"Kruh i žitarice", n:"Kriška kruha", e:"🍞", g:40, s:[36,49,3.2,9]},
+  {k:"Kruh i žitarice", n:"Kroasan", e:"🥐", g:60, s:[23,46,21,8]},
+  {k:"Kruh i žitarice", n:"Kifla", e:"🥖", g:50, s:[32,52,3.5,9]},
+  {k:"Kruh i žitarice", n:"Burek sa sirom", e:"🥧", g:200, s:[45,25,18,10]},
+  {k:"Kruh i žitarice", n:"Komad pizze", e:"🍕", g:120, s:[48,33,10,11]},
+  {k:"Kruh i žitarice", n:"Tjestenina", e:"🍝", g:200, s:[62,31,0.9,5.8]},
+  {k:"Kruh i žitarice", n:"Riža (kuhana)", e:"🍚", g:200, s:[68,28,0.3,2.7]},
+  {k:"Kruh i žitarice", n:"Zobene pahuljice", e:"🥣", g:50, s:[10,66,7,13]},
+  {k:"Kruh i žitarice", n:"Kukuruzne pahuljice", e:"🥣", g:30, s:[3,84,0.9,7.5]},
+  {k:"Kruh i žitarice", n:"Palačinka", e:"🥞", g:80, s:[56,22,9,6]},
+  {k:"Kruh i žitarice", n:"Kokice", e:"🍿", g:30, s:[4,78,4.5,13]},
+  // Meso i riba
+  {k:"Meso i riba", n:"Pileća prsa", e:"🍗", g:150, s:[65,0,3.6,31]},
+  {k:"Meso i riba", n:"Svinjski odrezak", e:"🥩", g:150, s:[60,0,10,28]},
+  {k:"Meso i riba", n:"Junetina", e:"🥩", g:100, s:[58,0,15,26]},
+  {k:"Meso i riba", n:"Šunka", e:"🥓", g:50, s:[71,1.5,4,17]},
+  {k:"Meso i riba", n:"Hrenovka", e:"🌭", g:100, s:[55,2,26,12]},
+  {k:"Meso i riba", n:"Ćevapi (10 kom)", e:"🍖", g:200, s:[55,1,22,20]},
+  {k:"Meso i riba", n:"Tuna (konzerva)", e:"🐟", g:100, s:[74,0,1,25.5]},
+  {k:"Meso i riba", n:"Losos", e:"🐟", g:150, s:[65,0,13,20]},
+  {k:"Meso i riba", n:"Riblji štapići", e:"🐠", g:100, s:[50,22,12,13]},
+  {k:"Meso i riba", n:"Lignje", e:"🦑", g:150, s:[78,3,1.4,16]},
+  // Mliječno i jaja
+  {k:"Mliječno i jaja", n:"Jaje", e:"🥚", g:60, s:[76,0.7,10,12.6]},
+  {k:"Mliječno i jaja", n:"Jogurt", e:"🥛", g:180, s:[88,4.7,3.3,3.5]},
+  {k:"Mliječno i jaja", n:"Kriška sira", e:"🧀", g:30, s:[41,2.2,27,25]},
+  {k:"Mliječno i jaja", n:"Svježi sir", e:"🧀", g:100, s:[80,3.4,4.3,11]},
+  {k:"Mliječno i jaja", n:"Maslac", e:"🧈", g:10, s:[16,0.1,81,0.9]},
+  {k:"Mliječno i jaja", n:"Kugla sladoleda", e:"🍨", g:70, s:[61,24,11,3.5]},
+  {k:"Mliječno i jaja", n:"Puding", e:"🍮", g:150, s:[75,18,3,3]},
+  // Slatko i grickalice
+  {k:"Slatko i grickalice", n:"Čokolada", e:"🍫", g:25, s:[1,60,31,7]},
+  {k:"Slatko i grickalice", n:"Čips", e:"🥔", g:30, s:[2,53,34,6.6]},
+  {k:"Slatko i grickalice", n:"Keksi", e:"🍪", g:30, s:[4,70,18,6]},
+  {k:"Slatko i grickalice", n:"Krafna", e:"🍩", g:70, s:[22,51,25,5.7]},
+  {k:"Slatko i grickalice", n:"Gumeni bomboni", e:"🍬", g:50, s:[17,77,0.2,6.9]},
+  {k:"Slatko i grickalice", n:"Lizalica", e:"🍭", g:15, s:[2,98,0,0]},
+  {k:"Slatko i grickalice", n:"Med (žlica)", e:"🍯", g:20, s:[17,82,0,0.3]},
+  {k:"Slatko i grickalice", n:"Lješnjak krem (žlica)", e:"🥄", g:20, s:[1,57,31,6]},
+  {k:"Slatko i grickalice", n:"Kikiriki", e:"🥜", g:30, s:[6.5,16,49,26]},
+  {k:"Slatko i grickalice", n:"Bademi", e:"🌰", g:30, s:[4.4,22,50,21]},
+  {k:"Slatko i grickalice", n:"Komad torte", e:"🍰", g:100, s:[30,50,15,4]},
+  // Gotova jela
+  {k:"Gotova jela", n:"Hamburger", e:"🍔", g:220, s:[50,24,12,13]},
+  {k:"Gotova jela", n:"Sendvič", e:"🥪", g:150, s:[50,30,8,12]},
+  {k:"Gotova jela", n:"Kebab", e:"🌯", g:300, s:[55,22,12,11]},
+  {k:"Gotova jela", n:"Sarma (komad)", e:"🥬", g:150, s:[75,6,7,8]},
+  {k:"Gotova jela", n:"Tanjur juhe", e:"🍲", g:300, s:[92,4,2,2]},
+  {k:"Gotova jela", n:"Gulaš", e:"🍛", g:300, s:[78,6,6,10]},
+  {k:"Gotova jela", n:"Lazanje", e:"🫕", g:250, s:[66,14,8,9]},
+  {k:"Gotova jela", n:"Sushi (6 kom)", e:"🍣", g:150, s:[65,28,1,6]},
+  {k:"Gotova jela", n:"Taco", e:"🌮", g:120, s:[55,20,11,10]},
+  {k:"Gotova jela", n:"Pohani sir", e:"🧀", g:150, s:[40,20,22,15]},
+];
+const udio = (brojH, M) => brojH*M_H/M;
+const MATERIJALI = {
+  voda:      {n:"Voda (H₂O)", f:"H₂O", h:udio(2,18.015)},
+  secer:     {n:"Šećer – saharoza", f:"C₁₂H₂₂O₁₁", h:udio(22,342.3)},
+  celuloza:  {n:"Papir / drvo / pamuk (celuloza)", f:"(C₆H₁₀O₅)ₙ", h:udio(10,162.14)},
+  pet:       {n:"Plastika PET (boce)", f:"(C₁₀H₈O₄)ₙ", h:udio(8,192.17)},
+  pe:        {n:"Polietilen (vrećice)", f:"(C₂H₄)ₙ", h:udio(4,28.05)},
+  parafin:   {n:"Parafin (svijeće)", f:"C₂₅H₅₂", h:udio(52,352.7)},
+  benzin:    {n:"Benzin (oktan)", f:"C₈H₁₈", h:udio(18,114.23)},
+  metan:     {n:"Prirodni plin (metan)", f:"CH₄", h:udio(4,16.04)},
+  etanol:    {n:"Alkohol (etanol)", f:"C₂H₅OH", h:udio(6,46.07)},
+  ulje:      {n:"Jestivo ulje (masti)", f:"≈ C₅₇H₁₀₄O₆", h:udio(104,885.4)},
+  guma:      {n:"Guma (poliizopren)", f:"(C₅H₈)ₙ", h:udio(8,68.12)},
+  najlon:    {n:"Najlon", f:"(C₆H₁₁NO)ₙ", h:udio(11,113.16)},
+  keratin:   {n:"Kosa / vuna (keratin)", f:"protein", h:0.07},
+  amonijak:  {n:"Amonijak", f:"NH₃", h:udio(3,17.03)},
+  sapun:     {n:"Sapun (natrijev stearat)", f:"C₁₈H₃₅NaO₂", h:udio(35,306.5)},
+  vodik:     {n:"Čisti vodik", f:"H₂", h:1},
+  sol:       {n:"Kuhinjska sol", f:"NaCl", h:0},
+  staklo:    {n:"Staklo / kamen (SiO₂)", f:"SiO₂", h:0},
+  metal:     {n:"Metal (željezo, aluminij, zlato)", f:"Fe, Al, Au", h:0},
+};
+const STVARI = [
+  {n:"Kocka leda", e:"🧊", g:25, m:"voda"},
+  {n:"Boca vode 0,5 L", e:"💧", g:500, m:"voda"},
+  {n:"Kanta vode 10 L", e:"🪣", g:10000, m:"voda"},
+  {n:"Kada vode", e:"🛁", g:150000, m:"voda"},
+  {n:"Olimpijski bazen", e:"🏊", g:2.5e9, m:"voda"},
+  {n:"Kišni oblak", e:"☁️", g:5e8, m:"voda"},
+  {n:"Snjegović", e:"⛄", g:60000, m:"voda"},
+  {n:"Žličica šećera", e:"🥄", g:5, m:"secer"},
+  {n:"Kocka šećera", e:"🧊", g:4, m:"secer"},
+  {n:"List papira A4", e:"📄", g:5, m:"celuloza"},
+  {n:"Bilježnica", e:"📓", g:150, m:"celuloza"},
+  {n:"Knjiga", e:"📚", g:400, m:"celuloza"},
+  {n:"Olovka", e:"✏️", g:6, m:"celuloza"},
+  {n:"Drvena stolica", e:"🪑", g:5000, m:"celuloza"},
+  {n:"Cjepanica drva", e:"🪵", g:2000, m:"celuloza"},
+  {n:"Pamučna majica", e:"👕", g:150, m:"celuloza"},
+  {n:"Traperice", e:"👖", g:600, m:"celuloza"},
+  {n:"Rola WC papira", e:"🧻", g:100, m:"celuloza"},
+  {n:"Kartonska kutija", e:"📦", g:300, m:"celuloza"},
+  {n:"Prazna plastična boca", e:"🍾", g:20, m:"pet"},
+  {n:"Plastična vrećica", e:"🛍️", g:6, m:"pe"},
+  {n:"Svijeća", e:"🕯️", g:100, m:"parafin"},
+  {n:"Pun spremnik benzina", e:"⛽", g:37000, m:"benzin"},
+  {n:"Litra benzina", e:"⛽", g:740, m:"benzin"},
+  {n:"Plinska boca za kuhanje", e:"🔥", g:10000, m:"metan"},
+  {n:"Sredstvo za dezinfekciju", e:"🧴", g:400, m:"etanol"},
+  {n:"Boca ulja 1 L", e:"🫒", g:920, m:"ulje"},
+  {n:"Automobilska guma", e:"🛞", g:9000, m:"guma"},
+  {n:"Gumica za brisanje", e:"🩹", g:10, m:"guma"},
+  {n:"Balon", e:"🎈", g:3, m:"guma"},
+  {n:"Najlonske čarape", e:"🧦", g:30, m:"najlon"},
+  {n:"Pramen kose", e:"💇", g:1, m:"keratin"},
+  {n:"Vunena kapa", e:"🧢", g:100, m:"keratin"},
+  {n:"Komad sapuna", e:"🧼", g:100, m:"sapun"},
+  {n:"Žlica soli", e:"🧂", g:18, m:"sol"},
+  {n:"Staklena čaša", e:"🥃", g:250, m:"staklo"},
+  {n:"Kamen", e:"🪨", g:1000, m:"staklo"},
+  {n:"Zlatni prsten", e:"💍", g:5, m:"metal"},
+  {n:"Limenka", e:"🥫", g:15, m:"metal"},
+  {n:"Vodikov spremnik auta", e:"🚗", g:5600, m:"vodik"},
+];
+
+const sup = {"0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","-":"⁻"};
+function sci(x){ if(x<1e6) return Math.round(x).toLocaleString("hr-HR"); const e=Math.floor(Math.log10(x)), m=x/Math.pow(10,e); return m.toFixed(1).replace(".",",")+" × 10"+String(e).split("").map(c=>sup[c]).join(""); }
+const hr = (x,d=0)=> x.toLocaleString("hr-HR",{maximumFractionDigits:d,minimumFractionDigits:d});
+const atomi = g => g/M_H*NA;
+const norm = t => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d");
+
+
+// ----- dodatni materijali (udio vodika izračunat iz formule) -----
+Object.assign(MATERIJALI, {
+  pp:      {n:"Plastika PP (čepovi, kutije)", f:"(C₃H₆)ₙ", h:udio(6,42.08)},
+  pvc:     {n:"Plastika PVC (cijevi)", f:"(C₂H₃Cl)ₙ", h:udio(3,62.5)},
+  ps:      {n:"Stiropor (polistiren)", f:"(C₈H₈)ₙ", h:udio(8,104.15)},
+  dizel:   {n:"Dizel", f:"≈ C₁₂H₂₃", h:udio(23,167.3)},
+  propan:  {n:"Propan (plinska boca, upaljač)", f:"C₃H₈", h:udio(8,44.1)},
+  glicerol:{n:"Glicerol", f:"C₃H₈O₃", h:udio(8,92.09)},
+  kofein:  {n:"Kofein", f:"C₈H₁₀N₄O₂", h:udio(10,194.19)},
+  aspirin: {n:"Aspirin", f:"C₉H₈O₄", h:udio(8,180.16)},
+});
+// ----- dodatne stvari -----
+STVARI.push(
+  {n:"Čaša vode", e:"🥛", g:250, m:"voda"}, {n:"Tuširanje (5 minuta)", e:"🚿", g:50000, m:"voda"}, {n:"Bazen u dvorištu", e:"🏊", g:15000000, m:"voda"},
+  {n:"Jadransko more", e:"🌊", g:3.5e22, m:"voda"}, {n:"Kap kiše", e:"💧", g:0.05, m:"voda"}, {n:"Pahulja snijega", e:"❄️", g:0.003, m:"voda"},
+  {n:"Ledeni brijeg", e:"🧊", g:1e11, m:"voda"}, {n:"Akvarij", e:"🐠", g:100000, m:"voda"}, {n:"Lubenica (voda u njoj)", e:"🍉", g:3600, m:"voda"},
+  {n:"Vrećica šećera 1 kg", e:"🍬", g:1000, m:"secer"}, {n:"Lizalica", e:"🍭", g:15, m:"secer"},
+  {n:"Novine", e:"📰", g:200, m:"celuloza"}, {n:"Kutija za pizzu", e:"🍕", g:250, m:"celuloza"}, {n:"Drveni stol", e:"🪵", g:25000, m:"celuloza"},
+  {n:"Ormar", e:"🚪", g:60000, m:"celuloza"}, {n:"Stablo hrasta", e:"🌳", g:2000000, m:"celuloza"}, {n:"Ručnik", e:"🧺", g:500, m:"celuloza"},
+  {n:"Plahta", e:"🛏️", g:700, m:"celuloza"}, {n:"Papirnata maramica", e:"🤧", g:2, m:"celuloza"}, {n:"Školska torba (platnena)", e:"🎒", g:800, m:"celuloza"},
+  {n:"Plastična čaša", e:"🥤", g:5, m:"pp"}, {n:"Čep boce", e:"🔘", g:2, m:"pp"}, {n:"Kutija za ručak", e:"🍱", g:150, m:"pp"},
+  {n:"Lego kocka", e:"🧱", g:2.3, m:"ps"}, {n:"Kutija od stiropora", e:"📦", g:80, m:"ps"}, {n:"Kanta od PVC-a", e:"🪣", g:600, m:"pvc"},
+  {n:"PVC cijev 1 m", e:"🔧", g:400, m:"pvc"}, {n:"Kabanica", e:"🧥", g:300, m:"pe"}, {n:"Folija za hranu", e:"🎞️", g:10, m:"pe"},
+  {n:"Rezervoar dizela kamiona", e:"🚛", g:400000, m:"dizel"}, {n:"Litra dizela", e:"⛽", g:830, m:"dizel"},
+  {n:"Upaljač", e:"🔥", g:5, m:"propan"}, {n:"Boca propana 10 kg", e:"🧯", g:10000, m:"propan"},
+  {n:"Svjećica za tortu", e:"🎂", g:3, m:"parafin"}, {n:"Vosak za skije", e:"🎿", g:60, m:"parafin"},
+  {n:"Maslinovo ulje (žlica)", e:"🫒", g:14, m:"ulje"}, {n:"Kosa na glavi", e:"💇", g:100, m:"keratin"}, {n:"Nokti (svi)", e:"💅", g:2, m:"keratin"},
+  {n:"Tenisice (đon)", e:"👟", g:400, m:"guma"}, {n:"Kotač bicikla", e:"🚲", g:900, m:"guma"},
+  {n:"Krema za ruke (glicerol)", e:"🧴", g:50, m:"glicerol"}, {n:"Šalica kave (kofein)", e:"☕", g:0.1, m:"kofein"}, {n:"Tableta aspirina", e:"💊", g:0.5, m:"aspirin"},
+  {n:"Plastično kućište mobitela", e:"📱", g:30, m:"pp"}, {n:"Bicikl (okvir)", e:"🚴", g:9000, m:"metal"}, {n:"Ključevi", e:"🔑", g:40, m:"metal"},
+  {n:"Prozor", e:"🪟", g:15000, m:"staklo"}, {n:"Pijesak s plaže", e:"🏖️", g:1000, m:"staklo"}, {n:"Puni spremnik vodikovog kamiona", e:"🚚", g:30000, m:"vodik"},
+  {n:"Vodik u cepelinu Hindenburg (1937.)", e:"🛩️", g:18000000, m:"vodik"}
+);
+
+</script>
+<script>
+// Vodikov svijet · 1. Vodik u tebi
+// Tijelo, stvari oko tebe i hrana.
+function tiSub(i){ document.querySelectorAll("#t-ti .seg button").forEach((b,k)=>b.classList.toggle("on",k===i)); [0,1,2].forEach(k=>$("ti"+k).classList.toggle("on",k===i)); }
+function tijelo(tiho){
+  if(tiho && S.ti.kg) $("kg").value = S.ti.kg;
+  const kg = parseFloat($("kg").value); if(!kg||kg<10||kg>250) return;
+  if(!tiho && S.ti.kg!==kg){ const prvi=!S.ti.kg; S.ti.kg=kg; spremi(); if(prvi){ zapisi("🧍",`U meni je ${hr(kg*0.1,1)} kg vodika (${sci(atomi(kg*100))} atoma)`); dodajXP(20,"Otkrio si vodik u sebi"); } }
+  const h = kg*0.1, kwh = h*KWH_PO_KG*UCINAK;
+  $("rKg").innerHTML = `${hr(h,1)} <small>kg vodika</small>`; $("rAt").textContent = sci(atomi(h*1000));
+  $("energija").innerHTML = [["🚗",hr(h*KM_PO_KG),"km vodikovim autom"],["📱",hr(kwh/0.015),"punjenja mobitela"],["🏠",hr(kwh/10,1),"dana struje za kuću"],["💧",hr(h/H_VODA),"litara vode nastaje"]].map(([e,v,l])=>`<div class="card"><div style="font-size:24px">${e}</div><div class="num">${v}</div><div class="big">${l}</div></div>`).join("");
+  document.fonts.ready.then(kartica);
+}
+function kartica(){
+  const c=$("cv"), x=c.getContext("2d"), W=1080, H=1350, kg=parseFloat($("kg").value)||60, h=kg*0.1;
+  const g=x.createLinearGradient(0,0,W,H); g.addColorStop(0,"#0b1440"); g.addColorStop(1,"#070b1a"); x.fillStyle=g; x.fillRect(0,0,W,H);
+  for(let i=0;i<120;i++){ x.fillStyle=`rgba(255,255,255,${((i*37)%60)/100})`; x.beginPath(); x.arc((i*97)%W,(i*233)%H,((i*7)%22)/10,0,7); x.fill(); }
+  x.strokeStyle="#5cc8ff88"; x.lineWidth=4; x.beginPath(); x.arc(W/2,300,150,0,7); x.stroke();
+  x.fillStyle="#ffb86b"; x.shadowColor="#ffb86b"; x.shadowBlur=40; x.beginPath(); x.arc(W/2,300,36,0,7); x.fill();
+  x.fillStyle="#5cc8ff"; x.shadowColor="#5cc8ff"; x.beginPath(); x.arc(W/2+106,194,16,0,7); x.fill(); x.shadowBlur=0; x.textAlign="center";
+  x.fillStyle="#93a0c8"; x.font="500 36px Inter, sans-serif"; x.fillText("VODIKOVA OSOBNA ISKAZNICA",W/2,540);
+  x.fillStyle="#eaf0ff"; x.font="700 76px 'Space Grotesk', sans-serif"; x.fillText(ja()?ja().ime:"Ja",W/2,640);
+  x.fillStyle="#93a0c8"; x.font="400 40px Inter, sans-serif"; x.fillText("sastoji se od",W/2,740);
+  x.fillStyle="#5cc8ff"; x.font="700 120px 'Space Grotesk', sans-serif"; x.fillText(sci(atomi(h*1000)),W/2,870);
+  x.fillStyle="#eaf0ff"; x.font="500 44px Inter, sans-serif"; x.fillText("atoma vodika",W/2,940);
+  x.fillStyle="#8affd6"; x.font="600 42px Inter, sans-serif"; x.fillText("starih 13,8 milijardi godina",W/2,1040);
+  x.fillStyle="#5cc8ff"; x.font="700 38px 'Space Grotesk', sans-serif"; x.fillText("VODIKOV SVIJET",W/2,1270);
+}
+function spremiKarticu(){ const a=document.createElement("a"); a.download="vodikova-iskaznica.png"; a.href=$("cv").toDataURL("image/png"); a.click(); }
+function masaTxt(g){ return g>=1e6 ? sci(g/1000)+" kg" : g>=1000 ? hr(g/1000,1)+" kg" : hr(g)+" g"; }
+function stvari(){
+  if(!$("mat").options.length) $("mat").innerHTML = Object.entries(MATERIJALI).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join("");
+  const q = norm($("trazi").value.trim());
+  const l = STVARI.map((s,i)=>({s,i})).filter(({s})=>!q||norm(s.n).includes(q)||norm(MATERIJALI[s.m].n).includes(q));
+  $("stvari").innerHTML = l.length ? l.map(({s,i})=>`<button class="food" onclick="odaberiStvar(${i})"><span class="e">${s.e}</span>${s.n}<br><span class="g">${masaTxt(s.g)}</span></button>`).join("") : `<p class="small muted">Ne znam to. Odaberi materijal i masu ispod.</p>`;
+  $("istrBr").textContent = S.istrazeno.length;
+}
+function prikaziStvar(naziv,g,m){
+  const mat=MATERIJALI[m], gH=g*mat.h;
+  $("sN").textContent = naziv+" · "+masaTxt(g);
+  $("sG").innerHTML = gH>=1000 ? `${gH>=1e6?sci(gH/1000):hr(gH/1000,1)} <small>kg vodika</small>` : `${hr(gH,gH<10?2:1)} <small>g vodika</small>`;
+  $("sA").textContent = gH>0 ? sci(atomi(gH))+" atoma vodika" : "nema vodika";
+  $("sF").textContent = `${mat.n} · ${mat.f} · ${hr(mat.h*100,1)} % mase je vodik`;
+  const km = gH/1000*KM_PO_KG;
+  $("sFun").textContent = gH===0 ? "Ovdje nema ni jednog atoma vodika. Ne sadrži sve vodik!" : km>=1 ? `Kao H₂, vodikov auto prešao bi oko ${km>=1e6?sci(km):hr(km,km<10?1:0)} km.` : `Kao H₂, vodikov auto prešao bi oko ${hr(km*1000)} metara.`;
+  if(!S.istrazeno.includes(naziv)){ S.istrazeno.push(naziv); spremi(); dodajXP(2,null); if(S.istrazeno.length%10===0) zapisi("🔬",`Istraženo ${S.istrazeno.length} stvari u potrazi za vodikom`); }
+  $("istrBr").textContent = S.istrazeno.length;
+}
+function odaberiStvar(i){ const s=STVARI[i]; $("mat").value=s.m; $("masa").value=s.g; prikaziStvar(s.n,s.g,s.m); }
+function vlastito(){ const m=$("mat").value, g=parseFloat($("masa").value)||0; prikaziStvar(MATERIJALI[m].n.split(" (")[0],g,m); }
+let hKat="Sve", hZbroj=0; const hBr={};
+const hUP = f => { const [v,u,m,p]=f.s.map(x=>x/100*f.g); return v*H_VODA+u*H_UGLJ+m*H_MAST+p*H_PROT; };
+function crtajHranu(){
+  const K=["Sve",...new Set(HRANA.map(f=>f.k))];
+  $("hk").innerHTML = K.map(k=>`<button class="${k===hKat?'on':''}" onclick="hKat='${k}';crtajHranu()">${k}</button>`).join("");
+  $("hrana").innerHTML = HRANA.map((f,i)=>({f,i})).filter(({f})=>hKat==="Sve"||f.k===hKat).map(({f,i})=>`<button class="food" onclick="pojedi(${i})">${hBr[i]?`<span class="x">×${hBr[i]}</span>`:""}<span class="e">${f.e}</span>${f.n}<br><span class="g">${f.g} g · ${hr(hUP(f),1)} g H</span></button>`).join("");
+  $("hG").innerHTML = `${hr(hZbroj,1)} <small>g vodika danas</small>`; $("hA").textContent = sci(atomi(hZbroj))+" atoma";
+}
+function pojedi(i){ hZbroj+=hUP(HRANA[i]); hBr[i]=(hBr[i]||0)+1; crtajHranu(); }
+function ocistiHranu(){ hZbroj=0; for(const k in hBr) delete hBr[k]; crtajHranu(); }
+
+
+</script>
+<script>
+// Vodikov svijet · 2. Laboratorij
+// Escape room „Molekula“: 7 brava. Brojevi u zadacima su nasumični, pa je svaka igra malo drukčija.
+// Svaki savjet dodaje 1 minutu. Rezultat: najbolje vrijeme i XP.
+
+let soba = 0, t0 = 0, kazna = 0, tik, savjetiUzeti = 0;
+const LS = {};
+const fmt = s => String(Math.floor(s/60)).padStart(2,"0") + ":" + String(s%60).padStart(2,"0");
+const promijesaj = a => a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+
+const SOBE = [
+ { ime:"Brava 1 · Vrata laboratorija", e:"🚪",
+   prica:()=>`Na vratima su tri brojčanika: <i>„Protoni u vodiku. Neutroni u deuteriju. Neutroni u triciju.“</i>`,
+   savjet:"Vodik uvijek ima 1 proton. Deuterij je ²H, a tricij ³H. Maseni broj = protoni + neutroni.",
+   init:()=>{ LS.d=[0,0,0]; },
+   html:()=>`<div class="dials">${[0,1,2].map(i=>`<div class="dial"><button aria-label="više" onclick="dial(${i},1)">▲</button><div class="v" id="d${i}">${LS.d[i]}</div><button aria-label="manje" onclick="dial(${i},-1)">▼</button><small>${["¹H protoni","²H neutroni","³H neutroni"][i]}</small></div>`).join("")}</div>`,
+   ok:()=>LS.d.join("")==="112" },
+
+ { ime:"Brava 2 · Elektrolizer", e:"⚗️",
+   prica:()=>"Elektrolizer se pali tek kad je jednadžba izjednačena. Broj atoma lijevo i desno mora biti jednak.",
+   savjet:"Desno O₂ ima 2 atoma kisika, pa vode treba biti 2. Tada lijevo imaš 4 vodika, a to su 2 molekule H₂.",
+   init:()=>{ LS.c=[1,1,1]; },
+   html:()=>`<div class="eq">${coef(0)}H₂O → ${coef(1)}H₂ + ${coef(2)}O₂</div><div class="cnt" id="cnt"></div>`,
+   nakon:()=>broji(), ok:()=>LS.c.join(",")==="2,2,1" },
+
+ { ime:"Brava 3 · Spremnik", e:"🛢️",
+   init:()=>{ LS.m = [2,4,6,8,10][Math.floor(Math.random()*5)]; },
+   prica:()=>`Elektrolizer je proizveo <b>${LS.m} g vodika (H₂)</b>. Spremnik se otvara ako upišeš koliko je to <b>litara</b> plina pri normalnim uvjetima.`,
+   savjet:"M(H₂) = 2 g/mol, pa je n = m / M. Jedan mol plina pri normalnim uvjetima zauzima 22,4 L. Pomnoži broj molova s 22,4.",
+   html:()=>`<p class="small muted" style="margin-bottom:8px">M(H₂) = 2 g/mol · V<sub>m</sub> = 22,4 L/mol</p><input type="text" id="vol" inputmode="decimal" placeholder="volumen u litrama">`,
+   ok:()=>Math.abs(parseFloat(($("vol").value||"").replace(",",".")) - LS.m/2*22.4) < 0.05 },
+
+ { ime:"Brava 4 · Boje vodika", e:"🎨",
+   prica:()=>"Na zaslonu su tri tvornice vodika. Svakoj dodijeli pravu „boju“ vodika koji proizvodi.",
+   savjet:"Zeleni vodik nastaje elektrolizom uz struju iz sunca i vjetra. Sivi se radi iz prirodnog plina, a CO₂ odlazi u zrak. Plavi se radi iz plina, ali se CO₂ hvata i sprema.",
+   init:()=>{ LS.b = {}; LS.red = promijesaj(["zeleni","sivi","plavi"]); },
+   html:()=>{ const T={zeleni:"☀️🌬️ Elektroliza vode uz struju iz sunca i vjetra", sivi:"🔥 Prirodni plin, a CO₂ odlazi u zrak", plavi:"🔥🧲 Prirodni plin uz hvatanje i spremanje CO₂"};
+     return LS.red.map(k=>`<div class="card" style="background:var(--soft);padding:10px;margin-bottom:8px"><div style="font-size:14px;margin-bottom:6px">${T[k]}</div><div class="chips">${["zeleni","sivi","plavi"].map(b=>`<button class="${LS.b[k]===b?'on':''}" onclick="LS.b['${k}']='${b}';crtajSobu()">${({zeleni:"🟢 zeleni",sivi:"⚪ sivi",plavi:"🔵 plavi"})[b]}</button>`).join("")}</div></div>`).join(""); },
+   ok:()=>LS.b.zeleni==="zeleni"&&LS.b.sivi==="sivi"&&LS.b.plavi==="plavi" },
+
+ { ime:"Brava 5 · Alarm", e:"🚨",
+   init:()=>{ LS.o=null; LS.op=promijesaj(["Vodik je lakši od zraka i diže se prema stropu.","Vodik nema ni boju ni miris.","Plamen vodika na danjem svjetlu jedva se vidi.","Vodik je otrovan kad ga udišemo.","Smjesa vodika i zraka može eksplodirati."]); },
+   prica:()=>"Upalio se alarm! Samo <b>jedna</b> tvrdnja je netočna. Pronađi je da ugasiš alarm.",
+   savjet:"Vodik je zapaljiv i može eksplodirati sa zrakom, ali nije otrovan. U zatvorenom prostoru opasan je jer istiskuje kisik.",
+   html:()=>LS.op.map((o,i)=>`<button class="opt2 ${LS.o===i?'sel':''}" onclick="LS.o=${i};crtajSobu()">${o}</button>`).join(""),
+   ok:()=>LS.o!==null && LS.op[LS.o].includes("otrovan") },
+
+ { ime:"Brava 6 · Hladnjak", e:"❄️",
+   init:()=>{ LS.o=null; LS.op=promijesaj(["−253 °C","−78 °C","0 °C","−196 °C"]); },
+   prica:()=>"Da bi stao u mali spremnik broda, vodik se mora ukapljiti. Na koju temperaturu ga treba ohladiti?",
+   savjet:"Vodik je plin i na jako niskim temperaturama. Postaje tekućina tek blizu apsolutne nule, oko 20 kelvina.",
+   html:()=>LS.op.map((o,i)=>`<button class="opt2 ${LS.o===i?'sel':''}" onclick="LS.o=${i};crtajSobu()">${o}</button>`).join(""),
+   ok:()=>LS.o!==null && LS.op[LS.o]==="−253 °C" },
+
+ { ime:"Brava 7 · Gorivna ćelija", e:"🔋",
+   init:()=>{ LS.red=[]; LS.mix=promijesaj([0,1,2,3,4]); },
+   prica:()=>"Posljednji korak! Dodirni korake gorivne ćelije <b>pravim redoslijedom</b> i vrati struju u laboratorij.",
+   savjet:"Počinje vodikom na anodi, a završava vodom na katodi. Između: razdvajanje, struja elektrona, putovanje protona.",
+   k:["Vodik (H₂) ulazi na anodu.","Katalizator razdvaja vodik na protone (H⁺) i elektrone (e⁻).","Elektroni putuju kroz žicu i stvaraju struju.","Protoni prolaze kroz membranu do katode.","Na katodi se protoni, elektroni i kisik spajaju u vodu."],
+   html:()=>LS.mix.map(i=>{const p=LS.red.indexOf(i); return `<button class="opt2 ${p>=0?'sel':''}" onclick="red(${i})"><span class="n">${p>=0?p+1:"·"}</span>${SOBE[6].k[i]}</button>`}).join(""),
+   ok:()=>LS.red.join("")==="01234" },
+];
+
+function dial(i,d){ LS.d[i]=(LS.d[i]+d+10)%10; $("d"+i).textContent=LS.d[i]; }
+function coef(i){ return `<span class="coef"><button aria-label="više" onclick="kf(${i},1)">▲</button><b id="kc${i}">${LS.c[i]}</b><button aria-label="manje" onclick="kf(${i},-1)">▼</button></span>`; }
+function kf(i,d){ LS.c[i]=Math.max(1,Math.min(6,LS.c[i]+d)); $("kc"+i).textContent=LS.c[i]; broji(); }
+function broji(){ const [a,b,c]=LS.c; $("cnt").innerHTML=`<div class="${a*2===b*2?'ok':''}">H: lijevo ${a*2} · desno ${b*2}</div><div class="${a===c*2?'ok':''}">O: lijevo ${a} · desno ${c*2}</div>`; }
+function red(i){ const p=LS.red.indexOf(i); if(p>=0) LS.red.splice(p); else LS.red.push(i); crtajSobu(); }
+
+function labUvodTxt(){
+  $("labRekord").innerHTML = S.lab.rijeseno
+    ? `🏆 Tvoje najbolje vrijeme: <b>${fmt(S.lab.najbolje)}</b> · riješeno ${S.lab.puta||1}×. Zadaci su svaki put malo drukčiji. Možeš li brže?`
+    : `🔒 Laboratorij još nisi riješio. 7 brava čeka.`;
+}
+function labUvod(){ $("labUvod").style.display="block"; $("labIgra").style.display="none"; $("labKraj").style.display="none"; labUvodTxt(); }
+function labStart(){
+  soba=0; kazna=0; savjetiUzeti=0; t0=Date.now(); clearInterval(tik); tik=setInterval(sat,500);
+  SOBE[0].init(); $("labUvod").style.display="none"; $("labIgra").style.display="block"; $("hint").style.display="none"; crtajSobu();
+}
+function crtajSobu(){
+  const s=SOBE[soba];
+  $("locks").innerHTML = SOBE.map((x,i)=>`<span class="${i<soba?'on':''}">${i<soba?'🔓':'🔒'}</span>`).join("");
+  $("soba").innerHTML = `<div class="kicker">${s.ime}</div><div style="font-size:30px">${s.e}</div><p class="muted" style="margin:6px 0 12px">${s.prica()}</p>${s.html()}`;
+  s.nakon && s.nakon();
+}
+function labProvjeri(){
+  if(SOBE[soba].ok()){
+    $("labMsg").innerHTML = `<span style="color:var(--ok)">✔ Točno! Brava se otvara…</span>`;
+    dodajXP(10, null);
+    setTimeout(()=>{ soba++; $("labMsg").textContent=""; $("hint").style.display="none";
+      if(soba>=SOBE.length) return labKraj(); SOBE[soba].init(); crtajSobu(); scrollTo(0,0); }, 800);
+  } else {
+    $("labMsg").innerHTML = `<span style="color:var(--bad)">✖ Netočno. Pokušaj ponovno.</span>`;
+    const e=$("soba"); e.classList.remove("shake"); void e.offsetWidth; e.classList.add("shake");
+  }
+}
+function labSavjet(){ kazna+=60; savjetiUzeti++; $("hint").style.display="block"; $("hint").textContent="💡 "+SOBE[soba].savjet; sat(); }
+const vrijeme = () => Math.floor((Date.now()-t0)/1000) + kazna;
+function sat(){ $("timer").textContent = fmt(vrijeme()); }
+function labKraj(){
+  clearInterval(tik);
+  const t=vrijeme(), rek=!S.lab.najbolje || t<S.lab.najbolje, prvi=!S.lab.rijeseno;
+  if(rek) S.lab.najbolje=t;
+  S.lab.rijeseno=true; S.lab.puta=(S.lab.puta||0)+1; spremi();
+  zapisi("🧪", `Laboratorij riješen za ${fmt(t)}${savjetiUzeti?` (${savjetiUzeti} savjeta)`:" bez savjeta"}${rek&&!prvi?" · novi rekord!":""}`);
+  dodajXP(prvi?60:(rek?25:10), prvi?"Laboratorij riješen":null);
+  if(prvi) toast("🏅 Značka „Laborant“ otključana u trgovini!");
+  $("labVrijeme").textContent = fmt(t) + (rek&&!prvi?" 🏆":"");
+  $("labIgra").style.display="none"; $("labKraj").style.display="block";
+}
+
+</script>
+<script>
+// Vodikov svijet · 3. H2 Grad
+// Simulacija zelenog grada na vodik.
+// Svake godine može se dogoditi događaj (vrijeme, cijene, fondovi) koji mijenja pravila te godine.
+const GG = {"Zagreb":{p:13,i:10,o:"puno prometa"},"Split":{p:11,i:6,o:"puno sunca ☀️",sb:1},"Rijeka":{p:10,i:11,o:"luka i industrija"},"Osijek":{p:9,i:9,o:"ravnica, sunce"},"Slavonski Brod":{p:10,i:13,o:"zagađen zrak 🏭"},"Zadar":{p:9,i:5,o:"jaka bura 🌬️",vb:2}};
+const ZG = {sunce:{n:"Solarna elektrana",e:"☀️",c:15,o:"+4 struje, bez CO₂"},vjetar:{n:"Vjetroelektrana",e:"🌬️",c:25,o:"+6 struje, bez CO₂"},elektro:{n:"Elektrolizer",e:"⚗️",c:20,o:"5 struje → 1 t H₂"},reformer:{n:"Plinski reformer",e:"🔥",c:10,o:"jeftin sivi vodik, +5 kt CO₂"},spremnik:{n:"Spremnik vodika",e:"🛢️",c:10,o:"čuva +2 t H₂"},autobus:{n:"Vodikovi autobusi",e:"🚌",c:15,o:"troše 1 t H₂, promet −4 kt"},celik:{n:"Čeličana na vodik",e:"🏗️",c:30,o:"troši 2 t H₂, industrija −8 kt"}};
+const LEK = {sunce:"Solarni paneli daju struju bez CO₂. Ta struja može pokretati elektrolizu i stvarati zeleni vodik.",vjetar:"Vjetroturbine daju više struje od solara i rade i noću.",elektro:"Elektroliza: 2H₂O → 2H₂ + O₂. Ako je struja zelena, i vodik je zelen.",reformer:"Većina vodika na svijetu danas se radi iz prirodnog plina. To je jeftino, ali nastaje CO₂: to je sivi vodik.",spremnik:"Vodik je najlakši element, pa ga treba stlačiti do 700 bara ili ohladiti na −253 °C.",autobus:"Gorivna ćelija spaja vodik i kisik i daje struju. Iz ispuha izlazi samo vodena para.",celik:"Vodik može zamijeniti ugljen u proizvodnji čelika i ukloniti velik dio CO₂ iz industrije.",
+  siviStruja:"Tvoj elektrolizer troši struju iz ugljena. Takav vodik nije zelen. Izgradi više sunca i vjetra!", izgubljeno:"Višak vodika se gubi jer ga nemaš gdje spremiti. Izgradi spremnik ili više potrošača.", busStoji:"Autobusi stoje jer nema dovoljno vodika. Vozilu na vodik treba stalna proizvodnja.", nestasica:"Grad nema dovoljno struje. Višak zelene struje može se spremiti kao vodik i kasnije vratiti u struju."};
+let GS=null, gOdabran="Zagreb";
+const DOGADJAJI = [
+  {id:"sunce", t:"☀️ Sunčano ljeto: solarne elektrane daju 50 % više struje ove godine.", sunceX:1.5, l:"Proizvodnja iz sunca ovisi o vremenu. Zato je dobro imati i sunce i vjetar, i spremati višak kao vodik."},
+  {id:"bezvjetra", t:"🌫️ Zima bez vjetra: vjetroelektrane daju pola struje ove godine.", vjetarX:0.5, l:"Kad nema vjetra, spremljeni vodik može pomoću gorivne ćelije vratiti struju u mrežu."},
+  {id:"eu", t:"💶 EU fond za zelenu energiju: grad dobiva 30 mil. € za zelene projekte!", novac:30, l:"Europska unija financira projekte obnovljive energije i vodika."},
+  {id:"plin", t:"⛽ Cijena plina je skočila: svaki plinski reformer košta 5 mil. € ove godine.", plinTrosak:5, l:"Sivi vodik ovisi o cijeni plina. Zeleni vodik ovisi o suncu i vjetru, kojih ne nestaje."},
+  {id:"stanovnici", t:"🏘️ Grad raste: potrošnja struje ove godine veća je za 2 jedinice.", potrosnja:2, l:"Kad grad raste, raste i potreba za energijom. Planiraj s rezervom!"},
+];
+function crtajGradove(){ $("cities").innerHTML=Object.entries(GG).map(([k,g])=>`<button class="${k===gOdabran?'on':''}" onclick="gOdabran='${k}';crtajGradove()">${k}<small>${g.o}</small></button>`).join(""); }
+function gradKreni(){
+  const g=GG[gOdabran], m=Array(36).fill(""); [6,7,12,13,14,19].forEach(i=>m[i]="🏠"); [8,20].forEach(i=>m[i]="🏢"); m[29]="🏭"; m[34]="⚫"; [2,9,15,16,21,26,27,28].forEach(i=>m[i]="road");
+  GS={dog:null,grad:gOdabran,god:2027,novac:120,ugljen:true,br:{sunce:0,vjetar:0,elektro:0,reformer:0,spremnik:0,autobus:0,celik:0},zal:0,p:g.p,i:g.i,nau:{},m,kraj:false};
+  $("gStart").style.display="none"; $("gIgra").style.display="block"; $("glog").innerHTML=""; glog(`🏛️ Postao si gradonačelnik grada <b>${gOdabran}</b>.`); crtajGrad();
+}
+function gIzr(){
+  const g=GG[GS.grad], b=GS.br, d=GS.dog||{}, POT=10+(d.potrosnja||0);
+  const oie=Math.round(b.sunce*(4+(g.sb||0))*(d.sunceX||1) + b.vjetar*(6+(g.vb||0))*(d.vjetarX||1)), tE=b.elektro*5;
+  const ug = GS.ugljen?Math.min(16,Math.max(0,POT+tE-oie)):0, uk=oie+ug, nest=Math.max(0,POT-uk), zaE=Math.max(0,uk-POT);
+  const hE=Math.min(b.elektro,zaE/5), zu=zaE>0?Math.min(1,Math.max(0,oie-POT)/zaE):0, hZ=hE*zu, hSS=hE-hZ, hP=b.reformer, pro=hE+hP;
+  let dost=GS.zal+pro; const bus=Math.min(b.autobus,Math.floor(dost+1e-9)); dost-=bus; const cel=Math.min(b.celik,Math.floor(dost/2+1e-9)); dost-=cel*2;
+  const kap=1+b.spremnik*2, izg=Math.max(0,dost-kap), nz=Math.min(dost,kap);
+  const co2=ug+hP*5+Math.max(2,GS.p-bus*4)+Math.max(2,GS.i-cel*8), zrak=Math.max(5,Math.min(100,Math.round(100-co2*2.2)));
+  return {oie,ug,nest,hZ,hS:hSS+hP,hSS,pro,bus,cel,izg,nz,co2,zrak,tE,POT};
+}
+const f1 = x=>(Math.round(x*10)/10).toLocaleString("hr-HR");
+function crtajGrad(){
+  if(!GS) return; const r=gIzr();
+  $("gIme").textContent=GS.grad; $("gGod").textContent=GS.god+"."; $("gNovac").textContent=GS.novac;
+  $("sOie").textContent=`${r.oie} / ${r.POT+r.tE}`; $("bOie").style.width=Math.min(100,r.oie/(r.POT+r.tE)*100)+"%";
+  $("gDog").style.display=GS.dog?"block":"none"; if(GS.dog) $("gDog").innerHTML=`<b>Događaj ${GS.god}.:</b> ${GS.dog.t}<div class="small muted" style="margin-top:4px">📘 ${GS.dog.l}</div>`;
+  $("sH2").textContent=f1(r.pro)+" t"; $("sH2d").innerHTML=`<span style="color:var(--ok)">zeleni ${f1(r.hZ)}</span> · <span class="muted">sivi ${f1(r.hS)}</span>`;
+  $("sCo2").textContent=f1(r.co2)+" kt"; $("sZrak").textContent=r.zrak+" %"; $("bZrak").style.width=r.zrak+"%"; $("bZrak").style.background=r.zrak>70?"var(--ok)":r.zrak>45?"var(--gold)":"var(--bad)";
+  $("gmap").style.filter=`saturate(${0.4+r.zrak/100})`;
+  $("gmap").innerHTML=GS.m.map((t,i)=>t==="road"?`<div class="tile road"></div>`:`<div class="tile ${i===34&&!GS.ugljen?'off':''}">${t}</div>`).join("");
+  $("builds").innerHTML=Object.entries(ZG).map(([k,z])=>`<button class="bld" ${GS.novac<z.c||GS.m.indexOf("")<0||GS.kraj?'disabled':''} onclick="gradi('${k}')">${z.e} ${z.n}${GS.br[k]?` ×${GS.br[k]}`:""}<small>${z.o}</small><span class="c">${z.c} mil. €</span></button>`).join("");
+  $("ugljenBtn").style.display=GS.ugljen&&!GS.kraj?"block":"none";
+}
+function glog(t){ $("glog").insertAdjacentHTML("afterbegin",`<div>${t}</div>`); }
+function gLek(id,t){ if(GS.nau[id]) return; GS.nau[id]=1; $("gLek").style.display="block"; $("gLek").innerHTML=`📘 ${t}`; glog(`📘 ${t}`); }
+function gradi(k){ const z=ZG[k], i=GS.m.indexOf(""); if(GS.novac<z.c||i<0) return; GS.novac-=z.c; GS.br[k]++; GS.m[i]=z.e; gLek(k,`<b>${z.n}:</b> ${LEK[k]}`); crtajGrad(); }
+function zatvoriUgljen(){ const r=gIzr(); if(r.oie<r.POT && !confirm(`Sunce i vjetar daju samo ${r.oie} od ${r.POT} jedinica struje. Grad će imati nestašicu. Ipak zatvoriti?`)) return; GS.ugljen=false; glog("🏭 Termoelektrana na ugljen je zatvorena."); crtajGrad(); }
+function sljedecaGodina(){
+  if(GS.kraj) return; const r=gIzr(); const d=GS.dog||{}; const pri=25+(r.zrak>60?10:0)-(r.nest>0?15:0)+(d.novac||0)-(d.plinTrosak||0)*GS.br.reformer;
+  GS.novac+=pri; GS.zal=r.nz; glog(`<b>${GS.god}.</b> Vodik ${f1(r.pro)} t (zeleni ${f1(r.hZ)}), CO₂ ${f1(r.co2)} kt, prihod ${pri} mil. €.`);
+  if(r.hSS>0.05) gLek("siviStruja",LEK.siviStruja); if(r.izg>0.05) gLek("izgubljeno",LEK.izgubljeno); if(GS.br.autobus>r.bus) gLek("busStoji",LEK.busStoji); if(r.nest>0) gLek("nestasica",LEK.nestasica);
+  dodajXP(3,null);
+  GS.god++; GS.dog = Math.random()<0.4 ? DOGADJAJI[Math.floor(Math.random()*DOGADJAJI.length)] : null;
+  if(GS.dog) glog(`📰 ${GS.dog.t}`);
+  const r2=gIzr();
+  if(r2.co2<=10 && !GS.ugljen){ GS.kraj=true; const prvi=!S.grad.pobjeda; S.grad={pobjeda:true,godina:GS.god-1,grad:GS.grad}; spremi(); zapisi("🏙️",`${GS.grad} je postao zeleni grad na vodik ${GS.god-1}.`); if(prvi) toast("🏅 Medalja „Zeleni gradonačelnik“ otključana u trgovini!"); dodajXP(prvi?100:30, prvi?"Zeleni grad":null);
+    $("gLek").style.display="block"; $("gLek").innerHTML=`🌿 <b>Zeleni grad!</b> CO₂ je pao na ${f1(r2.co2)} kt, zrak je ${r2.zrak} %. <button class="btn" style="margin-top:8px" onclick="GS=null;$('gIgra').style.display='none';$('gStart').style.display='block'">Igraj ponovno</button>`; }
+  else if(GS.god>2036){ GS.kraj=true; $("gLek").style.display="block"; $("gLek").innerHTML=`⏰ <b>Kraj mandata.</b> Grad još ispušta ${f1(r2.co2)} kt CO₂. Prvo izgradi dovoljno sunca i vjetra, a tek onda elektrolizere i potrošače. <button class="btn" style="margin-top:8px" onclick="GS=null;$('gIgra').style.display='none';$('gStart').style.display='block'">Pokušaj ponovno</button>`; }
+  crtajGrad();
+}
+
+
+</script>
+<script>
+// Vodikov svijet · 4. H2 Ruta
+// Karta Hrvatske i planiranje vodikovih punionica.
+const RG = {"Zagreb":[45.81,15.98,767,[]],"Varaždin":[46.30,16.34,43,[]],"Koprivnica":[46.16,16.83,28,[]],"Bjelovar":[45.90,16.84,36,[]],"Sisak":[45.47,16.37,40,["🏭"]],"Karlovac":[45.49,15.55,49,[]],"Rijeka":[45.33,14.44,108,["⚓"]],"Pula":[44.87,13.85,52,["☀️"]],"Gospić":[44.55,15.37,11,["🌬️"]],"Zadar":[44.12,15.23,70,["☀️","🌬️"]],"Knin":[44.04,16.20,11,["🌬️"]],"Šibenik":[43.73,15.90,42,["☀️","🌬️"]],"Split":[43.51,16.44,161,["☀️","⚓"]],"Ploče":[43.05,17.43,9,["⚓"]],"Dubrovnik":[42.65,18.09,41,["☀️"]],"Slavonski Brod":[45.16,18.02,50,["🏭"]],"Osijek":[45.55,18.69,97,["☀️"]],"Vinkovci":[45.29,18.80,31,[]]};
+const RC = [["Zagreb","Karlovac",56],["Karlovac","Rijeka",120],["Rijeka","Pula",100],["Karlovac","Gospić",150],["Gospić","Zadar",110],["Zadar","Šibenik",85],["Šibenik","Split",85],["Split","Ploče",100],["Ploče","Dubrovnik",100],["Zagreb","Varaždin",80],["Varaždin","Koprivnica",40],["Zagreb","Bjelovar",85],["Bjelovar","Koprivnica",40],["Zagreb","Sisak",60],["Sisak","Slavonski Brod",150],["Zagreb","Slavonski Brod",190],["Slavonski Brod","Vinkovci",80],["Vinkovci","Osijek",35],["Slavonski Brod","Osijek",90],["Koprivnica","Osijek",180],["Šibenik","Knin",55],["Knin","Split",90],["Zadar","Knin",95]];
+const VZ = {kamion:["🚛 Kamion 250 km",250],autobus:["🚌 Autobus 350 km",350],auto:["🚗 Auto 500 km",500]};
+const RUTE = [["Zagreb","Split"],["Zagreb","Rijeka"],["Zagreb","Osijek"],["Zagreb","Dubrovnik"],["Rijeka","Split"],["Osijek","Split"],["Pula","Dubrovnik"]];
+let punionice=new Set(), vozilo="kamion", rOd=3;
+const sus={}; Object.keys(RG).forEach(g=>sus[g]=[]); RC.forEach(([a,b,k])=>{sus[a].push([b,k]);sus[b].push([a,k]);});
+const kmC=(a,b)=>RC.find(c=>(c[0]===a&&c[1]===b)||(c[0]===b&&c[1]===a))[2];
+function put(a,b){ const d={},pr={},Q=new Set(Object.keys(RG)); Q.forEach(g=>d[g]=Infinity); d[a]=0; while(Q.size){ let u=null; Q.forEach(g=>{if(u===null||d[g]<d[u])u=g;}); Q.delete(u); if(u===b) break; sus[u].forEach(([v,k])=>{if(d[u]+k<d[v]){d[v]=d[u]+k;pr[v]=u;}}); } const p=[b]; while(p[0]!==a) p.unshift(pr[p[0]]); return {p,km:d[b]}; }
+function sim(a,b){ const {p,km}=put(a,b), dom=VZ[vozilo][1]; let go=dom, ok=true; const di=[]; for(let i=0;i<p.length-1;i++){ const d=kmC(p[i],p[i+1]), im=ok&&go>=d; di.push({od:p[i],do:p[i+1],ok:im}); if(!im) ok=false; go-=d; if(punionice.has(p[i+1])) go=dom; } return {p,ok,di,km}; }
+const RX=lon=>(lon-13.5)*61+12, RY=lat=>(46.55-lat)*78+10;
+function pokrivenost(){ const g=Object.keys(RG); let uk=0,pk=0; for(const a of g) for(const b of g){ if(a===b) continue; const w=RG[a][2]*RG[b][2]; uk+=w; if(sim(a,b).ok) pk+=w; } return Math.round(pk/uk*100); }
+function crtajRutu(){
+  $("vozila").innerHTML=Object.entries(VZ).map(([k,v])=>`<button class="${k===vozilo?'on':''}" onclick="vozilo='${k}';crtajRutu()">${v[0]}</button>`).join("");
+  const s=sim(...RUTE[rOd]), ist=new Map(s.di.map(d=>[[d.od,d.do].sort().join("|"),d.ok]));
+  let v=`<text x="40" y="300" fill="#2c5a8a" font-family="Space Grotesk" font-size="15" font-style="italic">Jadransko more</text>`;
+  RC.forEach(([a,b,k])=>{ const A=RG[a],B=RG[b],key=[a,b].sort().join("|"),h=ist.has(key); v+=`<line x1="${RX(A[1])}" y1="${RY(A[0])}" x2="${RX(B[1])}" y2="${RY(B[0])}" stroke="${h?(ist.get(key)?'#4cf0a0':'#ff7a7a'):'#2c4a70'}" stroke-width="${h?4:2.5}" stroke-linecap="round"/>`; });
+  Object.entries(RG).forEach(([g,c])=>{ const p=punionice.has(g), r=4+Math.sqrt(c[2])/5; v+=`<g class="rcity" onclick="toggleP('${g}')"><circle cx="${RX(c[1])}" cy="${RY(c[0])}" r="${r+8}" fill="transparent"/><circle cx="${RX(c[1])}" cy="${RY(c[0])}" r="${r}" fill="${p?'#5cc8ff':'#3a5a85'}" stroke="#06101c" stroke-width="1.5"/>${p?`<text x="${RX(c[1])-5}" y="${RY(c[0])+4}" style="font-size:9px">⛽</text>`:""}<text x="${RX(c[1])+r+3}" y="${RY(c[0])+3}">${g} ${c[3].join("")}</text></g>`; });
+  $("rmap").innerHTML=v;
+  const pk=pokrivenost(), zel=[...punionice].filter(g=>RG[g][3].some(x=>x==="☀️"||x==="🌬️")).length;
+  $("rBroj").textContent=`${punionice.size}/5`; $("rPok").textContent=pk+" %"; $("rPok").style.color=pk>=90?"var(--ok)":pk>=60?"var(--gold)":"var(--bad)"; $("rZel").textContent=zel;
+  $("rute").innerHTML=RUTE.map(([a,b],i)=>{ const x=sim(a,b); return `<button class="${i===rOd?'on':''}" onclick="rOd=${i};crtajRutu()"><span>${a} → ${b} <span class="muted small">${x.km} km</span></span><span class="${x.ok?'ok':'no'}">${x.ok?'✔':'✖'}</span></button>`; }).join("");
+  const pr=s.di.find(d=>!d.ok);
+  $("rutaInfo").innerHTML = s.ok ? `${RUTE[rOd].join(" → ")}: vozilo stiže.` : `${RUTE[rOd].join(" → ")}: vozilo ostaje bez vodika između ${pr.od} i ${pr.do}.`;
+  $("ocjena").innerHTML = `Pokrivenost <b style="color:var(--ink)">${pk} %</b> putovanja između gradova (prema broju stanovnika). ${zel?`${zel} punionica je uz sunce ili vjetar, pa se tamo može proizvoditi zeleni vodik.`:"Nijedna punionica nije uz izvor zelene energije."} Teški kamioni i autobusi su mjesto gdje vodik ima najviše smisla, jer bi baterije bile preteške. Tvoj najbolji spremljeni plan: <b style="color:var(--ink)">${S.ruta.najbolja} %</b>.`;
+}
+function toggleP(g){ if(punionice.has(g)) punionice.delete(g); else if(punionice.size<5) punionice.add(g); else return toast("Imaš samo 5 punionica. Makni jednu."); crtajRutu(); }
+function automatski(){ punionice.clear(); while(punionice.size<5){ let be=null,bv=-1; Object.keys(RG).forEach(g=>{ if(punionice.has(g)) return; punionice.add(g); const v=pokrivenost()+(RG[g][3].length?.5:0); punionice.delete(g); if(v>bv){bv=v;be=g;} }); punionice.add(be); } toast("🤖 Ovo je jedan dobar plan. Probaj složiti svoj!"); crtajRutu(); }
+function spremiPlan(){ const pk=pokrivenost(); if(pk>S.ruta.najbolja){ const prije=S.ruta.najbolja; S.ruta={najbolja:pk,plan:[...punionice]}; spremi(); dodajXP(Math.round((pk-prije)/2), pk>=90&&prije<90?"Plan s 90 %":null); zapisi("🛣️",`Novi najbolji plan punionica: ${pk} % (${[...punionice].join(", ")})`); if(prije<90&&pk>=90) toast("🏅 Značka „Planer ruta“ otključana!"); else toast(`💾 Plan spremljen: ${pk} %`); crtajRutu(); } else toast(`Tvoj najbolji plan je ${S.ruta.najbolja} %. Ovaj ima ${pk} %.`); }
+
+
+</script>
+<script>
+// Vodikov svijet · 5. Akademija
+// Lekcije: nekoliko kartica s objašnjenjem, zatim kviz. Točan odgovor = XP (samo prvi put). Do 3 zvjezdice po lekciji.
+// Pitanja iz svih lekcija koristi i tjedni izazov u Ligi škola.
+// Činjenice su pojednostavljene za učenike; prije natjecanja provjeriti s nastavnikom kemije/fizike.
+
+const LEKCIJE = [
+ { id:"element", ic:"⚛️", n:"Element broj 1", o:"Građa atoma i izotopi",
+   kartice:[
+    ["⚛️","Najjednostavniji atom","Atom vodika ima samo jedan proton u jezgri i jedan elektron oko nje. Zato je vodik prvi element u periodnom sustavu i najlakši od svih."],
+    ["🌌","Najčešći u svemiru","Oko tri četvrtine mase obične tvari u svemiru čini vodik. Zvijezde, pa i naše Sunce, uglavnom su građene od vodika."],
+    ["🔬","Tri izotopa","Protij (¹H) nema neutrona, deuterij (²H) ima jedan, a tricij (³H) dva. Tricij je radioaktivan."],
+    ["⚖️","Molarna masa","Atom vodika ima molarnu masu oko 1 g/mol, a molekula H₂ oko 2 g/mol. To je najmanja molarna masa od svih plinova."]],
+   pitanja:[
+    ["Koliko protona ima atom vodika?",["1","2","0","3"],0,"Svaki atom vodika ima točno jedan proton. To ga čini vodikom."],
+    ["Koji je element najzastupljeniji u svemiru?",["Vodik","Kisik","Ugljik","Helij"],0,"Vodik čini oko tri četvrtine mase obične tvari u svemiru."],
+    ["Koji je izotop vodika radioaktivan?",["Tricij","Protij","Deuterij","Nijedan"],0,"Tricij (³H) ima dva neutrona i radioaktivan je."],
+    ["Kolika je molarna masa molekule H₂?",["2 g/mol","1 g/mol","16 g/mol","18 g/mol"],0,"Dva atoma po oko 1 g/mol daju oko 2 g/mol."]]},
+ { id:"tijelo", ic:"🧍", n:"Vodik u tebi", o:"Voda, hrana i tijelo",
+   kartice:[
+    ["💧","Voda je pola priče","Molekula vode H₂O ima dva atoma vodika. Po masi je oko 11 % vode vodik."],
+    ["🧍","Ti si uglavnom vodik","Vodik čini oko 10 % mase ljudskog tijela, ali oko 62 % svih atoma u tijelu. Po broju atoma najviše smo građeni od vodika."],
+    ["🧬","Posvuda u molekulama života","Vodik je u šećerima, mastima, proteinima i DNK. Vodikove veze drže zajedno dvije niti DNK."],
+    ["⏳","Stari kao svemir","Gotovo sav vodik nastao je nedugo nakon Velikog praska, prije oko 13,8 milijardi godina."]],
+   pitanja:[
+    ["Koliki je otprilike udio vodika u broju atoma ljudskog tijela?",["62 %","10 %","25 %","90 %"],0,"Po broju atoma tijelo je oko 62 % vodik, iako je po masi samo oko 10 %."],
+    ["Koliki je udio vodika u masi vode?",["Oko 11 %","Oko 50 %","Oko 67 %","Oko 2 %"],0,"2 × 1,008 g/mol podijeljeno s 18 g/mol daje oko 11 %."],
+    ["Što drži zajedno dvije niti DNK?",["Vodikove veze","Ionske veze","Metalne veze","Magnetizam"],0,"Parovi baza u DNK povezani su vodikovim vezama."],
+    ["Kada je nastala većina vodika u svemiru?",["Ubrzo nakon Velikog praska","Kad je nastala Zemlja","U oceanima","Prije 1000 godina"],0,"Jezgre vodika nastale su u prvim minutama svemira."]]},
+ { id:"proizvodnja", ic:"⚗️", n:"Kako nastaje vodik", o:"Elektroliza i boje vodika",
+   kartice:[
+    ["⚗️","Elektroliza","Struja razlaže vodu na vodik i kisik: 2H₂O → 2H₂ + O₂. Nastaje dvostruko više vodika nego kisika."],
+    ["🟢","Zeleni vodik","Kad struja za elektrolizu dolazi iz sunca, vjetra ili vode, vodik nastaje gotovo bez CO₂."],
+    ["⚪","Sivi vodik","Danas se većina vodika na svijetu proizvodi iz prirodnog plina, a pri tome nastaje CO₂."],
+    ["🔵","Plavi vodik","Vodik iz plina, ali se nastali CO₂ hvata i sprema pod zemlju, pa manje zagađuje."]],
+   pitanja:[
+    ["Kako glasi izjednačena jednadžba elektrolize vode?",["2H₂O → 2H₂ + O₂","H₂O → H₂ + O₂","2H₂O → H₂ + 2O₂","H₂O → 2H + O"],0,"Lijevo i desno mora biti po 4 atoma vodika i 2 atoma kisika."],
+    ["Koja „boja“ vodika nastaje elektrolizom uz struju iz sunca i vjetra?",["Zelena","Siva","Plava","Crvena"],0,"Zeleni vodik nastaje iz obnovljivih izvora energije."],
+    ["Od čega se danas proizvodi većina vodika na svijetu?",["Od prirodnog plina","Od morske vode","Od ugljena u Hrvatskoj","Od zraka"],0,"Najveći dio vodika danas je sivi, iz prirodnog plina."],
+    ["Po čemu se plavi vodik razlikuje od sivog?",["CO₂ se hvata i sprema","Nastaje iz vode","Ne treba energiju","Plave je boje"],0,"Kod plavog vodika CO₂ se hvata, a ne ispušta u zrak."]]},
+ { id:"skladiste", ic:"🛢️", n:"Skladištenje i sigurnost", o:"Tlak, hladnoća i opasnosti",
+   kartice:[
+    ["🎈","Lagan, ali zauzima puno mjesta","Vodik je najlakši plin, pa kilogram vodika pri običnom tlaku zauzima ogroman volumen."],
+    ["🗜️","Stlačeni vodik","U automobilima se vodik čuva u spremnicima pod tlakom od 350 do 700 bara."],
+    ["❄️","Tekući vodik","Ohlađen na oko −253 °C vodik postaje tekućina i zauzima mnogo manje mjesta, ali hlađenje troši puno energije."],
+    ["⚠️","Sigurnost","Vodik nije otrovan, ali je jako zapaljiv: gori kad u zraku ima otprilike 4 do 75 % vodika. Plamen mu se na dnevnom svjetlu jedva vidi."]],
+   pitanja:[
+    ["Na koju temperaturu treba ohladiti vodik da postane tekućina?",["Oko −253 °C","Oko −78 °C","Oko 0 °C","Oko −20 °C"],0,"Vodik se ukapljuje blizu apsolutne nule, na oko −253 °C."],
+    ["Pod kojim se tlakom vodik obično čuva u autu?",["350 do 700 bara","1 bar","10 bara","5000 bara"],0,"Spremnici vodikovih auta rade na 350 ili 700 bara."],
+    ["Koja tvrdnja o vodiku NIJE točna?",["Vodik je otrovan","Vodik je zapaljiv","Lakši je od zraka","Nema boju ni miris"],0,"Vodik nije otrovan, ali je zapaljiv."],
+    ["Zašto je vodikov plamen opasan?",["Na danjem svjetlu jedva se vidi","Jako dimi","Jako smrdi","Uvijek je hladan"],0,"Vodik gori gotovo nevidljivim plamenom, pa se koriste posebni senzori."]]},
+ { id:"celija", ic:"🔋", n:"Gorivna ćelija i promet", o:"Kako vodik pokreće vozila",
+   kartice:[
+    ["🔋","Gorivna ćelija","Vodik i kisik iz zraka spajaju se u gorivnoj ćeliji. Nastaju struja, toplina i voda."],
+    ["🚗","Vodikov automobil","Vodikov auto troši otprilike 1 kg vodika na 100 km, a spremnik se napuni za nekoliko minuta."],
+    ["🚛","Gdje vodik ima najviše smisla","Vodik je posebno koristan za teške kamione, autobuse, brodove i industriju, gdje bi baterije bile preteške."],
+    ["🔄","Gubici energije","Kad se struja pretvori u vodik pa natrag u struju, izgubi se više od pola energije. Zato je za male aute izravna struja iz baterije često učinkovitija."]],
+   pitanja:[
+    ["Što izlazi iz ispuha vozila na gorivnu ćeliju?",["Vodena para","CO₂","Dim","Kisik"],0,"Vodik i kisik daju vodu."],
+    ["Koliko otprilike vodika troši vodikov auto na 100 km?",["Oko 1 kg","Oko 10 kg","Oko 100 g","Oko 50 kg"],0,"Današnji vodikovi auti troše oko 1 kg na 100 km."],
+    ["Gdje vodik ima najviše smisla u prometu?",["Teški kamioni i brodovi","Romobili","Bicikli","Igračke"],0,"Za teška vozila baterije bi bile preteške."],
+    ["Što se događa s energijom na putu struja → vodik → struja?",["Velik dio se izgubi","Udvostruči se","Ostane ista","Pretvori se u svjetlo"],0,"U tom lancu izgubi se više od pola energije."]]},
+ { id:"hrvatska", ic:"🇭🇷", n:"Vodik i budućnost", o:"Energija, klima i Hrvatska",
+   kartice:[
+    ["🌍","Klima","Zeleni vodik može zamijeniti ugljen, naftu i plin tamo gdje je struju teško koristiti izravno, pa smanjuje CO₂."],
+    ["☀️","Sunce i vjetar Hrvatske","Hrvatska ima puno sunca na jugu i jak vjetar na obali, pa ima dobre uvjete za proizvodnju zelene struje."],
+    ["🏭","Industrija i luke","Rafinerije, kemijska industrija i luke veliki su potencijalni korisnici vodika."],
+    ["🎓","Novi poslovi","Vodik otvara poslove za inženjere, kemičare, tehničare i dizajnere. Možda baš za tebe!"]],
+   pitanja:[
+    ["Zašto je zeleni vodik dobar za klimu?",["Nastaje gotovo bez CO₂","Hladi Zemlju","Upija ozon","Jeftiniji je od vode"],0,"Proizvodi se strujom iz obnovljivih izvora."],
+    ["Koji prirodni uvjeti pomažu Hrvatskoj u proizvodnji zelene struje?",["Sunce i vjetar","Vulkani","Ledenjaci","Pustinja"],0,"Jug ima puno sunca, a obala jak vjetar."],
+    ["Tko bi mogao biti velik korisnik vodika?",["Industrija i luke","Knjižnice","Pekare","Kino"],0,"Industrija i teški promet trebaju puno energije."],
+    ["Što od navedenog NIJE izvor zelene struje za elektrolizu?",["Ugljen","Sunce","Vjetar","Voda (hidroelektrane)"],0,"Struja iz ugljena stvara puno CO₂."]]},
+];
+const SVA_PITANJA = LEKCIJE.flatMap(l=>l.pitanja.map(p=>({p, l:l.id})));
+
+let AK = null;
+const zvjezdice = n => "★".repeat(n) + "☆".repeat(3-n);
+function crtajLekcije(){
+  $("lekcije").innerHTML = LEKCIJE.map((l,i)=>{ const z=(S.akad[l.id]||{}).z||0;
+    return `<button class="lek" onclick="akOtvori(${i})"><span class="ic">${l.ic}</span><span><b>${i+1}. ${l.n}</b><small>${l.o} · ${l.kartice.length} kartice · ${l.pitanja.length} pitanja</small></span><span class="zv" style="color:${z?'var(--gold)':'var(--muted)'}">${zvjezdice(z)}</span></button>`; }).join("");
+}
+function akOtvori(i){ AK={i, k:0, faza:"kartice"}; $("akPopis").style.display="none"; $("akLekcija").style.display="block"; akCrtaj(); scrollTo(0,0); }
+function akZatvori(){ AK=null; $("akPopis").style.display="block"; $("akLekcija").style.display="none"; crtajLekcije(); }
+function akCrtaj(){
+  const l = LEKCIJE[AK.i]; $("akNaslov").textContent = `${l.ic} ${l.n}`;
+  if(AK.faza==="kartice"){
+    const [ic,n,t] = l.kartice[AK.k];
+    $("akSadrzaj").innerHTML = `<div class="kartica"><div class="ic">${ic}</div><h2 style="margin:6px 0">${n}</h2><p style="font-size:16px;line-height:1.55">${t}</p></div>
+      <div class="tocke">${l.kartice.map((_,j)=>`<span class="${j===AK.k?'on':''}"></span>`).join("")}</div>
+      <div style="display:flex;gap:8px"><button class="ghost" style="margin:0" ${AK.k?'':'disabled'} onclick="AK.k--;akCrtaj()">← Natrag</button>
+      <button class="btn" onclick="${AK.k<l.kartice.length-1?'AK.k++;akCrtaj()':'akKviz()'}">${AK.k<l.kartice.length-1?'Dalje →':'Kreni na kviz ✍️'}</button></div>`;
+  } else if(AK.faza==="kviz"){
+    const [q,o,tocan,obj] = l.pitanja[AK.q];
+    const red = AK.red || (AK.red = promijesaj(o.map((_,i)=>i)));
+    $("akSadrzaj").innerHTML = `<div class="kicker">Pitanje ${AK.q+1} od ${l.pitanja.length}</div><h2 style="margin:6px 0 12px;font-size:20px">${q}</h2>
+      ${red.map(i=>`<button class="odg ${AK.odg!=null?(i===tocan?'da':(i===AK.odg?'ne':'')):''}" ${AK.odg!=null?'disabled':''} onclick="akOdg(${i})">${o[i]}</button>`).join("")}
+      ${AK.odg!=null?`<div class="obj">${AK.odg===tocan?"✅ Točno!":"❌ Nije točno."} ${obj}</div><button class="btn" style="margin-top:10px" onclick="akDalje()">${AK.q<l.pitanja.length-1?'Sljedeće pitanje →':'Rezultat'}</button>`:""}`;
+  } else {
+    const n = AK.tocnih, uk = l.pitanja.length, z = n===uk?3:n>=uk-1?2:n>=uk/2?1:0;
+    const prije = (S.akad[l.id]||{}).z||0;
+    if(z>prije){ S.akad[l.id]={z}; spremi(); zapisi("🎓",`Lekcija „${l.n}“: ${n}/${uk} (${zvjezdice(z)})`); if(z===3) dodajXP(15,`Tri zvjezdice: ${l.n}`); }
+    $("akSadrzaj").innerHTML = `<div class="card" style="text-align:center"><div style="font-size:54px">${z===3?"🏆":z?"🎉":"📚"}</div><h2>${n} / ${uk} točno</h2><div style="font-size:34px;color:var(--gold);letter-spacing:4px">${zvjezdice(z)}</div>
+      <p class="muted" style="margin-top:8px">${z===3?"Savršeno! Ti si pravi stručnjak za vodik.":z?"Odlično! Ponovi lekciju za još zvjezdica.":"Pročitaj kartice još jednom i pokušaj ponovno."}</p></div>
+      <button class="btn" onclick="akOtvori(${AK.i})">🔁 Ponovi lekciju</button>${AK.i<LEKCIJE.length-1?`<button class="ghost" onclick="akOtvori(${AK.i+1})">Sljedeća lekcija →</button>`:""}<button class="ghost" onclick="akZatvori()">Sve lekcije</button>`;
+  }
+}
+function akKviz(){ AK.faza="kviz"; AK.q=0; AK.tocnih=0; AK.odg=null; AK.red=null; akCrtaj(); scrollTo(0,0); }
+function akOdg(i){
+  const l=LEKCIJE[AK.i], tocan=l.pitanja[AK.q][2]; AK.odg=i;
+  if(i===tocan){ AK.tocnih++; const kljuc=l.id+":"+AK.q; if(!S.tocna.includes(kljuc)){ S.tocna.push(kljuc); spremi(); dodajXP(10,null); } }
+  akCrtaj();
+}
+function akDalje(){ const l=LEKCIJE[AK.i]; if(AK.q<l.pitanja.length-1){ AK.q++; AK.odg=null; AK.red=null; } else AK.faza="kraj"; akCrtaj(); }
+
+</script>
+<script>
+// Vodikov svijet · 6. Liga škola
+// Timovi (razredi) natječu se u tjednom „Vodikovom izazovu“: 10 pitanja iz Akademije u 90 sekundi.
+// Za tim se zbraja najbolji rezultat svakog člana u rundi. Runda = tjedan u godini.
+//
+// DEMO ili ONLINE: ako je u js/konfig.js upisan posrednik, timovi i rezultati spremaju se kao JSON datoteke
+// u GitHub repozitorij (podaci/liga/…) i svi uređaji dijele istu ljestvicu. Bez posrednika liga radi
+// na ovom uređaju s izmišljenim protivnicima. Posrednik sam provjerava članstvo, broj pokušaja i najviše bodova.
+
+const POKUSAJA = 3, TRAJANJE_IZAZOVA = 90, PITANJA_U_IZAZOVU = 10;
+const DEMO_TIMOVI = [["2.a Elektroni","Gimnazija Split"],["3.c Gorivne ćelije","Tehnička škola Rijeka"],["Zeleni vodik","OŠ Zadar"],["Protoni","Gimnazija Varaždin"],["H₂ Osijek","Elektrotehnička škola Osijek"],["Elektrolizeri","SŠ Pula"],["Molekule","OŠ Dubrovnik"]];
+let ljPrikaz = "runda", IZ = null;
+
+const tjedanGodine = (d=new Date()) => { const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())); const dan=t.getUTCDay()||7; t.setUTCDate(t.getUTCDate()+4-dan); const p=new Date(Date.UTC(t.getUTCFullYear(),0,1)); return Math.ceil(((t-p)/864e5+1)/7); };
+const RUNDA = tjedanGodine(), SEZONA_OD = Math.max(1, RUNDA-7);
+const nasumicno = seed => () => (seed = (seed*9301+49297)%233280)/233280;
+
+// ----- mreža: isti pozivi za demo i za GitHub (preko posrednika) -----
+const online = () => uOblaku();
+function demoBaza(){ BAZA.liga = BAZA.liga || {timovi:{}, rezultati:[]}; return BAZA.liga; }
+let ligaCache = null;
+async function ligaPodaci(od, doo){
+  const k = od+"-"+doo;
+  if(ligaCache && ligaCache.k===k && Date.now()-ligaCache.t < 5000) return ligaCache.d;
+  const d = await zahtjev(`/liga?od=${od}&do=${doo}`);
+  ligaCache = {k, t:Date.now(), d}; return d;
+}
+const nijeCache = () => { ligaCache = null; };
+const Mreza = {
+  async napraviTim({ime, skola}){
+    if(online()){ const d = await zahtjev("/liga/tim",{metoda:"POST",tijelo:{ime,skola}}); nijeCache(); return d.kod; }
+    const kod = noviKod(); demoBaza().timovi[kod] = {ime, skola, clanovi:[]}; spremiBazu(); await this.pridruzi(kod); return kod;
+  },
+  async tim(kod){
+    if(online()){ const d = await ligaPodaci(RUNDA,RUNDA), t = d.timovi[kod]; return t ? {kod, ...t, clanovi:t.clanovi.map(u=>({korisnik:u, ime:u}))} : null; }
+    const t = demoBaza().timovi[kod]; return t ? {kod, ...t} : null;
+  },
+  async pridruzi(kod){
+    if(online()){ const d = await zahtjev("/liga/pridruzi",{metoda:"POST",tijelo:{kod}}); nijeCache(); return d; }
+    const c = demoBaza().timovi[kod].clanovi; if(!c.find(x=>x.korisnik===BAZA.trenutni)) c.push({korisnik:BAZA.trenutni, ime:BAZA.trenutni}); spremiBazu();
+  },
+  async napusti(kod){
+    if(online()){ await zahtjev("/liga/napusti",{metoda:"POST",tijelo:{kod}}); nijeCache(); return; }
+    const t = demoBaza().timovi[kod]; if(t){ t.clanovi = t.clanovi.filter(x=>x.korisnik!==BAZA.trenutni); spremiBazu(); }
+  },
+  async posaljiRezultat(r){
+    if(online()){ await zahtjev("/liga/rezultat",{metoda:"POST",tijelo:r}); nijeCache(); return; }
+    demoBaza().rezultati.push({...r, korisnik:BAZA.trenutni, kreirano:new Date().toISOString()}); spremiBazu();
+  },
+  async rezultati(od,doo){ if(online()) return (await ligaPodaci(od,doo)).rezultati; return demoBaza().rezultati.filter(r=>r.runda>=od&&r.runda<=doo); },
+  async sviTimovi(od,doo){ if(online()) return Object.entries((await ligaPodaci(od,doo)).timovi).map(([kod,t])=>({kod,...t})); return Object.entries(demoBaza().timovi).map(([kod,t])=>({kod,...t})); },
+};
+function demoProtivnici(od,doo){
+  return DEMO_TIMOVI.map(([ime,skola],i)=>{ let b=0; for(let r=od;r<=doo;r++){ const x=nasumicno(r*100+i+3); b+=Math.round(150+x()*500); } return {kod:"DEMO"+i, ime, skola, demo:true, bodovi:b}; });
+}
+function zbroji(rez){ const naj={}; rez.forEach(r=>{ const k=r.kod+"|"+r.korisnik+"|"+r.runda; naj[k]=Math.max(naj[k]||0,r.bodovi); }); const tim={}; Object.entries(naj).forEach(([k,b])=>{ const kod=k.split("|")[0]; tim[kod]=(tim[kod]||0)+b; }); return tim; }
+function noviKod(){ const z="ABCDEFGHJKLMNPRSTUVZ23456789"; let k="H2"; for(let i=0;i<4;i++) k+=z[Math.floor(Math.random()*z.length)]; return k; }
+
+async function napraviTim(){
+  const ime=$("tIme").value.trim(), skola=$("tSkola").value.trim();
+  if(ime.length<3) return $("tMsg").textContent="Upiši ime tima (barem 3 znaka).";
+  try{ const kod=await Mreza.napraviTim({ime,skola});
+    S.tim=kod; S.timIme=ime; spremi(); zapisi("🏆",`Napravljen tim „${ime}“ (kod ${kod})`); dodajXP(10,null); toast(`Tim napravljen! Pošalji kod ${kod} ostalima.`); crtajLigu(); }
+  catch(e){ $("tMsg").textContent=e.message; }
+}
+async function pridruziSe(){
+  const kod=$("tKod").value.trim().toUpperCase();
+  try{ const t=await Mreza.tim(kod); if(!t) return $("tMsg").textContent="Ne postoji tim s tim kodom.";
+    await Mreza.pridruzi(kod); S.tim=kod; S.timIme=t.ime; spremi(); zapisi("🤝",`Pridružio se timu „${t.ime}“`); crtajLigu(); }
+  catch(e){ $("tMsg").textContent=e.message; }
+}
+async function napustiTim(){ if(!confirm("Napustiti tim?")) return; await Mreza.napusti(S.tim); zapisi("👋","Napustio tim"); S.tim=null; S.timIme=null; spremi(); crtajLigu(); }
+function kopirajKod(){ try{ navigator.clipboard.writeText(S.tim); toast("Kod kopiran: "+S.tim); }catch(e){ toast("Kod: "+S.tim); } }
+
+async function crtajLigu(){
+  if(!$("ljestvica")) return;
+  $("mrezaStatus").innerHTML = online() ? "🟢 <b>Online:</b> timovi i rezultati spremaju se u GitHub repozitorij i vide ih svi." : "🟡 <b>Demo način:</b> rezultati ostaju na ovom uređaju, a protivnički timovi su izmišljeni. Za pravo natjecanje vidi upute (README).";
+  $("ligaBezTima").style.display = S.tim?"none":"block"; $("ligaTim").style.display = S.tim?"block":"none";
+  $("ljR").classList.toggle("on",ljPrikaz==="runda"); $("ljS").classList.toggle("on",ljPrikaz==="sezona");
+  try{
+    const tim = S.tim ? await Mreza.tim(S.tim) : null;
+    if(S.tim && !tim){ S.tim=null; spremi(); return crtajLigu(); }
+    const od = ljPrikaz==="runda"?RUNDA:SEZONA_OD;
+    const rez = await Mreza.rezultati(od,RUNDA), zb=zbroji(rez);
+    const lista = [...(await Mreza.sviTimovi(od,RUNDA)).map(t=>({...t,bodovi:zb[t.kod]||0})), ...(online()?[]:demoProtivnici(od,RUNDA))].sort((a,b)=>b.bodovi-a.bodovi);
+    $("ljestvica").innerHTML = lista.length ? lista.map((t,i)=>`<div class="lj ${t.kod===S.tim?'moj':''}"><span class="mj">${["🥇","🥈","🥉"][i]||i+1}</span><span><b>${esc(t.ime)}</b><small>${esc(t.skola||"")}${t.demo?" · demo":""}</small></span><b>${t.bodovi}</b></div>`).join("") : `<p class="small muted">Još nema rezultata.</p>`;
+    if(tim){
+      $("timIme").textContent=tim.ime; $("timSkola").textContent=tim.skola||""; $("timKod").textContent=tim.kod;
+      $("timClanovi").innerHTML=(tim.clanovi||[]).map(c=>`<div class="clan"><span class="a">${esc((c.ime||"?")[0].toUpperCase())}</span>${esc(c.ime)} <small>@${esc(c.korisnik)}${c.korisnik===BAZA.trenutni?" (ti)":""}</small></div>`).join("");
+      const moji = rez.filter(r=>r.korisnik===BAZA.trenutni&&r.runda===RUNDA&&r.kod===S.tim);
+      $("mojNajbolji").textContent = Math.max(0,...moji.map(r=>r.bodovi));
+      const ost = POKUSAJA-moji.length; $("pokusaji").textContent=Math.max(0,ost);
+      $("timBodovi").textContent = zbroji(rez.filter(r=>r.runda===RUNDA))[S.tim]||0;
+      $("igrajRundu").disabled = ost<=0 || !!IZ;
+      const doNed=7-(new Date().getDay()||7);
+      $("rundaBr").textContent = `Runda ${RUNDA} · ${ost<=0?"iskoristio si sve pokušaje":"otvorena još "+(doNed===0?"danas":doNed+" dana")}`;
+    }
+    const mj = lista.findIndex(t=>t.kod===S.tim)+1;
+    if($("k-liga")) $("k-liga").innerHTML = "<br>" + (S.tim ? `${esc(S.timIme||"")} · ${mj}. mjesto` : "Napravi tim ili se pridruži razredu");
+  }catch(e){ $("ljestvica").innerHTML=`<p style="color:var(--bad)">Nema veze s poslužiteljem: ${esc(e.message)}</p>`; }
+}
+// ----- Vodikov izazov -----
+function izazovStart(){
+  IZ = {p:promijesaj(SVA_PITANJA).slice(0,PITANJA_U_IZAZOVU), i:0, bodovi:0, tocnih:0, kraj:Date.now()+TRAJANJE_IZAZOVA*1000};
+  $("izazov").style.display="block"; $("igrajRundu").disabled=true;
+  IZ.timer=setInterval(()=>{ const ost=Math.max(0,(IZ.kraj-Date.now())/1000); const b=$("izBar"); if(b) b.style.width=(ost/TRAJANJE_IZAZOVA*100)+"%"; const t=$("izT"); if(t) t.textContent=Math.ceil(ost)+" s"; if(ost<=0) izazovKraj(); },250);
+  izazovPitanje(); $("izazov").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function izazovPitanje(){
+  const {p} = IZ.p[IZ.i], red = promijesaj(p[1].map((_,i)=>i));
+  $("izazov").innerHTML = `<div style="display:flex;justify-content:space-between;font-weight:600"><span>Pitanje ${IZ.i+1}/${IZ.p.length}</span><span>⏱ <span id="izT">${TRAJANJE_IZAZOVA}</span></span><span>${IZ.bodovi} bodova</span></div>
+    <div class="timerbar"><div id="izBar" style="width:${Math.max(0,(IZ.kraj-Date.now())/1000/TRAJANJE_IZAZOVA*100)}%"></div></div>
+    <h2 style="font-size:19px;margin:8px 0 12px">${p[0]}</h2>${red.map(i=>`<button class="odg" onclick="izazovOdg(${i})">${p[1][i]}</button>`).join("")}`;
+}
+function izazovOdg(i){
+  if(!IZ) return; const {p}=IZ.p[IZ.i];
+  if(i===p[2]){ const ost=Math.max(0,(IZ.kraj-Date.now())/1000); IZ.bodovi += 10 + Math.floor(ost/10); IZ.tocnih++; toast("✔ Točno!"); } else toast("✖ Točno je: "+p[1][p[2]]);
+  IZ.i++; if(IZ.i>=IZ.p.length) return izazovKraj(); izazovPitanje();
+}
+async function izazovKraj(){
+  if(!IZ) return; clearInterval(IZ.timer); const {bodovi,tocnih}=IZ; IZ=null;
+  $("izazov").innerHTML = `<div style="text-align:center"><div style="font-size:48px">⚡</div><h2>${bodovi} bodova</h2><p class="muted">${tocnih} od ${PITANJA_U_IZAZOVU} točno. Rezultat je dodan timu.</p></div>`;
+  try{ await Mreza.posaljiRezultat({kod:S.tim,runda:RUNDA,bodovi}); }catch(e){ toast("Rezultat nije poslan: "+e.message); }
+  zapisi("⚡",`Liga, runda ${RUNDA}: ${bodovi} bodova (${tocnih}/${PITANJA_U_IZAZOVU})`); dodajXP(Math.round(bodovi/5),null);
+  crtajLigu();
+}
+
+</script>
+<script>
+// Vodikov svijet · trgovina
+// Proizvodi i nagrade. Cijene su primjer. Nagrade imaju uvjet otključavanja.
+const ARTIKLI = [
+  {id:"majica", n:"Majica „Ja sam 62 % vodik“", k:"Odjeća", c:19.90, opis:"Majica s porukom i tvojim brojem atoma vodika na leđima.", op:{Veličina:["S","M","L","XL"], Boja:[["Plava","#1c2f6b"],["Crna","#0b0f1f"],["Bijela","#ffffff"]]}, tag:"Najprodavanije"},
+  {id:"iskaznica", n:"Tiskana vodikova iskaznica", k:"Papir", c:4.90, opis:"Tvoja vodikova iskaznica tiskana na tvrdom papiru, kao suvenir.", op:{}},
+  {id:"poster", n:"Poster „Vodik, element br. 1“", k:"Dom", c:14.90, opis:"Poster s građom atoma, izotopima i putem vodika kroz svemir, A2.", op:{}},
+  {id:"salica", n:"Šalica H₂O", k:"Dom", c:12.90, opis:"Šalica s formulom vode. Svaki gutljaj je 11 % vodika!", op:{}},
+  {id:"model", n:"Model molekula (komplet)", k:"Škola", c:18.90, opis:"Komplet kuglica i štapića za slaganje H₂, O₂, H₂O i CH₄.", op:{}},
+  {id:"elektroliza", n:"Školski set za elektrolizu", k:"Škola", c:39.90, opis:"Siguran pokus razlaganja vode na vodik i kisik za satove kemije.", op:{}},
+  {id:"licenca", n:"Licenca za razred: Molekula", k:"Škola", c:49.90, opis:"Escape room za cijeli razred na godinu dana, s pripremom za nastavnika.", op:{Trajanje:[["1 godina",0],["3 godine",60]]}},
+  {id:"igra", n:"Društvena igra „H2 Grad“", k:"Igre", c:29.90, opis:"Stolna verzija igre za 2 do 4 gradonačelnika.", op:{}},
+  {id:"naljepnice", n:"Naljepnice „H“ (10 kom)", k:"Papir", c:4.90, opis:"Naljepnice s atomom vodika i vodikovim autom.", op:{}},
+  {id:"hoodica", n:"Hoodica „H₂ generacija“", k:"Odjeća", c:39.90, opis:"Topla hoodica s atomom vodika i natpisom H₂ generacija.", op:{Veličina:["S","M","L","XL"], Boja:[["Tamnoplava","#14204a"],["Siva","#9aa3b5"]]}},
+  {id:"boca", n:"Boca za vodu „11 % vodik“", k:"Dom", c:16.90, opis:"Metalna boca od 500 ml. Podsjetnik da je svaki gutljaj vode 11 % vodika.", op:{Boja:[["Plava","#1677c9"],["Zelena","#2f9e6a"],["Crna","#0b0f1f"]]}},
+  {id:"razred", n:"Paket za razred (30 učenika)", k:"Škola", c:149.00, opis:"Licenca za aplikaciju, 30 tiskanih iskaznica, poster i set za elektrolizu za cijeli razred.", op:{}, tag:"Za škole"},
+  {id:"akademik", n:"Značka „Akademik“", k:"🏅 Nagrade", c:5.90, opis:"Za sve lekcije Akademije s tri zvjezdice.", op:{}, tag:"Nagrada", uvjet:()=>LEKCIJE.every(l=>(S.akad[l.id]||{}).z===3), uvjetTxt:"3 ★ u svim lekcijama"},
+  {id:"zvijezda", n:"Medalja „Zvijezda“", k:"🏅 Nagrade", c:19.90, opis:"Za one koji su dosegli najvišu razinu: Zvijezda (900 XP).", op:{}, tag:"Nagrada", uvjet:()=>S.xp>=900, uvjetTxt:"Dosegni 900 XP"},
+  {id:"timska", n:"Timska majica Lige", k:"🏅 Nagrade", c:17.90, opis:"Majica s imenom tvog tima iz Lige škola.", op:{Veličina:["S","M","L","XL"]}, tag:"Liga", uvjet:()=>!!S.tim, uvjetTxt:"Uđi u tim u Ligi"},
+  {id:"laborant", n:"Značka „Laborant“", k:"🏅 Nagrade", c:5.90, opis:"Za one koji su pobjegli iz laboratorija.", op:{}, tag:"Nagrada", uvjet:()=>S.lab.rijeseno, uvjetTxt:"Riješi escape room"},
+  {id:"gradonacelnik", n:"Medalja „Zeleni gradonačelnik“", k:"🏅 Nagrade", c:14.90, opis:"Za gradonačelnike koji su grad pretvorili u zeleni grad na vodik.", op:{}, tag:"Nagrada", uvjet:()=>S.grad.pobjeda, uvjetTxt:"Pobijedi u H2 Gradu"},
+  {id:"planer", n:"Značka „Planer ruta“", k:"🏅 Nagrade", c:5.90, opis:"Za plan punionica koji pokriva barem 90 % putovanja.", op:{}, tag:"Nagrada", uvjet:()=>S.ruta.najbolja>=90, uvjetTxt:"Plan s 90 % pokrivenosti"},
+  {id:"diploma", n:"Diploma „Vodikov stručnjak“", k:"🏅 Nagrade", c:3.90, opis:"Tiskana diploma za sve četiri glavna koraka Vodikovog svijeta.", op:{}, tag:"Nagrada", uvjet:()=>S.ti.kg&&S.lab.rijeseno&&S.grad.pobjeda&&S.ruta.najbolja>=90, uvjetTxt:"Prođi sva 4 koraka"},
+];
+
+</script>
+<script>
+// Vodikov svijet · Za škole
+// Planovi sati (45 min) i radni listići za ispis. Prilagoditi kurikulumu u dogovoru s nastavnikom.
+
+const PLANOVI = [
+  {ic:"🧍", n:"Vodik u tebi", tab:"ti", predmeti:["Kemija","Biologija"], razred:"1. razred SŠ / 8. razred OŠ",
+   ishodi:["izračunati broj atoma pomoću molarne mase i Avogadrove konstante","objasniti zašto je vodik najzastupljeniji atom u tijelu","povezati sastav hrane s udjelom vodika"],
+   tijek:[["Uvod: koliko vodika ima u tebi? (pogađanje)",5],["Rad u aplikaciji: tijelo, stvari, hrana",20],["Zajedničko računanje na ploči (n = m / M, N = n · Nₐ)",12],["Kviz iz Akademije: lekcija 2",8]],
+   listic:["Koliko kilograma vodika ima u tijelu osobe od 50 kg?","Izračunaj broj atoma vodika u 1 g vodika.","Zašto je u tijelu 62 % atoma vodik, a samo 10 % mase?","Navedi tri namirnice s puno vodika i objasni zašto."]},
+  {ic:"🧪", n:"Laboratorij: escape room", tab:"lab", predmeti:["Kemija","Fizika"], razred:"1. i 2. razred SŠ",
+   ishodi:["izjednačiti jednadžbu elektrolize vode","izračunati volumen plina pri normalnim uvjetima","opisati rad gorivne ćelije i mjere sigurnosti"],
+   tijek:[["Podjela u timove po 3 do 4 učenika",3],["Escape room u timovima (natjecanje u vremenu)",25],["Rasprava: koja je brava bila najteža i zašto",10],["Ljestvica i nagrada najbržem timu",7]],
+   listic:["Izjednači: __ H₂O → __ H₂ + __ O₂","Koliki volumen zauzima 6 g vodika pri normalnim uvjetima?","Poveži boju vodika s načinom proizvodnje: zeleni, sivi, plavi.","Opiši redom pet koraka rada gorivne ćelije."]},
+  {ic:"🏙️", n:"H2 Grad", tab:"grad", predmeti:["Geografija","Fizika","Građanski odgoj"], razred:"7. razred OŠ do 4. razreda SŠ",
+   ishodi:["razlikovati zeleni i sivi vodik","objasniti ulogu skladištenja energije","donositi odluke uz ograničen proračun"],
+   tijek:[["Uvod: odakle dolazi struja u našem gradu?",5],["Igra u parovima: 10 godina mandata",25],["Usporedba strategija parova",10],["Izlazna kartica: jedna stvar koju sam naučio",5]],
+   listic:["Zašto vodik iz elektrolizera nije zelen ako je struja iz ugljena?","Što se dogodi s viškom vodika kad nema spremnika?","Koju bi prvu zgradu izgradio u svom gradu i zašto?","Navedi dva događaja koja su promijenila tvoj plan."]},
+  {ic:"🛣️", n:"H2 Ruta", tab:"ruta", predmeti:["Geografija","Matematika"], razred:"8. razred OŠ do 4. razreda SŠ",
+   ishodi:["čitati kartu i prometne pravce Hrvatske","rješavati problem optimizacije uz ograničenja","povezati izvore energije s prostorom"],
+   tijek:[["Uvod: domet vozila i punionice",5],["Planiranje u grupama (kamion 250 km)",20],["Usporedba s planom računala i rasprava",12],["Promjena vozila i nova pokrivenost",8]],
+   listic:["Koliko punionica treba kamionu za put Zagreb – Dubrovnik?","Zašto su punionice uz sunce i vjetar bolji izbor?","Koja ti je pokrivenost bila najbolja i s kojim gradovima?","Zašto vodik ima više smisla za kamione nego za romobile?"]},
+  {ic:"🎓", n:"Akademija i Liga", tab:"akademija", predmeti:["Kemija","Fizika"], razred:"svi razredi",
+   ishodi:["ponoviti gradivo kroz kratke lekcije","natjecati se kao razred u Ligi škola"],
+   tijek:[["Samostalno: dvije lekcije Akademije",20],["Razred kao tim: Vodikov izazov",15],["Analiza najtežih pitanja",10]],
+   listic:["Koji je izotop vodika radioaktivan?","Na koju temperaturu se vodik ukapljuje?","Što izlazi iz ispuha vodikovog autobusa?","Zašto je zeleni vodik dobar za klimu?"]},
+];
+function crtajPlanove(){
+  $("planovi").innerHTML = PLANOVI.map((p,i)=>`<details class="plan" ${i===0?"open":""}><summary><span style="font-size:26px">${p.ic}</span><span>${p.n}<br><span class="small muted" style="font-weight:400">${p.razred} · 45 min</span></span></summary>
+    <div style="margin-top:8px">${p.predmeti.map(x=>`<span class="tag2">${x}</span>`).join("")}</div>
+    <b class="small" style="display:block;margin-top:8px">Ishodi učenja: učenik će</b><ul>${p.ishodi.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <b class="small">Tijek sata</b><ul>${p.tijek.map(([t,m])=>`<li>${t} <b style="color:var(--ink)">(${m} min)</b></li>`).join("")}</ul>
+    <div style="display:flex;gap:8px;margin-top:8px"><button class="btn" style="flex:1" onclick="ispisListica(${i})">🖨️ Radni listić</button><button class="ghost" style="flex:1;margin:0" onclick="tab('${p.tab}')">Otvori u aplikaciji</button></div></details>`).join("");
+}
+function ispisListica(i){
+  const p = PLANOVI[i], w = window.open("", "_blank");
+  if(!w) return toast("Preglednik je blokirao novi prozor. Dopusti skočne prozore.");
+  w.document.write(`<!doctype html><html lang="hr"><head><meta charset="utf-8"><title>Radni listić: ${p.n}</title><style>body{font-family:Arial,sans-serif;max-width:720px;margin:30px auto;color:#111;line-height:1.5}h1{font-size:22px;margin:0}.p{margin:22px 0}.c{border-bottom:1px solid #999;height:28px}.m{color:#555;font-size:13px}</style></head><body>
+    <h1>💧 Vodikov svijet · ${p.n}</h1><p class="m">Ime i prezime: ______________________ Razred: ______ Datum: __________</p>
+    ${p.listic.map((q,j)=>`<div class="p"><b>${j+1}. ${q}</b><div class="c"></div><div class="c"></div></div>`).join("")}
+    <p class="m">Odgovore provjeri u aplikaciji Vodikov svijet.</p><script>window.onload=()=>window.print()<\/script></body></html>`);
+  w.document.close();
+}
+
+</script>
+<script>
+// Vodikov svijet · APP
+// Povezuje sve dijelove: što se sprema u profil, napredak na početnoj, slike proizvoda.
+const APP = {
+  kljuc:"vodik-baza", prefiks:"H2", dobrodoslica:"Kreni s vodikom u sebi 🧍",
+  trgovina:["Vodikova trgovina","Za znatiželjne, škole i buduće gradonačelnike"], nagradeTxt:"Prođi laboratorij, grad i rutu da otključaš značke, medalju i diplomu.",
+  noviS:()=>({ti:{kg:null}, istrazeno:[], lab:{rijeseno:false, najbolje:null, puta:0}, grad:{pobjeda:false, godina:null, grad:null}, ruta:{najbolja:0, plan:[]}, xp:0, akad:{}, tocna:[], tim:null, timIme:null, vidioUvod:false}),
+  napredak:()=>[[`${[S.ti.kg,S.lab.rijeseno,S.grad.pobjeda,S.ruta.najbolja>=90].filter(Boolean).length}/4`,"glavna koraka"],[`${LEKCIJE.reduce((a,l)=>a+((S.akad[l.id]||{}).z||0),0)}/${LEKCIJE.length*3}`,"zvjezdica"],[`${ARTIKLI.filter(a=>a.uvjet&&a.uvjet()).length}/${ARTIKLI.filter(a=>a.uvjet).length}`,"nagrada"]],
+  profilTxt:s=>`${razina(s.xp||0).n} · ${s.xp||0} XP`,
+  koraciTxt:()=>({ti:S.ti.kg?`${hr(S.ti.kg*0.1,1)} kg vodika · ${S.istrazeno.length} istraženih stvari`:"Upiši svoju masu", lab:S.lab.rijeseno?`Riješeno ✅ · najbolje ${fmt(S.lab.najbolje)}`:"7 brava čeka", grad:S.grad.pobjeda?`Zeleni grad ✅ (${S.grad.grad}, ${S.grad.godina}.)`:"Postani gradonačelnik", ruta:`Najbolji plan: ${S.ruta.najbolja} %`, akademija:`${LEKCIJE.filter(l=>(S.akad[l.id]||{}).z).length}/${LEKCIJE.length} lekcija · ${LEKCIJE.reduce((a,l)=>a+((S.akad[l.id]||{}).z||0),0)} ★`, trgovina:"Majice, setovi za škole, nagrade"}),
+  osvjezi:()=>{ tijelo(true); stvari(); crtajHranu(); labUvodTxt(); crtajGradove(); if(GS) crtajGrad(); crtajRutu(); if(!AK) crtajLekcije(); crtajLigu(); crtajPlanove(); crtajPostavke(); crtajXP(); },
+  mock:(a,o,id)=>{
+    const bo = bojaOp(o)||"#1c2f6b", st='stroke="#3a4a7a" stroke-width="2"';
+    const atom = (x,y,r)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="#5cc8ff" stroke-width="3"/><circle cx="${x}" cy="${y}" r="${r*.25}" fill="#ffb86b"/><circle cx="${x+r*.7}" cy="${y-r*.7}" r="${r*.12}" fill="#5cc8ff"/>`;
+    switch(a.id){
+      case "majica": return `<path d="M90 25 L120 13 Q150 29 180 13 L210 25 L255 65 L228 93 L210 79 L210 240 L90 240 L90 79 L72 93 L45 65 Z" fill="${bo}" ${st}/>${atom(150,120,30)}<text x="150" y="185" text-anchor="middle" font-size="15" font-weight="700" fill="${bo==='#ffffff'?'#1c2f6b':'#fff'}" font-family="Space Grotesk">JA SAM 62 % VODIK</text>`;
+      case "iskaznica": return `<rect x="40" y="50" width="220" height="150" rx="14" fill="#0b1440" stroke="#5cc8ff" stroke-width="2"/>${atom(90,125,28)}<text x="135" y="105" font-size="11" fill="#93a0c8" font-family="Inter">VODIKOVA ISKAZNICA</text><text x="135" y="130" font-size="16" font-weight="700" fill="#fff" font-family="Space Grotesk">${ja()?ja().ime:"Ime"}</text><text x="135" y="155" font-size="12" fill="#5cc8ff" font-family="Space Grotesk">${S.ti&&S.ti.kg?sci(atomi(S.ti.kg*100)):"3,6 × 10²⁷"} atoma</text>`;
+      case "poster": return `<rect x="70" y="10" width="160" height="230" fill="#0b1440" ${st}/>${atom(150,100,50)}<text x="150" y="200" text-anchor="middle" font-size="60" font-weight="700" fill="#fff" font-family="Space Grotesk">H</text>`;
+      case "salica": return `<rect x="70" y="40" width="140" height="170" rx="14" fill="#fff" ${st}/><path d="M210 80 Q262 85 256 130 Q250 172 210 172" fill="none" stroke="#ddd" stroke-width="16"/><text x="140" y="140" text-anchor="middle" font-size="40" font-weight="700" fill="#1c2f6b" font-family="Space Grotesk">H₂O</text>`;
+      case "model": return `<line x1="100" y1="160" x2="150" y2="110" stroke="#ccc" stroke-width="8"/><line x1="200" y1="160" x2="150" y2="110" stroke="#ccc" stroke-width="8"/><circle cx="150" cy="105" r="40" fill="#ff5d5d"/><circle cx="95" cy="165" r="26" fill="#fff"/><circle cx="205" cy="165" r="26" fill="#fff"/>`;
+      case "elektroliza": return `<rect x="70" y="120" width="160" height="100" rx="8" fill="#5cc8ff55" stroke="#5cc8ff"/><rect x="100" y="40" width="26" height="150" rx="6" fill="#ffffff22" stroke="#fff"/><rect x="174" y="40" width="26" height="150" rx="6" fill="#ffffff22" stroke="#fff"/><text x="113" y="34" text-anchor="middle" font-size="13" fill="#fff" font-family="Space Grotesk">H₂</text><text x="187" y="34" text-anchor="middle" font-size="13" fill="#fff" font-family="Space Grotesk">O₂</text>`;
+      case "licenca": return `<rect x="50" y="30" width="200" height="190" rx="14" fill="#22163b" stroke="#ff9f43" stroke-width="3"/><text x="150" y="110" text-anchor="middle" font-size="54">🧪🔒</text><text x="150" y="160" text-anchor="middle" font-size="16" font-weight="700" fill="#ff9f43" font-family="Space Grotesk">MOLEKULA</text><text x="150" y="185" text-anchor="middle" font-size="11" fill="#b3a6d6" font-family="Inter">licenca za razred</text>`;
+      case "igra": return `<rect x="40" y="60" width="220" height="150" rx="10" fill="#10291f" stroke="#4cf0a0" stroke-width="3"/><text x="150" y="130" text-anchor="middle" font-size="44">🏙️💧</text><text x="150" y="180" text-anchor="middle" font-size="18" font-weight="700" fill="#4cf0a0" font-family="Space Grotesk">H2 GRAD</text>`;
+      case "naljepnice": return [0,1,2,3].map(i=>`<g transform="translate(${50+(i%2)*110},${30+Math.floor(i/2)*105})"><circle cx="45" cy="45" r="45" fill="#0b1440"/>${atom(45,45,26)}</g>`).join("");
+      case "hoodica": return `<path d="M115 20 Q150 -5 185 20 L190 40 Q150 60 110 40 Z" fill="${bo}" ${st}/><path d="M90 35 L115 22 Q150 48 185 22 L210 35 L255 80 L232 108 L212 92 L212 240 L88 240 L88 92 L68 108 L45 80 Z" fill="${bo}" ${st}/>${atom(150,120,28)}<text x="150" y="180" text-anchor="middle" font-size="16" font-weight="700" fill="#fff" font-family="Space Grotesk">H₂ GENERACIJA</text>`;
+      case "boca": return `<rect x="125" y="15" width="50" height="28" rx="8" fill="#555"/><rect x="105" y="40" width="90" height="200" rx="26" fill="${bo}"/><text x="150" y="140" text-anchor="middle" font-size="26" font-weight="700" fill="#fff" font-family="Space Grotesk">11 %</text><text x="150" y="165" text-anchor="middle" font-size="12" fill="#fff" font-family="Inter">VODIK</text>`;
+      case "razred": return `<rect x="40" y="70" width="220" height="160" fill="#14204a" stroke="#5cc8ff" stroke-width="3"/><rect x="30" y="50" width="240" height="30" fill="#1677c9"/><text x="150" y="150" text-anchor="middle" font-size="44">🧪📜🖼️</text><text x="150" y="200" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" font-family="Space Grotesk">PAKET ZA RAZRED</text>`;
+      case "akademik": return `<circle cx="150" cy="125" r="95" fill="#c9ccd1" stroke="#8e939b" stroke-width="6"/><text x="150" y="150" text-anchor="middle" font-size="70">🎓</text>`;
+      case "zvijezda": return `<path d="M105 0 L135 95 L150 95 L120 0 Z" fill="#1677c9"/><path d="M195 0 L165 95 L150 95 L180 0Z" fill="#1677c9"/><circle cx="150" cy="160" r="78" fill="#d4a938" stroke="#8a7a50" stroke-width="5"/><text x="150" y="185" text-anchor="middle" font-size="66">⭐</text>`;
+      case "timska": return `<path d="M90 25 L120 13 Q150 29 180 13 L210 25 L255 65 L228 93 L210 79 L210 240 L90 240 L90 79 L72 93 L45 65 Z" fill="#14204a" ${st}/>${atom(150,110,24)}<text x="150" y="165" text-anchor="middle" font-size="15" font-weight="700" fill="#ffb86b" font-family="Space Grotesk">${esc((S.timIme||"MOJ TIM").toUpperCase()).slice(0,18)}</text>`;
+      case "laborant": return `<circle cx="150" cy="125" r="95" fill="#b07a46" stroke="#7d5330" stroke-width="6"/><text x="150" y="150" text-anchor="middle" font-size="70">🧪</text>`;
+      case "gradonacelnik": return `<path d="M105 0 L135 95 L150 95 L120 0 Z" fill="#2f7d4f"/><path d="M195 0 L165 95 L150 95 L180 0Z" fill="#2f7d4f"/><circle cx="150" cy="160" r="78" fill="#d4a938" stroke="#8a7a50" stroke-width="5"/><text x="150" y="185" text-anchor="middle" font-size="66">🏙️</text>`;
+      case "planer": return `<path d="M150 22 L235 60 L235 140 Q235 205 150 235 Q65 205 65 140 L65 60 Z" fill="#c9ccd1" stroke="#8e939b" stroke-width="5"/><text x="150" y="155" text-anchor="middle" font-size="66">⛽</text>`;
+      case "diploma": return `<rect x="40" y="15" width="220" height="220" fill="#fffaf0" stroke="#5cc8ff" stroke-width="5"/><text x="150" y="58" text-anchor="middle" font-size="16" font-family="Space Grotesk" font-weight="700" fill="#0b1440">DIPLOMA</text><text x="150" y="78" text-anchor="middle" font-size="10" font-family="Inter" fill="#555">Vodikov stručnjak</text><text x="150" y="104" text-anchor="middle" font-size="14" font-family="Space Grotesk" fill="#1c6fa8">${ja()?ja().ime:"Ime"}</text>${atom(150,165,32)}`;
+    }
+    return atom(150,125,60);
+  },
+};
+
+
+</script>
+<script>
+// Vodikov svijet · jezgra
+// Napredak, dnevnik, navigacija, košarica i blagajna.
+// Prijava, registracija i spremanje na GitHub su u js/racun.js.
+const $ = id => document.getElementById(id);
+// Lokalna kopija (cache) na ovom uređaju. Kad je spojen posrednik, glavna kopija je u GitHub repozitoriju.
+let BAZA = {korisnici:{}, trenutni:null, token:null};
+try{ const b = JSON.parse(localStorage.getItem(APP.kljuc)); if(b && b.korisnici) BAZA = Object.assign(BAZA, b); }catch(e){}
+const zadano = () => Object.assign({kosarica:[], dnevnik:[]}, APP.noviS());
+let S = zadano();
+if(BAZA.trenutni && BAZA.korisnici[BAZA.trenutni]) S = Object.assign(zadano(), BAZA.korisnici[BAZA.trenutni].S);
+const ja = () => BAZA.korisnici[BAZA.trenutni];
+const spremiBazu = ()=>{ try{ localStorage.setItem(APP.kljuc, JSON.stringify(BAZA)); }catch(e){} };
+const spremi = ()=>{ if(!BAZA.trenutni || !ja()) return; S._spremljeno = Date.now(); ja().S = S; ja().zadnje = new Date().toISOString(); spremiBazu(); sinkroniziraj(); };
+const datum = d => new Date(d).toLocaleDateString("hr-HR",{day:"numeric",month:"numeric",year:"numeric"});
+const eur = x => x.toFixed(2).replace(".",",") + " €";
+function zapisi(ikona, tekst){ S.dnevnik.unshift({i:ikona, t:tekst, d:new Date().toISOString()}); spremi(); }
+function toast(t){ const e=$("toast"); e.textContent=t; e.classList.add("on"); clearTimeout(e._t); e._t=setTimeout(()=>e.classList.remove("on"),2600); }
+function tab(t){
+  document.querySelectorAll(".tab").forEach(s=>s.classList.toggle("active", s.id==="t-"+t));
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on", b.id==="n-"+t));
+  scrollTo(0,0); osvjezi();
+  APP.naTab && APP.naTab(t);
+}
+function osvjezi(){ APP.osvjezi(); crtajPocetnu(); crtajShop(); }
+function crtajPocetnu(){
+  if(!ja()) return;
+  $("pozdrav").textContent = `Bok, ${ja().ime}!`; $("korisnik").textContent = `@${BAZA.trenutni} · član od ${datum(ja().kreiran)}`;
+  $("prog").innerHTML = APP.napredak().map(([v,l])=>`<div><b>${v}</b><small>${l}</small></div>`).join("");
+  Object.entries(APP.koraciTxt()).forEach(([k,v])=>{ const e=$("k-"+k); if(e) e.innerHTML = "<br>"+v; });
+  const d = S.dnevnik;
+  $("dnevnik").innerHTML = d.length ? d.slice(0,10).map(x=>`<div class="dn"><span>${x.i}</span><span>${x.t}</span><small>${datum(x.d)}</small></div>`).join("") : `<p class="small muted">Ovdje se bilježi sve što napraviš.</p>`;
+  const n = ARTIKLI.filter(a=>a.uvjet);
+  $("mojeNagrade").innerHTML = n.map(a=>`<div class="dn"><span>${a.uvjet()?"🏅":"🔒"}</span><span>${a.n}</span><small>${a.uvjet()?"otključano":a.uvjetTxt}</small></div>`).join("");
+  APP.pocetnaExtra && ($("pocetnaExtra").innerHTML = APP.pocetnaExtra());
+}
+// ----- prijava i registracija: vidi js/racun.js -----
+function reset(){ if(confirm("Obrisati sav napredak ovog profila?")){ S=zadano(); spremi(); zapisi("↺","Napredak obrisan"); osvjezi(); } }
+// ----- trgovina -----
+const DOSTAVE = [["posta","📦 Paket na kućnu adresu",3.90],["paketomat","🏧 Paketomat",2.90],["osobno","🏛️ Osobno preuzimanje u Osijeku",0]];
+const PLACANJA = [["pouzece","💶 Plaćanje pouzećem"],["kartica","💳 Kartica (u punoj verziji preko sigurnog pružatelja plaćanja)"],["uplatnica","🧾 Uplata na račun"]];
+const PRAG = 40;
+let katOdabir = "Sve", tP = null, odabir = {}, kolP = 1, dostava = "posta", placanje = "pouzece";
+function cijenaArtikla(a,o){ return a.c + Object.values(o).reduce((s,v)=>s+(Array.isArray(v)&&typeof v[1]==="number"?v[1]:0),0); }
+function opisOpcija(o){ return Object.entries(o).map(([k,v])=>`${k}: ${Array.isArray(v)?v[0]:v}`).join(" · "); }
+const bojaOp = o => { for(const v of Object.values(o)) if(Array.isArray(v)){ if(typeof v[1]==="string") return v[1]; if(v[2]) return v[2]; } return null; };
+function zadane(a){ const o={}; Object.entries(a.op||{}).forEach(([k,v])=>o[k]=v[0]); return o; }
+function shop(v){
+  ["katalog","proizvod","kosarica","blagajna","potvrda"].forEach(x=>{ $("sh-"+x).style.display = x===v?"block":"none"; $("sh-"+x).classList.toggle("vid", x===v); });
+  if(v==="blagajna" && !S.kosarica.length) return shop("kosarica");
+  crtajShop(); scrollTo(0,0);
+}
+function crtajShop(){
+  if(!$("artikli")) return;
+  $("shopIme").textContent = APP.trgovina[0]; $("shopPodnaslov").textContent = APP.trgovina[1];
+  $("cartN").textContent = S.kosarica.reduce((s,x)=>s+x.kol,0);
+  const KAT = ["Sve", ...new Set(ARTIKLI.map(a=>a.k))];
+  const otk = ARTIKLI.filter(a=>a.uvjet&&a.uvjet()).length, ukN = ARTIKLI.filter(a=>a.uvjet).length;
+  $("nagradeTraka").innerHTML = `🏅 <b>Nagrade: ${otk}/${ukN} otključano.</b> ${otk<ukN?APP.nagradeTxt:"Sve nagrade su tvoje! 🎉"} <a href="#" onclick="katOdabir='🏅 Nagrade';crtajShop();return false" style="color:var(--acc)">Pogledaj</a>`;
+  $("kat").innerHTML = KAT.map(k=>`<button class="${k===katOdabir?'on':''}" onclick="katOdabir='${k}';crtajShop()">${k}</button>`).join("");
+  $("artikli").innerHTML = ARTIKLI.filter(a=>katOdabir==="Sve"||a.k===katOdabir).map(a=>{
+    const o = zadane(a), zak = a.uvjet && !a.uvjet();
+    return `<button class="art ${zak?'zak':''}" onclick="${zak?`toast('🔒 ${a.uvjetTxt} da otključaš ovu nagradu!')`:`otvoriArtikl('${a.id}')`}">${a.tag?`<span class="tag" ${a.uvjet?'style="background:var(--ok)"':''}>${zak?'🔒 ':''}${a.tag}</span>`:""}<svg class="th" viewBox="0 0 300 250">${APP.mock(a,o,"t"+a.id)}</svg><b>${a.n}</b><span class="c">${zak?`<span class="small muted" style="font-family:Inter;font-weight:500">🔒 ${a.uvjetTxt}</span>`:eur(a.c)}</span></button>`;
+  }).join("");
+  if(tP){
+    const a = ARTIKLI.find(x=>x.id===tP);
+    $("pIme").textContent = a.n; $("pCijena").textContent = eur(cijenaArtikla(a,odabir)); $("pOpis").textContent = a.opis;
+    $("pMock").innerHTML = APP.mock(a, odabir, "p");
+    $("pOpcije").innerHTML = Object.entries(a.op||{}).map(([k,vals])=>`<div class="opt"><div class="l">${k}: <b style="color:var(--ink)">${Array.isArray(odabir[k])?odabir[k][0]:odabir[k]}</b></div><div class="chips">${vals.map((v,i)=>{
+      const naziv = Array.isArray(v)?v[0]:v, boja = Array.isArray(v)&&typeof v[1]==="string"?v[1]:null;
+      const sel = (Array.isArray(odabir[k])?odabir[k][0]:odabir[k])===naziv;
+      const dod = Array.isArray(v)&&typeof v[1]==="number"&&v[1]>0 ? ` +${eur(v[1])}`:"";
+      return boja ? `<button class="sw ${sel?'on':''}" title="${naziv}" style="background:${boja}" onclick="odaberi('${k}',${i})"></button>` : `<button class="${sel?'on':''}" onclick="odaberi('${k}',${i})">${naziv}${dod}</button>`;
+    }).join("")}</div></div>`).join("");
+    $("pKol").textContent = kolP;
+  }
+  const med = S.kosarica.reduce((s,x)=>s+x.c*x.kol,0);
+  $("stavke").innerHTML = S.kosarica.length ? S.kosarica.map((x,i)=>{ const a=ARTIKLI.find(y=>y.id===x.id); if(!a) return "";
+    return `<div class="stavka"><svg viewBox="0 0 300 250">${APP.mock(a,x.o,"k"+i)}</svg><div class="i"><b>${a.n}</b><small>${opisOpcija(x.o)||"standard"}</small>
+      <div class="q"><button onclick="promijeni(${i},-1)">−</button><b>${x.kol}</b><button onclick="promijeni(${i},1)">+</button><button onclick="ukloni(${i})" style="margin-left:6px;width:auto;padding:0 8px;color:var(--bad)">Ukloni</button></div></div><b>${eur(x.c*x.kol)}</b></div>`; }).join("")
+    : `<div class="card" style="text-align:center"><div style="font-size:40px">🛒</div><p class="muted">Košarica je prazna.</p></div>`;
+  const dost = DOSTAVE.find(d=>d[0]===dostava), dCij = med>=PRAG && dostava!=="osobno" ? 0 : dost[2];
+  const poklon = $("fPoklon") && $("fPoklon").checked ? 2.5 : 0;
+  const zb = sp=>`<div class="zb"><span>Proizvodi</span><span>${eur(med)}</span></div><div class="zb"><span>Dostava</span><span>${dCij?eur(dCij):"besplatno"}</span></div>${sp&&poklon?`<div class="zb"><span>Poklon pakiranje</span><span>${eur(poklon)}</span></div>`:""}${med<PRAG&&med>0?`<div class="small muted">Još ${eur(PRAG-med)} do besplatne dostave</div>`:""}<div class="zb uk"><span>Ukupno</span><span>${eur(med+dCij+(sp?poklon:0))}</span></div>`;
+  $("zbroj").innerHTML = zb(false); $("zbroj").style.display = S.kosarica.length?"block":"none";
+  $("naBlagajnu").style.display = S.kosarica.length?"block":"none";
+  $("zbroj2").innerHTML = zb(true);
+  $("dostave").innerHTML = DOSTAVE.map(([k,n,c])=>`<label class="${k===dostava?'on':''}"><span><input type="radio" name="dost" ${k===dostava?'checked':''} onchange="dostava='${k}';crtajShop()"> ${n}</span><span>${c&&!(med>=PRAG)?eur(c):"besplatno"}</span></label>`).join("");
+  $("placanja").innerHTML = PLACANJA.map(([k,n])=>`<label class="${k===placanje?'on':''}"><span><input type="radio" name="plac" ${k===placanje?'checked':''} onchange="placanje='${k}';crtajShop()"> ${n}</span></label>`).join("");
+  S._ukupno = med+dCij+poklon;
+}
+function otvoriArtikl(id){ tP=id; odabir=zadane(ARTIKLI.find(a=>a.id===id)); kolP=1; shop("proizvod"); }
+function odaberi(k,i){ odabir[k]=ARTIKLI.find(a=>a.id===tP).op[k][i]; crtajShop(); }
+function kol(d){ kolP=Math.max(1,Math.min(20,kolP+d)); crtajShop(); }
+function uKosaricu(){ const a=ARTIKLI.find(x=>x.id===tP); S.kosarica.push({id:a.id, o:{...odabir}, kol:kolP, c:cijenaArtikla(a,odabir)}); spremi(); toast(`✔ ${a.n} dodano u košaricu`); shop("katalog"); }
+function promijeni(i,d){ S.kosarica[i].kol=Math.max(1,S.kosarica[i].kol+d); spremi(); crtajShop(); }
+function ukloni(i){ S.kosarica.splice(i,1); spremi(); crtajShop(); }
+function naruci(){
+  const f = id=>$(id).value.trim();
+  if(!f("fIme")||!f("fMail").includes("@")||(dostava!=="osobno"&&(!f("fAdr")||!f("fPb")||!f("fGrad")))) return $("fMsg").textContent = "Ispuni ime, ispravan e-mail i adresu dostave.";
+  $("fMsg").textContent = "";
+  const broj = APP.prefiks + "-" + Math.floor(100000+Math.random()*900000);
+  $("potTxt").textContent = `${f("fIme").split(" ")[0]}, tvoja narudžba je zaprimljena. Izrada traje 3 do 5 radnih dana.`;
+  $("potBroj").textContent = `${broj} · ${eur(S._ukupno)}`;
+  $("potStavke").innerHTML = S.kosarica.map(x=>`<div class="zb"><span>${x.kol}× ${ARTIKLI.find(a=>a.id===x.id).n}</span><span>${eur(x.c*x.kol)}</span></div>`).join("");
+  zapisi("🛒", `Narudžba ${broj}: ${eur(S._ukupno)}`);
+  S.kosarica=[]; spremi(); shop("potvrda");
+}
+// pokreni() je u js/racun.js
+
+</script>
+<script>
+// Vodikov svijet · računi
+// Prijava i registracija samo s korisničkim imenom i lozinkom. Ne tražimo nikakve osobne podatke.
+//
+// Dva načina rada (bira se u js/konfig.js):
+//  ☁️ GITHUB: ako je upisana adresa posrednika (SPREMANJE.posrednik), računi i napredak spremaju se kao
+//            JSON datoteke u GitHub repozitorij (grana "podaci"). Korisničko ime je jedinstveno za SVE korisnike.
+//  📱 UREĐAJ: bez posrednika sve se sprema u preglednik. Korisničko ime je jedinstveno na tom uređaju.
+// Lozinka se nikad ne sprema: sprema se samo hash (PBKDF2-SHA256 sa solju).
+
+const IME_RE = /^[a-z0-9_.]{3,20}$/;
+const uOblaku = () => !!(SPREMANJE.posrednik);
+const posrednikURL = put => SPREMANJE.posrednik.replace(/\/+$/,"") + put;
+
+// ---------- pomoćno ----------
+async function zahtjev(put, {metoda="GET", tijelo, token=BAZA.token, keepalive=false}={}){
+  const r = await fetch(posrednikURL(put), {method:metoda, keepalive, headers:{"Content-Type":"application/json", ...(token?{Authorization:"Bearer "+token}:{})}, body: tijelo?JSON.stringify(tijelo):undefined});
+  const d = await r.json().catch(()=>({}));
+  if(r.status===401 && token){ istekla(); }
+  if(!r.ok) throw new Error(d.greska || "Poslužitelj ne odgovara.");
+  return d;
+}
+const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+async function lokalniHash(lozinka, sol){
+  if(!(window.crypto && crypto.subtle)) throw new Error("Ovaj preglednik ne podržava sigurno spremanje lozinke. Otvori stranicu preko https:// adrese.");
+  const k = await crypto.subtle.importKey("raw", new TextEncoder().encode(lozinka), "PBKDF2", false, ["deriveBits"]);
+  return b64(await crypto.subtle.deriveBits({name:"PBKDF2", hash:"SHA-256", salt:new TextEncoder().encode(sol), iterations:150000}, k, 256));
+}
+function provjeriUnos(u, l){
+  if(!IME_RE.test(u)) return "Korisničko ime: 3 do 20 znakova, mala slova bez kvačica, brojke, _ i točka.";
+  if(l.length<6) return "Lozinka mora imati barem 6 znakova.";
+  if(l.length>64) return "Lozinka smije imati najviše 64 znaka.";
+  return null;
+}
+function poruka(t, ok){ $("rMsg").style.color = ok?"var(--ok)":"var(--bad)"; $("rMsg").textContent = t||""; }
+function zauzet(b){ document.querySelectorAll("#prijava .btn").forEach(x=>{ x.disabled=b; }); $("rOk").textContent = b ? "⏳ Pričekaj…" : ($("rOk").dataset.t||""); }
+
+// ---------- prva stranica ----------
+let nacin = "prijava";
+function crtajPrijavu(){
+  const reg = nacin==="registracija";
+  $("kPrijava").classList.toggle("on", !reg); $("kReg").classList.toggle("on", reg);
+  $("rPonovi").style.display = reg ? "block" : "none";
+  if(!reg) $("rPozivniBox").style.display = "none";
+  $("rLoz").autocomplete = reg ? "new-password" : "current-password";
+  $("rOk").dataset.t = reg ? "Napravi račun →" : "Prijavi se →"; $("rOk").textContent = $("rOk").dataset.t;
+  const upozorenje = `<div class="upoz">⚠️ <b>Ne koristi svoju pravu lozinku</b> (onu za e-mail, Instagram, e-Dnevnik ili mobitel). Smisli novu lozinku samo za ovu stranicu, jer stranicom i poslužiteljem na kojem se spremaju računi upravljaju autori projekta.</div>`;
+  $("rNapomena").innerHTML = upozorenje + (reg
+    ? "🔒 Ne tražimo ime, e-mail ni druge osobne podatke. <b>Ne koristi svoje pravo ime</b> kao korisničko ime. Zapamti lozinku: ne može se vratiti."
+    : "Nemaš račun? Odaberi <b>Registracija</b> gore.");
+  $("rNacin").innerHTML = uOblaku() ? "☁️ Napredak se sprema na poslužitelj i radi na svakom uređaju." : "📱 Napredak se sprema na ovom uređaju.";
+  if(!$("rUser").value && BAZA.zadnji) $("rUser").value = BAZA.zadnji;
+}
+function promijeniNacin(n){ nacin=n; poruka(""); crtajPrijavu(); }
+async function posaljiObrazac(e){
+  e && e.preventDefault();
+  const u = $("rUser").value.trim().toLowerCase().replace(/^@/,""), l = $("rLoz").value;
+  const g = provjeriUnos(u,l); if(g) return poruka(g);
+  if(nacin==="registracija" && l!==$("rLoz2").value) return poruka("Lozinke se ne podudaraju.");
+  zauzet(true); poruka("");
+  try{ nacin==="registracija" ? await registriraj(u,l) : await prijaviSe(u,l); }
+  catch(err){ poruka(err.message); }
+  finally{ zauzet(false); }
+}
+async function registriraj(u, l){
+  if(uOblaku()){
+    let d;
+    try{ d = await zahtjev("/registracija", {metoda:"POST", tijelo:{korisnik:u, lozinka:l, pozivni:$("rPozivni").value.trim()}, token:null}); }
+    catch(e){ if(/rezervirano|Pozivni/.test(e.message)) $("rPozivniBox").style.display="block"; throw e; }
+    BAZA.korisnici[u] = {ime:u, kreiran:d.kreiran, S:zadano()}; BAZA.token = d.token; BAZA.admin = !!d.admin;
+  } else {
+    if(BAZA.korisnici[u]) throw new Error("To korisničko ime je već zauzeto. Smisli drugo.");
+    const sol = b64(crypto.getRandomValues(new Uint8Array(16)));
+    BAZA.korisnici[u] = {ime:u, kreiran:new Date().toISOString(), S:zadano(), lozinka:{sol, hash:await lokalniHash(l,sol)}}; BAZA.admin = VODITELJI.includes(u);
+  }
+  prijavi(u, true);
+}
+async function prijaviSe(u, l){
+  if(uOblaku()){
+    const d = await zahtjev("/prijava", {metoda:"POST", tijelo:{korisnik:u, lozinka:l}, token:null});
+    const lok = BAZA.korisnici[u];
+    // uzmi noviju kopiju: s poslužitelja ili s ovog uređaja
+    const S2 = (d.S && (!lok || !lok.S || (d.S._spremljeno||0) >= (lok.S._spremljeno||0))) ? d.S : (lok && lok.S) || null;
+    BAZA.korisnici[u] = {ime:u, kreiran:d.kreiran, S:S2 || zadano()}; BAZA.token = d.token; BAZA.admin = !!d.admin;
+    prijavi(u, false);
+    if(S2 && S2!==d.S) sinkroniziraj(true); // ovaj uređaj je imao noviji napredak
+  } else {
+    const k = BAZA.korisnici[u];
+    if(!k || !k.lozinka || (await lokalniHash(l, k.lozinka.sol)) !== k.lozinka.hash) throw new Error("Krivo korisničko ime ili lozinka.");
+    BAZA.admin = VODITELJI.includes(u);
+    prijavi(u, false);
+  }
+}
+function prijavi(u, nov){
+  BAZA.trenutni = u; BAZA.zadnji = u; S = Object.assign(zadano(), ja().S);
+  $("rLoz").value = ""; $("rLoz2").value = "";
+  spremiBazu();
+  if(nov) zapisi("✨", `Napravljen račun @${u}. Dobrodošao!`);
+  prikaziAdmin();
+  document.body.classList.remove("login"); tab("pocetna");
+  if(nov) toast(`Bok, ${u}! ${APP.dobrodoslica}`);
+}
+function odjava(){
+  const kraj = () => { BAZA.trenutni=null; BAZA.token=null; BAZA.admin=false; spremiBazu(); location.reload(); };
+  if(uOblaku() && cekaSpremanje){ sinkroniziraj(true).finally(kraj); } else kraj();
+}
+function istekla(){ BAZA.trenutni=null; BAZA.token=null; BAZA.admin=false; spremiBazu(); document.body.classList.add("login"); crtajPrijavu(); poruka("Prijava je istekla. Prijavi se ponovno."); }
+
+// ---------- spremanje na GitHub (preko posrednika) ----------
+let tSink=null, cekaSpremanje=false, zadnjeStanje="";
+function sinkroniziraj(odmah){
+  if(!uOblaku() || !BAZA.token || !BAZA.trenutni) return Promise.resolve();
+  cekaSpremanje = true; stanjeSpremanja("⏳ Sprema se…");
+  clearTimeout(tSink);
+  return new Promise(res=>{
+    tSink = setTimeout(async ()=>{
+      const tekst = JSON.stringify(S);
+      if(tekst===zadnjeStanje){ cekaSpremanje=false; stanjeSpremanja("☁️ Spremljeno"); return res(); }
+      try{ await zahtjev("/napredak", {metoda:"POST", tijelo:{S}}); zadnjeStanje=tekst; cekaSpremanje=false; stanjeSpremanja("☁️ Spremljeno na poslužitelj"); }
+      catch(e){ stanjeSpremanja("⚠️ Nije spremljeno: "+e.message+" Pokušat ću ponovno."); setTimeout(()=>sinkroniziraj(), 15000); }
+      res();
+    }, odmah ? 0 : 2500);
+  });
+}
+function stanjeSpremanja(t){ const e=$("stanjeSpremanja"); if(e) e.textContent=t; }
+document.addEventListener("visibilitychange", ()=>{
+  if(document.visibilityState==="hidden" && cekaSpremanje && uOblaku() && BAZA.token){
+    fetch(posrednikURL("/napredak"), {method:"POST", keepalive:true, headers:{"Content-Type":"application/json", Authorization:"Bearer "+BAZA.token}, body:JSON.stringify({S})}).catch(()=>{});
+  }
+});
+async function osvjeziSPosluzitelja(){
+  try{
+    const d = await zahtjev("/napredak");
+    if(d.S && (d.S._spremljeno||0) > (S._spremljeno||0)){ S = Object.assign(zadano(), d.S); ja().S = S; spremiBazu(); osvjezi(); toast("☁️ Učitan noviji napredak s poslužitelja."); }
+    stanjeSpremanja("☁️ Spremljeno na poslužitelj");
+  }catch(e){ stanjeSpremanja("📴 Bez veze s poslužiteljem: radiš na kopiji s ovog uređaja."); }
+}
+
+// ---------- promjena lozinke ----------
+async function promijeniLozinku(){
+  const stara=$("lStara").value, nova=$("lNova").value;
+  if(nova.length<6 || nova.length>64) return toast("Nova lozinka mora imati 6 do 64 znaka.");
+  try{
+    if(uOblaku()) await zahtjev("/lozinka", {metoda:"POST", tijelo:{stara, nova}});
+    else {
+      const k=ja(); if((await lokalniHash(stara,k.lozinka.sol))!==k.lozinka.hash) throw new Error("Stara lozinka nije točna.");
+      const sol=b64(crypto.getRandomValues(new Uint8Array(16))); k.lozinka={sol, hash:await lokalniHash(nova,sol)}; spremiBazu();
+    }
+    $("lStara").value=""; $("lNova").value=""; toast("🔑 Lozinka je promijenjena.");
+  }catch(e){ toast(e.message); }
+}
+
+// ---------- pokretanje ----------
+function pokreni(){
+  crtajPrijavu();
+  if(BAZA.trenutni && ja() && (!uOblaku() || BAZA.token)){
+    prikaziAdmin(); osvjezi();
+    if(uOblaku()) osvjeziSPosluzitelja(); else stanjeSpremanja("📱 Spremljeno na ovom uređaju");
+  } else { BAZA.trenutni=null; document.body.classList.add("login"); }
+}
+
+// ---------- voditelji ----------
+// Gumb se prikazuje samo voditeljima. Podatke ionako šalje samo poslužitelj, i to samo voditeljima.
+function prikaziAdmin(){ const da = !!BAZA.admin; document.querySelectorAll(".samoAdmin").forEach(e=>e.style.display = da ? "" : "none"); }
+
+</script>
+<script>
+// Vodikov svijet · stranica za voditelje
+// Statistika korištenja vidljiva samo voditeljima stranice.
+// ☁️ S posrednikom: podatke šalje poslužitelj (/admin/statistika) i to SAMO korisnicima iz postavke ADMINI.
+// 📱 Bez posrednika: statistika se računa iz računa spremljenih na ovom uređaju (npr. za prezentaciju).
+// Nema osobnih podataka: samo korisnička imena, napredak u igri i ukupni brojevi.
+
+let AD = null, adSort = {k:"zadnje", smjer:-1}, adTrazi = "";
+
+// isti sažetak kao u posrednik/worker.js (za lokalni način)
+function sazetakLokalno(S){
+  S = S || {};
+  const narudzbe = (S.dnevnik||[]).filter(d=>d.i==="🛒").map(d=>parseFloat(((d.t.match(/([\d.,]+)\s*€/)||[])[1]||"0").replace(/\./g,"").replace(",","."))||0);
+  return { xp:S.xp||0, koraci:{ti:!!(S.ti&&S.ti.kg), lab:!!(S.lab&&S.lab.rijeseno), grad:!!(S.grad&&S.grad.pobjeda), ruta:(S.ruta&&S.ruta.najbolja)||0},
+    lab:S.lab?{najbolje:S.lab.najbolje||null, puta:S.lab.puta||0}:null, grad:S.grad&&S.grad.pobjeda?S.grad.grad:null,
+    akad:Object.fromEntries(Object.entries(S.akad||{}).map(([k,v])=>[k,v.z||0])), tocna:(S.tocna||[]).slice(0,200), istrazeno:(S.istrazeno||[]).slice(0,150),
+    tim:S.tim||null, narudzbe:{broj:narudzbe.length, iznos:Math.round(narudzbe.reduce((a,b)=>a+b,0)*100)/100}, dnevnik:(S.dnevnik||[]).length };
+}
+async function dohvatiStatistiku(){
+  if(uOblaku()) return zahtjev("/admin/statistika");
+  const korisnici = {};
+  Object.entries(BAZA.korisnici).forEach(([u,p])=>{ korisnici[u] = {kreiran:p.kreiran, zadnje:p.zadnje||p.kreiran, ...sazetakLokalno(p.S)}; });
+  const db = demoBaza(), timovi = {};
+  Object.entries(db.timovi).forEach(([k,t])=>{ timovi[k] = {...t, clanovi:t.clanovi.map(c=>c.korisnik)}; });
+  return {korisnici, timovi, rezultati:db.rezultati.filter(r=>r.runda>=RUNDA-7), runda:RUNDA, vrijeme:new Date().toISOString(), lokalno:true};
+}
+async function ucitajAdmin(prisilno){
+  if(!BAZA.admin){ $("adSadrzaj").innerHTML = `<p class="muted">Ova stranica je samo za voditelje.</p>`; return; }
+  if(AD && !prisilno){ return crtajAdmin(); }
+  $("adStanje").textContent = "Učitavam…";
+  try{ AD = await dohvatiStatistiku(); crtajAdmin(); }
+  catch(e){ $("adStanje").textContent = ""; $("adSadrzaj").innerHTML = `<p style="color:var(--bad)">Statistika nije dostupna: ${esc(e.message)}</p>`; }
+}
+const _tabAdmin = tab;
+tab = function(t){ _tabAdmin(t); if(t==="admin") ucitajAdmin(); };
+
+// ---------- crtanje ----------
+const DAN = 864e5, danKljuc = d => new Date(d).toISOString().slice(0,10);
+const pct = (a,b) => b ? Math.round(a/b*100) : 0;
+const kratkiDatum = k => { const [g,m,d] = k.split("-"); return `${+d}.${+m}.`; };
+function stupci(podaci, opis){ // vertikalni stupci, jedna serija
+  const max = Math.max(1, ...podaci.map(x=>x.v));
+  return `<div class="ad-stupci" role="img" aria-label="${esc(opis)}">${podaci.map(x=>`<div class="ad-st" title="${esc(x.l)}: ${x.v}"><span class="ad-v">${x.v||""}</span><div class="ad-b" style="height:${Math.max(x.v?4:0, x.v/max*100)}%"></div><span class="ad-l">${esc(x.k)}</span></div>`).join("")}</div>`;
+}
+function trake(redovi, fmt=v=>v){ // vodoravne trake
+  const max = Math.max(1, ...redovi.map(r=>r.v));
+  return redovi.map(r=>`<div class="ad-tr" title="${esc(r.l)}: ${fmt(r.v)}${r.dod?" · "+esc(r.dod):""}"><span class="ad-tl">${r.l}</span><div class="ad-tt"><div style="width:${r.v/max*100}%"></div></div><span class="ad-tv">${fmt(r.v)}${r.dod?`<small> ${esc(r.dod)}</small>`:""}</span></div>`).join("");
+}
+function crtajAdmin(){
+  const K = Object.entries(AD.korisnici).map(([u,x])=>({u, ...x})), n = K.length, sad = Date.now();
+  $("adStanje").textContent = `${AD.lokalno?"📱 Podaci s ovog uređaja":"☁️ Podaci s poslužitelja"} · osvježeno ${new Date(AD.vrijeme).toLocaleTimeString("hr-HR",{hour:"2-digit",minute:"2-digit"})}`;
+  if(!n){ $("adSadrzaj").innerHTML = `<p class="muted" style="margin-top:16px">Još nema registriranih korisnika.</p>`; return; }
+  const novi7 = K.filter(x=>sad-new Date(x.kreiran)<7*DAN).length, aktivni7 = K.filter(x=>sad-new Date(x.zadnje)<7*DAN).length;
+  const prosXP = Math.round(K.reduce((a,x)=>a+(x.xp||0),0)/n);
+  const narB = K.reduce((a,x)=>a+((x.narudzbe||{}).broj||0),0), narI = K.reduce((a,x)=>a+((x.narudzbe||{}).iznos||0),0);
+  const timovi = Object.entries(AD.timovi||{});
+  // registracije po danima (14 dana)
+  const dani = [...Array(14)].map((_,i)=>danKljuc(sad-(13-i)*DAN));
+  const reg = dani.map(k=>({k:kratkiDatum(k), l:`Registracije ${kratkiDatum(k)}`, v:K.filter(x=>danKljuc(x.kreiran)===k).length}));
+  const akt = dani.map(k=>({k:kratkiDatum(k), l:`Zadnja aktivnost ${kratkiDatum(k)}`, v:K.filter(x=>danKljuc(x.zadnje)===k).length}));
+  // koraci
+  const kor = [["🧍 Vodik u tebi", K.filter(x=>x.koraci&&x.koraci.ti).length],["🧪 Laboratorij riješen", K.filter(x=>x.koraci&&x.koraci.lab).length],["🏙️ Zeleni grad", K.filter(x=>x.koraci&&x.koraci.grad).length],["🛣️ Ruta ≥ 90 %", K.filter(x=>x.koraci&&x.koraci.ruta>=90).length]]
+    .map(([l,v])=>({l, v, dod:`${pct(v,n)} %`}));
+  // razine
+  const raz = RAZINE.map((r,i)=>({l:`${r.ic} ${r.n}`, v:K.filter(x=>razina(x.xp||0)===r).length}));
+  // akademija
+  const akad = LEKCIJE.map(l=>{ const s = K.map(x=>(x.akad||{})[l.id]||0), rj = s.filter(z=>z>0).length; return {l:`${l.ic} ${l.n}`, v:rj?Math.round(s.filter(z=>z>0).reduce((a,b)=>a+b,0)/rj*10)/10:0, dod:`${rj} riješilo`}; });
+  const pitanja = LEKCIJE.flatMap(l=>{ const pokusali = K.filter(x=>(x.akad||{})[l.id]!==undefined).length; return l.pitanja.map((p,q)=>({l:p[0], lek:l.n, pokusali, tocno:K.filter(x=>(x.tocna||[]).includes(l.id+":"+q)).length})); })
+    .filter(p=>p.pokusali>0).map(p=>({...p, p:pct(p.tocno,p.pokusali)})).sort((a,b)=>a.p-b.p).slice(0,5);
+  // laboratorij
+  const labV = K.map(x=>x.lab&&x.lab.najbolje).filter(Boolean).sort((a,b)=>a-b);
+  const median = labV.length ? labV[Math.floor(labV.length/2)] : null;
+  // istraženo
+  const ist = {}; K.forEach(x=>(x.istrazeno||[]).forEach(s=>ist[s]=(ist[s]||0)+1));
+  const istTop = Object.entries(ist).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([l,v])=>({l:esc(l), v}));
+  // gradovi
+  const gr = {}; K.forEach(x=>{ if(x.grad) gr[x.grad]=(gr[x.grad]||0)+1; });
+  // liga ove runde
+  const rez = (AD.rezultati||[]).filter(r=>r.runda===AD.runda), naj = {};
+  rez.forEach(r=>{ const k=r.kod+"|"+r.korisnik; naj[k]=Math.max(naj[k]||0,r.bodovi); });
+  const timB = {}; Object.entries(naj).forEach(([k,b])=>{ const kod=k.split("|")[0]; timB[kod]=(timB[kod]||0)+b; });
+  const ligaTop = timovi.map(([kod,t])=>({kod, ...t, b:timB[kod]||0})).sort((a,b)=>b.b-a.b).slice(0,8);
+  const skole = new Set(timovi.map(([,t])=>(t.skola||"").trim()).filter(Boolean));
+
+  $("adSadrzaj").innerHTML = `
+  <div class="ad-kpi">
+    ${[["👥",n,"korisnika ukupno"],["🆕",novi7,"novih u 7 dana"],["🔥",aktivni7,"aktivnih u 7 dana"],["⭐",prosXP,"prosječni XP"],["🏆",timovi.length,`timova · ${skole.size} škola`],["🛒",narB,`narudžbi · ${eur(narI)}`]]
+      .map(([i,v,l])=>`<div class="card"><div class="ad-i">${i}</div><b>${v}</b><small>${l}</small></div>`).join("")}
+  </div>
+  <div class="duo">
+    <div class="card"><b>Nove registracije</b><span class="small muted"> · zadnjih 14 dana</span>${stupci(reg,"Nove registracije po danima")}</div>
+    <div class="card"><b>Zadnja aktivnost korisnika</b><span class="small muted"> · zadnjih 14 dana</span>${stupci(akt,"Zadnja aktivnost po danima")}</div>
+    <div class="card"><b>Koliko korisnika je prošlo korak</b>${trake(kor)}</div>
+    <div class="card"><b>Razine korisnika</b>${trake(raz)}</div>
+    <div class="card"><b>🎓 Akademija</b><span class="small muted"> · prosječne zvjezdice (od 3)</span>${trake(akad, v=>v?String(v).replace(".",","):"–")}</div>
+    <div class="card"><b>🤔 Najteža pitanja</b><span class="small muted"> · najmanji udio točnih</span>
+      ${pitanja.length?pitanja.map(p=>`<div class="ad-pit"><b>${p.p} %</b><span>${esc(p.l)}<small>${esc(p.lek)} · ${p.tocno} od ${p.pokusali} točno</small></span></div>`).join(""):`<p class="small muted">Još nema riješenih kvizova.</p>`}</div>
+    <div class="card"><b>🧪 Laboratorij</b><div class="ad-mini"><div><b>${labV.length}</b><small>riješilo</small></div><div><b>${labV.length?fmt(labV[0]):"–"}</b><small>najbrže</small></div><div><b>${median?fmt(median):"–"}</b><small>srednje vrijeme</small></div></div>
+      <b style="display:block;margin-top:10px">🏙️ Zeleni gradovi</b>${Object.keys(gr).length?trake(Object.entries(gr).sort((a,b)=>b[1]-a[1]).map(([l,v])=>({l,v}))):`<p class="small muted">Još nitko nije pobijedio.</p>`}</div>
+    <div class="card"><b>🔬 Najčešće istraživane stvari</b>${istTop.length?trake(istTop):`<p class="small muted">Još ništa.</p>`}</div>
+  </div>
+  <div class="card"><b>🏆 Liga · runda ${AD.runda}</b><span class="small muted"> · ${rez.length} odigranih izazova</span>
+    ${ligaTop.length?`<div class="ad-tab"><table><thead><tr><th>#</th><th>Tim</th><th>Škola</th><th>Članova</th><th>Bodova</th></tr></thead><tbody>${ligaTop.map((t,i)=>`<tr><td>${i+1}</td><td>${esc(t.ime)} <small class="muted">${esc(t.kod)}</small></td><td>${esc(t.skola||"")}</td><td>${(t.clanovi||[]).length}</td><td><b>${t.b}</b></td></tr>`).join("")}</tbody></table></div>`:`<p class="small muted">Još nema timova.</p>`}</div>
+  <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b>👥 Korisnici (${n})</b>
+    <input type="text" id="adTrazi" placeholder="🔍 traži korisnika ili tim" value="${esc(adTrazi)}" oninput="adTrazi=this.value;crtajTablicu()" style="max-width:260px"></div>
+    <div class="ad-tab" id="adTablica"></div></div>`;
+  crtajTablicu();
+}
+const STUPCI = [["u","Korisnik"],["xp","XP"],["razina","Razina"],["koraci","Koraci"],["akadZ","★"],["tim","Tim"],["kreiran","Registriran"],["zadnje","Zadnje aktivan"]];
+function redoviKorisnika(){
+  const timOd = {}; Object.values(AD.timovi||{}).forEach(t=>(t.clanovi||[]).forEach(c=>timOd[c]=t.ime));
+  return Object.entries(AD.korisnici).map(([u,x])=>{ const k=x.koraci||{}; x = {...x, tim: timOd[u] || ""};
+    return {u, xp:x.xp||0, razina:razina(x.xp||0).n, koraci:[k.ti,k.lab,k.grad,(k.ruta||0)>=90].filter(Boolean).length, akadZ:Object.values(x.akad||{}).reduce((a,b)=>a+b,0), tim:x.tim||"", kreiran:x.kreiran||"", zadnje:x.zadnje||"", k}; });
+}
+function crtajTablicu(){
+  const q = adTrazi.trim().toLowerCase();
+  const r = redoviKorisnika().filter(x=>!q || x.u.includes(q) || (x.tim||"").toLowerCase().includes(q))
+    .sort((a,b)=>{ const A=a[adSort.k], B=b[adSort.k]; return (A>B?1:A<B?-1:0)*adSort.smjer; });
+  const d = v => v ? new Date(v).toLocaleDateString("hr-HR",{day:"numeric",month:"numeric"}) + " " + new Date(v).toLocaleTimeString("hr-HR",{hour:"2-digit",minute:"2-digit"}) : "–";
+  $("adTablica").innerHTML = `<table><thead><tr>${STUPCI.map(([k,l])=>`<th><button onclick="adSortiraj('${k}')">${l}${adSort.k===k?(adSort.smjer>0?" ▲":" ▼"):""}</button></th>`).join("")}</tr></thead>
+    <tbody>${r.map(x=>`<tr><td><b>@${esc(x.u)}</b></td><td>${x.xp}</td><td>${x.razina}</td><td title="Vodik u tebi · Lab · Grad · Ruta">${["ti","lab","grad"].map(k=>x.k[k]?"✅":"⬜").join("")}${(x.k.ruta||0)>=90?"✅":"⬜"}</td><td>${x.akadZ}</td><td>${esc(x.tim)}</td><td>${d(x.kreiran)}</td><td>${d(x.zadnje)}</td></tr>`).join("")}</tbody></table>`;
+}
+function adSortiraj(k){ adSort = {k, smjer: adSort.k===k ? -adSort.smjer : (k==="u"||k==="tim"?1:-1)}; crtajTablicu(); }
+function izvozCSV(){
+  if(!AD) return toast("Prvo učitaj statistiku.");
+  const r = redoviKorisnika(), e = v => `"${String(v).replace(/"/g,'""')}"`;
+  const csv = ["korisnik;xp;razina;vodik_u_tebi;laboratorij;zeleni_grad;ruta_posto;zvjezdice_akademija;tim;registriran;zadnje_aktivan"]
+    .concat(r.map(x=>[x.u,x.xp,x.razina,x.k.ti?1:0,x.k.lab?1:0,x.k.grad?1:0,x.k.ruta||0,x.akadZ,x.tim,x.kreiran,x.zadnje].map(e).join(";"))).join("\n");
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["﻿"+csv],{type:"text/csv;charset=utf-8"})); a.download=`vodikov-svijet-korisnici-${danKljuc(Date.now())}.csv`; a.click();
+}
+
+</script>
+<script>
+// Vodikov svijet · dodaci
+// XP i razine, izbornik "Više", postavke (tema, slova), izvoz/uvoz napretka, dijeljenje i QR kod, izvori, uvod.
+
+const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+
+// ----- XP i razine -----
+const RAZINE = [
+  {od:0,   n:"Atom",            ic:"⚛️"},
+  {od:100, n:"Molekula",        ic:"💧"},
+  {od:250, n:"Elektrolizer",    ic:"⚗️"},
+  {od:500, n:"Gorivna ćelija",  ic:"🔋"},
+  {od:900, n:"Zvijezda",        ic:"⭐"},
+];
+function razina(xp){ let r=RAZINE[0]; RAZINE.forEach(x=>{ if(xp>=x.od) r=x; }); return r; }
+function dodajXP(n, razlog){
+  if(!n || n<=0 || !ja()) return;
+  const prije = razina(S.xp||0); S.xp = (S.xp||0) + n; spremi();
+  const f = document.createElement("div"); f.className="xpfly"; f.textContent = `+${n} XP`; document.body.appendChild(f); setTimeout(()=>f.remove(),1700);
+  const sad = razina(S.xp);
+  if(sad.n!==prije.n){ zapisi(sad.ic, `Nova razina: ${sad.n}!`); setTimeout(()=>toast(`${sad.ic} Nova razina: ${sad.n}!`), 400); }
+  else if(razlog) zapisi("✨", `${razlog} (+${n} XP)`);
+  crtajXP();
+}
+function crtajXP(){
+  if(!$("xpbox") || !ja()) return;
+  const xp=S.xp||0, r=razina(xp), i=RAZINE.indexOf(r), sl=RAZINE[i+1];
+  const pct = sl ? (xp-r.od)/(sl.od-r.od)*100 : 100;
+  $("xpbox").innerHTML = `<div class="r"><span class="ic">${r.ic}</span><div style="flex:1"><div class="small" style="opacity:.8">Razina ${i+1} od ${RAZINE.length}</div><b class="pf" style="font-size:22px">${r.n}</b>
+    <div class="small" style="opacity:.8">${xp} XP${sl?` · još ${sl.od-xp} XP do razine ${sl.ic} ${sl.n}`:" · najviša razina!"}</div></div></div><div class="xpbar"><div style="width:${pct}%"></div></div>`;
+}
+
+// ----- navigacija: izbornik "Više" -----
+const GLAVNI = ["pocetna","ti","lab","grad"];
+const _tab = tab;
+tab = function(t){
+  $("sheet").classList.remove("on");
+  _tab(t);
+  $("n-vise").classList.toggle("on", !GLAVNI.includes(t));
+};
+
+// ----- postavke (vrijede za ovaj uređaj) -----
+let P = {svijetla:false, velika:false, mirno:false};
+try{ P = Object.assign(P, JSON.parse(localStorage.getItem("vodik-postavke")||"{}")); }catch(e){}
+function primijeni(){ ["svijetla","velika","mirno"].forEach(k=>document.body.classList.toggle(k, !!P[k])); document.querySelector('meta[name="theme-color"]').content = P.svijetla?"#f4f7ff":"#070b1a"; }
+function postavi(k){ P[k]=!P[k]; try{ localStorage.setItem("vodik-postavke", JSON.stringify(P)); }catch(e){} primijeni(); crtajPostavke(); }
+function crtajPostavke(){
+  if(!$("pSvijetla")) return;
+  $("pSvijetla").classList.toggle("on",P.svijetla); $("pVelika").classList.toggle("on",P.velika); $("pMirno").classList.toggle("on",P.mirno);
+  crtajQR(); crtajIzvore();
+}
+primijeni();
+
+// ----- izvoz i uvoz napretka -----
+function izvoz(){
+  if(!ja()) return;
+  // izvozi se samo napredak (bez lozinke)
+  const data = JSON.stringify({aplikacija:"vodikov-svijet", verzija:2, korisnik:BAZA.trenutni, izvezeno:new Date().toISOString(), S}, null, 2);
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([data],{type:"application/json"})); a.download=`vodikov-svijet-${BAZA.trenutni}.json`; a.click();
+  toast("💾 Napredak spremljen u datoteku.");
+}
+function uvoz(inp){
+  const f=inp.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{ try{
+    const d=JSON.parse(r.result); const novi = d.S || (d.profil && d.profil.S);
+    if(d.aplikacija!=="vodikov-svijet"||!novi) throw 0;
+    if(!confirm(`Učitati napredak iz datoteke (@${d.korisnik||"?"}) u račun @${BAZA.trenutni}? Trenutni napredak bit će zamijenjen.`)) return;
+    S = Object.assign(zadano(), novi); spremi(); zapisi("📂", `Učitan napredak iz datoteke`); osvjezi(); toast("📂 Napredak učitan!");
+  }catch(e){ toast("Datoteka nije ispravna."); } };
+  r.readAsText(f); inp.value="";
+}
+
+// ----- dijeljenje i QR kod -----
+const adresa = () => JAVNA_ADRESA || location.href.split("#")[0];
+function crtajQR(){
+  const el=$("qr"); if(!el) return;
+  const url=adresa();
+  if(location.protocol==="file:" && !JAVNA_ADRESA){ el.innerHTML=`<span style="color:#555;font-size:13px;padding:10px">QR kod se pojavi kad je stranica objavljena na internetu.</span>`; $("qrTxt").textContent="Stranica je trenutno otvorena kao datoteka."; return; }
+  if(typeof QRCode==="undefined"){ el.innerHTML=`<span style="color:#555;font-size:13px">Učitavam QR…</span>`; return setTimeout(crtajQR,600); }
+  if(el.dataset.url===url) return;
+  el.innerHTML=""; el.dataset.url=url;
+  new QRCode(el,{text:url,width:192,height:192,colorDark:"#0b1440",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});
+  $("qrTxt").textContent = url;
+}
+async function podijeli(){
+  const url=adresa(), tekst="Otkrij koliko vodika ima u tebi i pobjegni iz laboratorija! 💧";
+  if(navigator.share){ try{ await navigator.share({title:"Vodikov svijet", text:tekst, url}); return; }catch(e){ return; } }
+  try{ await navigator.clipboard.writeText(url); toast("🔗 Poveznica kopirana!"); }catch(e){ toast(url); }
+}
+
+// ----- izvori (brojke koje treba provjeriti prije natjecanja) -----
+const IZVORI = [
+  ["Udio vodika u masi tijela ≈ 10 %, u broju atoma ≈ 62 %","Udžbenik biologije/kemije, enciklopedijski izvori o kemijskom sastavu tijela"],
+  ["Molarna masa H = 1,008 g/mol; Avogadrova konstanta 6,022 × 10²³","Periodni sustav elemenata, IUPAC"],
+  ["Energija vodika ≈ 33,3 kWh/kg (donja ogrjevna vrijednost)","Tehnički podaci o gorivima, priručnici za energetiku"],
+  ["Vodikov auto ≈ 1 kg H₂ na 100 km","Tehnički podaci proizvođača vodikovih automobila"],
+  ["Ukapljivanje ≈ −253 °C; spremnici 350–700 bara","Udžbenik kemije, priručnici o vodikovoj tehnologiji"],
+  ["Zapaljivost u zraku ≈ 4–75 %","Sigurnosni listovi za vodik"],
+  ["Većina današnjeg vodika je iz prirodnog plina","Izvješća međunarodnih energetskih agencija o vodiku"],
+  ["Sastav namirnica (voda, ugljikohidrati, masti, proteini)","Tablice sastava namirnica"],
+  ["Udaljenosti i broj stanovnika gradova","Karte i popis stanovništva (DZS)"],
+];
+function crtajIzvore(){
+  if(!$("izvori")) return;
+  $("izvori").innerHTML = `<b>📚 Izvori i brojke za provjeru</b><p class="small muted" style="margin:4px 0 8px">Sve brojke u aplikaciji su zaokružene za učenje. Prije natjecanja provjerite ih u navedenim vrstama izvora i upišite točne izvore.</p>` +
+    IZVORI.map(([a,b])=>`<div class="dn"><span>🔎</span><span>${a}<br><small style="text-align:left;display:block">${b}</small></span><small></small></div>`).join("");
+}
+
+// ----- uvod za nove korisnike -----
+const UVOD = [
+  ["💧","Dobrodošao u Vodikov svijet!","Vodik je najlakši i najstariji element svemira, a ti si po broju atoma uglavnom vodik. Krenimo otkriti zašto."],
+  ["🧭","Četiri glavna koraka","1. Vodik u tebi · 2. Laboratorij · 3. H2 Grad · 4. H2 Ruta. Svaki korak donosi XP i otključava nagrade."],
+  ["🎓","Uči i natječi se","U Akademiji te čekaju kratke lekcije i kvizovi, a u Ligi škola tvoj razred se svaki tjedan natječe s drugima."],
+  ["⭐","Skupljaj XP","Od Atoma do Zvijezde: što više istražuješ, to brže napreduješ. Sretno!"],
+];
+function uvodPokazi(i){
+  if(i>=UVOD.length){ $("uvod").classList.remove("on"); if(ja()&&!S.vidioUvod){ S.vidioUvod=true; spremi(); } return; }
+  const [ic,n,t]=UVOD[i];
+  $("uvodK").innerHTML = `<div class="ic">${ic}</div><h2 style="margin:8px 0">${n}</h2><p class="muted">${t}</p><div class="tocke">${UVOD.map((_,j)=>`<span class="${j===i?'on':''}"></span>`).join("")}</div>
+    <button class="btn" onclick="uvodPokazi(${i+1})">${i<UVOD.length-1?"Dalje →":"Kreni! 🚀"}</button>${i<UVOD.length-1?`<button class="ghost" onclick="uvodPokazi(${UVOD.length})">Preskoči</button>`:""}`;
+  $("uvod").classList.add("on");
+}
+const _prijavi = prijavi;
+prijavi = function(u, nov){ _prijavi(u, nov); if(!S.vidioUvod) setTimeout(()=>uvodPokazi(0), 300); };
+
+// ----- rad bez interneta i instalacija na mobitel -----
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+  window.addEventListener("load", ()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+
+</script>
+<script>pokreni();</script>
+</body>
+</html>
