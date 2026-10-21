@@ -51,10 +51,10 @@
   },
   "vodik6767": {
     "kreiran": "2026-10-21T15:57:15.230Z",
-    "zadnje": "2026-10-21T15:57:30.863Z",
-    "xp": 0,
+    "zadnje": "2026-10-21T15:57:42.672Z",
+    "xp": 20,
     "koraci": {
-      "ti": false,
+      "ti": true,
       "lab": false,
       "grad": false,
       "ruta": 0
@@ -72,6 +72,6 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 1
+    "dnevnik": 3
   }
 }
