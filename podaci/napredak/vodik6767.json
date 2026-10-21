@@ -1,0 +1,36 @@
+{
+  "kosarica": [],
+  "dnevnik": [
+    {
+      "i": "✨",
+      "t": "Napravljen račun @vodik6767. Dobrodošao!",
+      "d": "2026-10-21T15:57:16.771Z"
+    }
+  ],
+  "ti": {
+    "kg": null
+  },
+  "istrazeno": [],
+  "lab": {
+    "rijeseno": false,
+    "najbolje": null,
+    "puta": 0
+  },
+  "grad": {
+    "pobjeda": false,
+    "godina": null,
+    "grad": null
+  },
+  "ruta": {
+    "najbolja": 0,
+    "plan": []
+  },
+  "xp": 0,
+  "akad": {},
+  "tocna": [],
+  "tim": null,
+  "timIme": null,
+  "vidioUvod": false,
+  "_spremljeno": 1792598236771,
+  "_ukupno": 3.9
+}
