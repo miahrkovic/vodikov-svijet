@@ -20,7 +20,10 @@
   "ti": {
     "kg": 50
   },
-  "istrazeno": [],
+  "istrazeno": [
+    "Vrećica šećera 1 kg",
+    "Lizalica"
+  ],
   "lab": {
     "rijeseno": false,
     "najbolje": null,
@@ -35,12 +38,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 20,
+  "xp": 24,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598317036,
+  "_spremljeno": 1792598359850,
   "_ukupno": 3.9
 }
