@@ -3,6 +3,16 @@
   "dnevnik": [
     {
       "i": "✨",
+      "t": "Laboratorij riješen (+60 XP)",
+      "d": "2026-10-21T17:03:17.845Z"
+    },
+    {
+      "i": "🧪",
+      "t": "Laboratorij riješen za 59:57 (5 savjeta)",
+      "d": "2026-10-21T17:03:17.844Z"
+    },
+    {
+      "i": "✨",
       "t": "Tri zvjezdice: Gorivna ćelija i promet (+15 XP)",
       "d": "2026-10-21T16:32:14.996Z"
     },
@@ -305,9 +315,9 @@
     "Benzin"
   ],
   "lab": {
-    "rijeseno": false,
-    "najbolje": null,
-    "puta": 0
+    "rijeseno": true,
+    "najbolje": 3597,
+    "puta": 1
   },
   "grad": {
     "pobjeda": true,
@@ -318,7 +328,7 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 1056,
+  "xp": 1126,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -368,6 +378,6 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792601945707,
+  "_spremljeno": 1792602197845,
   "_ukupno": 3.9
 }
