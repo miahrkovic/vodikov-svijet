@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "☀️",
+      "t": "Pitanje dana: točno · niz 1",
+      "d": "2026-10-21T22:17:28.083Z"
+    },
+    {
       "i": "🛒",
       "t": "Probna narudžba H2-184214: 25,30 €",
       "d": "2026-10-21T21:07:24.790Z"
@@ -216,7 +221,7 @@
     "najbolja": 100,
     "plan": []
   },
-  "xp": 1000,
+  "xp": 1005,
   "akad": {
     "element": {
       "z": 3
@@ -241,6 +246,15 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792616844790,
-  "_ukupno": 5.4
+  "_spremljeno": 1792621048084,
+  "_ukupno": 3.9,
+  "dnevno": {
+    "dan": "2026-10-22",
+    "tocno": true
+  },
+  "niz": {
+    "broj": 1,
+    "zadnji": "2026-10-22",
+    "najdulji": 1
+  }
 }
