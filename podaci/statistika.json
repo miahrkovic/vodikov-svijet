@@ -26,7 +26,7 @@
   },
   "miahrkovic": {
     "kreiran": "2026-10-21T15:49:41.879Z",
-    "zadnje": "2026-10-21T21:07:13.958Z",
+    "zadnje": "2026-10-21T21:07:29.154Z",
     "xp": 1000,
     "koraci": {
       "ti": true,
@@ -142,10 +142,10 @@
     ],
     "tim": null,
     "narudzbe": {
-      "broj": 0,
-      "iznos": 0
+      "broj": 1,
+      "iznos": 25.3
     },
-    "dnevnik": 20
+    "dnevnik": 21
   },
   "vodik6767": {
     "kreiran": "2026-10-21T15:57:15.230Z",
