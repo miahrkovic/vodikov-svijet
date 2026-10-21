@@ -81,10 +81,10 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T15:58:41.709Z",
-    "xp": 0,
+    "zadnje": "2026-10-21T15:58:43.847Z",
+    "xp": 20,
     "koraci": {
-      "ti": false,
+      "ti": true,
       "lab": false,
       "grad": false,
       "ruta": 0
@@ -102,7 +102,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 1
+    "dnevnik": 3
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
