@@ -702,8 +702,8 @@
   },
   "proba": {
     "kreiran": "2026-10-21T18:11:22.738Z",
-    "zadnje": "2026-10-21T18:14:07.567Z",
-    "xp": 22,
+    "zadnje": "2026-10-21T18:14:14.198Z",
+    "xp": 26,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -718,7 +718,9 @@
     "akad": {},
     "tocna": [],
     "istrazeno": [
-      "Kocka leda"
+      "Kocka leda",
+      "Knjiga",
+      "Olovka"
     ],
     "tim": null,
     "narudzbe": {
