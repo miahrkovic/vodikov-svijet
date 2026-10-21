@@ -3,6 +3,11 @@
   "dnevnik": [
     {
       "i": "🏙️",
+      "t": "Split je postao zeleni grad na vodik 2030.",
+      "d": "2026-10-21T16:15:41.422Z"
+    },
+    {
+      "i": "🏙️",
       "t": "Rijeka je postao zeleni grad na vodik 2031.",
       "d": "2026-10-21T16:13:39.339Z"
     },
@@ -236,19 +241,19 @@
   },
   "grad": {
     "pobjeda": true,
-    "godina": 2031,
-    "grad": "Rijeka"
+    "godina": 2030,
+    "grad": "Split"
   },
   "ruta": {
     "najbolja": 0,
     "plan": []
   },
-  "xp": 633,
+  "xp": 666,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792599338415,
+  "_spremljeno": 1792599341422,
   "_ukupno": 3.9
 }
