@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "✨",
+      "t": "Laboratorij riješen (+60 XP)",
+      "d": "2026-10-21T17:37:47.312Z"
+    },
+    {
+      "i": "🧪",
+      "t": "Laboratorij riješen za 03:51 bez savjeta",
+      "d": "2026-10-21T17:37:47.312Z"
+    },
+    {
       "i": "⚗️",
       "t": "Nova razina: Elektrolizer!",
       "d": "2026-10-21T16:16:11.316Z"
@@ -168,9 +178,9 @@
     "Vodik u cepelinu Hindenburg (1937.)"
   ],
   "lab": {
-    "rijeseno": false,
-    "najbolje": null,
-    "puta": 0
+    "rijeseno": true,
+    "najbolje": 231,
+    "puta": 1
   },
   "grad": {
     "pobjeda": false,
@@ -181,12 +191,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 341,
+  "xp": 411,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604217080,
+  "_spremljeno": 1792604267312,
   "_ukupno": 3.9
 }
