@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T15:58:43.847Z",
-    "xp": 20,
+    "zadnje": "2026-10-21T15:59:24.574Z",
+    "xp": 24,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -96,7 +96,10 @@
     "grad": null,
     "akad": {},
     "tocna": [],
-    "istrazeno": [],
+    "istrazeno": [
+      "Vrećica šećera 1 kg",
+      "Lizalica"
+    ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
