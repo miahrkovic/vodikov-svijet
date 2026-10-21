@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🔋",
+      "t": "Nova razina: Gorivna ćelija!",
+      "d": "2026-10-21T16:09:12.181Z"
+    },
+    {
       "i": "🏙️",
       "t": "Zadar je postao zeleni grad na vodik 2032.",
       "d": "2026-10-21T16:08:08.380Z"
@@ -233,12 +238,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 498,
+  "xp": 501,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598947993,
+  "_spremljeno": 1792598952181,
   "_ukupno": 3.9
 }
