@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "⚗️",
+      "t": "Nova razina: Elektrolizer!",
+      "d": "2026-10-21T16:03:05.457Z"
+    },
+    {
       "i": "🔬",
       "t": "Istraženo 110 stvari u potrazi za vodikom",
       "d": "2026-10-21T16:02:34.256Z"
@@ -194,7 +199,10 @@
     "Kuhinjska sol",
     "Čisti vodik",
     "Amonijak",
-    "Guma"
+    "Guma",
+    "Alkohol",
+    "Prirodni plin",
+    "Benzin"
   ],
   "lab": {
     "rijeseno": false,
@@ -210,12 +218,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 248,
+  "xp": 254,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598581242,
+  "_spremljeno": 1792598589658,
   "_ukupno": 3.9
 }
