@@ -3,12 +3,22 @@
   "dnevnik": [
     {
       "i": "✨",
+      "t": "Otkrio si vodik u sebi (+20 XP)",
+      "d": "2026-10-21T16:12:26.243Z"
+    },
+    {
+      "i": "🧍",
+      "t": "U meni je 8,0 kg vodika (4,8 × 10²⁷ atoma)",
+      "d": "2026-10-21T16:12:26.243Z"
+    },
+    {
+      "i": "✨",
       "t": "Napravljen račun @miahrkovic. Dobrodošao!",
       "d": "2026-10-21T15:49:43.078Z"
     }
   ],
   "ti": {
-    "kg": null
+    "kg": 80
   },
   "istrazeno": [],
   "lab": {
@@ -25,12 +35,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 0,
+  "xp": 20,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792597785885,
+  "_spremljeno": 1792599146243,
   "_ukupno": 3.9
 }
