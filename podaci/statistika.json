@@ -798,10 +798,10 @@
   },
   "marvin": {
     "kreiran": "2026-10-21T18:03:28.536Z",
-    "zadnje": "2026-10-21T18:03:46.396Z",
-    "xp": 0,
+    "zadnje": "2026-10-21T18:04:10.750Z",
+    "xp": 20,
     "koraci": {
-      "ti": false,
+      "ti": true,
       "lab": false,
       "grad": false,
       "ruta": 0
@@ -819,6 +819,6 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 1
+    "dnevnik": 3
   }
 }
