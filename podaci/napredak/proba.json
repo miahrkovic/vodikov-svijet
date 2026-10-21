@@ -21,7 +21,9 @@
     "kg": 80
   },
   "istrazeno": [
-    "Kocka leda"
+    "Kocka leda",
+    "Knjiga",
+    "Olovka"
   ],
   "lab": {
     "rijeseno": false,
@@ -37,12 +39,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 22,
+  "xp": 26,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792606442827,
+  "_spremljeno": 1792606449995,
   "_ukupno": 3.9
 }
