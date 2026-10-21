@@ -1,7 +1,26 @@
 {
-  "{
   "kosarica": [],
   "dnevnik": [
+    {
+      "i": "🎓",
+      "t": "Sve lekcije Akademije s 3 ★",
+      "d": "2026-10-21T18:45:00.000Z"
+    },
+    {
+      "i": "🛣️",
+      "t": "H2 Ruta: 100 % pokrivenosti",
+      "d": "2026-10-21T18:45:00.000Z"
+    },
+    {
+      "i": "🏙️",
+      "t": "H2 Grad: zeleni grad do 2034.",
+      "d": "2026-10-21T18:45:00.000Z"
+    },
+    {
+      "i": "⭐",
+      "t": "Nova razina: Zvijezda!",
+      "d": "2026-10-21T18:45:00.000Z"
+    },
     {
       "i": "✨",
       "t": "Laboratorij riješen (+60 XP)",
@@ -184,16 +203,35 @@
     "puta": 1
   },
   "grad": {
-    "pobjeda": false,
-    "godina": null,
-    "grad": null
+    "pobjeda": true,
+    "godina": 2034,
+    "grad": "Zagreb"
   },
   "ruta": {
-    "najbolja": 0,
+    "najbolja": 100,
     "plan": []
   },
-  "xp": 447,
-  "akad": {},
+  "xp": 1000,
+  "akad": {
+    "element": {
+      "z": 3
+    },
+    "tijelo": {
+      "z": 3
+    },
+    "proizvodnja": {
+      "z": 3
+    },
+    "skladiste": {
+      "z": 3
+    },
+    "celija": {
+      "z": 3
+    },
+    "hrvatska": {
+      "z": 3
+    }
+  },
   "tocna": [],
   "tim": null,
   "timIme": null,
