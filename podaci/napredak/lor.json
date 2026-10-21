@@ -2,16 +2,6 @@
   "kosarica": [],
   "dnevnik": [
     {
-      "i": "✨",
-      "t": "Zeleni grad (+100 XP)",
-      "d": "2026-10-21T16:06:41.134Z"
-    },
-    {
-      "i": "🏙️",
-      "t": "Split je postao zeleni grad na vodik 2035.",
-      "d": "2026-10-21T16:06:41.133Z"
-    },
-    {
       "i": "⚗️",
       "t": "Nova razina: Elektrolizer!",
       "d": "2026-10-21T16:03:05.457Z"
@@ -220,20 +210,20 @@
     "puta": 0
   },
   "grad": {
-    "pobjeda": true,
-    "godina": 2035,
-    "grad": "Split"
+    "pobjeda": false,
+    "godina": null,
+    "grad": null
   },
   "ruta": {
     "najbolja": 0,
     "plan": []
   },
-  "xp": 411,
+  "xp": 278,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598801134,
+  "_spremljeno": 1792598741957,
   "_ukupno": 3.9
 }
