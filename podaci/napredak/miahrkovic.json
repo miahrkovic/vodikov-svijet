@@ -1,5 +1,18 @@
 {
-  "kosarica": [],
+  "kosarica": [
+    {
+      "id": "majica",
+      "o": {
+        "Veličina": "S",
+        "Boja": [
+          "Crna",
+          "#0b0f1f"
+        ]
+      },
+      "kol": 1,
+      "c": 19.9
+    }
+  ],
   "dnevnik": [
     {
       "i": "⚡",
@@ -353,6 +366,6 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792605514443,
-  "_ukupno": 3.9
+  "_spremljeno": 1792605566328,
+  "_ukupno": 23.799999999999997
 }
