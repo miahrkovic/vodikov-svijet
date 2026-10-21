@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "✨",
+      "t": "Tri zvjezdice: Vodik u tebi (+15 XP)",
+      "d": "2026-10-21T16:04:33.406Z"
+    },
+    {
+      "i": "🎓",
+      "t": "Lekcija „Vodik u tebi“: 4/4 (★★★)",
+      "d": "2026-10-21T16:04:33.406Z"
+    },
+    {
       "i": "🎓",
       "t": "Lekcija „Vodik u tebi“: 3/4 (★★☆)",
       "d": "2026-10-21T16:04:16.761Z"
@@ -60,13 +70,13 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 115,
+  "xp": 130,
   "akad": {
     "element": {
       "z": 3
     },
     "tijelo": {
-      "z": 2
+      "z": 3
     }
   },
   "tocna": [
@@ -82,6 +92,6 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598663318,
+  "_spremljeno": 1792598673406,
   "_ukupno": 3.9
 }
