@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:02:39.511Z",
-    "xp": 240,
+    "zadnje": "2026-10-21T16:02:57.045Z",
+    "xp": 246,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -206,7 +206,10 @@
       "Glicerol",
       "Kofein",
       "Aspirin",
-      "Stiropor"
+      "Stiropor",
+      "Kuhinjska sol",
+      "Čisti vodik",
+      "Amonijak"
     ],
     "tim": null,
     "narudzbe": {
