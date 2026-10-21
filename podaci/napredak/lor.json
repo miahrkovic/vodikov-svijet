@@ -248,14 +248,16 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 676,
+  "xp": 696,
   "akad": {},
   "tocna": [
-    "hrvatska:0"
+    "hrvatska:0",
+    "hrvatska:1",
+    "hrvatska:2"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792599502464,
+  "_spremljeno": 1792599511414,
   "_ukupno": 3.9
 }
