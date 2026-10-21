@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:02:28.452Z",
-    "xp": 236,
+    "zadnje": "2026-10-21T16:02:34.724Z",
+    "xp": 238,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -204,7 +204,8 @@
       "Jestivo ulje",
       "Sapun",
       "Glicerol",
-      "Kofein"
+      "Kofein",
+      "Aspirin"
     ],
     "tim": null,
     "narudzbe": {
