@@ -3,6 +3,31 @@
   "dnevnik": [
     {
       "i": "🔬",
+      "t": "Istraženo 90 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:07:05.267Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 80 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:07:01.852Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 70 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:06:58.934Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 60 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:06:54.183Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 50 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:06:50.517Z"
+    },
+    {
+      "i": "🔬",
       "t": "Istraženo 40 stvari u potrazi za vodikom",
       "d": "2026-10-21T16:05:02.567Z"
     },
@@ -89,7 +114,53 @@
     "Čaša vode",
     "Tuširanje (5 minuta)",
     "Bazen u dvorištu",
-    "Jadransko more"
+    "Jadransko more",
+    "Vodik u cepelinu Hindenburg (1937.)",
+    "Puni spremnik vodikovog kamiona",
+    "Pijesak s plaže",
+    "Prozor",
+    "Ključevi",
+    "Bicikl (okvir)",
+    "Plastično kućište mobitela",
+    "Tableta aspirina",
+    "Šalica kave (kofein)",
+    "Krema za ruke (glicerol)",
+    "Kotač bicikla",
+    "Tenisice (đon)",
+    "Nokti (svi)",
+    "Kosa na glavi",
+    "Maslinovo ulje (žlica)",
+    "Vosak za skije",
+    "Svjećica za tortu",
+    "Boca propana 10 kg",
+    "Upaljač",
+    "Litra dizela",
+    "Rezervoar dizela kamiona",
+    "Folija za hranu",
+    "Kabanica",
+    "PVC cijev 1 m",
+    "Kanta od PVC-a",
+    "Kutija od stiropora",
+    "Lego kocka",
+    "Kutija za ručak",
+    "Čep boce",
+    "Plastična čaša",
+    "Školska torba (platnena)",
+    "Papirnata maramica",
+    "Plahta",
+    "Ručnik",
+    "Stablo hrasta",
+    "Ormar",
+    "Drveni stol",
+    "Kutija za pizzu",
+    "Novine",
+    "Lizalica",
+    "Vrećica šećera 1 kg",
+    "Lubenica (voda u njoj)",
+    "Akvarij",
+    "Ledeni brijeg",
+    "Pahulja snijega",
+    "Kap kiše"
   ],
   "lab": {
     "rijeseno": false,
@@ -105,12 +176,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 108,
+  "xp": 200,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598704199,
+  "_spremljeno": 1792598825267,
   "_ukupno": 3.9
 }
