@@ -3,6 +3,26 @@
   "dnevnik": [
     {
       "i": "🔬",
+      "t": "Istraženo 80 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:05:55.087Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 70 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:05:51.740Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 60 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:05:46.935Z"
+    },
+    {
+      "i": "🔬",
+      "t": "Istraženo 50 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:05:41.019Z"
+    },
+    {
+      "i": "🔬",
       "t": "Istraženo 40 stvari u potrazi za vodikom",
       "d": "2026-10-21T16:05:22.570Z"
     },
@@ -80,7 +100,50 @@
     "Kanta od PVC-a",
     "Kutija od stiropora",
     "Kutija za ručak",
-    "Lego kocka"
+    "Lego kocka",
+    "Traperice",
+    "Rola WC papira",
+    "Kartonska kutija",
+    "Prazna plastična boca",
+    "Plastična vrećica",
+    "Svijeća",
+    "Pun spremnik benzina",
+    "Litra benzina",
+    "Plinska boca za kuhanje",
+    "Sredstvo za dezinfekciju",
+    "Boca ulja 1 L",
+    "Automobilska guma",
+    "Balon",
+    "Vunena kapa",
+    "Komad sapuna",
+    "Staklena čaša",
+    "Žlica soli",
+    "Kamen",
+    "Zlatni prsten",
+    "Limenka",
+    "Vodikov spremnik auta",
+    "Tuširanje (5 minuta)",
+    "Čaša vode",
+    "Jadransko more",
+    "Bazen u dvorištu",
+    "Pahulja snijega",
+    "Kap kiše",
+    "Ledeni brijeg",
+    "Akvarij",
+    "Vrećica šećera 1 kg",
+    "Lubenica (voda u njoj)",
+    "Novine",
+    "Lizalica",
+    "Drveni stol",
+    "Kutija za pizzu",
+    "Ormar",
+    "Stablo hrasta",
+    "Plahta",
+    "Ručnik",
+    "Papirnata maramica",
+    "Školska torba (platnena)",
+    "Čep boce",
+    "Plastična čaša"
   ],
   "lab": {
     "rijeseno": false,
@@ -96,12 +159,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 120,
+  "xp": 206,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598725885,
+  "_spremljeno": 1792598758436,
   "_ukupno": 3.9
 }
