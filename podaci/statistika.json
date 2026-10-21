@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T15:59:36.566Z",
-    "xp": 30,
+    "zadnje": "2026-10-21T15:59:40.659Z",
+    "xp": 32,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -101,7 +101,8 @@
       "Lizalica",
       "Kutija za pizzu",
       "Puni spremnik vodikovog kamiona",
-      "Vodik u cepelinu Hindenburg (1937.)"
+      "Vodik u cepelinu Hindenburg (1937.)",
+      "Dizel"
     ],
     "tim": null,
     "narudzbe": {
