@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:13:32.545Z",
-    "xp": 531,
+    "zadnje": "2026-10-21T16:13:45.501Z",
+    "xp": 564,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -93,7 +93,7 @@
       "najbolje": null,
       "puta": 0
     },
-    "grad": "Zadar",
+    "grad": "Rijeka",
     "akad": {},
     "tocna": [],
     "istrazeno": [
@@ -220,7 +220,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 20
+    "dnevnik": 21
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
