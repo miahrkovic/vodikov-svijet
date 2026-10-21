@@ -224,8 +224,8 @@
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
-    "zadnje": "2026-10-21T16:04:28.109Z",
-    "xp": 115,
+    "zadnje": "2026-10-21T16:04:37.812Z",
+    "xp": 130,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -239,7 +239,7 @@
     "grad": null,
     "akad": {
       "element": 3,
-      "tijelo": 2
+      "tijelo": 3
     },
     "tocna": [
       "element:0",
@@ -257,7 +257,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 8
+    "dnevnik": 10
   },
   "vodikovac": {
     "kreiran": "2026-10-21T15:58:46.789Z",
