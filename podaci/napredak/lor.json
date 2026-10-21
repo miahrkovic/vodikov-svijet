@@ -3,16 +3,6 @@
   "dnevnik": [
     {
       "i": "✨",
-      "t": "Tri zvjezdice: Kako nastaje vodik (+15 XP)",
-      "d": "2026-10-21T16:30:58.871Z"
-    },
-    {
-      "i": "🎓",
-      "t": "Lekcija „Kako nastaje vodik“: 4/4 (★★★)",
-      "d": "2026-10-21T16:30:58.870Z"
-    },
-    {
-      "i": "✨",
       "t": "Tri zvjezdice: Vodik u tebi (+15 XP)",
       "d": "2026-10-21T16:30:25.470Z"
     },
@@ -293,7 +283,7 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 886,
+  "xp": 861,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -302,9 +292,6 @@
       "z": 3
     },
     "tijelo": {
-      "z": 3
-    },
-    "proizvodnja": {
       "z": 3
     }
   },
@@ -323,12 +310,11 @@
     "tijelo:3",
     "proizvodnja:0",
     "proizvodnja:1",
-    "proizvodnja:2",
-    "proizvodnja:3"
+    "proizvodnja:2"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792600258871,
+  "_spremljeno": 1792600254724,
   "_ukupno": 3.9
 }
