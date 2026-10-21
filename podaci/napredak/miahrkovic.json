@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "📜",
+      "t": "Preuzeta digitalna diploma",
+      "d": "2026-10-21T22:21:37.900Z"
+    },
+    {
       "i": "📱",
       "t": "Spremljena iskaznica za priču",
       "d": "2026-10-21T22:21:06.506Z"
@@ -251,7 +256,7 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792621266506,
+  "_spremljeno": 1792621297900,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-10-22",
