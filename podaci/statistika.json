@@ -131,10 +131,10 @@
   },
   "vodikovac": {
     "kreiran": "2026-10-21T15:58:46.789Z",
-    "zadnje": "2026-10-21T15:58:59.759Z",
-    "xp": 0,
+    "zadnje": "2026-10-21T15:59:08.063Z",
+    "xp": 20,
     "koraci": {
-      "ti": false,
+      "ti": true,
       "lab": false,
       "grad": false,
       "ruta": 0
@@ -152,6 +152,6 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 1
+    "dnevnik": 3
   }
 }
