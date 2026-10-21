@@ -1,19 +1,11 @@
 {
-  "kosarica": [
-    {
-      "id": "majica",
-      "o": {
-        "Veličina": "S",
-        "Boja": [
-          "Plava",
-          "#1c2f6b"
-        ]
-      },
-      "kol": 1,
-      "c": 19.9
-    }
-  ],
+  "kosarica": [],
   "dnevnik": [
+    {
+      "i": "🛒",
+      "t": "Probna narudžba H2-184214: 25,30 €",
+      "d": "2026-10-21T21:07:24.790Z"
+    },
     {
       "i": "🎓",
       "t": "Sve lekcije Akademije s 3 ★",
@@ -249,6 +241,6 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792616829774,
-  "_ukupno": 23.799999999999997
+  "_spremljeno": 1792616844790,
+  "_ukupno": 5.4
 }
