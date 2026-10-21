@@ -172,8 +172,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:19:22.631Z",
-    "xp": 776,
+    "zadnje": "2026-10-21T16:19:45.407Z",
+    "xp": 786,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -197,7 +197,8 @@
       "element:0",
       "element:1",
       "element:2",
-      "element:3"
+      "element:3",
+      "tijelo:0"
     ],
     "istrazeno": [
       "Vrećica šećera 1 kg",
