@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🏙️",
+      "t": "Split je postao zeleni grad na vodik 2030.",
+      "d": "2026-10-21T17:05:44.678Z"
+    },
+    {
       "i": "🛣️",
       "t": "Novi najbolji plan punionica: 99 % (Karlovac, Gospić, Šibenik, Ploče, Slavonski Brod)",
       "d": "2026-10-21T17:04:36.280Z"
@@ -344,7 +349,7 @@
       "Slavonski Brod"
     ]
   },
-  "xp": 1185,
+  "xp": 1218,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -394,6 +399,6 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792602334695,
+  "_spremljeno": 1792602344678,
   "_ukupno": 3.9
 }
