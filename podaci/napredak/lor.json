@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🛣️",
+      "t": "Novi najbolji plan punionica: 99 % (Karlovac, Gospić, Šibenik, Ploče, Slavonski Brod)",
+      "d": "2026-10-21T17:04:36.280Z"
+    },
+    {
+      "i": "✨",
+      "t": "Plan s 90 % (+50 XP)",
+      "d": "2026-10-21T17:04:36.280Z"
+    },
+    {
       "i": "✨",
       "t": "Laboratorij riješen (+60 XP)",
       "d": "2026-10-21T17:03:17.845Z"
@@ -325,10 +335,16 @@
     "grad": "Split"
   },
   "ruta": {
-    "najbolja": 0,
-    "plan": []
+    "najbolja": 99,
+    "plan": [
+      "Karlovac",
+      "Gospić",
+      "Šibenik",
+      "Ploče",
+      "Slavonski Brod"
+    ]
   },
-  "xp": 1126,
+  "xp": 1176,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -378,6 +394,6 @@
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792602197845,
+  "_spremljeno": 1792602276280,
   "_ukupno": 3.9
 }
