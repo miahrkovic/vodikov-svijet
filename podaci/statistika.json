@@ -731,6 +731,27 @@
   },
   "medk": {
     "kreiran": "2026-10-21T18:48:46.704Z",
-    "zadnje": "2026-10-21T18:48:46.704Z"
+    "zadnje": "2026-10-21T18:48:52.650Z",
+    "xp": 0,
+    "koraci": {
+      "ti": false,
+      "lab": false,
+      "grad": false,
+      "ruta": 0
+    },
+    "lab": {
+      "najbolje": null,
+      "puta": 0
+    },
+    "grad": null,
+    "akad": {},
+    "tocna": [],
+    "istrazeno": [],
+    "tim": null,
+    "narudzbe": {
+      "broj": 0,
+      "iznos": 0
+    },
+    "dnevnik": 1
   }
 }
