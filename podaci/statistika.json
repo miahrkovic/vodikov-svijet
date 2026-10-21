@@ -172,8 +172,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:31:46.031Z",
-    "xp": 906,
+    "zadnje": "2026-10-21T16:32:14.833Z",
+    "xp": 941,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -189,7 +189,8 @@
       "hrvatska": 3,
       "element": 3,
       "tijelo": 3,
-      "proizvodnja": 3
+      "proizvodnja": 3,
+      "skladiste": 3
     },
     "tocna": [
       "hrvatska:0",
@@ -209,7 +210,9 @@
       "proizvodnja:2",
       "proizvodnja:3",
       "skladiste:0",
-      "skladiste:1"
+      "skladiste:1",
+      "skladiste:2",
+      "skladiste:3"
     ],
     "istrazeno": [
       "Vrećica šećera 1 kg",
@@ -335,7 +338,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 32
+    "dnevnik": 34
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
