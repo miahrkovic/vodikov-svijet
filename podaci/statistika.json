@@ -491,8 +491,8 @@
   },
   "tonkavlahovic": {
     "kreiran": "2026-10-21T16:01:36.510Z",
-    "zadnje": "2026-10-21T16:01:44.348Z",
-    "xp": 0,
+    "zadnje": "2026-10-21T16:08:07.288Z",
+    "xp": 10,
     "koraci": {
       "ti": false,
       "lab": false,
@@ -506,7 +506,13 @@
     "grad": null,
     "akad": {},
     "tocna": [],
-    "istrazeno": [],
+    "istrazeno": [
+      "Kocka leda",
+      "Boca vode 0,5 L",
+      "Kada vode",
+      "Kanta vode 10 L",
+      "Kišni oblak"
+    ],
     "tim": null,
     "narudzbe": {
       "broj": 0,
