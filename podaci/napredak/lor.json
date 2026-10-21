@@ -3,6 +3,11 @@
   "dnevnik": [
     {
       "i": "🔬",
+      "t": "Istraženo 100 stvari u potrazi za vodikom",
+      "d": "2026-10-21T16:02:02.454Z"
+    },
+    {
+      "i": "🔬",
       "t": "Istraženo 90 stvari u potrazi za vodikom",
       "d": "2026-10-21T16:00:30.525Z"
     },
@@ -162,7 +167,16 @@
     "Krema za ruke (glicerol)",
     "Pijesak s plaže",
     "Prozor",
-    "Polietilen"
+    "Polietilen",
+    "Najlon",
+    "Staklo / kamen",
+    "Plastika PVC",
+    "Plastika PP",
+    "Metal",
+    "Voda",
+    "Papir / drvo / pamuk",
+    "Plastika PET",
+    "Šećer – saharoza"
   ],
   "lab": {
     "rijeseno": false,
@@ -178,12 +192,12 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 204,
+  "xp": 222,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598511324,
+  "_spremljeno": 1792598523900,
   "_ukupno": 3.9
 }
