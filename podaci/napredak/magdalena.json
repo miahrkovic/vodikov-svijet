@@ -35,12 +35,14 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 20,
+  "xp": 30,
   "akad": {},
-  "tocna": [],
+  "tocna": [
+    "element:0"
+  ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792598415622,
+  "_spremljeno": 1792598522306,
   "_ukupno": 3.9
 }
