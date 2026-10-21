@@ -81,8 +81,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-21T16:02:57.045Z",
-    "xp": 246,
+    "zadnje": "2026-10-21T16:03:06.362Z",
+    "xp": 248,
     "koraci": {
       "ti": true,
       "lab": false,
@@ -209,7 +209,8 @@
       "Stiropor",
       "Kuhinjska sol",
       "Čisti vodik",
-      "Amonijak"
+      "Amonijak",
+      "Guma"
     ],
     "tim": null,
     "narudzbe": {
