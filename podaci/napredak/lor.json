@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "☀️",
+      "t": "Pitanje dana: točno · niz 1",
+      "d": "2026-10-21T22:23:59.517Z"
+    },
+    {
       "i": "🤝",
       "t": "Pridružio se timu „Vodikovci“",
       "d": "2026-10-21T17:48:18.511Z"
@@ -354,7 +359,7 @@
       "Slavonski Brod"
     ]
   },
-  "xp": 1296,
+  "xp": 1301,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -404,6 +409,15 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792604898511,
-  "_ukupno": 3.9
+  "_spremljeno": 1792621439518,
+  "_ukupno": 3.9,
+  "dnevno": {
+    "dan": "2026-10-22",
+    "tocno": true
+  },
+  "niz": {
+    "broj": 1,
+    "zadnji": "2026-10-22",
+    "najdulji": 1
+  }
 }
