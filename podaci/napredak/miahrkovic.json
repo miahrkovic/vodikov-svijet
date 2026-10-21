@@ -3,6 +3,16 @@
   "dnevnik": [
     {
       "i": "✨",
+      "t": "Tri zvjezdice: Vodik u tebi (+15 XP)",
+      "d": "2026-10-21T17:44:45.920Z"
+    },
+    {
+      "i": "🎓",
+      "t": "Lekcija „Vodik u tebi“: 4/4 (★★★)",
+      "d": "2026-10-21T17:44:45.919Z"
+    },
+    {
+      "i": "✨",
       "t": "Tri zvjezdice: Element broj 1 (+15 XP)",
       "d": "2026-10-21T17:43:52.427Z"
     },
@@ -225,9 +235,12 @@
       "Zagreb"
     ]
   },
-  "xp": 694,
+  "xp": 719,
   "akad": {
     "element": {
+      "z": 3
+    },
+    "tijelo": {
       "z": 3
     }
   },
@@ -238,11 +251,12 @@
     "element:3",
     "tijelo:0",
     "tijelo:1",
-    "tijelo:2"
+    "tijelo:2",
+    "tijelo:3"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792604665481,
+  "_spremljeno": 1792604685920,
   "_ukupno": 3.9
 }
