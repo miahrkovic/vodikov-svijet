@@ -26,8 +26,8 @@
   },
   "miahrkovic": {
     "kreiran": "2026-10-21T15:49:41.879Z",
-    "zadnje": "2026-10-21T17:42:46.561Z",
-    "xp": 609,
+    "zadnje": "2026-10-21T17:43:50.088Z",
+    "xp": 629,
     "koraci": {
       "ti": true,
       "lab": true,
@@ -40,7 +40,10 @@
     },
     "grad": "Split",
     "akad": {},
-    "tocna": [],
+    "tocna": [
+      "element:0",
+      "element:1"
+    ],
     "istrazeno": [
       "Kocka leda",
       "Boca vode 0,5 L",
