@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "⭐",
+      "t": "Nova razina: Zvijezda!",
+      "d": "2026-10-21T17:57:19.986Z"
+    },
+    {
       "i": "🎓",
       "t": "Lekcija „Gorivna ćelija i promet“: 3/4 (★★☆)",
       "d": "2026-10-21T17:56:33.367Z"
@@ -280,7 +285,7 @@
       "Zagreb"
     ]
   },
-  "xp": 899,
+  "xp": 909,
   "akad": {
     "element": {
       "z": 3
@@ -319,11 +324,12 @@
     "celija:2",
     "celija:3",
     "hrvatska:0",
-    "hrvatska:1"
+    "hrvatska:1",
+    "hrvatska:2"
   ],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792605435285,
+  "_spremljeno": 1792605439986,
   "_ukupno": 3.9
 }
