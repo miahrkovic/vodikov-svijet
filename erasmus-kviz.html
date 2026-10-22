@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Erasmus+ quiz · Croatian school life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Erasmus+ mini quiz: 6 questions, 60 seconds. Only the server knows the correct answers. */
+:root{color-scheme:dark;--bg:#0b1440;--kart:#132063;--ink:#eef0ff;--muted:#8d93b8;--line:#2b3b8a;--ha:#ff5a4f;--hb:#ffc800;--hg:#5b7cff;--hd:#8aa2ff;--zel:#3ee08f;--zlato:#ffc800;
+  --disp:"Unbounded","Arial Black",system-ui,sans-serif;--tekst:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{background:radial-gradient(120% 80% at 50% 0%,#1f43c4,#0b1440 60%) fixed;color:var(--ink);font:17px/1.45 var(--tekst);
+  padding:calc(20px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+main{max-width:520px;margin:0 auto;display:grid;gap:18px}
+h1{font:800 30px/1.1 var(--disp);text-wrap:balance}
+.gr{background:linear-gradient(90deg,var(--ha),var(--zlato) 30%,var(--hb) 55%,var(--hg) 78%,var(--hd));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ozn{font:700 13px var(--tekst);letter-spacing:.18em;text-transform:uppercase;color:var(--hb)}
+p{color:#c3c7ea}
+.kart{background:var(--kart);border:1.5px solid var(--line);border-radius:22px;padding:20px}
+input{width:100%;font:700 22px var(--tekst);padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:#0a0d26;color:var(--ink);outline:none}
+input:focus-visible{border-color:var(--hb)}
+button{font:800 18px var(--disp);border:0;border-radius:16px;padding:18px;cursor:pointer;width:100%;color:#05060f;background:linear-gradient(90deg,var(--hb),var(--hg));transition:transform .15s}
+button:active{transform:scale(.97)} button:disabled{opacity:.5}
+.greska{color:#ff8a95;font-weight:700;min-height:1.4em}
+.traka{height:10px;border-radius:6px;background:#1a1f45;overflow:hidden}
+.traka div{height:100%;width:100%;background:linear-gradient(90deg,var(--zel),var(--hb));transition:width .25s linear}
+.vrh{display:flex;justify-content:space-between;align-items:center;font:700 16px var(--tekst);color:var(--muted)}
+#sek{font:800 28px var(--disp);color:var(--zlato);font-variant-numeric:tabular-nums}
+#pitanje{font:800 23px/1.25 var(--disp);text-wrap:balance}
+.odg{display:grid;gap:12px}
+.odg button{background:#151a46;color:var(--ink);font:700 19px var(--tekst);text-align:left;border:2px solid var(--line);padding:16px 18px}
+.odg button.da{background:#0f3b2a;border-color:var(--zel)} .odg button.ne{background:#3a1220;border-color:var(--ha)}
+.rez{text-align:center;display:grid;gap:12px;justify-items:center}
+.veliki{font:800 72px/1 var(--disp)}
+.atom{width:90px;height:90px;position:relative;margin:4px auto}
+.atom i{position:absolute;inset:32px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff3d1,var(--zlato) 45%,#ff8a3d);box-shadow:0 0 30px var(--zlato)}
+.atom b{position:absolute;inset:0;border:2px solid #22d3ee66;border-radius:50%;animation:v 2.5s linear infinite}
+.atom b::after{content:"";position:absolute;top:-7px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--hb);box-shadow:0 0 14px var(--hb)}
+@keyframes v{to{transform:rotate(360deg)}}
+#jezici button{width:auto;padding:8px 14px;font:800 14px var(--tekst);background:#132063;color:#c3c7ea;border:1.5px solid var(--line)}
+#jezici button[aria-pressed="true"]{background:var(--zlato);color:#0b1440;border-color:var(--zlato)}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+<body><main>
+
+<section id="ekStart">
+  <div id="jezici" role="group" aria-label="Language" style="display:flex;gap:6px;justify-content:flex-end;margin-bottom:10px"><button data-j="en">EN</button><button data-j="hr">HR</button><button data-j="de">DE</button></div>
+  <div class="atom" aria-hidden="true"><b></b><i></i></div>
+  <div class="ozn">Erasmus+ · mini quiz</div>
+  <h1 data-t="h1">Guess Croatian <span class="gr">school life</span>!</h1>
+  <p style="margin-top:8px" data-t="uvod">6 questions, 60 seconds. Faster and correct answers give more points. The winners are shown at the end of the presentation.</p>
+  <div class="kart" style="margin-top:16px;display:grid;gap:12px">
+    <label for="ime" class="ozn" style="color:var(--muted)" data-t="nadimak">Your nickname</label>
+    <input id="ime" maxlength="16" autocomplete="nickname" placeholder="e.g. Marco17" enterkeyhint="go">
+    <div class="greska" id="gStart" role="alert"></div>
+    <button id="kreni" data-t="kreni">Start ⚡</button>
+  </div>
+</section>
+
+<section id="ekKviz" hidden>
+  <div class="vrh"><span id="broj">1 / 6</span><span id="sek">60</span></div>
+  <div class="traka" style="margin-top:10px"><div id="traka"></div></div>
+  <div class="kart" style="margin-top:16px"><div id="pitanje"></div></div>
+  <div class="odg" id="odg" style="margin-top:14px"></div>
+</section>
+
+<section id="ekKraj" class="rez" hidden>
+  <div class="atom" aria-hidden="true"><b></b><i></i></div>
+  <div class="ozn" id="kStatus">Sending your result…</div>
+  <div class="veliki gr" id="kBodovi">…</div>
+  <p id="kTekst"></p>
+  <div class="greska" id="gKraj" role="alert"></div>
+  <button id="ponovi" hidden data-t="ponovi">Send again</button>
+  <p style="font-size:15px;color:var(--muted)" data-t="gledaj">Watch the screen at the end of the presentation 🏆</p>
+</section>
+
+</main>
+<script>
+const POSREDNIK = "https://vodikov-svijet.miahrkovic.workers.dev";
+const PITANJA = [
+  ["How long is one lesson in Croatian schools?", ["30 minutes", "45 minutes", "60 minutes", "90 minutes"]],
+  ["What is the BEST grade in Croatia?", ["1", "A", "10", "5"]],
+  ["How many years does compulsory primary school last?", ["8 years", "6 years", "9 years", "10 years"]],
+  ["Our school has an afternoon shift. When does it end?", ["15:00", "17:30", "19:50", "21:00"]],
+  ["What is the big exam at the end of secondary school called?", ["Abitur", "State Matura", "Baccalauréat", "SAT"]],
+  ["What does every primary school pupil in Croatia get for free?", ["A laptop", "A school uniform", "A bus pass", "A school meal"]],
+];
+// jezik: EN, HR ili DE (po jeziku mobitela, ili gumbom); redoslijed odgovora je isti u svim jezicima
+const PIT = { en: PITANJA,
+  hr: [["Koliko traje jedan školski sat u Hrvatskoj?", ["30 minuta", "45 minuta", "60 minuta", "90 minuta"]],
+       ["Koja je NAJBOLJA ocjena u Hrvatskoj?", ["1", "A", "10", "5"]],
+       ["Koliko godina traje obavezna osnovna škola?", ["8 godina", "6 godina", "9 godina", "10 godina"]],
+       ["Naša škola ima popodnevnu smjenu. Kad završava?", ["15:00", "17:30", "19:50", "21:00"]],
+       ["Kako se zove veliki ispit na kraju srednje škole?", ["Abitur", "Državna matura", "Baccalauréat", "SAT"]],
+       ["Što svaki osnovnoškolac u Hrvatskoj dobiva besplatno?", ["Laptop", "Školsku uniformu", "Pokaz za autobus", "Školski obrok"]]],
+  de: [["Wie lang dauert eine Schulstunde in Kroatien?", ["30 Minuten", "45 Minuten", "60 Minuten", "90 Minuten"]],
+       ["Was ist die BESTE Note in Kroatien?", ["1", "A", "10", "5"]],
+       ["Wie viele Jahre dauert die Pflicht-Grundschule in Kroatien?", ["8 Jahre", "6 Jahre", "9 Jahre", "10 Jahre"]],
+       ["Unsere Schule hat eine Nachmittagsschicht. Wann endet sie?", ["15:00", "17:30", "19:50", "21:00"]],
+       ["Wie heißt die große Prüfung am Ende der Schule in Kroatien?", ["Abitur", "Staatliche Matura", "Baccalauréat", "SAT"]],
+       ["Was bekommt jedes Grundschulkind in Kroatien kostenlos?", ["Einen Laptop", "Eine Schuluniform", "Ein Busticket", "Ein Schulessen"]]] };
+const TX = {
+  h1: ["Guess Croatian <span class=\"gr\">school life</span>!", "Pogodi hrvatski <span class=\"gr\">školski život</span>!", "Errate den kroatischen <span class=\"gr\">Schulalltag</span>!"],
+  uvod: ["6 questions, 60 seconds. Faster and correct answers give more points. The winners are shown at the end of the presentation.", "6 pitanja, 60 sekundi. Brži i točniji odgovori donose više bodova. Pobjednici se pokazuju na kraju prezentacije.", "6 Fragen, 60 Sekunden. Schnelle und richtige Antworten bringen mehr Punkte. Die Gewinner werden am Ende der Präsentation gezeigt."],
+  nadimak: ["Your nickname", "Tvoj nadimak", "Dein Spitzname"], kreni: ["Start ⚡", "Kreni ⚡", "Los ⚡"], ponovi: ["Send again", "Pošalji ponovno", "Nochmal senden"],
+  gledaj: ["Watch the screen at the end of the presentation 🏆", "Pogledaj ekran na kraju prezentacije 🏆", "Schau am Ende der Präsentation auf die Leinwand 🏆"],
+  "Open the quiz by scanning the QR code in the presentation.": ["Open the quiz by scanning the QR code in the presentation.", "Kviz se otvara skeniranjem QR koda iz prezentacije.", "Öffne das Quiz, indem du den QR-Code in der Präsentation scannst."],
+  "Type a nickname (at least 2 characters).": ["Type a nickname (at least 2 characters).", "Upiši nadimak (barem 2 znaka).", "Gib einen Spitznamen ein (mindestens 2 Zeichen)."],
+  "Sending your result…": ["Sending your result…", "Šaljem rezultat…", "Ergebnis wird gesendet…"],
+  "Your result was not received.": ["Your result was not received.", "Rezultat nije primljen.", "Dein Ergebnis kam nicht an."],
+  "Not sent": ["Not sent", "Nije poslano", "Nicht gesendet"],
+  "Connection failed. Please try again.": ["Connection failed. Please try again.", "Veza nije uspjela. Pokušaj ponovno.", "Verbindung fehlgeschlagen. Bitte nochmal versuchen."],
+  "Result received ✅": ["Result received ✅", "Rezultat je primljen ✅", "Ergebnis angekommen ✅"],
+  "points": ["points", "bodova", "Punkte"],
+  "You got X out of Y questions right.": ["You got {a} out of {b} questions right.", "Točno si odgovorio/la na {a} od {b} pitanja.", "Du hast {a} von {b} Fragen richtig beantwortet."],
+  "Your nickname must have at least 2 characters.": ["Your nickname must have at least 2 characters.", "Nadimak mora imati barem 2 znaka.", "Dein Spitzname braucht mindestens 2 Zeichen."],
+  "That nickname is not allowed. Choose another one.": ["That nickname is not allowed. Choose another one.", "Taj nadimak nije dopušten. Smisli drugi.", "Dieser Spitzname ist nicht erlaubt. Wähle einen anderen."],
+  "Wrong quiz code. Scan the QR code again.": ["Wrong quiz code. Scan the QR code again.", "Neispravan kod kviza.", "Falscher Quiz-Code. Scanne den QR-Code nochmal."],
+  "Lots of people are sending at once. Try again in a few seconds.": ["Lots of people are sending at once. Try again in a few seconds.", "Puno ljudi šalje odjednom. Pokušaj ponovno za par sekundi.", "Viele senden gerade gleichzeitig. Versuch es in ein paar Sekunden nochmal."] };
+let J = "en"; try{ J = localStorage.getItem("er-jezik") || ""; }catch(e){}
+if(!["en","hr","de"].includes(J)){ const n = (navigator.language || "en").slice(0,2).toLowerCase(); J = n === "de" ? "de" : n === "hr" ? "hr" : "en"; }
+const IDX = () => ({en:0, hr:1, de:2})[J];
+const t = k => (TX[k] || [k,k,k])[IDX()];
+const P = () => PIT[J];
+function postaviJezik(j){ J = j; try{ localStorage.setItem("er-jezik", j); }catch(e){} document.documentElement.lang = j;
+  document.querySelectorAll("[data-t]").forEach(el => { const v = t(el.dataset.t); if(el.dataset.t === "h1") el.innerHTML = v; else el.textContent = v; });
+  document.querySelectorAll("#jezici button").forEach(b => b.setAttribute("aria-pressed", b.dataset.j === J));
+  $("ime").placeholder = J === "de" ? "z. B. Lena17" : J === "hr" ? "npr. Luka17" : "e.g. Marco17";
+  if($("gStart").textContent) $("gStart").textContent = !s ? t("Open the quiz by scanning the QR code in the presentation.") : t("Type a nickname (at least 2 characters).");
+}
+// poruke posrednika su na hrvatskom, pa ih ovdje prevodimo
+const ENG = x => t(({ "Nadimak mora imati barem 2 znaka.": "Your nickname must have at least 2 characters.", "Taj nadimak nije dopušten. Smisli drugi.": "That nickname is not allowed. Choose another one.", "Neispravan kod kviza.": "Wrong quiz code. Scan the QR code again.", "Puno ljudi šalje odjednom. Pokušaj ponovno za par sekundi.": "Lots of people are sending at once. Try again in a few seconds." })[x] || x);
+const TRAJANJE = 60000;
+const $ = id => document.getElementById(id);
+const s = (new URLSearchParams(location.search).get("s") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8);
+const kljuc = "er-kviz-" + s;
+let odgovori = [], t0 = 0, kraj = 0, tik = null, gotovo = false;
+
+const spremljeno = (() => { try { return JSON.parse(localStorage.getItem(kljuc) || "null"); } catch (e) { return null; } })();
+try { const n = localStorage.getItem("er-kviz-ime"); if (n) $("ime").value = n; } catch (e) {}
+if (!s) { $("gStart").textContent = t("Open the quiz by scanning the QR code in the presentation."); $("kreni").disabled = true; }
+else if (spremljeno && spremljeno.poslano) prikaziKraj(spremljeno.r);
+
+document.querySelectorAll("#jezici button").forEach(b => b.addEventListener("click", () => postaviJezik(b.dataset.j)));
+postaviJezik(J);
+$("kreni").addEventListener("click", kreni);
+$("ime").addEventListener("keydown", e => { if (e.key === "Enter") kreni(); });
+$("ponovi").addEventListener("click", posalji);
+
+function kreni() {
+  const ime = $("ime").value.trim();
+  if (ime.length < 2) { $("gStart").textContent = t("Type a nickname (at least 2 characters)."); return; }
+  try { localStorage.setItem("er-kviz-ime", ime); } catch (e) {}
+  $("ekStart").hidden = true; $("ekKviz").hidden = false;
+  t0 = Date.now(); kraj = t0 + TRAJANJE; pitanje(0);
+  tik = setInterval(() => {
+    const ost = Math.max(0, kraj - Date.now());
+    $("sek").textContent = Math.ceil(ost / 1000); $("traka").style.width = (ost / TRAJANJE * 100) + "%";
+    if (ost <= 0) zavrsi();
+  }, 200);
+}
+function pitanje(i) {
+  if (i >= PITANJA.length) return zavrsi();
+  $("broj").textContent = `${i + 1} / ${PITANJA.length}`;
+  $("pitanje").textContent = P()[i][0];
+  $("odg").innerHTML = "";
+  P()[i][1].forEach((t, k) => {
+    const b = document.createElement("button"); b.textContent = t;
+    b.addEventListener("click", () => {
+      if (gotovo || odgovori.length > i) return;
+      odgovori[i] = k; b.classList.add("da");
+      [...$("odg").children].forEach(x => x.disabled = true);
+      setTimeout(() => pitanje(i + 1), 220);
+    });
+    $("odg").appendChild(b);
+  });
+}
+function zavrsi() {
+  if (gotovo) return; gotovo = true; clearInterval(tik);
+  const ms = Math.min(TRAJANJE, Date.now() - t0);
+  try { localStorage.setItem(kljuc, JSON.stringify({ odgovori, ms, ime: $("ime").value.trim() })); } catch (e) {}
+  $("ekKviz").hidden = true; $("ekKraj").hidden = false;
+  posalji();
+}
+async function posalji() {
+  let p; try { p = JSON.parse(localStorage.getItem(kljuc) || "null"); } catch (e) {}
+  p = p || { odgovori, ms: Math.min(TRAJANJE, Date.now() - t0), ime: $("ime").value.trim() };
+  $("ponovi").hidden = true; $("gKraj").textContent = ""; $("kStatus").textContent = t("Sending your result…");
+  for (let k = 0; k < 3; k++) {
+    try {
+      const r = await fetch(POSREDNIK + "/kviz/odgovor", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ s, k: "erasmus", ime: p.ime, odgovori: p.odgovori, ms: p.ms }) });
+      const d = await r.json().catch(() => ({}));
+      if (r.ok) { try { localStorage.setItem(kljuc, JSON.stringify({ ...p, poslano: true, r: d })); } catch (e) {} return prikaziKraj(d); }
+      if (r.status < 500) { $("gKraj").textContent = ENG(d.greska) || t("Your result was not received."); break; }
+    } catch (e) {}
+    await new Promise(r => setTimeout(r, 1200 + k * 1500));
+  }
+  $("kStatus").textContent = t("Not sent");
+  if (!$("gKraj").textContent) $("gKraj").textContent = t("Connection failed. Please try again.");
+  $("ponovi").hidden = false;
+}
+function prikaziKraj(d) {
+  $("ekStart").hidden = true; $("ekKviz").hidden = true; $("ekKraj").hidden = false;
+  $("kStatus").textContent = t("Result received ✅");
+  $("kBodovi").textContent = d.bodovi + " " + t("points");
+  $("kTekst").textContent = t("You got X out of Y questions right.").replace("{a}", d.tocno).replace("{b}", d.od);
+}
+</script>
+</body></html>
