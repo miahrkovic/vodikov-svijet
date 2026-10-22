@@ -8,10 +8,10 @@
 <style>
 /* Daljinski upravljač za preza.html. Otvara se na mobitelu voditelja; slajdovi se mijenjaju na projektoru. */
 :root{color-scheme:dark;--bg:#05060f;--kar:#10143a;--ink:#eef0ff;--muted:#8d93b8;--line:#232a57;--zlato:#ffc857;--zel:#3ee08f;--hb:#22d3ee;--cr:#ff4757;
-  --disp:"Unbounded","Arial Black",system-ui,sans-serif;--tekst:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+--disp:"Unbounded","Arial Black",system-ui,sans-serif;--tekst:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
 *{box-sizing:border-box;margin:0}
 body{min-height:100dvh;background:var(--bg);color:var(--ink);font:16px/1.45 var(--tekst);
-  padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:12px;max-width:560px;margin:auto}
+padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:12px;max-width:560px;margin:auto}
 h1{font:900 20px var(--disp)} .muted{color:var(--muted)} .small{font-size:13px}
 .kar{background:var(--kar);border:1px solid var(--line);border-radius:18px;padding:14px}
 input{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#070a22;color:var(--ink);font:600 16px var(--tekst);margin-top:6px}
@@ -37,41 +37,41 @@ button:active{transform:scale(.97)} button:disabled{opacity:.45}
 <div class="vrh"><h1 id="naslov">🎛️ Upravljač prezentacije</h1><span id="status">…</span></div>
 
 <section id="prijava" class="kar" hidden>
-  <p class="muted small">Prijavi se kao voditelj (isti račun kao u aplikaciji). Prezentacija na projektoru pratit će ovaj mobitel.</p>
-  <label class="small muted" style="display:block;margin-top:10px">Korisničko ime<input id="u" autocomplete="username" autocapitalize="none"></label>
-  <label class="small muted" style="display:block;margin-top:8px">Lozinka<input id="l" type="password" autocomplete="current-password"></label>
-  <button class="glavni" style="width:100%;margin-top:12px" id="prijaviMe">Prijavi se</button>
-  <p id="pGreska" class="small" style="color:var(--cr);margin-top:8px"></p>
+<p class="muted small">Prijavi se kao voditelj (isti račun kao u aplikaciji). Prezentacija na projektoru pratit će ovaj mobitel.</p>
+<label class="small muted" style="display:block;margin-top:10px">Korisničko ime<input id="u" autocomplete="username" autocapitalize="none"></label>
+<label class="small muted" style="display:block;margin-top:8px">Lozinka<input id="l" type="password" autocomplete="current-password"></label>
+<button class="glavni" style="width:100%;margin-top:12px" id="prijaviMe">Prijavi se</button>
+<p id="pGreska" class="small" style="color:var(--cr);margin-top:8px"></p>
 </section>
 
 <section id="ploca" hidden style="display:flex;flex-direction:column;gap:12px">
-  <div class="kar">
-    <div class="slajd"><span class="br" id="br">1</span><div><div class="small muted">Na projektoru</div><b id="ime">Naslov</b></div></div>
-    <div class="tockice" id="tockice"></div>
-  </div>
-  <div class="dugmad"><button id="natrag" aria-label="Natrag">◀</button><button class="glavni" id="dalje">Dalje ▶</button></div>
-  <div class="kar" id="jezikKar" hidden><div class="small muted" style="margin-bottom:8px">🌐 Jezik na projektoru</div><div class="red" id="jezici"><button data-j="en">EN</button><button data-j="hr">HR</button><button data-j="de">DE</button></div></div>
-  <button class="zlato" id="otkrij" hidden>🏆 Otkrij pobjednike</button>
-  <div class="kar"><div class="small muted" style="margin-bottom:4px">🎤 Govor za ovaj slajd</div><p id="govor"></p></div>
-  <div class="kar">
-    <div class="vrh"><div><div class="small muted">Mini kviz · kod <b id="kod">FINALE</b></div><span id="igraca">0</span> <span class="muted small">igrača</span></div>
-      <button id="nula" style="padding:10px 14px;font-size:14px">↺ Na nulu</button></div>
-    <div id="potvrda" hidden style="margin-top:10px"><p class="small">Novi kviz s novim QR kodom i 0 igrača? Stari rezultati ostaju spremljeni.</p>
-      <div class="red" style="margin-top:8px"><button id="nulaDa" class="glavni">Da, novi kviz</button><button id="nulaNe">Odustani</button></div></div>
-  </div>
-  <div class="red"><button id="pocetak" style="font-size:14px">⏮ Na početak</button><button id="odjava" style="font-size:14px">Odjava</button></div>
-  <p class="small muted">Savjet: prije nastupa stisni <b>⏮ Na početak</b>. Ako mobitel izgubi internet, na računalu rade tipke → i ← (tipka P otkriva pobjednike).</p>
+<div class="kar">
+<div class="slajd"><span class="br" id="br">1</span><div><div class="small muted">Na projektoru</div><b id="ime">Naslov</b></div></div>
+<div class="tockice" id="tockice"></div>
+</div>
+<div class="dugmad"><button id="natrag" aria-label="Natrag">◀</button><button class="glavni" id="dalje">Dalje ▶</button></div>
+<div class="kar" id="jezikKar" hidden><div class="small muted" style="margin-bottom:8px">🌐 Jezik na projektoru</div><div class="red" id="jezici"><button data-j="en">EN</button><button data-j="hr">HR</button><button data-j="de">DE</button></div></div>
+<button class="zlato" id="otkrij" hidden>🏆 Otkrij pobjednike</button>
+<div class="kar"><div class="small muted" style="margin-bottom:4px">🎤 Govor za ovaj slajd</div><p id="govor"></p></div>
+<div class="kar">
+<div class="vrh"><div><div class="small muted">Mini kviz · kod <b id="kod">FINALE</b></div><span id="igraca">0</span> <span class="muted small">igrača</span></div>
+<button id="nula" style="padding:10px 14px;font-size:14px">↺ Na nulu</button></div>
+<div id="potvrda" hidden style="margin-top:10px"><p class="small">Novi kviz s novim QR kodom i 0 igrača? Stari rezultati ostaju spremljeni.</p>
+<div class="red" style="margin-top:8px"><button id="nulaDa" class="glavni">Da, novi kviz</button><button id="nulaNe">Odustani</button></div></div>
+</div>
+<div class="red"><button id="pocetak" style="font-size:14px">⏮ Na početak</button><button id="odjava" style="font-size:14px">Odjava</button></div>
+<p class="small muted">Savjet: prije nastupa stisni <b>⏮ Na početak</b>. Ako mobitel izgubi internet, na računalu rade tipke → i ← (tipka P otkriva pobjednike).</p>
 </section>
 
 <script>
 const POSREDNIK = "https://vodikov-svijet.miahrkovic.workers.dev";
 const VODIK = [
-  ["Naslov", "Mia: Dobar dan! Mi smo Mia, Melanie i Tonka iz Srednje škole Dugo Selo. Ovo je vodik: jedan proton i jedan elektron, najjednostavniji i najstariji element svemira. A napravile smo svijet oko njega."],
-  ["Mini kviz", "Mia: Izvadite mobitele i skenirajte QR kod! Šest pitanja o vodiku, jedna minuta. Igrajte dok mi pričamo, a na kraju otkrivamo pobjednike."],
-  ["62 %", "Melanie: Koliki dio atoma u vašem tijelu je vodik? Deset posto? Dvadeset pet? Šezdeset dva posto! Po broju atoma najviše ste upravo vodik. Vodik je u nama, a mi smo ga učinili vidljivim."],
-  ["Stranica uživo", "Tonka: Ovo je Vodikov svijet uživo. Učenik izračuna koliko vodika ima u sebi, pobjegne iz laboratorija, pretvori grad u zeleni i natječe se s razredom u Ligi škola. Sve radi na mobitelu, besplatno."],
-  ["Pobjednici", "Tonka: A sad ono što čekate: pobjednici mini kviza! (Stisni 🏆 Otkrij pobjednike, pročitaj imena i pozovi ih da podignu ruku.)"],
-  ["Hvala", "Svi: Vodik je u svima nama. Mi smo ga samo učinili vidljivim. Isprobajte Vodikov svijet preko ovog QR koda. Hvala vam!"],
+["Naslov", "Mia: Dobar dan! Mi smo Mia, Melanie i Tonka iz Srednje škole Dugo Selo. Ovo je vodik: jedan proton i jedan elektron, najjednostavniji i najstariji element svemira. A napravile smo svijet oko njega."],
+["Mini kviz", "Mia: Izvadite mobitele i skenirajte QR kod! Šest pitanja o vodiku, jedna minuta. Igrajte dok mi pričamo, a na kraju otkrivamo pobjednike."],
+["62 %", "Melanie: Koliki dio atoma u vašem tijelu je vodik? Deset posto? Dvadeset pet? Šezdeset dva posto! Po broju atoma najviše ste upravo vodik. Vodik je u nama, a mi smo ga učinili vidljivim."],
+["Stranica uživo", "Tonka: Ovo je Vodikov svijet uživo. Učenik izračuna koliko vodika ima u sebi, pobjegne iz laboratorija, pretvori grad u zeleni i natječe se s razredom u Ligi škola. Sve radi na mobitelu, besplatno."],
+["Pobjednici", "Tonka: A sad ono što čekate: pobjednici mini kviza! (Stisni 🏆 Otkrij pobjednike, pročitaj imena i pozovi ih da podignu ruku.)"],
+["Hvala", "Svi: Vodik je u svima nama. Mi smo ga samo učinili vidljivim. Isprobajte Vodikov svijet preko ovog QR koda. Hvala vam!"],
 ];
 const ERASMUS = [
 [
@@ -166,21 +166,21 @@ const ERASMUS = [
 // upravljac.html = Vodikov svijet, upravljac.html?p=erasmus = Erasmus+ prezentacija
 const PREZA = new URLSearchParams(location.search).get("p") === "erasmus" ? "erasmus" : "vodik";
 const SLAJDOVI = PREZA === "erasmus" ? ERASMUS : VODIK;
-const POB = PREZA === "erasmus" ? 21 : 4;   // slajd s pobjednicima
+const POB = SLAJDOVI.findIndex(x => x[0] === "Winners" || x[0] === "Pobjednici"); // slajd s pobjednicima // slajd s pobjednicima
 const $ = id => document.getElementById(id);
 let token = ""; try{ token = localStorage.getItem("vs-upravljac") || ""; }catch(e){}
 let st = { slajd:0, pobjednici:false, kod:"FINALE", t:0, jezik:"" }, salje = false, ceka = null;
 
 function status(t, k){ $("status").textContent = t; $("status").className = k || ""; }
 function crtaj(){
-  document.title = PREZA === "erasmus" ? "Upravljač · Erasmus+" : "Upravljač prezentacije · Vodikov svijet"; $("naslov").textContent = PREZA === "erasmus" ? "🎛️ Erasmus+ upravljač" : "🎛️ Upravljač prezentacije";
-  const [ime, govor] = SLAJDOVI[st.slajd] || SLAJDOVI[0];
-  $("br").textContent = st.slajd + 1; $("ime").textContent = ime; $("govor").textContent = govor; $("kod").textContent = st.kod;
-  $("natrag").disabled = st.slajd === 0; $("dalje").disabled = st.slajd === SLAJDOVI.length - 1;
-  $("dalje").textContent = st.slajd === SLAJDOVI.length - 1 ? "Kraj" : `Dalje ▶ ${SLAJDOVI[st.slajd+1][0]}`;
-  $("otkrij").hidden = st.slajd !== POB; $("otkrij").textContent = st.pobjednici ? "🙈 Sakrij pobjednike" : "🏆 Otkrij pobjednike";
-  document.querySelectorAll("#jezici button").forEach(b => b.classList.toggle("on", b.dataset.j === st.jezik));
-  $("tockice").innerHTML = SLAJDOVI.map((s, k) => `<button class="${k === st.slajd ? "on" : ""}" data-k="${k}" aria-label="${s[0]}">${k+1}</button>`).join("");
+document.title = PREZA === "erasmus" ? "Upravljač · Erasmus+" : "Upravljač prezentacije · Vodikov svijet"; $("naslov").textContent = PREZA === "erasmus" ? "🎛️ Erasmus+ upravljač" : "🎛️ Upravljač prezentacije";
+const [ime, govor] = SLAJDOVI[st.slajd] || SLAJDOVI[0];
+$("br").textContent = st.slajd + 1; $("ime").textContent = ime; $("govor").textContent = govor; $("kod").textContent = st.kod;
+$("natrag").disabled = st.slajd === 0; $("dalje").disabled = st.slajd === SLAJDOVI.length - 1;
+$("dalje").textContent = st.slajd === SLAJDOVI.length - 1 ? "Kraj" : `Dalje ▶ ${SLAJDOVI[st.slajd+1][0]}`;
+$("otkrij").hidden = st.slajd !== POB; $("otkrij").textContent = st.pobjednici ? "🙈 Sakrij pobjednike" : "🏆 Otkrij pobjednike";
+document.querySelectorAll("#jezici button").forEach(b => b.classList.toggle("on", b.dataset.j === st.jezik));
+$("tockice").innerHTML = SLAJDOVI.map((s, k) => `<button class="${k === st.slajd ? "on" : ""}" data-k="${k}" aria-label="${s[0]}">${k+1}</button>`).join("");
 }
 $("jezikKar").hidden = PREZA !== "erasmus";
 document.querySelectorAll("#jezici button").forEach(b => b.addEventListener("click", () => posalji({ jezik: b.dataset.j })));
@@ -188,21 +188,21 @@ $("tockice").addEventListener("click", e => { const b = e.target.closest("button
 
 // naredba ide odmah na ekran mobitela, a na projektor za 1–2 sekunde
 async function posalji(promjena){
-  st = { ...st, ...promjena }; if(promjena.slajd !== undefined && promjena.slajd !== POB) st.pobjednici = st.pobjednici && st.slajd >= POB; crtaj();
-  if(navigator.vibrate) try{ navigator.vibrate(15); }catch(e){}
-  ceka = { slajd: st.slajd, pobjednici: st.pobjednici, kod: st.kod, ...(PREZA === "erasmus" && st.jezik ? { jezik: st.jezik } : {}) }; if(salje) return;
-  salje = true;
-  while(ceka){
-    const n = ceka; ceka = null; status("šaljem…");
-    try{
-      const r = await fetch(`${POSREDNIK}/preza/naredba`, { method:"POST", headers:{ "Content-Type":"application/json", Authorization:`Bearer ${token}` }, body: JSON.stringify(n) });
-      const d = await r.json().catch(() => ({}));
-      if(r.status === 401 || r.status === 403){ status(d.greska || "Prijava nije valjana.", "ne"); if(r.status === 401) odjava(); break; }
-      if(!r.ok) throw new Error(d.greska || "Greška");
-      status("✓ na projektoru", "ok");
-    }catch(e){ status("nije poslano, stisni ponovno", "ne"); }
-  }
-  salje = false;
+st = { ...st, ...promjena }; if(promjena.slajd !== undefined && promjena.slajd !== POB) st.pobjednici = st.pobjednici && st.slajd >= POB; crtaj();
+if(navigator.vibrate) try{ navigator.vibrate(15); }catch(e){}
+ceka = { slajd: st.slajd, pobjednici: st.pobjednici, kod: st.kod, ...(PREZA === "erasmus" && st.jezik ? { jezik: st.jezik } : {}) }; if(salje) return;
+salje = true;
+while(ceka){
+const n = ceka; ceka = null; status("šaljem…");
+try{
+const r = await fetch(`${POSREDNIK}/preza/naredba`, { method:"POST", headers:{ "Content-Type":"application/json", Authorization:`Bearer ${token}` }, body: JSON.stringify(n) });
+const d = await r.json().catch(() => ({}));
+if(r.status === 401 || r.status === 403){ status(d.greska || "Prijava nije valjana.", "ne"); if(r.status === 401) odjava(); break; }
+if(!r.ok) throw new Error(d.greska || "Greška");
+status("✓ na projektoru", "ok");
+}catch(e){ status("nije poslano, stisni ponovno", "ne"); }
+}
+salje = false;
 }
 $("dalje").onclick = () => posalji({ slajd: Math.min(SLAJDOVI.length - 1, st.slajd + 1) });
 $("natrag").onclick = () => posalji({ slajd: Math.max(0, st.slajd - 1) });
@@ -211,20 +211,20 @@ $("pocetak").onclick = () => posalji({ slajd: 0, pobjednici: false });
 $("nula").onclick = () => { $("potvrda").hidden = false; };
 $("nulaNe").onclick = () => { $("potvrda").hidden = true; };
 $("nulaDa").onclick = () => { const z = "ABCDEFGHJKLMNPRSTUVZ23456789"; $("potvrda").hidden = true; $("igraca").textContent = "0";
-  posalji({ kod: [...crypto.getRandomValues(new Uint8Array(6))].map(x => z[x % z.length]).join(""), pobjednici: false }); };
+posalji({ kod: [...crypto.getRandomValues(new Uint8Array(6))].map(x => z[x % z.length]).join(""), pobjednici: false }); };
 
 // prijava voditelja
 async function prijavi(){
-  $("pGreska").textContent = ""; $("prijaviMe").disabled = true;
-  try{
-    const r = await fetch(`${POSREDNIK}/prijava`, { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ korisnik: $("u").value.trim().toLowerCase(), lozinka: $("l").value }) });
-    const d = await r.json().catch(() => ({}));
-    if(!r.ok) throw new Error(d.greska || "Prijava nije uspjela.");
-    if(!d.admin) throw new Error("Taj račun nije voditelj, pa ne može upravljati prezentacijom.");
-    token = d.token; try{ localStorage.setItem("vs-upravljac", token); }catch(e){}
-    pokreni();
-  }catch(e){ $("pGreska").textContent = e.message; }
-  $("prijaviMe").disabled = false;
+$("pGreska").textContent = ""; $("prijaviMe").disabled = true;
+try{
+const r = await fetch(`${POSREDNIK}/prijava`, { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ korisnik: $("u").value.trim().toLowerCase(), lozinka: $("l").value }) });
+const d = await r.json().catch(() => ({}));
+if(!r.ok) throw new Error(d.greska || "Prijava nije uspjela.");
+if(!d.admin) throw new Error("Taj račun nije voditelj, pa ne može upravljati prezentacijom.");
+token = d.token; try{ localStorage.setItem("vs-upravljac", token); }catch(e){}
+pokreni();
+}catch(e){ $("pGreska").textContent = e.message; }
+$("prijaviMe").disabled = false;
 }
 $("prijaviMe").onclick = prijavi; $("l").addEventListener("keydown", e => { if(e.key === "Enter") prijavi(); });
 function odjava(){ token = ""; try{ localStorage.removeItem("vs-upravljac"); }catch(e){} $("ploca").hidden = true; $("prijava").hidden = false; }
@@ -232,8 +232,8 @@ $("odjava").onclick = () => { odjava(); status(""); };
 
 // trenutno stanje i broj igrača
 async function ucitajStanje(){
-  try{ const r = await fetch(`${POSREDNIK}/preza/stanje`, { cache:"no-store" }); if(r.ok){ const d = await r.json(); if(!salje && !ceka){ st = { ...st, ...d }; crtaj(); } status("povezano", "ok"); } }
-  catch(e){ status("nema interneta", "ne"); }
+try{ const r = await fetch(`${POSREDNIK}/preza/stanje`, { cache:"no-store" }); if(r.ok){ const d = await r.json(); if(!salje && !ceka){ st = { ...st, ...d }; crtaj(); } status("povezano", "ok"); } }
+catch(e){ status("nema interneta", "ne"); }
 }
 async function igraca(){ try{ const r = await fetch(`${POSREDNIK}/kviz/rezultati?s=${st.kod}`, { cache:"no-store" }); if(r.ok) $("igraca").textContent = (await r.json()).broj; }catch(e){} }
 function pokreni(){ $("prijava").hidden = true; $("ploca").hidden = false; crtaj(); ucitajStanje(); igraca(); }
