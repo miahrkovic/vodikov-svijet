@@ -3,6 +3,11 @@
   "dnevnik": [
     {
       "i": "🏙️",
+      "t": "Split je postao zeleni grad na vodik 2029.",
+      "d": "2026-10-22T15:37:50.983Z"
+    },
+    {
+      "i": "🏙️",
       "t": "Rijeka je postao zeleni grad na vodik 2030.",
       "d": "2026-10-22T14:56:40.398Z"
     },
@@ -391,8 +396,8 @@
   },
   "grad": {
     "pobjeda": true,
-    "godina": 2030,
-    "grad": "Rijeka"
+    "godina": 2029,
+    "grad": "Split"
   },
   "ruta": {
     "najbolja": 100,
@@ -404,7 +409,7 @@
       "Slavonski Brod"
     ]
   },
-  "xp": 1999,
+  "xp": 2035,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -454,7 +459,7 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792683464609,
+  "_spremljeno": 1792683470983,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-10-22",
