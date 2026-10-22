@@ -179,8 +179,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-22T14:56:13.575Z",
-    "xp": 1825,
+    "zadnje": "2026-10-22T14:56:18.653Z",
+    "xp": 1861,
     "koraci": {
       "ti": true,
       "lab": true,
@@ -191,7 +191,7 @@
       "najbolje": 3597,
       "puta": 1
     },
-    "grad": "Zadar",
+    "grad": "Slavonski Brod",
     "akad": {
       "hrvatska": 3,
       "element": 3,
@@ -350,7 +350,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 50
+    "dnevnik": 51
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
