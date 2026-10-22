@@ -179,8 +179,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-22T15:37:49.187Z",
-    "xp": 1999,
+    "zadnje": "2026-10-22T15:37:55.711Z",
+    "xp": 2035,
     "koraci": {
       "ti": true,
       "lab": true,
@@ -191,7 +191,7 @@
       "najbolje": 3597,
       "puta": 1
     },
-    "grad": "Rijeka",
+    "grad": "Split",
     "akad": {
       "hrvatska": 3,
       "element": 3,
@@ -350,7 +350,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 52
+    "dnevnik": 53
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
