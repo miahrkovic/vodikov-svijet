@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Same Age, Different School · Erasmus+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Erasmus+ presentation for the projector. Controlled from a phone (upravljac.html?p=erasmus) or with the → ← keys. */
+:root{--papir:#f7f4ec;--papir2:#efe9da;--ink:#141733;--muted:#5d6284;--line:#ddd6c3;--eu:#1f43c4;--eu2:#13308f;--zuta:#ffc800;--crv:#e1251b;--zel:#13a06b;
+  --disp:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--tekst:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--papir);color:var(--ink);overflow:hidden;font-family:var(--tekst)}
+#pozadina{position:fixed;inset:0;background:radial-gradient(90% 70% at 85% 0%,#e6ecff 0,transparent 60%),radial-gradient(70% 60% at 0% 100%,#fff3c9 0,transparent 55%),var(--papir)}
+#okvir{position:fixed;inset:0;overflow:hidden}
+#pozornica{width:1600px;height:900px;position:absolute;left:50%;top:50%;transform-origin:center}
+.slajd{position:absolute;inset:0;padding:78px 110px;display:flex;flex-direction:column;justify-content:center;opacity:0;pointer-events:none;transition:opacity .55s}
+.slajd.on{opacity:1;pointer-events:auto}
+.a{opacity:0;transform:translateY(36px);filter:blur(6px)}
+.on .a{animation:ulaz .9s cubic-bezier(.2,1,.3,1) forwards;animation-delay:calc(var(--d,0) * 1s + .2s)}
+@keyframes ulaz{to{opacity:1;transform:none;filter:none}}
+.ozn{display:inline-flex;align-items:center;gap:12px;font:800 20px var(--tekst);letter-spacing:.26em;text-transform:uppercase;color:var(--eu)}
+.ozn::before{content:"";width:34px;height:4px;border-radius:2px;background:var(--zuta)}
+h1{font:800 150px/.9 var(--disp);letter-spacing:-.035em}
+h2{font:800 78px/1 var(--disp);letter-spacing:-.025em;text-wrap:balance;margin-top:18px}
+em{font-style:normal;color:var(--eu)}
+.crta{background:linear-gradient(transparent 62%,#ffc80088 62%)}
+.pod{font:600 28px/1.4 var(--tekst);color:var(--muted);max-width:1100px;margin-top:18px}
+/* putujući krug zvjezdica (kao Morph) */
+#zvijezde{position:absolute;left:0;top:0;width:360px;height:360px;transition:transform 1.4s cubic-bezier(.65,0,.25,1),opacity .8s;pointer-events:none;z-index:3}
+#zvijezde svg{width:100%;height:100%;animation:krug 40s linear infinite}
+@keyframes krug{to{transform:rotate(360deg)}}
+/* naslov */
+.tim{margin-top:40px;font:700 25px/1.55 var(--tekst);color:var(--muted)}
+.tim b{color:var(--ink)}
+.znak{display:inline-flex;gap:10px;align-items:center;margin-bottom:26px;padding:10px 18px;border-radius:999px;background:var(--eu);color:#fff;font:800 20px var(--tekst)}
+.znak i{font-style:normal;color:var(--zuta)}
+/* kartice i mreže */
+.mreza{display:grid;gap:22px}
+.kar{background:#fff;border:1.5px solid var(--line);border-radius:26px;padding:26px 28px;box-shadow:0 10px 30px #1417330d}
+.kar b{display:block;font:800 30px/1.1 var(--disp)}
+.kar p{font:600 21px/1.4 var(--tekst);color:var(--muted);margin-top:8px}
+.kar .ik{font-size:44px;line-height:1;margin-bottom:12px}
+.broj{font:800 92px/1 var(--disp);color:var(--eu);letter-spacing:-.03em}
+.broj small{font-size:.42em;color:var(--muted)}
+/* kviz */
+.duo{display:grid;grid-template-columns:1fr 450px;gap:80px;align-items:center}
+.qr{background:#fff;border-radius:32px;padding:24px;border:3px solid var(--ink);box-shadow:14px 14px 0 var(--zuta)}
+.qr img,.qr canvas{display:block;width:100%!important;height:auto!important}
+.korak{display:flex;gap:16px;margin-top:20px;font:700 30px var(--tekst)}
+.korak span{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--zuta);font:800 24px var(--disp)}
+.igrac{display:inline-flex;align-items:baseline;gap:14px;margin-top:36px;padding:16px 30px;border-radius:999px;background:var(--ink);color:#fff;font:800 28px var(--tekst)}
+.igrac b{font:800 58px var(--disp);color:var(--zuta);min-width:1.2ch;display:inline-block}
+.igrac b.skok{animation:skok .5s} @keyframes skok{40%{transform:scale(1.35)}}
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.plan div{padding:22px;border-radius:22px;background:#fff;border:1.5px solid var(--line);font:800 25px/1.2 var(--disp)}
+.plan div span{display:block;font:800 18px var(--tekst);color:var(--eu);margin-bottom:8px}
+.plan div.vi{background:var(--eu);color:#fff;border-color:var(--eu)} .plan div.vi span{color:var(--zuta)}
+/* sustav */
+.sustav{display:grid;grid-template-columns:1fr 60px 1.25fr 60px 1.1fr 60px 1fr;align-items:center;margin-top:44px}
+.st{background:#fff;border:2px solid var(--line);border-radius:24px;padding:22px 20px;min-height:250px;display:flex;flex-direction:column;gap:8px}
+.st .god{font:800 18px var(--tekst);color:var(--eu);text-transform:uppercase;letter-spacing:.12em}
+.st b{font:800 30px/1.05 var(--disp)}
+.st p{font:600 19px/1.35 var(--tekst);color:var(--muted)}
+.st .tag{align-self:flex-start;margin-top:auto;padding:5px 12px;border-radius:999px;font:800 15px var(--tekst);background:var(--papir2)}
+.st .tag.ob{background:var(--crv);color:#fff}
+.st.srednja{gap:10px} .st.srednja div{padding:10px 14px;border-radius:14px;background:var(--papir);font:700 20px var(--tekst)} .st.srednja div small{color:var(--muted);font-weight:600}
+.st.mat{background:var(--eu);color:#fff;border-color:var(--eu)} .st.mat .god{color:var(--zuta)} .st.mat p{color:#dfe5ff}
+.str{font:800 44px var(--disp);color:var(--zuta);text-align:center}
+/* dan */
+.os{position:relative;height:300px;margin-top:40px}
+.sat{position:absolute;top:0;bottom:40px;width:1px;background:var(--line)}
+.sat span{position:absolute;bottom:-38px;left:-24px;width:48px;text-align:center;font:700 18px var(--tekst);color:var(--muted)}
+.smjena{position:absolute;height:92px;border-radius:20px;display:flex;align-items:center;gap:14px;padding:0 24px;font:800 26px var(--disp);color:#fff;transform-origin:left;transform:scaleX(0)}
+.on .smjena{animation:raste 1.1s cubic-bezier(.2,1,.3,1) forwards}
+@keyframes raste{to{transform:scaleX(1)}}
+.smjena small{font:700 20px var(--tekst);opacity:.85}
+.tjedan{display:flex;gap:16px;margin-top:20px}
+.tjedan div{flex:1;padding:18px 22px;border-radius:20px;background:#fff;border:1.5px solid var(--line);font:700 22px/1.35 var(--tekst)}
+.tjedan b{font:800 26px var(--disp);color:var(--eu)}
+/* godina */
+.mjeseci{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-top:46px}
+.mj{height:200px;border-radius:18px;background:#fff;border:1.5px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:14px 10px;font:800 22px var(--disp);text-align:center;position:relative;overflow:hidden}
+.mj.sk{background:var(--eu);color:#fff;border-color:var(--eu)}
+.mj.lj{background:var(--zuta);border-color:var(--zuta)}
+.mj .ozb{position:absolute;left:8px;right:8px;top:12px;padding:5px 4px;border-radius:10px;background:#fff;color:var(--crv);font:800 14px/1.15 var(--tekst)}
+.leg{display:flex;gap:28px;margin-top:20px;font:700 21px var(--tekst);color:var(--muted)}
+.leg i{display:inline-block;width:18px;height:18px;border-radius:5px;margin-right:8px;vertical-align:-2px}
+/* ocjene */
+.ocjene{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px}
+.oc{border-radius:24px;padding:22px 18px;text-align:center;background:#fff;border:2px solid var(--line)}
+.oc b{display:block;font:800 110px/1 var(--disp)}
+.oc span{display:block;font:800 22px var(--disp);margin-top:6px}
+.oc small{display:block;font:700 18px var(--tekst);color:var(--muted);margin-top:4px}
+.oc.o5{background:var(--zel);border-color:var(--zel);color:#fff} .oc.o5 small{color:#d8fff0}
+.oc.o1{background:var(--crv);border-color:var(--crv);color:#fff} .oc.o1 small{color:#ffe1df}
+/* tada i sada */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:36px}
+.vs .kar{padding:30px}
+.vs ul{list-style:none;padding:0;margin-top:14px;display:grid;gap:12px}
+.vs li{font:700 24px/1.35 var(--tekst);padding-left:40px;position:relative}
+.vs li::before{content:"";position:absolute;left:0;top:7px;width:24px;height:24px;border-radius:7px;background:var(--papir2)}
+.vs .nov li::before{background:var(--zuta)}
+/* matura */
+.pilule{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap}
+.pilula{padding:20px 30px;border-radius:999px;background:var(--ink);color:#fff;font:800 32px var(--disp)}
+.pilula small{font:700 18px var(--tekst);color:var(--zuta);margin-left:10px}
+.pilula.izb{background:#fff;color:var(--ink);border:2px dashed var(--ink)}
+.putevi{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+/* usporedba */
+table{width:100%;border-collapse:separate;border-spacing:0 7px;margin-top:14px;font:700 22px var(--tekst)}
+th{text-align:left;font:800 22px var(--tekst);color:var(--muted);padding:0 22px}
+td{background:#fff;padding:10px 20px;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+td:first-child{border-left:1.5px solid var(--line);border-radius:16px 0 0 16px;color:var(--muted)}
+td:last-child{border-right:1.5px solid var(--line);border-radius:0 16px 16px 0}
+td.hr{font-weight:800}
+td.vi,th.vi{color:var(--eu);outline:none;min-width:360px}
+td.vi:empty::before{content:"?";color:#b9b4a3}
+th.vi[contenteditable]:focus,td.vi:focus{background:#fff8da}
+/* rasprava */
+.pitanja{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}
+.pitanja .kar b{font-size:31px}
+.pitanja .kar .br{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--eu);color:#fff;font:800 24px var(--disp);margin-bottom:12px}
+.sat5{position:absolute;right:110px;top:84px;padding:14px 26px;border-radius:999px;background:var(--ink);color:#fff;font:800 46px var(--disp);font-variant-numeric:tabular-nums}
+.sat5.kraj{background:var(--crv)}
+/* projekt */
+.vrijeme{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;position:relative}
+.vrijeme::before{content:"";position:absolute;left:30px;right:30px;top:30px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--eu),var(--zuta))}
+.mjesec{position:relative;padding-top:80px}
+.mjesec .tocka{position:absolute;top:8px;left:0;width:50px;height:50px;border-radius:50%;background:#fff;border:6px solid var(--eu);display:grid;place-items:center;font:800 20px var(--disp)}
+.mjesec b{display:block;font:800 30px/1.1 var(--disp)}
+.mjesec p{font:600 21px/1.4 var(--tekst);color:var(--muted);margin-top:8px}
+.mjesec .ik{font-size:40px}
+/* pobjednici */
+.postolje{display:flex;align-items:flex-end;justify-content:center;gap:30px;height:500px;margin-top:20px}
+.stup{width:320px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transform:translateY(110px)}
+.stup.on{animation:gore 1s cubic-bezier(.2,1.4,.4,1) forwards} @keyframes gore{to{opacity:1;transform:none}}
+.med{font-size:86px;line-height:1}
+.ime{font:800 44px var(--disp);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bod{font:800 26px var(--tekst);color:var(--eu)}
+.blok{width:100%;border-radius:24px 24px 0 0;display:flex;justify-content:center;padding-top:16px;font:800 76px var(--disp);color:var(--ink)}
+.p1 .blok{height:270px;background:var(--zuta)} .p2 .blok{height:190px;background:#dfe3f2} .p3 .blok{height:130px;background:#f2c7a5}
+#bubanj{display:flex;flex-direction:column;align-items:center;gap:26px;margin-top:40px}
+#bubanj .ikona{font-size:190px;animation:bub .35s ease-in-out infinite alternate} @keyframes bub{to{transform:rotate(-8deg) scale(1.06)}}
+.ostali{display:flex;justify-content:center;gap:30px;margin-top:20px;font:700 25px var(--tekst);color:var(--muted)} .ostali b{color:var(--eu)}
+.iskra{position:fixed;width:14px;height:14px;border-radius:3px;pointer-events:none;animation:isk 1.6s cubic-bezier(.1,.8,.3,1) forwards;z-index:9}
+@keyframes isk{to{transform:translate(var(--x),var(--y)) rotate(720deg) scale(.2);opacity:0}}
+/* hvala */
+.rijeci{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.rijec{padding:22px;border-radius:22px;background:#fff;border:1.5px solid var(--line)}
+.rijec b{display:block;font:800 40px var(--disp);color:var(--crv)}
+.rijec span{font:700 21px var(--tekst);color:var(--muted)}
+.rijec small{display:block;font:700 17px var(--tekst);color:var(--eu);margin-top:4px}
+/* sitnice */
+#traka{position:fixed;left:0;bottom:0;height:6px;background:linear-gradient(90deg,var(--eu),var(--zuta));transition:width .8s;z-index:5}
+#veza{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:14px;font:700 12px var(--tekst);color:#a39e8c;z-index:5}
+#veza i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#c9c3b0;margin-right:6px} #veza.ok i{background:var(--zel)}
+#start{position:fixed;inset:auto 0 26px;margin:auto;width:max-content;max-width:calc(100% - 32px);text-align:center;padding:12px 22px;border-radius:999px;background:var(--ink);color:#fff;font:700 16px var(--tekst);z-index:6;transition:opacity .6s}
+#start.skri{opacity:0;pointer-events:none}
+#okreni{position:fixed;left:0;right:0;top:calc(16px + env(safe-area-inset-top,0px));text-align:center;font:700 14px var(--tekst);color:var(--muted);z-index:6}
+@media (orientation:landscape){#okreni{display:none}}
+#jezici{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));display:flex;gap:4px;padding:4px;border-radius:999px;background:#fff;border:1.5px solid var(--line);box-shadow:0 6px 20px #14173318;z-index:7;transition:opacity .5s}
+#jezici button{border:0;background:none;padding:8px 14px;border-radius:999px;font:800 15px var(--tekst);color:var(--muted);cursor:pointer}
+#jezici button[aria-pressed="true"]{background:var(--eu);color:#fff}
+#jezici.skri{opacity:0;pointer-events:none}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.a,.stup{opacity:1;transform:none;filter:none}.smjena{transform:none}}
+</style></head>
+<body>
+<div id="pozadina" aria-hidden="true"></div>
+<div id="okvir"><div id="pozornica">
+  <div id="zvijezde" aria-hidden="true"><svg viewBox="-100 -100 200 200"><g id="zv"></g></svg></div>
+
+  <!-- 1 -->
+  <section class="slajd" data-govor="Mia: Good morning, everyone! We are Mia, Melanie and Tonka from Srednja škola Dugo Selo in Croatia. Today we want to ask a simple question: Croatian and German students are the same age, but are our schools the same? Let's find out together.">
+    <div class="a"><span class="znak">Erasmus<i>+</i> · Croatia 🤝 Germany</span></div>
+    <h1 class="a" style="--d:.1">Same age.<br><em>Different school?</em></h1>
+    <p class="pod a" style="--d:.35">Comparing our education systems: school life, subjects, teaching and our future careers.</p>
+    <p class="tim a" style="--d:.55"><b>Mia Hrković · Melanie Grgić · Tonka Vlahović</b><br>Srednja škola Dugo Selo, Croatia · mentor: Miroslav Begić</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slajd" data-govor="Mia: First, take out your phones and scan the QR code. It's a one-minute quiz about school life in Croatia. Guess as fast as you can. The winners will be announced at the end!">
+    <div class="duo">
+      <div>
+        <div class="ozn a">Phones out 📱</div>
+        <h2 class="a" style="--d:.1">Guess our<br><span class="crta">school life</span></h2>
+        <div class="korak a" style="--d:.3"><span>1</span>scan the code</div>
+        <div class="korak a" style="--d:.4"><span>2</span>type a nickname</div>
+        <div class="korak a" style="--d:.5"><span>3</span>6 questions, 60 seconds</div>
+        <div class="igrac a" style="--d:.6">Players: <b class="igraca">0</b></div>
+      </div>
+      <div class="a" style="--d:.2"><div class="qr" id="qrKviz"></div></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slajd" data-govor="Melanie: Here is our plan. First, we'll show you our school and the Croatian school system. Then a normal school day, our subjects and grades, how teachers teach, and what comes after school. After that it's your turn: we'll compare, discuss in teams and plan a project we can continue online.">
+    <div class="ozn a">Today</div>
+    <h2 class="a" style="--d:.1">From our school <em>to our project</em></h2>
+    <div class="plan">
+      <div class="a" style="--d:.25"><span>01</span>Our school</div>
+      <div class="a" style="--d:.32"><span>02</span>The system</div>
+      <div class="a" style="--d:.39"><span>03</span>A school day</div>
+      <div class="a" style="--d:.46"><span>04</span>Subjects &amp; grades</div>
+      <div class="a" style="--d:.53"><span>05</span>How we learn</div>
+      <div class="a" style="--d:.6"><span>06</span>After school</div>
+      <div class="a vi" style="--d:.67"><span>07</span>Your turn: compare</div>
+      <div class="a vi" style="--d:.74"><span>08</span>Our joint project</div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slajd" data-govor="Tonka: Our school is in Dugo Selo, a small town about 20 kilometres east of Zagreb. It was founded in 2002, and today it has around 680 students in 33 classes, with 75 teachers. We are a mixed school: we have a general gymnasium, four-year technical programmes like economist or computer technician, and three-year programmes for jobs like hairdresser, car mechanic or electrician.">
+    <div class="ozn a">01 · Our school</div>
+    <h2 class="a" style="--d:.1">Srednja škola <em>Dugo Selo</em></h2>
+    <div class="mreza" style="grid-template-columns:repeat(4,1fr);margin-top:34px">
+      <div class="kar a" style="--d:.25"><div class="broj" data-broj="2002">2002</div><p>founded, 20 km east of Zagreb</p></div>
+      <div class="kar a" style="--d:.32"><div class="broj">~<span data-broj="680">680</span></div><p>students</p></div>
+      <div class="kar a" style="--d:.39"><div class="broj" data-broj="33">33</div><p>classes</p></div>
+      <div class="kar a" style="--d:.46"><div class="broj" data-broj="75">75</div><p>teachers</p></div>
+    </div>
+    <div class="mreza" style="grid-template-columns:1fr 1fr 1fr;margin-top:22px">
+      <div class="kar a" style="--d:.55"><div class="ik">🎓</div><b>General gymnasium</b><p>4 years · prepares for university</p></div>
+      <div class="kar a" style="--d:.62"><div class="ik">💻</div><b>Technical programmes</b><p>4 years · economist, computer technician, mechanical engineering technician</p></div>
+      <div class="kar a" style="--d:.69"><div class="ik">🔧</div><b>Trades</b><p>3 years · hairdresser, car mechanic, electrician, heating installer</p></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slajd" data-govor="Melanie: This is the Croatian education system. Kindergarten is optional, but one year of preschool before primary school is compulsory and free. Primary school lasts eight years, usually from age six or seven to fourteen or fifteen, and it is compulsory. Secondary school is not compulsory, but almost everyone goes. You can choose a gymnasium, a vocational school or an art school. At the end, students take the State Matura, which opens the door to university.">
+    <div class="ozn a">02 · The system</div>
+    <h2 class="a" style="--d:.1">How school works <em>in Croatia</em></h2>
+    <div class="sustav">
+      <div class="st a" style="--d:.25"><span class="god">age 1 – 6</span><b>Kindergarten</b><p>Optional. The last year before school is a free preschool programme.</p><span class="tag ob">1 year compulsory</span></div>
+      <div class="str a" style="--d:.33">→</div>
+      <div class="st a" style="--d:.4"><span class="god">age 6/7 – 14/15</span><b>Primary school</b><p>8 grades in one school: one class teacher in grades 1–4, subject teachers in grades 5–8.</p><span class="tag ob">compulsory</span></div>
+      <div class="str a" style="--d:.48">→</div>
+      <div class="st srednja a" style="--d:.55"><span class="god">age 15 – 18/19</span><b>Secondary school</b><div>Gymnasium <small>· 4 years</small></div><div>Vocational <small>· 3 or 4 years</small></div><div>Art school <small>· 4 years</small></div></div>
+      <div class="str a" style="--d:.63">→</div>
+      <div class="st mat a" style="--d:.7"><span class="god">after 4 years</span><b>State Matura</b><p>National final exam. The results decide university entry.</p><span class="tag" style="background:var(--zuta)">→ university</span></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slajd" data-govor="Mia: Now, a normal school day. Many Croatian schools, including ours, work in two shifts. One week we have classes in the morning, from 7:45 to 13:45, and the next week in the afternoon, from 13:50 until almost 8 pm! A lesson lasts 45 minutes, short breaks are five minutes, and after the third lesson we have a big break of twenty minutes. The government plans to move primary schools to one shift, but that will take a few more years.">
+    <div class="ozn a">03 · A school day</div>
+    <h2 class="a" style="--d:.1">Morning one week, <em>afternoon the next</em></h2>
+    <div class="os a" style="--d:.2" id="os"></div>
+    <div class="tjedan">
+      <div class="a" style="--d:.9"><b>45 min</b><br>one lesson</div>
+      <div class="a" style="--d:1"><b>5 min</b><br>short break</div>
+      <div class="a" style="--d:1.1"><b>20 min</b><br>big break after lesson 3</div>
+      <div class="a" style="--d:1.2"><b>2027/28</b><br>planned start of one-shift primary schools</div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slajd" data-govor="Tonka: Our school year starts in early September and ends in mid-June. This year it was from the 8th of September to the 12th of June. We have a winter break around Christmas and New Year, a short spring break around Easter, and a long summer holiday of almost three months.">
+    <div class="ozn a">03 · The school year</div>
+    <h2 class="a" style="--d:.1">September to June, <em>then summer!</em></h2>
+    <div class="mjeseci" id="mjeseci"></div>
+    <div class="leg a" style="--d:1"><span><i style="background:var(--eu)"></i>lessons</span><span><i style="background:var(--zuta)"></i>summer holiday</span><span><i style="background:#fff;border:2px solid var(--crv)"></i>breaks</span><span>2025/26: 8 Sept – 12 June</span></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slajd" data-govor="Melanie: In Croatia we study a lot of subjects at the same time. In a gymnasium it can be around fifteen. Our grades go from one to five, and five is the best: excellent. One means fail. Teachers often test us orally, in front of the class, and all grades go into e-Dnevnik, a digital gradebook where our parents can see them immediately.">
+    <div class="ozn a">04 · Subjects &amp; grades</div>
+    <h2 class="a" style="--d:.1">Five is <em>the best</em></h2>
+    <div class="ocjene">
+      <div class="oc o5 a" style="--d:.25"><b>5</b><span>odličan</span><small>excellent</small></div>
+      <div class="oc a" style="--d:.32"><b>4</b><span>vrlo dobar</span><small>very good</small></div>
+      <div class="oc a" style="--d:.39"><b>3</b><span>dobar</span><small>good</small></div>
+      <div class="oc a" style="--d:.46"><b>2</b><span>dovoljan</span><small>sufficient</small></div>
+      <div class="oc o1 a" style="--d:.53"><b>1</b><span>nedovoljan</span><small>fail</small></div>
+    </div>
+    <div class="mreza" style="grid-template-columns:repeat(3,1fr);margin-top:22px">
+      <div class="kar a" style="--d:.65"><div class="ik">📚</div><b>Many subjects at once</b><p>Around 15 in a gymnasium, from Croatian and Maths to Latin and Philosophy</p></div>
+      <div class="kar a" style="--d:.72"><div class="ik">🗣️</div><b>Oral exams</b><p>The teacher calls you to answer questions in front of the class</p></div>
+      <div class="kar a" style="--d:.79"><div class="ik">📱</div><b>e-Dnevnik</b><p>A digital gradebook: parents see every grade online</p></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slajd" data-govor="Mia: How do teachers teach? Traditionally, the teacher explains and we take notes, and then we have written and oral tests. Since the School for Life reform in 2019, there are more projects, group work and digital tools, and the focus is on what we can do, not only on what we remember. In vocational programmes, students also learn in workshops and in companies, and our school is accredited for Erasmus in vocational education.">
+    <div class="ozn a">05 · How we learn</div>
+    <h2 class="a" style="--d:.1">From notebooks <em>to projects</em></h2>
+    <div class="vs">
+      <div class="kar a" style="--d:.25"><b>📖 Traditionally</b><ul><li>The teacher explains, we take notes</li><li>Learning facts for tests</li><li>Written tests and oral exams</li></ul></div>
+      <div class="kar nov a" style="--d:.4"><b>🚀 School for Life · 2019</b><ul><li>Projects and group work</li><li>Learning outcomes: what you can do</li><li>Digital tools in class</li><li>Workshops and work placements in vocational programmes</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slajd" data-govor="Tonka: After four years, the State Matura is the big exam. Everyone takes Croatian, Maths and English. Maths and English can be taken at a higher or a basic level, and you can add up to five elective subjects. Universities accept students based on matura points and school grades. Students from three-year programmes usually start working, and many later take a master craftsman exam.">
+    <div class="ozn a">06 · After school</div>
+    <h2 class="a" style="--d:.1">The State Matura <em>and what comes next</em></h2>
+    <div class="pilule">
+      <div class="pilula a" style="--d:.25">Croatian</div>
+      <div class="pilula a" style="--d:.32">Maths<small>level A or B</small></div>
+      <div class="pilula a" style="--d:.39">English<small>level A or B</small></div>
+      <div class="pilula izb a" style="--d:.46">+ up to 5 electives</div>
+    </div>
+    <div class="putevi">
+      <div class="kar a" style="--d:.6"><div class="ik">🎓</div><b>University</b><p>Places are given by points: matura results + school grades</p></div>
+      <div class="kar a" style="--d:.68"><div class="ik">🏢</div><b>4-year technical</b><p>Final project exam, then a job or, with the matura, university</p></div>
+      <div class="kar a" style="--d:.76"><div class="ik">🛠️</div><b>3-year trades</b><p>Straight into work, later a master craftsman exam</p></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slajd" data-govor="Melanie: A few fun facts. Since 2023, every primary school pupil in Croatia gets a free school meal. Mobile phones are not allowed during lessons in primary schools, and there are plans to ban them during breaks, too. And in Croatia, five is the best grade, but in Germany a five means you failed!">
+    <div class="ozn a">Did you know?</div>
+    <h2 class="a" style="--d:.1">Small things, <em>big differences</em></h2>
+    <div class="mreza" style="grid-template-columns:repeat(3,1fr);margin-top:34px">
+      <div class="kar a" style="--d:.25"><div class="ik">🍽️</div><b>Free lunch</b><p>Since 2023, every primary school pupil gets a free school meal.</p></div>
+      <div class="kar a" style="--d:.35"><div class="ik">📵</div><b>No phones in lessons</b><p>In primary schools phones stay in the bag, and a ban during breaks is planned.</p></div>
+      <div class="kar a" style="--d:.45"><div class="ik">🔄</div><b>5 or 1?</b><p>In Croatia 5 is the best grade. In Germany 1 is the best, and a 5 means you failed!</p></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slajd" data-govor="Mia: Now let's compare Croatia and Germany. On the left are our facts, and on the right is what we found out about German schools. German friends, please correct us, because every German state is a little different! The biggest difference: in Germany, children choose their secondary school after only four years, and in Croatia we all stay in the same primary school for eight years. (Click a cell on the computer to correct it.)">
+    <div class="ozn a">07 · Your turn</div>
+    <h2 class="a" style="--d:.1">Croatia vs <em>Germany</em></h2>
+    <table class="a" style="--d:.25">
+      <thead><tr><th></th><th>🇭🇷 Croatia</th><th class="vi">🇩🇪 Germany <small style="font-weight:700;color:var(--muted)">· click to correct ✏️</small></th></tr></thead>
+      <tbody id="usporedba"></tbody>
+    </table>
+  </section>
+
+  <!-- 13 -->
+  <section class="slajd" data-govor="Tonka: Now let's work in mixed teams. Each team gets one question. You have five minutes to talk, and then one person from each team shares the most interesting answer.">
+    <div class="sat5 a" id="sat5" style="--d:.2">5:00</div>
+    <div class="ozn a">07 · Team talk</div>
+    <h2 class="a" style="--d:.1">Mixed teams, <em>five minutes</em></h2>
+    <div class="pitanja">
+      <div class="kar a" style="--d:.3"><span class="br">1</span><b>What is the best thing about your school, and what would you change?</b></div>
+      <div class="kar a" style="--d:.4"><span class="br">2</span><b>Which subject would you add to your timetable? Which one would you remove?</b></div>
+      <div class="kar a" style="--d:.5"><span class="br">3</span><b>How do your teachers check what you know: tests, oral exams or projects?</b></div>
+      <div class="kar a" style="--d:.6"><span class="br">4</span><b>What job do you see yourself doing in 10 years? Does school prepare you for it?</b></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slajd" data-govor="Melanie: Our idea for a joint project is called Same Age, Different School. After we go home, we continue online on eTwinning. Every month there is one small challenge: first a short video of a day in our school, then a mini lesson we teach each other online, then interviews about jobs in our towns. In the end, we create a shared digital magazine about our schools.">
+    <div class="ozn a">08 · Our joint project</div>
+    <h2 class="a" style="--d:.1">“Same Age, Different School” <em>continues online</em></h2>
+    <div class="vrijeme">
+      <div class="mjesec a" style="--d:.3"><span class="tocka">1</span><div class="ik">🎬</div><b>A day in my school</b><p>Each team films a 2-minute video of a normal school day.</p></div>
+      <div class="mjesec a" style="--d:.45"><span class="tocka">2</span><div class="ik">🔁</div><b>Swap a lesson</b><p>We teach each other a 15-minute mini lesson in a video call.</p></div>
+      <div class="mjesec a" style="--d:.6"><span class="tocka">3</span><div class="ik">🎤</div><b>Future jobs</b><p>Interviews with people who work in our towns.</p></div>
+      <div class="mjesec a" style="--d:.75"><span class="tocka">4</span><div class="ik">📰</div><b>Our magazine</b><p>A shared digital magazine with everything we made.</p></div>
+    </div>
+    <p class="pod a" style="--d:.95">On eTwinning, the free platform for European schools, with one online meeting every month.</p>
+  </section>
+
+  <!-- 15 -->
+  <section class="slajd" data-govor="Tonka: And now, the moment you were waiting for: the winners of our quiz! (Press Show winners, read the names and ask the winners to raise their hands.)">
+    <div style="text-align:center">
+      <div class="ozn a">Quiz</div>
+      <h2 class="a" style="--d:.1">And the winners <em>are…</em></h2>
+    </div>
+    <div id="bubanj"><div class="ikona">🥁</div><div class="igrac" style="margin:0">Players: <b class="igraca">0</b></div></div>
+    <div class="postolje" id="postolje" hidden></div>
+    <div class="ostali" id="ostali"></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slajd" data-govor="All: Thank you for listening! Hvala! Danke! We hope you learned something new about Croatian schools, and maybe a few Croatian words. Do you have any questions?">
+    <div class="ozn a">Thank you</div>
+    <h1 class="a" style="--d:.1;font-size:170px">Hvala! <em>Questions?</em></h1>
+    <div class="rijeci">
+      <div class="rijec a" style="--d:.35"><b>Bok!</b><span>Hi! / Bye! · Hallo! / Tschüss!</span><small>[bok]</small></div>
+      <div class="rijec a" style="--d:.45"><b>Škola</b><span>school · Schule</span><small>[SHKO-la]</small></div>
+      <div class="rijec a" style="--d:.55"><b>Odmor</b><span>break · Pause</span><small>[OD-mor]</small></div>
+      <div class="rijec a" style="--d:.65"><b>Hvala</b><span>thank you · Danke</span><small>[HVA-la]</small></div>
+    </div>
+    <p class="tim a" style="--d:.8"><b>Mia Hrković · Melanie Grgić · Tonka Vlahović</b> · Srednja škola Dugo Selo</p>
+  </section>
+</div></div>
+<div id="jezici" role="group" aria-label="Language"><button data-j="en" aria-pressed="true">EN</button><button data-j="hr" aria-pressed="false">HR</button><button data-j="de" aria-pressed="false">DE</button></div>
+<div id="okreni">📱 Turn your phone sideways for a bigger view</div>
+<div id="traka"></div>
+<div id="veza" role="status"><i></i>connecting…</div>
+<div id="start">Click anywhere for full screen · controlled from a phone</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const POSREDNIK = "https://vodikov-svijet.miahrkovic.workers.dev";
+const STRANICA = "https://miahrkovic.github.io/vodikov-svijet/";
+const POBJEDNICI = 14;          // slajd s pobjednicima (brojeći od 0)
+const RASPRAVA = 12;            // slajd s timerom
+const $ = id => document.getElementById(id);
+const S = [...document.querySelectorAll(".slajd")];
+let i = -1, kod = "FINALE", otkriveno = false, zadnjaNaredba = 0;
+const ucitano = Date.now();
+
+function skaliraj(){ $("pozornica").style.transform = `translate(-50%,-50%) scale(${Math.min(innerWidth/1600, innerHeight/900)})`; }
+addEventListener("resize", skaliraj); skaliraj();
+
+// ----- krug od 12 zvjezdica (zastava EU) koji putuje kroz slajdove -----
+(function(){ const z = []; for(let k=0;k<12;k++){ const a = k/12*Math.PI*2, x = Math.cos(a)*70, y = Math.sin(a)*70;
+  let p = []; for(let j=0;j<10;j++){ const r = j%2 ? 5 : 12, b = j/10*Math.PI*2 - Math.PI/2; p.push((x+Math.cos(b)*r).toFixed(1)+","+(y+Math.sin(b)*r).toFixed(1)); }
+  z.push(`<polygon points="${p.join(" ")}" fill="#ffc800"/>`); } $("zv").innerHTML = z.join(""); })();
+const ZV = [[1230,30,1.05,1],[560,40,.35,1],[1300,40,.45,1],[1330,40,.4,1],[1320,30,.4,1],[1330,40,.38,1],[1330,40,.38,1],[1330,40,.38,1],[1330,40,.38,1],[1330,40,.38,1],[1330,40,.38,1],[1330,40,.38,1],[1060,40,.3,0],[1330,40,.38,1],[1200,40,.5,1],[1180,90,1,1]];
+function zvijezde(n){ const [x,y,s,o] = ZV[n] || ZV[0]; $("zvijezde").style.transform = `translate(${x}px,${y}px) scale(${s})`; $("zvijezde").style.opacity = o; }
+
+// ----- QR kodovi -----
+function qr(el, t){ el.innerHTML = ""; el.setAttribute("aria-label", "QR code: " + t); el.setAttribute("role", "img");
+  try{ new QRCode(el, {text:t, width:840, height:840, colorDark:"#141733", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M}); }
+  catch(e){ el.innerHTML = `<p style="font:800 22px var(--tekst);word-break:break-all">${t}</p>`; } }
+const kvizAdresa = () => `${STRANICA}kviz-erasmus.html?s=${kod}`;
+function crtajQR(){ qr($("qrKviz"), kvizAdresa()); }
+crtajQR();
+
+// ----- dan u školi: dvije smjene na vremenskoj osi 7–20 h -----
+(function(){ const od = 7, do_ = 20, x = h => (h-od)/(do_-od)*1380; let h = "";
+  for(let s=od;s<=do_;s++) h += `<div class="sat" style="left:${x(s)}px"><span>${s}:00</span></div>`;
+  h += `<div class="smjena" style="left:${x(7.75)}px;width:${x(13.75)-x(7.75)}px;top:40px;background:var(--eu);animation-delay:.6s">☀️ Morning shift <small>7:45 – 13:45</small></div>`;
+  h += `<div class="smjena" style="left:${x(13.83)}px;width:${x(19.83)-x(13.83)}px;top:150px;background:var(--crv);animation-delay:1.1s">🌙 Afternoon shift <small>13:50 – 19:50</small></div>`;
+  $("os").innerHTML = h; })();
+
+// ----- školska godina -----
+(function(){ const M = [["Sep","sk"],["Oct","sk"],["Nov","sk"],["Dec","sk","winter break"],["Jan","sk"],["Feb","sk"],["Mar","sk"],["Apr","sk","spring break"],["May","sk"],["Jun","sk"],["Jul","lj"],["Aug","lj"]];
+  $("mjeseci").innerHTML = M.map(([n,c,b],k) => `<div class="mj ${c} a" style="--d:${.25+k*.05}">${b?`<span class="ozb">${b}</span>`:""}${n}</div>`).join(""); })();
+
+// ----- usporedba: lijevi stupac Hrvatska, desni upisuju partneri (pamti se na ovom računalu) -----
+const USP = [["School starts at","6–7 years","6 years"],["Compulsory school","8 years","at least 9 years"],["After primary school","same school for 8 years","choose a school after year 4"],["One lesson","45 minutes","45 minutes"],["School day","morning or afternoon shift","mostly mornings, more all-day schools"],["Best grade","5 (odličan)","1 (sehr gut)"],["Final exam","State Matura","Abitur, after year 12 or 13"],["Vocational school","at school, with workshops","dual: company + school"],["Phones","not in lessons (primary)","rules differ by state"]];
+let upisano = {}; try{ upisano = JSON.parse(localStorage.getItem("erasmus-de") || "{}"); }catch(e){}
+$("usporedba").innerHTML = USP.map(([a,b,c],k) => `<tr><td>${a}</td><td class="hr">${b}</td><td class="vi" contenteditable="true" spellcheck="false" data-k="${k}">${c}</td></tr>`).join("");
+document.querySelectorAll("[data-k]").forEach(el => { if(upisano[el.dataset.k]) el.textContent = upisano[el.dataset.k];
+  el.addEventListener("input", () => { upisano[el.dataset.k] = el.textContent.trim(); try{ localStorage.setItem("erasmus-de", JSON.stringify(upisano)); }catch(e){} });
+  el.addEventListener("keydown", e => { e.stopPropagation(); if(e.key === "Enter"){ e.preventDefault(); el.blur(); } }); });
+
+// ----- timer za raspravu (5 minuta, počinje kad slajd dođe; tipka T ponovno) -----
+let timer = null;
+function pokreniSat(){ clearInterval(timer); const kraj = Date.now() + 5*60000, el = $("sat5"); el.classList.remove("kraj");
+  const tik = () => { const s = Math.max(0, Math.ceil((kraj - Date.now())/1000)); el.textContent = `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`; if(!s){ clearInterval(timer); el.classList.add("kraj"); el.textContent = "Time's up!"; } };
+  tik(); timer = setInterval(tik, 250); }
+
+// ----- brojke koje se odbrojavaju -----
+function brojke(sl){ sl.querySelectorAll("[data-broj]").forEach(el => { const cilj = +el.dataset.broj, od = cilj > 1000 ? cilj - 60 : 0, t0 = performance.now();
+  (function k(t){ const p = Math.min(1, Math.max(0, (t - t0 - 400)/1300)), e = 1 - Math.pow(1-p, 3); el.textContent = Math.round(od + (cilj-od)*e); if(p < 1) requestAnimationFrame(k); })(t0); }); }
+
+// ----- prebacivanje -----
+function idi(n){
+  n = Math.max(0, Math.min(S.length-1, n)); if(n === i) return;
+  S.forEach((s,k) => s.classList.toggle("on", k === n)); i = n; zvijezde(n);
+  $("traka").style.width = ((n+1)/S.length*100) + "%";
+  brojke(S[n]);
+  if(n === RASPRAVA) pokreniSat(); else clearInterval(timer);
+  if(n === POBJEDNICI) prikaziPobjednike(true);
+}
+addEventListener("keydown", e => {
+  if(e.target.isContentEditable) return;
+  if(["ArrowRight","PageDown"," ","Enter"].includes(e.key)){ e.preventDefault(); idi(i+1); }
+  if(["ArrowLeft","PageUp","Backspace"].includes(e.key)){ e.preventDefault(); idi(i-1); }
+  if(e.key==="p"||e.key==="P"){ otkriveno = true; prikaziPobjednike(); }
+  if((e.key==="t"||e.key==="T") && i === RASPRAVA) pokreniSat();
+  if(e.key==="f"||e.key==="F") cijeli();
+});
+// prstom: povuci lijevo/desno (mobitel, tablet, pametna ploča)
+let tx = null; addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, {passive:true});
+addEventListener("touchend", e => { if(tx === null) return; const dx = e.changedTouches[0].clientX - tx; if(Math.abs(dx) > 60) idi(i + (dx < 0 ? 1 : -1)); tx = null; });
+function cijeli(){ try{ if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}); }catch(e){} }
+addEventListener("click", e => { if(e.target.isContentEditable) return; cijeli(); $("start").classList.add("skri"); });
+setTimeout(() => $("start").classList.add("skri"), 12000);
+
+// ----- daljinski upravljač -----
+let greske = 0, zadnjaPromjena = Date.now();
+async function stanje(){
+  try{
+    const r = await fetch(`${POSREDNIK}/preza/stanje`, {cache:"no-store"}); if(!r.ok) throw 0; const d = await r.json(); greske = 0;
+    $("veza").className = "ok"; $("veza").lastChild.textContent = "phone connected";
+    if(d.kod && d.kod !== kod){ kod = d.kod; crtajQR(); zadnjiPotpis = ""; brojIgraca = -1; rezultati(); }
+    if(d.t > zadnjaNaredba){
+      const prvi = zadnjaNaredba === 0; zadnjaNaredba = d.t; zadnjaPromjena = Date.now();
+      if(!prvi || d.t > ucitano - 10*60000){ if(otkriveno !== d.pobjednici){ otkriveno = d.pobjednici; if(i === POBJEDNICI) prikaziPobjednike(); } idi(d.slajd); }
+      else otkriveno = false;
+    }
+  }catch(e){ greske++; if(greske > 2){ $("veza").className = ""; $("veza").lastChild.textContent = "offline · use → ← keys"; } }
+  setTimeout(stanje, Date.now() - zadnjaPromjena > 45*60000 ? 5000 : 1000);
+}
+
+// ----- kviz: igrači i pobjednici -----
+let rez = {broj:0, top:[]}, zadnjiPotpis = "", brojIgraca = -1;
+async function rezultati(){
+  try{ const r = await fetch(`${POSREDNIK}/kviz/rezultati?s=${kod}`, {cache:"no-store"}); if(!r.ok) return; rez = await r.json();
+    if(rez.broj !== brojIgraca){ brojIgraca = rez.broj; document.querySelectorAll(".igraca").forEach(b => { b.textContent = rez.broj; b.classList.remove("skok"); void b.offsetWidth; b.classList.add("skok"); }); }
+    if(i === POBJEDNICI && otkriveno) prikaziPobjednike();
+  }catch(e){}
+}
+setInterval(() => { if(i >= 1) rezultati(); }, 3000);
+function prasak(el, n){ const r = el.getBoundingClientRect(), b = ["#1f43c4","#ffc800","#e1251b","#13a06b","#141733"];
+  for(let k=0;k<n;k++){ const d = document.createElement("div"); d.className = "iskra"; const a = Math.random()*6.28, v = 160+Math.random()*520;
+    d.style.cssText = `left:${r.left+r.width/2}px;top:${r.top+30}px;background:${b[k%5]};--x:${Math.cos(a)*v}px;--y:${Math.sin(a)*v - 200}px`; document.body.appendChild(d); setTimeout(() => d.remove(), 1700); } }
+function prikaziPobjednike(dolazak){
+  $("bubanj").hidden = otkriveno; $("postolje").hidden = !otkriveno;
+  if(!otkriveno){ zadnjiPotpis = ""; $("postolje").innerHTML = ""; $("ostali").innerHTML = ""; return; }
+  const t = rez.top || [], potpis = kod + JSON.stringify(t); if(potpis === zadnjiPotpis && !dolazak) return; const prvi = !zadnjiPotpis; zadnjiPotpis = potpis;
+  if(!t.length){ $("postolje").innerHTML = `<p class="pod">Nobody has played the quiz yet.</p>`; return; }
+  const med = ["🥇","🥈","🥉"]; $("postolje").innerHTML = "";
+  [1,0,2].filter(k => t[k]).forEach(k => { const el = document.createElement("div"); el.className = `stup p${k+1}`;
+    el.innerHTML = `<div class="med">${med[k]}</div><div class="ime"></div><div class="bod">${t[k].bodovi} points</div><div class="blok">${k+1}</div>`;
+    el.querySelector(".ime").textContent = t[k].ime; $("postolje").appendChild(el); setTimeout(() => el.classList.add("on"), prvi ? [1400,500,2400][k] : 0); });
+  $("ostali").innerHTML = ""; t.slice(3,8).forEach((x,j) => { const s = document.createElement("span"); s.append(`${j+4}. ${x.ime} `); const b = document.createElement("b"); b.textContent = x.bodovi; s.append(b); $("ostali").appendChild(s); });
+  if(prvi) setTimeout(() => { const p = document.querySelector(".p1"); if(p){ prasak(p, 120); setTimeout(() => prasak(p, 80), 500); } }, 2700);
+}
+
+// ----- jezik: EN (izvorno), HR, DE; gumbi gore desno, tipka L, ili ?lang=de -----
+const PRIJEVOD = {"+ up to 5 electives": ["+ do 5 izbornih", "+ bis zu 5 Wahlfächer"], "01 · Our school": ["01 · Naša škola", "01 · Unsere Schule"], "02 · The system": ["02 · Sustav", "02 · Das System"], "03 · A school day": ["03 · Školski dan", "03 · Ein Schultag"], "03 · The school year": ["03 · Školska godina", "03 · Das Schuljahr"], "04 · Subjects & grades": ["04 · Predmeti i ocjene", "04 · Fächer & Noten"], "05 · How we learn": ["05 · Kako učimo", "05 · Wie wir lernen"], "06 · After school": ["06 · Nakon škole", "06 · Nach der Schule"], "07 · Team talk": ["07 · Razgovor u timovima", "07 · Gespräch im Team"], "07 · Your turn": ["07 · Vi ste na redu", "07 · Ihr seid dran"], "08 · Our joint project": ["08 · Naš zajednički projekt", "08 · Unser gemeinsames Projekt"], "1 year compulsory": ["1 godina obavezna", "1 Jahr Pflicht"], "2025/26: 8 Sept – 12 June": ["2025./26.: 8. rujna – 12. lipnja", "2025/26: 8. Sept. – 12. Juni"], "3 years · hairdresser, car mechanic, electrician, heating installer": ["3 godine · frizer, automehaničar, elektroinstalater, instalater grijanja", "3 Jahre · Friseur, Kfz-Mechaniker, Elektriker, Heizungsinstallateur"], "3-year trades": ["Trogodišnja zanimanja", "3-jährige Berufe"], "4 years · economist, computer technician, mechanical engineering technician": ["4 godine · ekonomist, tehničar za računalstvo, tehničar u strojarstvu", "4 Jahre · Wirtschaft, Informatik, Maschinenbautechnik"], "4 years · prepares for university": ["4 godine · priprema za fakultet", "4 Jahre · Vorbereitung auf die Uni"], "4-year technical": ["Četverogodišnji tehnički", "4-jährige Technik"], "45 minutes": ["45 minuta", "45 Minuten"], "5 (odličan)": ["5 (odličan)", "5 (odličan)"], "5 or 1?": ["5 ili 1?", "5 oder 1?"], "6 questions, 60 seconds": ["6 pitanja, 60 sekundi", "6 Fragen, 60 Sekunden"], "6 years": ["6 godina", "6 Jahre"], "6–7 years": ["6–7 godina", "6–7 Jahre"], "8 grades in one school: one class teacher in grades 1–4, subject teachers in grades 5–8.": ["8 razreda u jednoj školi: učiteljica u razredima 1–4, predmetni nastavnici u razredima 5–8.", "8 Klassen an einer Schule: eine Klassenlehrerin in Klasse 1–4, Fachlehrer in Klasse 5–8."], "8 years": ["8 godina", "8 Jahre"], "A day in my school": ["Dan u mojoj školi", "Ein Tag an meiner Schule"], "A digital gradebook: parents see every grade online": ["Digitalni imenik: roditelji vide svaku ocjenu online", "Ein digitales Notenbuch: Eltern sehen jede Note online"], "A shared digital magazine with everything we made.": ["Zajednički digitalni časopis sa svime što smo napravili.", "Ein gemeinsames digitales Magazin mit allem, was wir gemacht haben."], "Abitur, after year 12 or 13": ["Abitur, nakon 12. ili 13. razreda", "Abitur, nach Klasse 12 oder 13"], "After primary school": ["Nakon osnovne škole", "Nach der Grundschule"], "And the winners": ["A pobjednici", "Und die Gewinner"], "Apr": ["tra", "Apr"], "Around 15 in a gymnasium, from Croatian and Maths to Latin and Philosophy": ["Petnaestak u gimnaziji, od hrvatskog i matematike do latinskog i filozofije", "Etwa 15 am Gymnasium, von Kroatisch und Mathe bis Latein und Philosophie"], "Art school": ["Umjetnička", "Kunstschule"], "Aug": ["kol", "Aug"], "Best grade": ["Najbolja ocjena", "Beste Note"], "Click anywhere for full screen · controlled from a phone": ["Klikni bilo gdje za cijeli zaslon · upravlja se s mobitela", "Irgendwo klicken für Vollbild · Steuerung per Handy"], "Comparing our education systems: school life, subjects, teaching and our future careers.": ["Usporedba naših obrazovnih sustava: školski život, predmeti, nastava i buduća zanimanja.", "Unsere Schulsysteme im Vergleich: Schulalltag, Fächer, Unterricht und unsere Zukunft im Beruf."], "Compulsory school": ["Obavezna škola", "Schulpflicht"], "Croatia vs": ["Hrvatska vs.", "Kroatien vs."], "Croatian": ["Hrvatski", "Kroatisch"], "Dec": ["pro", "Dez"], "Did you know?": ["Jeste li znali?", "Wusstet ihr?"], "Different school?": ["Druga škola?", "Andere Schule?"], "Digital tools in class": ["Digitalni alati na nastavi", "Digitale Tools im Unterricht"], "Each team films a 2-minute video of a normal school day.": ["Svaki tim snimi video od 2 minute o običnom školskom danu.", "Jedes Team dreht ein 2-Minuten-Video über einen normalen Schultag."], "English": ["Engleski", "Englisch"], "Feb": ["velj", "Feb"], "Final exam": ["Završni ispit", "Abschlussprüfung"], "Final project exam, then a job or, with the matura, university": ["Završni rad, zatim posao ili, uz maturu, fakultet", "Abschlussarbeit, dann ein Job oder mit Matura die Uni"], "Five is": ["Pet je", "Fünf ist"], "Free lunch": ["Besplatan obrok", "Gratis Mittagessen"], "From notebooks": ["Od bilježnica", "Vom Heft"], "From our school": ["Od naše škole", "Von unserer Schule"], "Future jobs": ["Buduća zanimanja", "Berufe der Zukunft"], "General gymnasium": ["Opća gimnazija", "Allgemeines Gymnasium"], "Germany": ["Njemačka", "Deutschland"], "Guess our": ["Pogodi naš", "Errate unseren"], "Gymnasium": ["Gimnazija", "Gymnasium"], "How do your teachers check what you know: tests, oral exams or projects?": ["Kako vaši nastavnici provjeravaju znanje: testovima, usmenim ispitivanjem ili projektima?", "Wie prüfen eure Lehrer, was ihr wisst: Tests, mündliche Prüfungen oder Projekte?"], "How school works": ["Kako funkcionira škola", "So funktioniert Schule"], "In Croatia 5 is the best grade. In Germany 1 is the best, and a 5 means you failed!": ["U Hrvatskoj je 5 najbolja ocjena. U Njemačkoj je 1 najbolja, a 5 znači da si pao!", "In Kroatien ist die 5 die beste Note. In Deutschland ist die 1 die beste, und eine 5 heißt durchgefallen!"], "In primary schools phones stay in the bag, and a ban during breaks is planned.": ["U osnovnim školama mobitel ostaje u torbi, a planira se zabrana i na odmoru.", "In Grundschulen bleibt das Handy in der Tasche, ein Verbot in den Pausen ist geplant."], "Interviews with people who work in our towns.": ["Intervjui s ljudima koji rade u našim gradovima.", "Interviews mit Menschen, die in unseren Städten arbeiten."], "Jan": ["sij", "Jan"], "Jul": ["srp", "Jul"], "Jun": ["lip", "Jun"], "Kindergarten": ["Vrtić", "Kindergarten"], "Learning facts for tests": ["Učenje činjenica za testove", "Fakten für Tests lernen"], "Learning outcomes: what you can do": ["Ishodi učenja: što znaš napraviti", "Lernziele: was du kannst"], "Many subjects at once": ["Puno predmeta odjednom", "Viele Fächer gleichzeitig"], "Mar": ["ožu", "Mär"], "Maths": ["Matematika", "Mathe"], "May": ["svi", "Mai"], "Mixed teams,": ["Mješoviti timovi,", "Gemischte Teams,"], "Morning one week,": ["Jedan tjedan ujutro,", "Eine Woche morgens,"], "National final exam. The results decide university entry.": ["Nacionalni završni ispit. Rezultati odlučuju o upisu na fakultet.", "Nationale Abschlussprüfung. Die Ergebnisse entscheiden über die Uni."], "No phones in lessons": ["Bez mobitela na satu", "Kein Handy im Unterricht"], "Nov": ["stu", "Nov"], "Oct": ["lis", "Okt"], "On eTwinning, the free platform for European schools, with one online meeting every month.": ["Na eTwinningu, besplatnoj platformi za europske škole, s jednim online sastankom svaki mjesec.", "Auf eTwinning, der kostenlosen Plattform für europäische Schulen, mit einem Online-Treffen pro Monat."], "One lesson": ["Školski sat", "Eine Stunde"], "Optional. The last year before school is a free preschool programme.": ["Neobavezan. Posljednja godina prije škole je besplatna predškola.", "Freiwillig. Das letzte Jahr vor der Schule ist ein kostenloses Vorschuljahr."], "Oral exams": ["Usmeno ispitivanje", "Mündliche Prüfungen"], "Our joint project": ["Naš zajednički projekt", "Unser gemeinsames Projekt"], "Our magazine": ["Naš časopis", "Unser Magazin"], "Our school": ["Naša škola", "Unsere Schule"], "Phones": ["Mobiteli", "Handys"], "Phones out 📱": ["Mobiteli van 📱", "Handys raus 📱"], "Places are given by points: matura results + school grades": ["Mjesta se dodjeljuju po bodovima: matura + ocjene iz škole", "Plätze nach Punkten: Matura-Ergebnisse + Schulnoten"], "Players:": ["Igrača:", "Spieler:"], "Primary school": ["Osnovna škola", "Grundschule"], "Projects and group work": ["Projekti i rad u grupama", "Projekte und Gruppenarbeit"], "Questions?": ["Pitanja?", "Fragen?"], "Quiz": ["Kviz", "Quiz"], "Same age.": ["Isti uzrast.", "Gleich alt."], "School day": ["Školski dan", "Schultag"], "School starts at": ["Polazak u školu", "Einschulung mit"], "Secondary school": ["Srednja škola", "Weiterführende Schule"], "Sep": ["ruj", "Sep"], "September to June,": ["Od rujna do lipnja,", "September bis Juni,"], "Since 2023, every primary school pupil gets a free school meal.": ["Od 2023. svaki osnovnoškolac dobiva besplatan školski obrok.", "Seit 2023 bekommt jedes Grundschulkind ein kostenloses Schulessen."], "Small things,": ["Male stvari,", "Kleine Dinge,"], "Srednja škola Dugo Selo, Croatia · mentor: Miroslav Begić": ["Srednja škola Dugo Selo, Hrvatska · mentor: Miroslav Begić", "Srednja škola Dugo Selo, Kroatien · Betreuer: Miroslav Begić"], "State Matura": ["Državna matura", "Staatliche Matura"], "Straight into work, later a master craftsman exam": ["Odmah posao, kasnije majstorski ispit", "Direkt in den Beruf, später die Meisterprüfung"], "Subjects & grades": ["Predmeti i ocjene", "Fächer & Noten"], "Swap a lesson": ["Zamjena sata", "Stundentausch"], "Technical programmes": ["Tehnički programi", "Technische Ausbildungen"], "Thank you": ["Hvala", "Danke"], "The State Matura": ["Državna matura", "Die staatliche Matura"], "The system": ["Sustav", "Das System"], "The teacher calls you to answer questions in front of the class": ["Nastavnik te prozove da odgovaraš pred razredom", "Der Lehrer ruft dich auf, vor der Klasse Fragen zu beantworten"], "The teacher explains, we take notes": ["Nastavnik objašnjava, mi pišemo bilješke", "Der Lehrer erklärt, wir schreiben mit"], "Today": ["Danas", "Heute"], "Trades": ["Zanimanja", "Handwerk"], "University": ["Fakultet", "Universität"], "Vocational": ["Strukovna", "Berufsschule"], "Vocational school": ["Strukovna škola", "Berufsausbildung"], "We teach each other a 15-minute mini lesson in a video call.": ["Jedni drugima održimo mini sat od 15 minuta u videopozivu.", "Wir halten uns gegenseitig eine 15-minütige Mini-Stunde im Videocall."], "What is the best thing about your school, and what would you change?": ["Što je najbolje u vašoj školi, a što biste promijenili?", "Was ist das Beste an eurer Schule, und was würdet ihr ändern?"], "What job do you see yourself doing in 10 years? Does school prepare you for it?": ["Kojim se poslom vidiš za 10 godina? Priprema li te škola za to?", "In welchem Beruf siehst du dich in 10 Jahren? Bereitet dich die Schule darauf vor?"], "Which subject would you add to your timetable? Which one would you remove?": ["Koji biste predmet dodali u raspored? Koji biste maknuli?", "Welches Fach würdet ihr zum Stundenplan hinzufügen? Welches würdet ihr streichen?"], "Workshops and work placements in vocational programmes": ["Radionice i stručna praksa u strukovnim programima", "Werkstätten und Praktika in der Berufsausbildung"], "Written tests and oral exams": ["Pismene provjere i usmeno ispitivanje", "Schriftliche Tests und mündliche Prüfungen"], "Your turn: compare": ["Vi ste na redu: usporedba", "Ihr seid dran: Vergleich"], "after 4 years": ["nakon 4 godine", "nach 4 Jahren"], "afternoon the next": ["sljedeći poslijepodne", "die nächste nachmittags"], "age 1 – 6": ["dob 1 – 6", "Alter 1 – 6"], "age 15 – 18/19": ["dob 15 – 18/19", "Alter 15 – 18/19"], "age 6/7 – 14/15": ["dob 6/7 – 14/15", "Alter 6/7 – 14/15"], "and what comes next": ["i što dolazi poslije", "und was danach kommt"], "are…": ["su…", "sind…"], "at least 9 years": ["najmanje 9 godina", "mindestens 9 Jahre"], "at school, with workshops": ["u školi, s radionicama", "in der Schule, mit Werkstätten"], "big break after lesson 3": ["veliki odmor nakon 3. sata", "große Pause nach der 3. Stunde"], "big differences": ["velike razlike", "große Unterschiede"], "breaks": ["praznici", "Ferien"], "choose a school after year 4": ["biraju školu nakon 4. razreda", "Schulwahl nach Klasse 4"], "classes": ["razreda", "Klassen"], "compulsory": ["obavezna", "Pflicht"], "continues online": ["nastavlja se online", "geht online weiter"], "dual: company + school": ["dualno: tvrtka + škola", "dual: Betrieb + Schule"], "excellent": ["odličan", "ausgezeichnet"], "fail": ["nedovoljan", "nicht bestanden"], "five minutes": ["pet minuta", "fünf Minuten"], "founded, 20 km east of Zagreb": ["osnovana, 20 km istočno od Zagreba", "gegründet, 20 km östlich von Zagreb"], "good": ["dobar", "gut"], "in Croatia": ["u Hrvatskoj", "in Kroatien"], "lessons": ["nastava", "Unterricht"], "level A or B": ["razina A ili B", "Niveau A oder B"], "morning or afternoon shift": ["jutarnja ili popodnevna smjena", "Vormittags- oder Nachmittagsschicht"], "mostly mornings, more all-day schools": ["uglavnom ujutro, sve više cjelodnevnih škola", "meist vormittags, immer mehr Ganztagsschulen"], "not in lessons (primary)": ["ne na satu (osnovna)", "nicht im Unterricht (Grundschule)"], "one lesson": ["jedan sat", "eine Stunde"], "phone connected": ["mobitel povezan", "Handy verbunden"], "planned start of one-shift primary schools": ["planirani početak jednosmjenskih osnovnih škola", "geplanter Start: Grundschulen in einer Schicht"], "rules differ by state": ["pravila ovise o saveznoj državi", "Regeln je nach Bundesland"], "same school for 8 years": ["ista škola 8 godina", "8 Jahre dieselbe Schule"], "scan the code": ["skeniraj kod", "Code scannen"], "school life": ["školski život", "Schulalltag"], "short break": ["mali odmor", "kleine Pause"], "spring break": ["proljetni praznici", "Osterferien"], "students": ["učenika", "Schüler"], "sufficient": ["dovoljan", "ausreichend"], "summer holiday": ["ljetni praznici", "Sommerferien"], "teachers": ["nastavnika", "Lehrkräfte"], "the best": ["najbolja", "die beste Note"], "then summer!": ["onda ljeto!", "dann Sommer!"], "to our project": ["do našeg projekta", "bis zu unserem Projekt"], "to projects": ["do projekata", "zum Projekt"], "type a nickname": ["upiši nadimak", "Spitznamen eingeben"], "very good": ["vrlo dobar", "sehr gut"], "winter break": ["zimski praznici", "Winterferien"], "· 3 or 4 years": ["· 3 ili 4 godine", "· 3 oder 4 Jahre"], "· 4 years": ["· 4 godine", "· 4 Jahre"], "· Croatia 🤝 Germany": ["· Hrvatska 🤝 Njemačka", "· Kroatien 🤝 Deutschland"], "· click to correct ✏️": ["· klikni za ispravak ✏️", "· zum Korrigieren klicken ✏️"], "→ university": ["→ fakultet", "→ Universität"], "☀️ Morning shift": ["☀️ Jutarnja smjena", "☀️ Vormittagsschicht"], "🇩🇪 Germany": ["🇩🇪 Njemačka", "🇩🇪 Deutschland"], "🇭🇷 Croatia": ["🇭🇷 Hrvatska", "🇭🇷 Kroatien"], "🌙 Afternoon shift": ["🌙 Popodnevna smjena", "🌙 Nachmittagsschicht"], "📖 Traditionally": ["📖 Tradicionalno", "📖 Traditionell"], "📱 Turn your phone sideways for a bigger view": ["📱 Okreni mobitel vodoravno za veću sliku", "📱 Handy quer halten für ein größeres Bild"], "🚀 School for Life · 2019": ["🚀 Škola za život · 2019.", "🚀 Schule fürs Leben · 2019"], "“Same Age, Different School”": ["„Isti uzrast, druga škola“", "„Gleich alt, andere Schule“"], "Nobody has played the quiz yet.": ["Još nitko nije odigrao kviz.", "Noch hat niemand das Quiz gespielt."], "Time's up!": ["Vrijeme je isteklo!", "Die Zeit ist um!"], "connecting…": ["povezujem…", "verbinde…"], "offline · use → ← keys": ["nema veze · tipke → ←", "offline · Tasten → ← nutzen"]};
+const UZORCI = [["^(\\d+) points$", "$1 bodova", "$1 Punkte"]];
+let JEZIK = "en"; const IZV = new WeakMap();
+function prevedi(t){ if(JEZIK === "en") return t; const k = JEZIK === "hr" ? 0 : 1, c = t.trim();
+  if(PRIJEVOD[c]) return t.replace(c, PRIJEVOD[c][k]);
+  for(const [re, hr, de] of UZORCI){ const m = c.match(new RegExp(re)); if(m) return t.replace(c, (k ? de : hr).replace("$1", m[1])); }
+  return t; }
+let mijenjam = false;
+function prevediCvor(n){ const p = n.parentElement; if(!p || p.closest("script,style,#jezici")) return;
+  const z = IZV.get(n); let izv = n.nodeValue;
+  if(z && n.nodeValue === z.prikaz) izv = z.izv;               // naš prijevod, vrati izvornik
+  const novo = prevedi(izv); IZV.set(n, {izv, prikaz: novo}); if(novo !== n.nodeValue) n.nodeValue = novo; }
+function prevediSve(korijen){ mijenjam = true; const w = document.createTreeWalker(korijen, NodeFilter.SHOW_TEXT); let n; while((n = w.nextNode())) prevediCvor(n); mijenjam = false; }
+new MutationObserver(l => { if(mijenjam) return; mijenjam = true; l.forEach(m => { if(m.type === "characterData") prevediCvor(m.target); m.addedNodes.forEach(x => { if(x.nodeType === 3) prevediCvor(x); else if(x.nodeType === 1){ const w = document.createTreeWalker(x, NodeFilter.SHOW_TEXT); let n; while((n = w.nextNode())) prevediCvor(n); } }); }); mijenjam = false; })
+  .observe(document.body, {subtree:true, childList:true, characterData:true});
+function postaviJezik(j){ JEZIK = ["en","hr","de"].includes(j) ? j : "en"; document.documentElement.lang = JEZIK;
+  document.querySelectorAll("#jezici button").forEach(b => b.setAttribute("aria-pressed", b.dataset.j === JEZIK));
+  try{ localStorage.setItem("erasmus-jezik", JEZIK); }catch(e){} prevediSve(document.body); }
+document.querySelectorAll("#jezici button").forEach(b => b.addEventListener("click", e => { e.stopPropagation(); postaviJezik(b.dataset.j); }));
+addEventListener("keydown", e => { if((e.key === "l" || e.key === "L") && !e.target.isContentEditable){ const r = ["en","hr","de"]; postaviJezik(r[(r.indexOf(JEZIK)+1)%3]); } });
+// gumbi se sakriju nakon 4 s bez pomicanja miša, da ne smetaju na projektoru
+let skrivanje; function pokaziJezike(){ $("jezici").classList.remove("skri"); clearTimeout(skrivanje); skrivanje = setTimeout(() => $("jezici").classList.add("skri"), 4000); }
+addEventListener("mousemove", pokaziJezike); addEventListener("touchstart", pokaziJezike, {passive:true}); pokaziJezike();
+{ let j = new URLSearchParams(location.search).get("lang"); if(!j) try{ j = localStorage.getItem("erasmus-jezik"); }catch(e){} if(j && j !== "en") postaviJezik(j); }
+
+idi(0); rezultati(); stanje();
+</script>
+</body></html>
