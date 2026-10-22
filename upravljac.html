@@ -30,6 +30,7 @@ button:active{transform:scale(.97)} button:disabled{opacity:.45}
 .dugmad{display:grid;grid-template-columns:1fr 2fr;gap:10px} .dugmad button{padding:24px 10px;font-size:20px}
 .red{display:flex;gap:10px} .red>*{flex:1}
 #igraca{font:900 28px var(--disp);color:var(--zel)}
+#jezici button.on{background:var(--hb);color:#05060f}
 [hidden]{display:none!important}
 </style></head>
 <body>
@@ -49,6 +50,7 @@ button:active{transform:scale(.97)} button:disabled{opacity:.45}
     <div class="tockice" id="tockice"></div>
   </div>
   <div class="dugmad"><button id="natrag" aria-label="Natrag">◀</button><button class="glavni" id="dalje">Dalje ▶</button></div>
+  <div class="kar" id="jezikKar" hidden><div class="small muted" style="margin-bottom:8px">🌐 Jezik na projektoru</div><div class="red" id="jezici"><button data-j="en">EN</button><button data-j="hr">HR</button><button data-j="de">DE</button></div></div>
   <button class="zlato" id="otkrij" hidden>🏆 Otkrij pobjednike</button>
   <div class="kar"><div class="small muted" style="margin-bottom:4px">🎤 Govor za ovaj slajd</div><p id="govor"></p></div>
   <div class="kar">
@@ -89,6 +91,10 @@ const ERASMUS = [
 "Tonka: Our school is in Dugo Selo, a small town about 20 kilometres east of Zagreb. It was founded in 2002, and today it has around 680 students in 33 classes, with 75 teachers. We are a mixed school: we have a general gymnasium, four-year technical programmes like economist or computer technician, and three-year programmes for jobs like hairdresser, car mechanic or electrician."
 ],
 [
+"Inside our school",
+"Mia: Let us show you around. Our school is modern: there are smart boards in the classrooms, and teachers have their own specialised classrooms, so we move from room to room between lessons. We have a canteen, where we eat during the big break, and even our own school gallery. And we are proud of our robotics centre. It is part of a Regional Centre of Competence for mechanical engineering and Industry 4.0, where students from different programmes work together on real projects."
+],
+[
 "The system",
 "Melanie: This is the Croatian education system. Kindergarten is optional, but one year of preschool before primary school is compulsory and free. Primary school lasts eight years, usually from age six or seven to fourteen or fifteen, and it is compulsory. Secondary school is not compulsory, but almost everyone goes. You can choose a gymnasium, a vocational school or an art school. At the end, students take the State Matura, which opens the door to university."
 ],
@@ -101,6 +107,10 @@ const ERASMUS = [
 "Tonka: Our school year starts in early September and ends in mid-June. This year it was from the 8th of September to the 12th of June. We have a winter break around Christmas and New Year, a short spring break around Easter, and a long summer holiday of almost three months."
 ],
 [
+"Beyond the classroom",
+"Melanie: School is not only lessons. Every year we mark World Savings Day and European and Global Money Week: we invite entrepreneurs to give talks, we have a theatre play about money, and we simulate real banking work. Many of us volunteer at the Stančić centre for children and young people with disabilities. And of course we go on school trips, professional visits to companies and, in the last year, on our graduation trip!"
+],
+[
 "Grades",
 "Melanie: In Croatia we study a lot of subjects at the same time. In a gymnasium it can be around fifteen. Our grades go from one to five, and five is the best: excellent. One means fail. Teachers often test us orally, in front of the class, and all grades go into e-Dnevnik, a digital gradebook where our parents can see them immediately."
 ],
@@ -109,8 +119,20 @@ const ERASMUS = [
 "Mia: How do teachers teach? Traditionally, the teacher explains and we take notes, and then we have written and oral tests. Since the School for Life reform in 2019, there are more projects, group work and digital tools, and the focus is on what we can do, not only on what we remember. In vocational programmes, students also learn in workshops and in companies, and our school is accredited for Erasmus in vocational education."
 ],
 [
+"Modular (new!)",
+"Melanie: And there is something new. Since 2025, Croatian vocational schools teach in modules. First- and second-year students no longer have classic subjects. Instead, they have modules, where theory and practice are learned together, and every student also learns at a real workplace. There are 147 new vocational curricula, made together with employers. We in the third and fourth year still follow the old programme with subjects, so right now our school has both systems at the same time!"
+],
+[
 "After school",
 "Tonka: After four years, the State Matura is the big exam. Everyone takes Croatian, Maths and English. Maths and English can be taken at a higher or a basic level, and you can add up to five elective subjects. Universities accept students based on matura points and school grades. Students from three-year programmes usually start working, and many later take a master craftsman exam."
+],
+[
+"Career options",
+"Tonka: So what can we become? Gymnasium students usually go to university, for example to study law, medicine or economics. Economists can work in banks, in accounting or in their own business. Computer technicians work in IT, programming and networks, and mechanical technicians in engineering, CNC and robotics. Students from the trades can start working right away, open their own business or work abroad. And experience from Erasmus is a big plus on every CV!"
+],
+[
+"Our future (each of us)",
+"Mia: And what about us? Each of us will tell you what we study now, what we want to do after school, and our dream job. (Svaka govori sama za sebe, dvije do tri rečenice: Mia, pa Melanie, pa Tonka.)"
 ],
 [
 "Did you know?",
@@ -123,6 +145,10 @@ const ERASMUS = [
 [
 "Team talk (5 min)",
 "Tonka: Now let's work in mixed teams. Each team gets one question. You have five minutes to talk, and then one person from each team shares the most interesting answer."
+],
+[
+"Our school in Europe",
+"Tonka: Our school is very active in Europe. We have an Erasmus accreditation for vocational education, so our vocational students can regularly go abroad for training. We also take part in Erasmus+ partnership projects like STARS, and in European actions like EU Code Week. Since 2020, our school has been part of a regional centre of excellence in robotics. And we love competitions: for the Millennium Competition in Creative Industries, the three of us made a whole app about hydrogen, called Hydrogen World."
 ],
 [
 "Joint project",
@@ -140,10 +166,10 @@ const ERASMUS = [
 // upravljac.html = Vodikov svijet, upravljac.html?p=erasmus = Erasmus+ prezentacija
 const PREZA = new URLSearchParams(location.search).get("p") === "erasmus" ? "erasmus" : "vodik";
 const SLAJDOVI = PREZA === "erasmus" ? ERASMUS : VODIK;
-const POB = PREZA === "erasmus" ? 14 : 4;   // slajd s pobjednicima
+const POB = PREZA === "erasmus" ? 21 : 4;   // slajd s pobjednicima
 const $ = id => document.getElementById(id);
 let token = ""; try{ token = localStorage.getItem("vs-upravljac") || ""; }catch(e){}
-let st = { slajd:0, pobjednici:false, kod:"FINALE", t:0 }, salje = false, ceka = null;
+let st = { slajd:0, pobjednici:false, kod:"FINALE", t:0, jezik:"" }, salje = false, ceka = null;
 
 function status(t, k){ $("status").textContent = t; $("status").className = k || ""; }
 function crtaj(){
@@ -153,15 +179,18 @@ function crtaj(){
   $("natrag").disabled = st.slajd === 0; $("dalje").disabled = st.slajd === SLAJDOVI.length - 1;
   $("dalje").textContent = st.slajd === SLAJDOVI.length - 1 ? "Kraj" : `Dalje ▶ ${SLAJDOVI[st.slajd+1][0]}`;
   $("otkrij").hidden = st.slajd !== POB; $("otkrij").textContent = st.pobjednici ? "🙈 Sakrij pobjednike" : "🏆 Otkrij pobjednike";
+  document.querySelectorAll("#jezici button").forEach(b => b.classList.toggle("on", b.dataset.j === st.jezik));
   $("tockice").innerHTML = SLAJDOVI.map((s, k) => `<button class="${k === st.slajd ? "on" : ""}" data-k="${k}" aria-label="${s[0]}">${k+1}</button>`).join("");
 }
+$("jezikKar").hidden = PREZA !== "erasmus";
+document.querySelectorAll("#jezici button").forEach(b => b.addEventListener("click", () => posalji({ jezik: b.dataset.j })));
 $("tockice").addEventListener("click", e => { const b = e.target.closest("button"); if(b) posalji({ slajd: +b.dataset.k }); });
 
 // naredba ide odmah na ekran mobitela, a na projektor za 1–2 sekunde
 async function posalji(promjena){
   st = { ...st, ...promjena }; if(promjena.slajd !== undefined && promjena.slajd !== POB) st.pobjednici = st.pobjednici && st.slajd >= POB; crtaj();
   if(navigator.vibrate) try{ navigator.vibrate(15); }catch(e){}
-  ceka = { slajd: st.slajd, pobjednici: st.pobjednici, kod: st.kod }; if(salje) return;
+  ceka = { slajd: st.slajd, pobjednici: st.pobjednici, kod: st.kod, ...(PREZA === "erasmus" && st.jezik ? { jezik: st.jezik } : {}) }; if(salje) return;
   salje = true;
   while(ceka){
     const n = ceka; ceka = null; status("šaljem…");
