@@ -25,7 +25,7 @@ button:active{transform:scale(.97)} button:disabled{opacity:.45}
 .slajd .br{font:900 44px var(--disp);color:var(--hb);min-width:2.2ch}
 .slajd b{font:900 22px var(--disp)}
 #govor{font-size:17px;line-height:1.5;color:#dfe2ff}
-.tockice{display:flex;gap:6px;margin-top:10px} .tockice button{flex:1;padding:9px 0;border-radius:10px;font-size:13px}
+.tockice{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:10px} .tockice button{padding:9px 0;border-radius:10px;font-size:13px}
 .tockice button.on{background:var(--hb);color:#05060f}
 .dugmad{display:grid;grid-template-columns:1fr 2fr;gap:10px} .dugmad button{padding:24px 10px;font-size:20px}
 .red{display:flex;gap:10px} .red>*{flex:1}
@@ -33,10 +33,10 @@ button:active{transform:scale(.97)} button:disabled{opacity:.45}
 [hidden]{display:none!important}
 </style></head>
 <body>
-<div class="vrh"><h1>🎛️ Upravljač prezentacije</h1><span id="status">…</span></div>
+<div class="vrh"><h1 id="naslov">🎛️ Upravljač prezentacije</h1><span id="status">…</span></div>
 
 <section id="prijava" class="kar" hidden>
-  <p class="muted small">Prijavi se kao voditelj (isti račun kao u aplikaciji). Prezentacija <b>preza.html</b> na projektoru pratit će ovaj mobitel.</p>
+  <p class="muted small">Prijavi se kao voditelj (isti račun kao u aplikaciji). Prezentacija na projektoru pratit će ovaj mobitel.</p>
   <label class="small muted" style="display:block;margin-top:10px">Korisničko ime<input id="u" autocomplete="username" autocapitalize="none"></label>
   <label class="small muted" style="display:block;margin-top:8px">Lozinka<input id="l" type="password" autocomplete="current-password"></label>
   <button class="glavni" style="width:100%;margin-top:12px" id="prijaviMe">Prijavi se</button>
@@ -63,7 +63,7 @@ button:active{transform:scale(.97)} button:disabled{opacity:.45}
 
 <script>
 const POSREDNIK = "https://vodikov-svijet.miahrkovic.workers.dev";
-const SLAJDOVI = [
+const VODIK = [
   ["Naslov", "Mia: Dobar dan! Mi smo Mia, Melanie i Tonka iz Srednje škole Dugo Selo. Ovo je vodik: jedan proton i jedan elektron, najjednostavniji i najstariji element svemira. A napravile smo svijet oko njega."],
   ["Mini kviz", "Mia: Izvadite mobitele i skenirajte QR kod! Šest pitanja o vodiku, jedna minuta. Igrajte dok mi pričamo, a na kraju otkrivamo pobjednike."],
   ["62 %", "Melanie: Koliki dio atoma u vašem tijelu je vodik? Deset posto? Dvadeset pet? Šezdeset dva posto! Po broju atoma najviše ste upravo vodik. Vodik je u nama, a mi smo ga učinili vidljivim."],
@@ -71,24 +71,95 @@ const SLAJDOVI = [
   ["Pobjednici", "Tonka: A sad ono što čekate: pobjednici mini kviza! (Stisni 🏆 Otkrij pobjednike, pročitaj imena i pozovi ih da podignu ruku.)"],
   ["Hvala", "Svi: Vodik je u svima nama. Mi smo ga samo učinili vidljivim. Isprobajte Vodikov svijet preko ovog QR koda. Hvala vam!"],
 ];
+const ERASMUS = [
+[
+"Title",
+"Mia: Good morning, everyone! We are Mia, Melanie and Tonka from Srednja škola Dugo Selo in Croatia. Today we want to ask a simple question: Croatian and German students are the same age, but are our schools the same? Let's find out together."
+],
+[
+"Quiz QR",
+"Mia: First, take out your phones and scan the QR code. It's a one-minute quiz about school life in Croatia. Guess as fast as you can. The winners will be announced at the end!"
+],
+[
+"Today",
+"Melanie: Here is our plan. First, we'll show you our school and the Croatian school system. Then a normal school day, our subjects and grades, how teachers teach, and what comes after school. After that it's your turn: we'll compare, discuss in teams and plan a project we can continue online."
+],
+[
+"Our school",
+"Tonka: Our school is in Dugo Selo, a small town about 20 kilometres east of Zagreb. It was founded in 2002, and today it has around 680 students in 33 classes, with 75 teachers. We are a mixed school: we have a general gymnasium, four-year technical programmes like economist or computer technician, and three-year programmes for jobs like hairdresser, car mechanic or electrician."
+],
+[
+"The system",
+"Melanie: This is the Croatian education system. Kindergarten is optional, but one year of preschool before primary school is compulsory and free. Primary school lasts eight years, usually from age six or seven to fourteen or fifteen, and it is compulsory. Secondary school is not compulsory, but almost everyone goes. You can choose a gymnasium, a vocational school or an art school. At the end, students take the State Matura, which opens the door to university."
+],
+[
+"A school day",
+"Mia: Now, a normal school day. Many Croatian schools, including ours, work in two shifts. One week we have classes in the morning, from 7:45 to 13:45, and the next week in the afternoon, from 13:50 until almost 8 pm! A lesson lasts 45 minutes, short breaks are five minutes, and after the third lesson we have a big break of twenty minutes. The government plans to move primary schools to one shift, but that will take a few more years."
+],
+[
+"School year",
+"Tonka: Our school year starts in early September and ends in mid-June. This year it was from the 8th of September to the 12th of June. We have a winter break around Christmas and New Year, a short spring break around Easter, and a long summer holiday of almost three months."
+],
+[
+"Grades",
+"Melanie: In Croatia we study a lot of subjects at the same time. In a gymnasium it can be around fifteen. Our grades go from one to five, and five is the best: excellent. One means fail. Teachers often test us orally, in front of the class, and all grades go into e-Dnevnik, a digital gradebook where our parents can see them immediately."
+],
+[
+"How we learn",
+"Mia: How do teachers teach? Traditionally, the teacher explains and we take notes, and then we have written and oral tests. Since the School for Life reform in 2019, there are more projects, group work and digital tools, and the focus is on what we can do, not only on what we remember. In vocational programmes, students also learn in workshops and in companies, and our school is accredited for Erasmus in vocational education."
+],
+[
+"After school",
+"Tonka: After four years, the State Matura is the big exam. Everyone takes Croatian, Maths and English. Maths and English can be taken at a higher or a basic level, and you can add up to five elective subjects. Universities accept students based on matura points and school grades. Students from three-year programmes usually start working, and many later take a master craftsman exam."
+],
+[
+"Did you know?",
+"Melanie: A few fun facts. Since 2023, every primary school pupil in Croatia gets a free school meal. Mobile phones are not allowed during lessons in primary schools, and there are plans to ban them during breaks, too. And in Croatia, five is the best grade, but in Germany a five means you failed!"
+],
+[
+"Croatia vs Germany",
+"Mia: Now let's compare Croatia and Germany. On the left are our facts, and on the right is what we found out about German schools. German friends, please correct us, because every German state is a little different! The biggest difference: in Germany, children choose their secondary school after only four years, and in Croatia we all stay in the same primary school for eight years. (Click a cell on the computer to correct it.)"
+],
+[
+"Team talk (5 min)",
+"Tonka: Now let's work in mixed teams. Each team gets one question. You have five minutes to talk, and then one person from each team shares the most interesting answer."
+],
+[
+"Joint project",
+"Melanie: Our idea for a joint project is called Same Age, Different School. After we go home, we continue online on eTwinning. Every month there is one small challenge: first a short video of a day in our school, then a mini lesson we teach each other online, then interviews about jobs in our towns. In the end, we create a shared digital magazine about our schools."
+],
+[
+"Winners",
+"Tonka: And now, the moment you were waiting for: the winners of our quiz! (Press Show winners, read the names and ask the winners to raise their hands.)"
+],
+[
+"Thank you",
+"All: Thank you for listening! Hvala! Danke! We hope you learned something new about Croatian schools, and maybe a few Croatian words. Do you have any questions?"
+]
+];
+// upravljac.html = Vodikov svijet, upravljac.html?p=erasmus = Erasmus+ prezentacija
+const PREZA = new URLSearchParams(location.search).get("p") === "erasmus" ? "erasmus" : "vodik";
+const SLAJDOVI = PREZA === "erasmus" ? ERASMUS : VODIK;
+const POB = PREZA === "erasmus" ? 14 : 4;   // slajd s pobjednicima
 const $ = id => document.getElementById(id);
 let token = ""; try{ token = localStorage.getItem("vs-upravljac") || ""; }catch(e){}
 let st = { slajd:0, pobjednici:false, kod:"FINALE", t:0 }, salje = false, ceka = null;
 
 function status(t, k){ $("status").textContent = t; $("status").className = k || ""; }
 function crtaj(){
+  document.title = PREZA === "erasmus" ? "Upravljač · Erasmus+" : "Upravljač prezentacije · Vodikov svijet"; $("naslov").textContent = PREZA === "erasmus" ? "🎛️ Erasmus+ upravljač" : "🎛️ Upravljač prezentacije";
   const [ime, govor] = SLAJDOVI[st.slajd] || SLAJDOVI[0];
   $("br").textContent = st.slajd + 1; $("ime").textContent = ime; $("govor").textContent = govor; $("kod").textContent = st.kod;
   $("natrag").disabled = st.slajd === 0; $("dalje").disabled = st.slajd === SLAJDOVI.length - 1;
   $("dalje").textContent = st.slajd === SLAJDOVI.length - 1 ? "Kraj" : `Dalje ▶ ${SLAJDOVI[st.slajd+1][0]}`;
-  $("otkrij").hidden = st.slajd !== 4; $("otkrij").textContent = st.pobjednici ? "🙈 Sakrij pobjednike" : "🏆 Otkrij pobjednike";
+  $("otkrij").hidden = st.slajd !== POB; $("otkrij").textContent = st.pobjednici ? "🙈 Sakrij pobjednike" : "🏆 Otkrij pobjednike";
   $("tockice").innerHTML = SLAJDOVI.map((s, k) => `<button class="${k === st.slajd ? "on" : ""}" data-k="${k}" aria-label="${s[0]}">${k+1}</button>`).join("");
 }
 $("tockice").addEventListener("click", e => { const b = e.target.closest("button"); if(b) posalji({ slajd: +b.dataset.k }); });
 
 // naredba ide odmah na ekran mobitela, a na projektor za 1–2 sekunde
 async function posalji(promjena){
-  st = { ...st, ...promjena }; if(promjena.slajd !== undefined && promjena.slajd !== 4) st.pobjednici = st.pobjednici && st.slajd >= 4; crtaj();
+  st = { ...st, ...promjena }; if(promjena.slajd !== undefined && promjena.slajd !== POB) st.pobjednici = st.pobjednici && st.slajd >= POB; crtaj();
   if(navigator.vibrate) try{ navigator.vibrate(15); }catch(e){}
   ceka = { slajd: st.slajd, pobjednici: st.pobjednici, kod: st.kod }; if(salje) return;
   salje = true;
