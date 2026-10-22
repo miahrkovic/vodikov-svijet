@@ -3,6 +3,11 @@
   "dnevnik": [
     {
       "i": "🏙️",
+      "t": "Slavonski Brod je postao zeleni grad na vodik 2035.",
+      "d": "2026-10-22T14:56:14.293Z"
+    },
+    {
+      "i": "🏙️",
       "t": "Zadar je postao zeleni grad na vodik 2028.",
       "d": "2026-10-22T14:52:05.740Z"
     },
@@ -381,8 +386,8 @@
   },
   "grad": {
     "pobjeda": true,
-    "godina": 2028,
-    "grad": "Zadar"
+    "godina": 2035,
+    "grad": "Slavonski Brod"
   },
   "ruta": {
     "najbolja": 100,
@@ -394,7 +399,7 @@
       "Slavonski Brod"
     ]
   },
-  "xp": 1825,
+  "xp": 1861,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -444,7 +449,7 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792680969248,
+  "_spremljeno": 1792680974293,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-10-22",
