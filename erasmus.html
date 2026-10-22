@@ -587,7 +587,7 @@ async function stanje(){
     if(d.kod && d.kod !== kod){ kod = d.kod; crtajQR(); zadnjiPotpis = ""; brojIgraca = -1; rezultati(); }
     if(d.t > zadnjaNaredba){
       const prvi = zadnjaNaredba === 0; zadnjaNaredba = d.t; zadnjaPromjena = Date.now();
-      if(!prvi || d.t > ucitano - 10*60000){ if(otkriveno !== d.pobjednici){ otkriveno = d.pobjednici; if(i === POBJEDNICI) prikaziPobjednike(); } idi(d.slajd); }
+      if(!prvi || d.t > ucitano - 10*60000){ if(d.jezik && d.jezik !== JEZIK) postaviJezik(d.jezik); if(otkriveno !== d.pobjednici){ otkriveno = d.pobjednici; if(i === POBJEDNICI) prikaziPobjednike(); } idi(d.slajd); }
       else otkriveno = false;
     }
   }catch(e){ greske++; if(greske > 2){ $("veza").className = ""; $("veza").lastChild.textContent = "offline · use → ← keys"; } }
