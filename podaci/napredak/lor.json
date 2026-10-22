@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🛣️",
+      "t": "Novi najbolji plan punionica: 100 % (Gospić, Šibenik, Ploče, Karlovac, Slavonski Brod)",
+      "d": "2026-10-22T14:50:33.879Z"
+    },
+    {
       "i": "🏙️",
       "t": "Zadar je postao zeleni grad na vodik 2028.",
       "d": "2026-10-22T12:39:43.431Z"
@@ -370,16 +375,16 @@
     "grad": "Zadar"
   },
   "ruta": {
-    "najbolja": 99,
+    "najbolja": 100,
     "plan": [
-      "Karlovac",
       "Gospić",
       "Šibenik",
       "Ploče",
+      "Karlovac",
       "Slavonski Brod"
     ]
   },
-  "xp": 1580,
+  "xp": 1584,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -429,7 +434,7 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792672810433,
+  "_spremljeno": 1792680633879,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-10-22",
