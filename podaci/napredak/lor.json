@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "⚡",
+      "t": "Liga, runda 43: 168 bodova (10/10)",
+      "d": "2026-10-22T14:51:34.102Z"
+    },
+    {
       "i": "🛣️",
       "t": "Novi najbolji plan punionica: 100 % (Gospić, Šibenik, Ploče, Karlovac, Slavonski Brod)",
       "d": "2026-10-22T14:50:33.879Z"
@@ -384,7 +389,7 @@
       "Slavonski Brod"
     ]
   },
-  "xp": 1584,
+  "xp": 1618,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -434,7 +439,7 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792680633879,
+  "_spremljeno": 1792680694103,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-10-22",
