@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "🏙️",
+      "t": "Zadar je postao zeleni grad na vodik 2028.",
+      "d": "2026-10-22T14:52:05.740Z"
+    },
+    {
       "i": "⚡",
       "t": "Liga, runda 43: 168 bodova (10/10)",
       "d": "2026-10-22T14:51:34.102Z"
@@ -389,7 +394,7 @@
       "Slavonski Brod"
     ]
   },
-  "xp": 1621,
+  "xp": 1654,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -439,7 +444,7 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792680719172,
+  "_spremljeno": 1792680725741,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-10-22",
