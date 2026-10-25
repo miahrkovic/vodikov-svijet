@@ -2,6 +2,16 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "✨",
+      "t": "Otkrio si vodik u sebi (+20 XP)",
+      "d": "2026-10-25T13:28:01.561Z"
+    },
+    {
+      "i": "🧍",
+      "t": "U meni je 1,0 kg vodika (6,0 × 10²⁶ atoma)",
+      "d": "2026-10-25T13:28:01.561Z"
+    },
+    {
       "i": "☀️",
       "t": "Pitanje dana: točno · niz 1",
       "d": "2026-10-25T13:24:05.900Z"
@@ -13,7 +23,7 @@
     }
   ],
   "ti": {
-    "kg": null
+    "kg": 100
   },
   "istrazeno": [],
   "lab": {
@@ -30,13 +40,13 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 5,
+  "xp": 25,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792934645901,
+  "_spremljeno": 1792934881682,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-10-25",
