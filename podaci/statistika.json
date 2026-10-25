@@ -857,8 +857,8 @@
   },
   "ozren7": {
     "kreiran": "2026-10-25T13:23:46.931Z",
-    "zadnje": "2026-10-25T13:24:01.453Z",
-    "xp": 0,
+    "zadnje": "2026-10-25T13:24:10.507Z",
+    "xp": 5,
     "koraci": {
       "ti": false,
       "lab": false,
@@ -878,6 +878,6 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 1
+    "dnevnik": 2
   }
 }
