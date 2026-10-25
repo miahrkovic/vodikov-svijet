@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "☀️",
+      "t": "Pitanje dana: točno · niz 1",
+      "d": "2026-10-25T13:24:05.900Z"
+    },
+    {
       "i": "✨",
       "t": "Napravljen račun @ozren7. Dobrodošao!",
       "d": "2026-10-25T13:23:48.001Z"
@@ -25,12 +30,21 @@
     "najbolja": 0,
     "plan": []
   },
-  "xp": 0,
+  "xp": 5,
   "akad": {},
   "tocna": [],
   "tim": null,
   "timIme": null,
   "vidioUvod": true,
-  "_spremljeno": 1792934636886,
-  "_ukupno": 3.9
+  "_spremljeno": 1792934645901,
+  "_ukupno": 3.9,
+  "dnevno": {
+    "dan": "2026-10-25",
+    "tocno": true
+  },
+  "niz": {
+    "broj": 1,
+    "zadnji": "2026-10-25",
+    "najdulji": 1
+  }
 }
