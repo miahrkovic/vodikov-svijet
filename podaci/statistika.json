@@ -179,8 +179,8 @@
   },
   "lor": {
     "kreiran": "2026-10-21T15:57:53.479Z",
-    "zadnje": "2026-10-26T15:44:53.369Z",
-    "xp": 2054,
+    "zadnje": "2026-10-26T15:45:41.745Z",
+    "xp": 2088,
     "koraci": {
       "ti": true,
       "lab": true,
@@ -350,7 +350,7 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 55
+    "dnevnik": 56
   },
   "magdalena": {
     "kreiran": "2026-10-21T15:58:21.426Z",
