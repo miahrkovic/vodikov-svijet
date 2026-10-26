@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Croatia Quiz · Erasmus+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Kviz o Hrvatskoj za veliki ekran: QR kod, broj igrača, pobjednici i točni odgovori. Radi samostalno, bez prezentacije. */
+:root{--papir:#f7f4ec;--papir2:#efe9da;--ink:#141733;--muted:#5d6284;--line:#ddd6c3;--eu:#1f43c4;--zuta:#ffc800;--crv:#e1251b;--zel:#13a06b;
+  --disp:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--tekst:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--papir);color:var(--ink);overflow:hidden;font-family:var(--tekst)}
+#pozadina{position:fixed;inset:0;background:radial-gradient(90% 70% at 85% 0%,#e6ecff 0,transparent 60%),radial-gradient(70% 60% at 0% 100%,#fff3c9 0,transparent 55%),var(--papir)}
+/* šahovnica kao motiv u kutu */
+#sah{position:fixed;left:0;top:0;width:180px;height:180px;opacity:.12;background:conic-gradient(var(--crv) 25%,#fff 0 50%,var(--crv) 0 75%,#fff 0) 0 0/60px 60px}
+#okvir{position:fixed;inset:0;overflow:hidden}
+#pozornica{width:1600px;height:900px;position:absolute;left:50%;top:50%;transform-origin:center;padding:70px 100px 120px}
+.pogled{position:absolute;inset:70px 100px 130px;display:none;flex-direction:column}
+.pogled.on{display:flex;animation:ulaz .6s cubic-bezier(.2,1,.3,1)}
+@keyframes ulaz{from{opacity:0;transform:translateY(24px)}}
+.ozn{display:inline-flex;align-items:center;gap:12px;font:800 20px var(--tekst);letter-spacing:.26em;text-transform:uppercase;color:var(--eu)}
+.ozn::before{content:"";width:34px;height:4px;border-radius:2px;background:var(--zuta)}
+h1{font:800 104px/.95 var(--disp);letter-spacing:-.03em;margin-top:18px}
+h2{font:800 70px/1 var(--disp);letter-spacing:-.02em;margin-top:14px}
+em{font-style:normal;color:var(--crv)}
+.duo{display:grid;grid-template-columns:1fr 470px;gap:70px;align-items:center;height:100%}
+.korak{display:flex;gap:16px;margin-top:20px;font:700 30px var(--tekst)}
+.korak span{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--zuta);font:800 24px var(--disp)}
+.red{display:flex;gap:16px;align-items:center;margin-top:34px;flex-wrap:wrap}
+.igrac{display:inline-flex;align-items:baseline;gap:14px;padding:16px 30px;border-radius:999px;background:var(--ink);color:#fff;font:800 28px var(--tekst)}
+.igrac b{font:800 58px var(--disp);color:var(--zuta)} .igrac b.skok{animation:skok .5s} @keyframes skok{40%{transform:scale(1.35)}}
+#sat{padding:16px 30px;border-radius:999px;background:#fff;border:2px solid var(--line);font:800 50px var(--disp);font-variant-numeric:tabular-nums}
+#sat.kraj{background:var(--crv);border-color:var(--crv);color:#fff}
+.qr{background:#fff;border-radius:32px;padding:24px;border:3px solid var(--ink);box-shadow:14px 14px 0 var(--crv)}
+.qr img,.qr canvas{display:block;width:100%!important;height:auto!important}
+.kod{text-align:center;margin-top:18px;font:700 20px var(--tekst);color:var(--muted)} .kod b{color:var(--ink);letter-spacing:.1em}
+/* pobjednici */
+.postolje{display:flex;align-items:flex-end;justify-content:center;gap:30px;flex:1;margin-top:10px}
+.stup{width:320px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;transform:translateY(110px)}
+.stup.on{animation:gore 1s cubic-bezier(.2,1.4,.4,1) forwards} @keyframes gore{to{opacity:1;transform:none}}
+.med{font-size:80px;line-height:1}
+.ime{font:800 42px var(--disp);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bod{font:800 24px var(--tekst);color:var(--eu)}
+.blok{width:100%;border-radius:24px 24px 0 0;display:flex;justify-content:center;padding-top:14px;font:800 70px var(--disp)}
+.p1 .blok{height:240px;background:var(--zuta)} .p2 .blok{height:170px;background:#dfe3f2} .p3 .blok{height:115px;background:#f2c7a5}
+.ostali{display:flex;justify-content:center;gap:28px;margin-top:14px;font:700 24px var(--tekst);color:var(--muted)} .ostali b{color:var(--eu)}
+.prazno{margin:auto;font:700 32px var(--tekst);color:var(--muted)}
+.iskra{position:fixed;width:14px;height:14px;border-radius:3px;pointer-events:none;animation:isk 1.6s cubic-bezier(.1,.8,.3,1) forwards;z-index:9}
+@keyframes isk{to{transform:translate(var(--x),var(--y)) rotate(720deg) scale(.2);opacity:0}}
+/* odgovori */
+.odgovori{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(11,auto);gap:4px 40px;margin-top:16px}
+.odgovori div{display:flex;gap:12px;align-items:baseline;font:600 17px/1.25 var(--tekst);padding:5px 0;border-bottom:1.5px solid var(--line)}
+.odgovori span{flex:none;width:30px;font:800 18px var(--disp);color:var(--muted)}
+.odgovori p{flex:1;min-width:0} .odgovori b{color:var(--zel);font-weight:800}
+/* gumbi */
+#gumbi{position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));z-index:5;transition:opacity .5s}
+#gumbi button{border:0;border-radius:999px;padding:12px 20px;font:800 16px var(--tekst);background:#fff;color:var(--ink);box-shadow:0 4px 14px #14173322;cursor:pointer}
+#gumbi button.glavni{background:var(--eu);color:#fff}
+#gumbi button[aria-pressed="true"]{background:var(--ink);color:#fff}
+#gumbi.skri{opacity:0;pointer-events:none}
+#potvrda{display:inline-flex;gap:8px;align-items:center;font:700 15px var(--tekst);background:#fff;border-radius:999px;padding:6px 6px 6px 16px;box-shadow:0 4px 14px #14173322}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.stup{opacity:1;transform:none}}
+</style></head>
+<body>
+<div id="pozadina" aria-hidden="true"></div><div id="sah" aria-hidden="true"></div>
+<div id="okvir"><div id="pozornica">
+
+  <section class="pogled on" id="vStart">
+    <div class="duo">
+      <div>
+        <div class="ozn" data-t="oznaka">Erasmus+ · Croatia quiz</div>
+        <h1 data-t="naslov">How well do you know <em>Croatia?</em></h1>
+        <div class="korak"><span>1</span><i data-t="k1" style="font-style:normal">scan the code</i></div>
+        <div class="korak"><span>2</span><i data-t="k2" style="font-style:normal">type a nickname</i></div>
+        <div class="korak"><span>3</span><i data-t="k3" style="font-style:normal">22 questions, 6 minutes</i></div>
+        <div class="red"><div class="igrac"><span data-t="igraca">Players:</span> <b class="igraca">0</b></div><div id="sat" hidden>6:00</div></div>
+      </div>
+      <div><div class="qr" id="qr"></div><p class="kod"><span data-t="kodtxt">Quiz code</span> <b id="kodTxt">…</b></p></div>
+    </div>
+  </section>
+
+  <section class="pogled" id="vPob">
+    <div style="text-align:center"><div class="ozn" data-t="oznaka">Erasmus+ · Croatia quiz</div><h2 data-t="pobN">And the winners <em>are…</em></h2></div>
+    <div class="postolje" id="postolje"></div>
+    <div class="ostali" id="ostali"></div>
+  </section>
+
+  <section class="pogled" id="vOdg">
+    <div class="ozn" data-t="oznaka">Erasmus+ · Croatia quiz</div>
+    <h2 data-t="odgN" style="font-size:56px">The right <em>answers</em></h2>
+    <div class="odgovori" id="odgovori"></div>
+  </section>
+
+</div></div>
+<div id="gumbi" role="toolbar" aria-label="Quiz controls">
+  <button class="glavni" id="bStart" data-t="bStart">⏱ Start 6:00</button>
+  <button id="bQR" data-t="bQR" aria-pressed="true">📱 QR code</button>
+  <button id="bPob" data-t="bPob" aria-pressed="false">🏆 Winners</button>
+  <button id="bOdg" data-t="bOdg" aria-pressed="false">✅ Answers</button>
+  <button id="bNovi" data-t="bNovi">↺ New quiz</button>
+  <span id="potvrda" hidden><span data-t="potvrda">New code, 0 players?</span><button id="daNovi" class="glavni" data-t="da">Yes</button><button id="neNovi" data-t="ne">No</button></span>
+  <button data-j="en">EN</button><button data-j="hr">HR</button><button data-j="de">DE</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const POSREDNIK = "https://vodikov-svijet.miahrkovic.workers.dev";
+const STRANICA = "https://miahrkovic.github.io/vodikov-svijet/";
+const $ = id => document.getElementById(id);
+const PIT = [
+[
+[
+"Until 1991, Croatia was part of which country?",
+[
+"Yugoslavia",
+"Czechoslovakia",
+"Soviet Union",
+"Albania"
+]
+],
+[
+"In which year did Croatia become independent?",
+[
+"1989",
+"1991",
+"1995",
+"2000"
+]
+],
+[
+"Who was the first president of Croatia?",
+[
+"Stjepan Mesić",
+"Ivo Josipović",
+"Franjo Tuđman",
+"Kolinda Grabar-Kitarović"
+]
+],
+[
+"What is the capital of Croatia?",
+[
+"Split",
+"Zagreb",
+"Rijeka",
+"Dubrovnik"
+]
+],
+[
+"Who is the president of Croatia today?",
+[
+"Andrej Plenković",
+"Kolinda Grabar-Kitarović",
+"Davor Šuker",
+"Zoran Milanović"
+]
+],
+[
+"Which world-famous city in the south of Croatia is called the “Pearl of the Adriatic”?",
+[
+"Dubrovnik",
+"Osijek",
+"Varaždin",
+"Karlovac"
+]
+],
+[
+"Which world-famous Croatian footballer won the Ballon d'Or in 2018?",
+[
+"Ivan Rakitić",
+"Luka Modrić",
+"Mario Mandžukić",
+"Davor Šuker"
+]
+],
+[
+"In which year was the Eurovision Song Contest held in Zagreb?",
+[
+"1979",
+"1985",
+"1990",
+"2005"
+]
+],
+[
+"Which piece of men's clothing was invented in Croatia and is worn all over the world?",
+[
+"Jeans",
+"Baseball cap",
+"Braces",
+"Necktie"
+]
+],
+[
+"Which Croatian national park with 16 lakes and waterfalls is famous all over the world?",
+[
+"Plitvice Lakes",
+"Triglav",
+"Berchtesgaden",
+"Durmitor"
+]
+],
+[
+"In which Croatian city by the sea is Diocletian's Palace?",
+[
+"Zadar",
+"Pula",
+"Split",
+"Šibenik"
+]
+],
+[
+"How many islands, islets and rocks does Croatia have?",
+[
+"About 100",
+"About 500",
+"More than 1,000",
+"More than 5,000"
+]
+],
+[
+"Which Croatian food and drink do German tourists love?",
+[
+"Paella and sangria",
+"Ćevapčići and šljivovica",
+"Sushi and sake",
+"Tacos and tequila"
+]
+],
+[
+"Nikola Tesla's birthplace is in which country today?",
+[
+"Serbia",
+"USA",
+"Austria",
+"Croatia"
+]
+],
+[
+"Which currency does Croatia use since 2023?",
+[
+"Kuna",
+"Euro",
+"Dinar",
+"Swiss franc"
+]
+],
+[
+"In which year did Croatia join the European Union?",
+[
+"2004",
+"2007",
+"2013",
+"2020"
+]
+],
+[
+"Croatia played in the 2018 World Cup final. Who did they lose to?",
+[
+"France",
+"Germany",
+"Brazil",
+"Argentina"
+]
+],
+[
+"A Croatian inventor made the mechanical pencil. Croatians still call a pen after him. What was his name?",
+[
+"Faber",
+"Penkala",
+"Pelikan",
+"Staedtler"
+]
+],
+[
+"Which sea is on the coast of Croatia?",
+[
+"Baltic Sea",
+"North Sea",
+"Black Sea",
+"Adriatic Sea"
+]
+],
+[
+"What is on the Croatian coat of arms?",
+[
+"Red and white squares",
+"A black eagle",
+"A golden lion",
+"A white cross"
+]
+],
+[
+"In which Croatian city by the sea is the Roman Arena (amphitheatre)?",
+[
+"Zadar",
+"Pula",
+"Rijeka",
+"Makarska"
+]
+],
+[
+"Which famous Croatian basketball player died in a car accident in Germany in 1993?",
+[
+"Toni Kukoč",
+"Dino Rađa",
+"Dražen Petrović",
+"Krešimir Ćosić"
+]
+]
+],
+[
+[
+"Bis 1991 war Kroatien Teil welches Landes?",
+[
+"Jugoslawien",
+"Tschechoslowakei",
+"Sowjetunion",
+"Albanien"
+]
+],
+[
+"In welchem Jahr wurde Kroatien unabhängig?",
+[
+"1989",
+"1991",
+"1995",
+"2000"
+]
+],
+[
+"Wer war der erste Präsident Kroatiens?",
+[
+"Stjepan Mesić",
+"Ivo Josipović",
+"Franjo Tuđman",
+"Kolinda Grabar-Kitarović"
+]
+],
+[
+"Was ist die Hauptstadt Kroatiens?",
+[
+"Split",
+"Zagreb",
+"Rijeka",
+"Dubrovnik"
+]
+],
+[
+"Wer ist heute Präsident Kroatiens?",
+[
+"Andrej Plenković",
+"Kolinda Grabar-Kitarović",
+"Davor Šuker",
+"Zoran Milanović"
+]
+],
+[
+"Welche weltberühmte Stadt im Süden Kroatiens heißt „Perle der Adria“?",
+[
+"Dubrovnik",
+"Osijek",
+"Varaždin",
+"Karlovac"
+]
+],
+[
+"Welcher weltberühmte kroatische Fußballer gewann 2018 den Ballon d'Or?",
+[
+"Ivan Rakitić",
+"Luka Modrić",
+"Mario Mandžukić",
+"Davor Šuker"
+]
+],
+[
+"In welchem Jahr fand der Eurovision Song Contest in Zagreb statt?",
+[
+"1979",
+"1985",
+"1990",
+"2005"
+]
+],
+[
+"Welches Kleidungsstück für Männer wurde in Kroatien erfunden und wird weltweit getragen?",
+[
+"Jeans",
+"Baseballkappe",
+"Hosenträger",
+"Krawatte"
+]
+],
+[
+"Welcher kroatische Nationalpark mit 16 Seen und Wasserfällen ist weltberühmt?",
+[
+"Plitvicer Seen",
+"Triglav",
+"Berchtesgaden",
+"Durmitor"
+]
+],
+[
+"In welcher kroatischen Stadt am Meer steht der Diokletianpalast?",
+[
+"Zadar",
+"Pula",
+"Split",
+"Šibenik"
+]
+],
+[
+"Wie viele Inseln, kleine Inseln und Felsen hat Kroatien?",
+[
+"Etwa 100",
+"Etwa 500",
+"Mehr als 1.000",
+"Mehr als 5.000"
+]
+],
+[
+"Welches kroatische Essen und Getränk lieben deutsche Touristen?",
+[
+"Paella und Sangria",
+"Ćevapčići und Sliwowitz",
+"Sushi und Sake",
+"Tacos und Tequila"
+]
+],
+[
+"In welchem Land liegt heute der Geburtsort von Nikola Tesla?",
+[
+"Serbien",
+"USA",
+"Österreich",
+"Kroatien"
+]
+],
+[
+"Welche Währung hat Kroatien seit 2023?",
+[
+"Kuna",
+"Euro",
+"Dinar",
+"Schweizer Franken"
+]
+],
+[
+"In welchem Jahr trat Kroatien der Europäischen Union bei?",
+[
+"2004",
+"2007",
+"2013",
+"2020"
+]
+],
+[
+"Kroatien spielte 2018 im WM-Finale. Gegen wen verlor es?",
+[
+"Frankreich",
+"Deutschland",
+"Brasilien",
+"Argentinien"
+]
+],
+[
+"Ein kroatischer Erfinder baute den Druckbleistift. Kroaten nennen einen Stift noch heute nach ihm. Wie hieß er?",
+[
+"Faber",
+"Penkala",
+"Pelikan",
+"Staedtler"
+]
+],
+[
+"An welchem Meer liegt die Küste Kroatiens?",
+[
+"Ostsee",
+"Nordsee",
+"Schwarzes Meer",
+"Adria"
+]
+],
+[
+"Was ist auf dem kroatischen Wappen?",
+[
+"Rote und weiße Felder",
+"Ein schwarzer Adler",
+"Ein goldener Löwe",
+"Ein weißes Kreuz"
+]
+],
+[
+"In welcher kroatischen Stadt am Meer steht die römische Arena (Amphitheater)?",
+[
+"Zadar",
+"Pula",
+"Rijeka",
+"Makarska"
+]
+],
+[
+"Welcher berühmte kroatische Basketballspieler starb 1993 bei einem Autounfall in Deutschland?",
+[
+"Toni Kukoč",
+"Dino Rađa",
+"Dražen Petrović",
+"Krešimir Ćosić"
+]
+]
+],
+[
+[
+"Do 1991. Hrvatska je bila dio koje države?",
+[
+"Jugoslavija",
+"Čehoslovačka",
+"Sovjetski Savez",
+"Albanija"
+]
+],
+[
+"Koje je godine Hrvatska postala samostalna?",
+[
+"1989.",
+"1991.",
+"1995.",
+"2000."
+]
+],
+[
+"Tko je bio prvi hrvatski predsjednik?",
+[
+"Stjepan Mesić",
+"Ivo Josipović",
+"Franjo Tuđman",
+"Kolinda Grabar-Kitarović"
+]
+],
+[
+"Koji je glavni grad Hrvatske?",
+[
+"Split",
+"Zagreb",
+"Rijeka",
+"Dubrovnik"
+]
+],
+[
+"Tko je sadašnji predsjednik Hrvatske?",
+[
+"Andrej Plenković",
+"Kolinda Grabar-Kitarović",
+"Davor Šuker",
+"Zoran Milanović"
+]
+],
+[
+"Koji svjetski poznati grad na jugu Hrvatske zovu „biser Jadrana“?",
+[
+"Dubrovnik",
+"Osijek",
+"Varaždin",
+"Karlovac"
+]
+],
+[
+"Koji svjetski poznati hrvatski nogometaš je 2018. osvojio Zlatnu loptu?",
+[
+"Ivan Rakitić",
+"Luka Modrić",
+"Mario Mandžukić",
+"Davor Šuker"
+]
+],
+[
+"Koje je godine u Zagrebu održan Eurosong?",
+[
+"1979.",
+"1985.",
+"1990.",
+"2005."
+]
+],
+[
+"Koji je muški odjevni predmet izumljen u Hrvatskoj i nosi se u cijelom svijetu?",
+[
+"Traperice",
+"Šilterica",
+"Naramenice",
+"Kravata"
+]
+],
+[
+"Koji je hrvatski nacionalni park sa 16 jezera i slapova poznat u cijelom svijetu?",
+[
+"Plitvička jezera",
+"Triglav",
+"Berchtesgaden",
+"Durmitor"
+]
+],
+[
+"U kojem hrvatskom gradu na moru se nalazi Dioklecijanova palača?",
+[
+"Zadar",
+"Pula",
+"Split",
+"Šibenik"
+]
+],
+[
+"Koliko Hrvatska ima otoka, otočića i hridi?",
+[
+"Oko 100",
+"Oko 500",
+"Više od 1000",
+"Više od 5000"
+]
+],
+[
+"Koje hrvatsko jelo i piće vole turisti iz Njemačke?",
+[
+"Paella i sangrija",
+"Ćevapčići i šljivovica",
+"Sushi i sake",
+"Tacos i tekila"
+]
+],
+[
+"U kojoj se zemlji danas nalazi rodno mjesto Nikole Tesle?",
+[
+"Srbija",
+"SAD",
+"Austrija",
+"Hrvatska"
+]
+],
+[
+"Koju valutu Hrvatska koristi od 2023.?",
+[
+"Kunu",
+"Euro",
+"Dinar",
+"Švicarski franak"
+]
+],
+[
+"Koje je godine Hrvatska ušla u Europsku uniju?",
+[
+"2004.",
+"2007.",
+"2013.",
+"2020."
+]
+],
+[
+"Hrvatska je igrala u finalu Svjetskog prvenstva 2018. Od koga je izgubila?",
+[
+"Francuske",
+"Njemačke",
+"Brazila",
+"Argentine"
+]
+],
+[
+"Hrvatski izumitelj napravio je mehaničku olovku, a Hrvati i danas po njemu zovu olovku. Kako se zvao?",
+[
+"Faber",
+"Penkala",
+"Pelikan",
+"Staedtler"
+]
+],
+[
+"Na kojem moru je hrvatska obala?",
+[
+"Baltičko more",
+"Sjeverno more",
+"Crno more",
+"Jadransko more"
+]
+],
+[
+"Što je na hrvatskom grbu?",
+[
+"Crveno-bijela polja",
+"Crni orao",
+"Zlatni lav",
+"Bijeli križ"
+]
+],
+[
+"U kojem hrvatskom gradu na moru se nalazi rimska Arena?",
+[
+"Zadar",
+"Pula",
+"Rijeka",
+"Makarska"
+]
+],
+[
+"Koji je najpoznatiji hrvatski košarkaš poginuo u prometnoj nesreći u Njemačkoj 1993.?",
+[
+"Toni Kukoč",
+"Dino Rađa",
+"Dražen Petrović",
+"Krešimir Ćosić"
+]
+]
+]
+];           // [en, de, hr] → [[pitanje, [odgovori]], …]
+const TOCNO = [0, 1, 2, 1, 3, 0, 1, 2, 3, 0, 2, 2, 1, 3, 1, 2, 0, 1, 3, 0, 1, 2];
+const TX = {   // [en, hr, de]
+  oznaka: ["Erasmus+ · Croatia quiz", "Erasmus+ · Kviz o Hrvatskoj", "Erasmus+ · Kroatien-Quiz"],
+  naslov: ["How well do you know <em>Croatia?</em>", "Koliko dobro poznaješ <em>Hrvatsku?</em>", "Wie gut kennst du <em>Kroatien?</em>"],
+  k1: ["scan the code", "skeniraj kod", "Code scannen"], k2: ["type a nickname", "upiši nadimak", "Spitznamen eingeben"], k3: ["22 questions, 6 minutes", "22 pitanja, 6 minuta", "22 Fragen, 6 Minuten"],
+  igraca: ["Players:", "Igrača:", "Spieler:"], kodtxt: ["Quiz code", "Kod kviza", "Quiz-Code"],
+  pobN: ["And the winners <em>are…</em>", "A pobjednici <em>su…</em>", "Und die Gewinner <em>sind…</em>"],
+  odgN: ["The right <em>answers</em>", "Točni <em>odgovori</em>", "Die richtigen <em>Antworten</em>"],
+  bStart: ["⏱ Start 6:00", "⏱ Kreni 6:00", "⏱ Start 6:00"], bQR: ["📱 QR code", "📱 QR kod", "📱 QR-Code"], bPob: ["🏆 Winners", "🏆 Pobjednici", "🏆 Gewinner"],
+  bOdg: ["✅ Answers", "✅ Odgovori", "✅ Antworten"], bNovi: ["↺ New quiz", "↺ Novi kviz", "↺ Neues Quiz"],
+  potvrda: ["New code, 0 players?", "Novi kod, 0 igrača?", "Neuer Code, 0 Spieler?"], da: ["Yes", "Da", "Ja"], ne: ["No", "Ne", "Nein"],
+  prazno: ["Nobody has played yet.", "Još nitko nije igrao.", "Noch hat niemand gespielt."], bodova: ["points", "bodova", "Punkte"], kraj: ["Time's up!", "Vrijeme je isteklo!", "Zeit ist um!"] };
+let J = "en"; try{ J = localStorage.getItem("hrk-host-jezik") || "en"; }catch(e){}
+const I = () => ({en:0, hr:1, de:2})[J];
+const t = k => TX[k][I()];
+
+// ----- skaliranje -----
+function skaliraj(){ $("pozornica").style.transform = `translate(-50%,-50%) scale(${Math.min(innerWidth/1600, innerHeight/900)})`; }
+addEventListener("resize", skaliraj); skaliraj();
+
+// ----- kod kviza (pamti se na ovom računalu dok se ne stisne „Novi kviz“) -----
+const novKod = () => { const z = "ABCDEFGHJKLMNPRSTUVZ23456789"; return [...crypto.getRandomValues(new Uint8Array(6))].map(x => z[x % z.length]).join(""); };
+let kod = ""; try{ kod = localStorage.getItem("hrk-host-kod") || ""; }catch(e){}
+if(!/^[A-Z0-9]{6}$/.test(kod)){ kod = novKod(); try{ localStorage.setItem("hrk-host-kod", kod); }catch(e){} }
+function crtajQR(){ const el = $("qr"); el.innerHTML = ""; const url = `${STRANICA}kviz-hrvatska.html?s=${kod}`; el.setAttribute("role","img"); el.setAttribute("aria-label","QR code: "+url);
+  try{ new QRCode(el, {text:url, width:840, height:840, colorDark:"#141733", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M}); }catch(e){ el.innerHTML = `<p style="font:800 20px var(--tekst);word-break:break-all">${url}</p>`; }
+  $("kodTxt").textContent = kod; }
+
+// ----- pogledi -----
+let pogled = "vStart";
+function pokazi(v){ pogled = v; ["vStart","vPob","vOdg"].forEach(x => $(x).classList.toggle("on", x === v));
+  $("bQR").setAttribute("aria-pressed", v === "vStart"); $("bPob").setAttribute("aria-pressed", v === "vPob"); $("bOdg").setAttribute("aria-pressed", v === "vOdg");
+  if(v === "vPob"){ zadnjiPotpis = ""; rezultati(true); } }
+
+// ----- rezultati -----
+let rez = {broj:0, top:[]}, zadnjiPotpis = "", brojIgraca = -1;
+async function rezultati(prvi){
+  try{ const r = await fetch(`${POSREDNIK}/kviz/rezultati?s=${kod}`, {cache:"no-store"}); if(!r.ok) return; rez = await r.json();
+    if(rez.broj !== brojIgraca){ brojIgraca = rez.broj; document.querySelectorAll(".igraca").forEach(b => { b.textContent = rez.broj; b.classList.remove("skok"); void b.offsetWidth; b.classList.add("skok"); }); }
+    if(pogled === "vPob") crtajPobjednike(prvi);
+  }catch(e){}
+}
+setInterval(() => rezultati(false), 3000);
+function prasak(el, n){ const r = el.getBoundingClientRect(), b = ["#1f43c4","#ffc800","#e1251b","#13a06b","#141733"];
+  for(let k=0;k<n;k++){ const d = document.createElement("div"); d.className = "iskra"; const a = Math.random()*6.28, v = 160+Math.random()*520;
+    d.style.cssText = `left:${r.left+r.width/2}px;top:${r.top+30}px;background:${b[k%5]};--x:${Math.cos(a)*v}px;--y:${Math.sin(a)*v - 200}px`; document.body.appendChild(d); setTimeout(() => d.remove(), 1700); } }
+function crtajPobjednike(prvi){
+  const tp = rez.top || [], potpis = J + JSON.stringify(tp); if(potpis === zadnjiPotpis) return; const animiraj = prvi || !zadnjiPotpis; zadnjiPotpis = potpis;
+  if(!tp.length){ $("postolje").innerHTML = `<p class="prazno">${t("prazno")}</p>`; $("ostali").innerHTML = ""; return; }
+  const med = ["🥇","🥈","🥉"]; $("postolje").innerHTML = "";
+  [1,0,2].filter(k => tp[k]).forEach(k => { const el = document.createElement("div"); el.className = `stup p${k+1}`;
+    el.innerHTML = `<div class="med">${med[k]}</div><div class="ime"></div><div class="bod">${tp[k].bodovi} ${t("bodova")}</div><div class="blok">${k+1}</div>`;
+    el.querySelector(".ime").textContent = tp[k].ime; $("postolje").appendChild(el); setTimeout(() => el.classList.add("on"), animiraj ? [1300,400,2200][k] : 0); });
+  $("ostali").innerHTML = ""; tp.slice(3,8).forEach((x,j) => { const s = document.createElement("span"); s.append(`${j+4}. ${x.ime} `); const b = document.createElement("b"); b.textContent = x.bodovi; s.append(b); $("ostali").appendChild(s); });
+  if(animiraj) setTimeout(() => { const p = document.querySelector(".p1"); if(p){ prasak(p, 120); setTimeout(() => prasak(p, 80), 500); } }, 2500);
+}
+
+// ----- točni odgovori -----
+function crtajOdgovore(){ const P = PIT[["en","de","hr"].indexOf(J)];
+  $("odgovori").innerHTML = P.map(([q, o], k) => `<div><span>${k+1}</span><p>${q} <b>${o[TOCNO[k]]}</b></p></div>`).join(""); }
+
+// ----- odbrojavanje 6:00 (samo za prikaz; svaki igrač ima svoj sat na mobitelu) -----
+let tik = null;
+function startSat(){ clearInterval(tik); const kraj = Date.now() + 360000, el = $("sat"); el.hidden = false; el.classList.remove("kraj"); pokazi("vStart");
+  const f = () => { const s = Math.max(0, Math.ceil((kraj - Date.now())/1000)); el.textContent = `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`; if(!s){ clearInterval(tik); el.classList.add("kraj"); el.textContent = t("kraj"); } };
+  f(); tik = setInterval(f, 250); }
+
+// ----- jezik -----
+function postaviJezik(j){ J = ["en","hr","de"].includes(j) ? j : "en"; document.documentElement.lang = J; try{ localStorage.setItem("hrk-host-jezik", J); }catch(e){}
+  document.querySelectorAll("[data-t]").forEach(el => { const v = t(el.dataset.t); if(/<em>/.test(v)) el.innerHTML = v; else el.textContent = v; });
+  document.querySelectorAll("#gumbi [data-j]").forEach(b => b.setAttribute("aria-pressed", b.dataset.j === J));
+  crtajOdgovore(); zadnjiPotpis = ""; if(pogled === "vPob") crtajPobjednike(false); }
+
+// ----- gumbi i tipke -----
+$("bStart").onclick = startSat; $("bQR").onclick = () => pokazi("vStart"); $("bPob").onclick = () => pokazi("vPob"); $("bOdg").onclick = () => pokazi("vOdg");
+$("bNovi").onclick = () => { $("potvrda").hidden = false; }; $("neNovi").onclick = () => { $("potvrda").hidden = true; };
+$("daNovi").onclick = () => { $("potvrda").hidden = true; kod = novKod(); try{ localStorage.setItem("hrk-host-kod", kod); }catch(e){} brojIgraca = -1; rez = {broj:0, top:[]}; document.querySelectorAll(".igraca").forEach(b => b.textContent = 0); clearInterval(tik); $("sat").hidden = true; crtajQR(); pokazi("vStart"); };
+document.querySelectorAll("#gumbi [data-j]").forEach(b => b.onclick = () => postaviJezik(b.dataset.j));
+addEventListener("keydown", e => { const k = e.key.toLowerCase(); if(k === "s") startSat(); if(k === "q") pokazi("vStart"); if(k === "w" || k === "p") pokazi("vPob"); if(k === "a") pokazi("vOdg");
+  if(k === "f"){ try{ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(()=>{}); }catch(err){} } });
+// gumbi se sakriju kad se miš ne miče, da ne smetaju na projektoru
+let skr; function pokaziGumbe(){ $("gumbi").classList.remove("skri"); clearTimeout(skr); skr = setTimeout(() => { if($("potvrda").hidden) $("gumbi").classList.add("skri"); }, 5000); }
+addEventListener("mousemove", pokaziGumbe); addEventListener("touchstart", pokaziGumbe, {passive:true}); pokaziGumbe();
+
+crtajQR(); postaviJezik(J); rezultati(false);
+</script>
+</body></html>
