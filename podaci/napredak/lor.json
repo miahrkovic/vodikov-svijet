@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "☀️",
+      "t": "Pitanje dana: netočno · niz 2",
+      "d": "2026-10-27T21:24:39.011Z"
+    },
+    {
       "i": "⚡",
       "t": "Liga, runda 44: 155 bodova (9/10)",
       "d": "2026-10-26T15:46:28.763Z"
@@ -479,15 +484,15 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1793029588764,
+  "_spremljeno": 1793136279011,
   "_ukupno": 3.9,
   "dnevno": {
-    "dan": "2026-10-26",
-    "tocno": true
+    "dan": "2026-10-27",
+    "tocno": false
   },
   "niz": {
-    "broj": 1,
-    "zadnji": "2026-10-26",
+    "broj": 2,
+    "zadnji": "2026-10-27",
     "najdulji": 2
   }
 }
