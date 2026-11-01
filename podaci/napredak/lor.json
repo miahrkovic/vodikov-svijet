@@ -4,6 +4,11 @@
     {
       "i": "☀️",
       "t": "Pitanje dana: točno · niz 1",
+      "d": "2026-11-01T20:44:10.703Z"
+    },
+    {
+      "i": "☀️",
+      "t": "Pitanje dana: točno · niz 1",
       "d": "2026-10-29T15:01:34.925Z"
     },
     {
@@ -439,7 +444,7 @@
       "Slavonski Brod"
     ]
   },
-  "xp": 2124,
+  "xp": 2129,
   "akad": {
     "hrvatska": {
       "z": 3
@@ -489,15 +494,15 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1793286094926,
+  "_spremljeno": 1793565850704,
   "_ukupno": 3.9,
   "dnevno": {
-    "dan": "2026-10-29",
+    "dan": "2026-11-01",
     "tocno": true
   },
   "niz": {
     "broj": 1,
-    "zadnji": "2026-10-29",
+    "zadnji": "2026-11-01",
     "najdulji": 2
   }
 }
