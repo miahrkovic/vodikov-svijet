@@ -882,19 +882,19 @@
   },
   "tetka007": {
     "kreiran": "2026-11-08T08:22:05.965Z",
-    "zadnje": "2026-11-08T08:32:18.476Z",
-    "xp": 63,
+    "zadnje": "2026-11-08T08:32:48.000Z",
+    "xp": 166,
     "koraci": {
       "ti": true,
       "lab": false,
-      "grad": false,
+      "grad": true,
       "ruta": 0
     },
     "lab": {
       "najbolje": null,
       "puta": 0
     },
-    "grad": null,
+    "grad": "Zagreb",
     "akad": {},
     "tocna": [],
     "istrazeno": [],
@@ -903,6 +903,6 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 4
+    "dnevnik": 6
   }
 }
