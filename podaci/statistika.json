@@ -882,10 +882,10 @@
   },
   "tetka007": {
     "kreiran": "2026-11-08T08:22:05.965Z",
-    "zadnje": "2026-11-08T08:22:46.257Z",
-    "xp": 5,
+    "zadnje": "2026-11-08T08:22:59.073Z",
+    "xp": 25,
     "koraci": {
-      "ti": false,
+      "ti": true,
       "lab": false,
       "grad": false,
       "ruta": 0
@@ -903,6 +903,6 @@
       "broj": 0,
       "iznos": 0
     },
-    "dnevnik": 2
+    "dnevnik": 4
   }
 }
