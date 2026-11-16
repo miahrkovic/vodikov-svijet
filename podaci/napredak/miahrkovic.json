@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "⚡",
+      "t": "Liga, runda 47: 137 bodova (9/10)",
+      "d": "2026-11-16T20:37:21.782Z"
+    },
+    {
       "i": "☀️",
       "t": "Pitanje dana: točno · niz 1",
       "d": "2026-11-16T20:36:03.491Z"
@@ -241,7 +246,7 @@
     "najbolja": 100,
     "plan": []
   },
-  "xp": 1010,
+  "xp": 1037,
   "akad": {
     "element": {
       "z": 3
@@ -266,7 +271,7 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1794861363491,
+  "_spremljeno": 1794861441782,
   "_ukupno": 3.9,
   "dnevno": {
     "dan": "2026-11-16",
