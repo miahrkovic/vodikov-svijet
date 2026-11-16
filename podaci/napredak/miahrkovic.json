@@ -2,6 +2,11 @@
   "kosarica": [],
   "dnevnik": [
     {
+      "i": "☀️",
+      "t": "Pitanje dana: točno · niz 1",
+      "d": "2026-11-16T20:36:03.491Z"
+    },
+    {
       "i": "🤝",
       "t": "Pridružio se timu „Vodikovci“",
       "d": "2026-10-21T22:23:04.956Z"
@@ -236,7 +241,7 @@
     "najbolja": 100,
     "plan": []
   },
-  "xp": 1005,
+  "xp": 1010,
   "akad": {
     "element": {
       "z": 3
@@ -261,15 +266,15 @@
   "tim": "H27UN9",
   "timIme": "Vodikovci",
   "vidioUvod": true,
-  "_spremljeno": 1792621384956,
+  "_spremljeno": 1794861363491,
   "_ukupno": 3.9,
   "dnevno": {
-    "dan": "2026-10-22",
+    "dan": "2026-11-16",
     "tocno": true
   },
   "niz": {
     "broj": 1,
-    "zadnji": "2026-10-22",
+    "zadnji": "2026-11-16",
     "najdulji": 1
   }
 }
